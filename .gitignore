@@ -1,6 +1,11 @@
 node_modules
 
+.DS_Store
 /.cache
 /build
 /public/build
 .env
+/app/styles
+/.vscode
+/cypress/screenshots
+/cypress/videos
