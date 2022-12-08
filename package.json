@@ -10,6 +10,8 @@
     "start": "remix-serve build"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.2",
+    "@graphql-tools/schema": "^9.0.12",
     "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^2.0.12",
     "@remix-run/node": "^1.7.2",

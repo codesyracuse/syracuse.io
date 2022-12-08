@@ -15,7 +15,7 @@ export const loader = ({ params }) => {
   return json({ slug, ...attributes });
 };
 
-export default function BlogIndex() {
+export default function Index() {
   const attributes = useLoaderData();
   const Component = PAGES[attributes.slug];
 

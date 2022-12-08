@@ -3,8 +3,39 @@ import { json } from "@remix-run/node";
 import Hero from "~/components/Hero";
 import Component, { attributes, filename } from "~/pages/home.mdx";
 
+
+import { useLoaderData } from '@remix-run/react';
+
+// type definitions
+type Book = {
+  title: string;
+  genre: string;
+};
+type Books = Array<Book>;
+type LoaderData = {
+  books: Books;
+};
+
+// Loader function
+export const loader = async () => {
+  return json<LoaderData>({
+    books: [
+      {
+        title: 'Harry Potter and the Deathly Hallows',
+        genre: "Children's Fiction",
+      },
+      {
+        title: "Harry Potter and the Philosopher's Stone",
+        genre: "Children's Fiction",
+      },
+    ],
+  });
+};
+
 export default function Index() {
-  console.log(attributes);
+  sonsole.log(attributes);
+  const { books } = useLoaderData() as LoaderData;
+
   return (
     <>
       {attributes.title && <Hero {...attributes} />}

@@ -40,7 +40,7 @@ const navigation = {
           viewBox="0 0 24 24"
           fill="currentColor"
           stroke="currentColor"
-          stroke-width="2"
+          strokeWidth="2"
           {...props}
         >
           <path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"></path>
