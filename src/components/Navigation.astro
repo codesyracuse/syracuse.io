@@ -49,25 +49,57 @@ import Logo from "../assets/logo.svg";
 </nav>
 
 <script>
-  const bigLogo = document.getElementById("bigLogo");
-  const littleLogo = document.getElementById("littleLogo");
+  function handleLogoTransitions() {
+    const bigLogo = document.getElementById("bigLogo");
+    const littleLogo = document.getElementById("littleLogo");
 
-  if (!bigLogo || !littleLogo) return;
-
-  window.addEventListener("scroll", () => {
-    const scrollPosition = window.scrollY;
-    const threshold = 150; // Adjust this value to control when the animation starts
-
-    if (scrollPosition > threshold) {
-      bigLogo.style.opacity = "0";
-      bigLogo.style.transform = "translate(-50%, -20px)";
-      littleLogo.style.opacity = "1";
-    } else {
-      // Calculate smooth transitions based on scroll position
-      const progress = scrollPosition / threshold;
-      bigLogo.style.opacity = String(1 - progress);
-      bigLogo.style.transform = `translate(-50%, ${-progress * 20}px)`;
-      littleLogo.style.opacity = String(progress);
+    if (!bigLogo || !littleLogo) {
+      return;
     }
-  });
+
+    window.addEventListener("scroll", () => {
+      const scrollPosition = window.scrollY;
+      const threshold = 150;
+
+      if (scrollPosition > threshold) {
+        bigLogo.style.opacity = "0";
+        bigLogo.style.transform = "translate(-50%, -20px)";
+        littleLogo.style.opacity = "1";
+      } else {
+        const progress = scrollPosition / threshold;
+        bigLogo.style.opacity = String(1 - progress);
+        bigLogo.style.transform = `translate(-50%, ${-progress * 20}px)`;
+        littleLogo.style.opacity = String(progress);
+      }
+    });
+  }
+
+  handleLogoTransitions();
+</script><script>
+  function handleLogoTransitions() {
+    const bigLogo = document.getElementById("bigLogo");
+    const littleLogo = document.getElementById("littleLogo");
+
+    if (!bigLogo || !littleLogo) {
+      return;
+    }
+
+    window.addEventListener("scroll", () => {
+      const scrollPosition = window.scrollY;
+      const threshold = 150;
+
+      if (scrollPosition > threshold) {
+        bigLogo.style.opacity = "0";
+        bigLogo.style.transform = "translate(-50%, -20px)";
+        littleLogo.style.opacity = "1";
+      } else {
+        const progress = scrollPosition / threshold;
+        bigLogo.style.opacity = String(1 - progress);
+        bigLogo.style.transform = `translate(-50%, ${-progress * 20}px)`;
+        littleLogo.style.opacity = String(progress);
+      }
+    });
+  }
+
+  handleLogoTransitions();
 </script>
