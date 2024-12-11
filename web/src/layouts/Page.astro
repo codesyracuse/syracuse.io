@@ -1,0 +1,17 @@
+---
+const { content } = Astro.props;
+import BaseLayout from "./BaseLayout.astro";
+import Hero from "../components/Hero";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout>
+  {content.hero && <Hero {...content.hero} />}
+
+  <main
+    class="prose prose-xl lg:prose-2xl max-w-3xl mx-auto mt-12 dark:prose-invert"
+  >
+    <slot />
+  </main>
+  <Footer />
+</BaseLayout>

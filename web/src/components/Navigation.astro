@@ -1,0 +1,73 @@
+---
+const links = [
+  { href: "/community", text: "COMMUNITY" },
+  { href: "/groups", text: "GROUPS" },
+  { href: "/resources", text: "RESOURCES" },
+];
+import Logo from "../assets/logo.svg";
+---
+
+<nav
+  class="sticky top-0 z-50 w-full bg-neutral-900/95 backdrop-blur border-b-2 border-neutral-950"
+>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-20 justify-between relative">
+      <div class="flex">
+        <a href="/" class="flex items-center text-white">
+          <span class="text-xl font-bold">Syracuse.io</span>
+        </a>
+      </div>
+
+      <div
+        class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 opacity-0"
+        id="littleLogo"
+      >
+        <Logo class="w-full" />
+      </div>
+
+      <div id="bigLogo" class="absolute left-1/2 z-50 w-14 -mt-16 block">
+        <div class="w-20 -ml-[25%]">
+          <Logo class="w-full" />
+        </div>
+      </div>
+
+      <!-- Navigation links -->
+      <div class="flex items-center space-x-8">
+        {
+          links.map((link) => (
+            <a
+              href={link.href}
+              class="text-sm font-medium text-white hover:text-orange-500"
+            >
+              {link.text}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const bigLogo = document.getElementById("bigLogo");
+  const littleLogo = document.getElementById("littleLogo");
+
+  if (!bigLogo || !littleLogo) return;
+
+  window.addEventListener("scroll", () => {
+    const scrollPosition = window.scrollY;
+    const threshold = 150; // Adjust this value to control when the animation starts
+
+    if (scrollPosition > threshold) {
+      bigLogo.style.opacity = "0";
+      bigLogo.style.transform = "translate(-50%, -20px)";
+      littleLogo.style.opacity = "1";
+    } else {
+      // Calculate smooth transitions based on scroll position
+      const progress = scrollPosition / threshold;
+      bigLogo.style.opacity = String(1 - progress);
+      bigLogo.style.transform = `translate(-50%, ${-progress * 20}px)`;
+      littleLogo.style.opacity = String(progress);
+    }
+  });
+</script>
