@@ -35,6 +35,7 @@ if (imagePath && !images[imagePath]) {
             class="h-full w-full border-none object-cover object-center shadow-none"
             src={images[imagePath]()}
             alt={altText || ""}
+            loading="eager"
           />
         </div>
         <div
