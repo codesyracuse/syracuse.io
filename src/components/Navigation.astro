@@ -19,7 +19,7 @@ import Logo from "../assets/logo.svg";
       </div>
 
       <div
-        class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 block sm:hidden opacity-100 smopacity-0"
+        class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 opacity-100 sm:opacity-0"
         id="littleLogo"
       >
         <Logo class="w-full" />
@@ -27,11 +27,9 @@ import Logo from "../assets/logo.svg";
 
       <div
         id="bigLogo"
-        class="absolute left-1/2 z-50 w-14 -mt-16 hidden sm:block"
+        class="absolute left-1/2 z-50 -translate-x-1/2 w-20 -mt-16 hidden sm:block opacity-0 sm:opacity-100"
       >
-        <div class="w-20 -ml-[25%]">
-          <Logo class="w-full" />
-        </div>
+        <Logo class="w-full" />
       </div>
 
       <!-- Hamburger Button -->
