@@ -1,0 +1,70 @@
+---
+interface Props {
+  image?: string;
+  title?: string;
+  altText?: string;
+  subtitle?: string;
+  cta?: {
+    title?: string;
+    target?: {
+      title?: string;
+    };
+  };
+}
+
+const { image, title, altText, subtitle, cta } = Astro.props;
+---
+
+<div
+  class="relative min-h-[30svh] md:min-h-[60svh] max-h-svh bg-gray-500 flex items-center"
+>
+  {
+    image && (
+      <>
+        <div aria-hidden="true" class="absolute inset-0 overflow-hidden">
+          <img
+            class="h-full w-full border-none object-cover object-center shadow-none"
+            src={image}
+            alt={altText}
+          />
+        </div>
+        <div
+          aria-hidden="true"
+          class="absolute inset-0 bg-neutral-800 opacity-20"
+        />
+      </>
+    )
+  }
+
+  <div
+    class="relative mx-auto font-mono flex max-w-3xl flex-col items-center px-6 text-center lg:px-0 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]"
+  >
+    {
+      title && (
+        <h1 class="py-4 text-5xl font-mono font-extrabold tracking-widest text-white lg:text-6xl">
+          {title}
+        </h1>
+      )
+    }
+    {
+      subtitle && (
+        <>
+          <hr class="w-32 h-1 my-0 bg-white border-0 rounded shadow-2xl bg-blend-darken shadow-black" />
+          <div class="py-4 text-2xl font-bold text-white lg:text-4xl">
+            {subtitle}
+          </div>
+        </>
+      )
+    }
+    {
+      cta && (
+        <a
+          href={pagePath(cta)}
+          class="mt-8 inline-block rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100"
+        >
+          {cta.title || cta.target?.title}
+        </a>
+      )
+    }
+  </div>
+</div>
