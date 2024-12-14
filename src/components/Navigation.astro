@@ -19,13 +19,16 @@ import Logo from "../assets/logo.svg";
       </div>
 
       <div
-        class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 opacity-0"
+        class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 opacity-100 md:opacity-0 block md:hidden"
         id="littleLogo"
       >
         <Logo class="w-full" />
       </div>
 
-      <div id="bigLogo" class="absolute left-1/2 z-50 w-14 -mt-16 block">
+      <div
+        id="bigLogo"
+        class="absolute left-1/2 z-50 w-14 -mt-16 hidden md:block"
+      >
         <div class="w-20 -ml-[25%]">
           <Logo class="w-full" />
         </div>
