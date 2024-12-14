@@ -4,7 +4,7 @@ subtitle: Code together, on anything
 summary: >
   A casual meetup based around developer side-projects.
   OpenHack Syracuse happens on the second Tuesday of every month at Syracuse Coworks
-img: '/src/assets/groups/openhack-august-15.jpg'
+imagePath: '/src/assets/groups/openhack-august-15.jpg'
 imgAlt: photo from OpenHack meetup
 groupType: meetup
 groupId: 'open-hack'

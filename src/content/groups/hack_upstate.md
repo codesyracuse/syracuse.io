@@ -6,7 +6,7 @@ summary: >
   where developers, designers, engineers and innovators from across Upstate New York
   come to Syracuse, NY, to share ideas, form teams, build projects,
   and win awesome prizes in 24 hours
-img: '/src/assets/groups/hackupstate.png'
+imagePath: '/src/assets/groups/hackupstate.png'
 imgAlt: Hack Upstate Sign
 groupType: hackathon
 groupId: 'hack-upstate'

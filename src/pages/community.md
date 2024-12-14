@@ -3,7 +3,7 @@ layout: ../layouts/Page.astro
 title: Community
 subtitle: 'Your local developer community'
 hero: 
-  image: '/src/assets/openhack-august-15.jpg'
+  imagePath: '/src/assets/openhack-august-15.jpg'
   altText: OpenHack meetup
 ---
 

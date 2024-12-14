@@ -2,7 +2,7 @@
 layout: ../layouts/Page.astro
 title: Slack 
 hero: 
-  image: '/src/assets/slack.jpg'
+  imagePath: '/src/assets/slack.jpg'
   description: your friendly local developer slack 
   altText: slack chat room
 ---

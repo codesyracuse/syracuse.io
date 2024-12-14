@@ -3,10 +3,8 @@ layout: ../layouts/Page.astro
 title: 'Syracuse.io'
 subtitle: 'Your local developer community'
 hero: 
-  image: '/src/assets/clintonsquare.jpg'
+  imagePath: '/src/assets/clintonsquare.jpg'
   altText: 'Historic photo of Clinton Square in Downtown Syracuse'
-  title: 'Syracuse.io'
-  description: 'Your local developer community'
 ---
 Welcome to [Syracuse.io](http://syracuse.io), home to Syracuse's diverse and growing developer scene.
 

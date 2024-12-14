@@ -1,7 +1,7 @@
 ---
 title: '/dev/drinks'
 group: 'dev_drinks'
-img: '/src/assets/groups/devdrinks.jpg'
+imagePath: '/src/assets/groups/devdrinks.jpg'
 summary: >
   A Developer Happy Hour Series.
   Cheers 🍻

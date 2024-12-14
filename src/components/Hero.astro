@@ -1,6 +1,8 @@
 ---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
 interface Props {
-  image?: string;
+  imagePath?: string;
   title?: string;
   altText?: string;
   subtitle?: string;
@@ -12,20 +14,27 @@ interface Props {
   };
 }
 
-const { image, title, altText, subtitle, cta } = Astro.props;
+const { imagePath, title, altText, subtitle, cta } = Astro.props;
+
+const images = import.meta.glob("/src/assets/**/*.{jpeg,jpg,png,gif}");
+if (imagePath && !images[imagePath]) {
+  throw new Error(
+    `"${imagePath}" does not exist in glob: "/src/assets/*.{jpeg,jpg,png,gif}"`,
+  );
+}
 ---
 
 <div
   class="relative min-h-[30svh] md:min-h-[60svh] max-h-svh bg-gray-500 flex items-center"
 >
   {
-    image && (
+    imagePath && images[imagePath] && (
       <>
         <div aria-hidden="true" class="absolute inset-0 overflow-hidden">
-          <img
+          <Image
             class="h-full w-full border-none object-cover object-center shadow-none"
-            src={image}
-            alt={altText}
+            src={images[imagePath]()}
+            alt={altText || ""}
           />
         </div>
         <div

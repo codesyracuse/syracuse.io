@@ -5,7 +5,7 @@ summary: >
   or work through an online curriculum at their own pace.
   Each workshop will have at least one mentor to provide support and answer questions.
   Although this group is geared towards women, anyone is welcome to attend our classes
-img: '/src/assets/groups/womenincoding.jpg'
+imagePath: '/src/assets/groups/womenincoding.jpg'
 imgAlt: women typing at laptops
 groupType: meetup
 groupId: 'women-in-coding'

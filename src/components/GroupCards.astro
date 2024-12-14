@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 const groups = await getCollection("groups");
 import { Image } from "astro:assets";
+const images = import.meta.glob("/src/assets/groups/*");
 ---
 
 <div
@@ -12,8 +13,8 @@ import { Image } from "astro:assets";
       <article class="relative isolate flex flex-col justify-stretch overflow-hidden rounded-2xl bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700">
         <div class="relative w-full">
           <div class="relative isolate flex flex-col justify-start overflow-hidden bg-neutral-900">
-            <img
-              src={group.data.img}
+            <Image
+              src={images[group.data.imagePath]()}
               alt={group.data.imgAlt}
               class="absolute inset-0 -z-10 size-full aspect-video bg-neutral-100 object-cover"
             />
