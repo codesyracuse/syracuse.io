@@ -19,7 +19,7 @@ import Logo from "../assets/logo.svg";
       </div>
 
       <div
-        class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 opacity-100 md:opacity-0 block md:hidden"
+        class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 block sm:hidden opacity-100 smopacity-0"
         id="littleLogo"
       >
         <Logo class="w-full" />
@@ -27,15 +27,42 @@ import Logo from "../assets/logo.svg";
 
       <div
         id="bigLogo"
-        class="absolute left-1/2 z-50 w-14 -mt-16 hidden md:block"
+        class="absolute left-1/2 z-50 w-14 -mt-16 hidden sm:block"
       >
         <div class="w-20 -ml-[25%]">
           <Logo class="w-full" />
         </div>
       </div>
 
-      <!-- Navigation links -->
-      <div class="flex items-center space-x-8">
+      <!-- Hamburger Button -->
+      <button
+        type="button"
+        class="md:hidden inline-flex items-center justify-center p-2 text-white hover:text-orange-500"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        id="menuButton"
+      >
+        <span class="sr-only">Open main menu</span>
+        <!-- Hamburger icon -->
+        <svg
+          class="h-6 w-6 transition-transform duration-200"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+          id="menuIcon"
+        >
+          <path
+            class="origin-center transition-all duration-200"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+        </svg>
+      </button>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
         {
           links.map((link) => (
             <a
@@ -46,6 +73,27 @@ import Logo from "../assets/logo.svg";
             </a>
           ))
         }
+      </div>
+
+      <!-- Mobile menu -->
+      <div
+        id="mobile-menu"
+        class="absolute top-full left-2/3 -right-4 transform -translate-y-2 opacity-0 pointer-events-none transition-all duration-200 ease-in-out md:hidden bg-neutral-900 border-t border-neutral-800 shadow-lg"
+      >
+        <div class="px-4 py-3">
+          <div class="space-y-1">
+            {
+              links.map((link) => (
+                <a
+                  href={link.href}
+                  class="block text-sm font-medium text-white hover:text-orange-500 py-2"
+                >
+                  {link.text}
+                </a>
+              ))
+            }
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -77,32 +125,61 @@ import Logo from "../assets/logo.svg";
     });
   }
 
-  handleLogoTransitions();
-</script><script>
-  function handleLogoTransitions() {
-    const bigLogo = document.getElementById("bigLogo");
-    const littleLogo = document.getElementById("littleLogo");
+  function setupMobileMenu() {
+    const menuButton = document.getElementById("menuButton");
+    const menuIcon = document.getElementById("menuIcon");
+    const mobileMenu = document.getElementById("mobile-menu");
+    let isOpen = false;
 
-    if (!bigLogo || !littleLogo) {
-      return;
+    function openMenu() {
+      isOpen = true;
+      menuButton?.setAttribute("aria-expanded", "true");
+      mobileMenu?.classList.remove(
+        "-translate-y-2",
+        "opacity-0",
+        "pointer-events-none",
+      );
+      // Transform hamburger to X
+      menuIcon
+        ?.querySelector("path")
+        ?.setAttribute("d", "M6 18L18 6M6 6l12 12");
     }
 
-    window.addEventListener("scroll", () => {
-      const scrollPosition = window.scrollY;
-      const threshold = 150;
+    function closeMenu() {
+      isOpen = false;
+      menuButton?.setAttribute("aria-expanded", "false");
+      mobileMenu?.classList.add(
+        "-translate-y-2",
+        "opacity-0",
+        "pointer-events-none",
+      );
+      // Transform X back to hamburger
+      menuIcon
+        ?.querySelector("path")
+        ?.setAttribute("d", "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5");
+    }
 
-      if (scrollPosition > threshold) {
-        bigLogo.style.opacity = "0";
-        bigLogo.style.transform = "translate(-50%, -20px)";
-        littleLogo.style.opacity = "1";
+    menuButton?.addEventListener("click", () => {
+      if (isOpen) {
+        closeMenu();
       } else {
-        const progress = scrollPosition / threshold;
-        bigLogo.style.opacity = String(1 - progress);
-        bigLogo.style.transform = `translate(-50%, ${-progress * 20}px)`;
-        littleLogo.style.opacity = String(progress);
+        openMenu();
+      }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (event) => {
+      const target = event.target as HTMLElement;
+      if (
+        isOpen &&
+        !mobileMenu?.contains(target) &&
+        !menuButton?.contains(target)
+      ) {
+        closeMenu();
       }
     });
   }
 
   handleLogoTransitions();
+  setupMobileMenu();
 </script>
