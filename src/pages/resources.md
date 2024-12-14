@@ -1,11 +1,10 @@
 ---
 layout: ../layouts/Page.astro
 title: Dev Resources
+subtitle: 'Your local developer community'
 hero: 
   image: '/src/assets/resources.jpg'
   altText: WebDev Books image
-  title: Dev Resources
-  subtitle: 'Your local developer community'
 ---
 
 The following is a list of Open Data and training opportunities for the Syracuse Developer.

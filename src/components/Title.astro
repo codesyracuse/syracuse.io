@@ -1,0 +1,19 @@
+---
+const { title, subtitle } = Astro.props;
+---
+
+<div
+  class="relative mx-auto my-24 flex max-w-3xl font-mono flex-col items-center px-6 text-center lg:px-0 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]"
+>
+  <h1 class="text-5xl font-extrabold tracking-widest dark:text-white">
+    {title}
+  </h1>
+  <hr
+    class="w-24 h-1 mt-5 mb-7 bg-orange-500 border-0 rounded shadow-2xl bg-blend-darken shadow-black"
+  />
+  {
+    subtitle && (
+      <p class="text-xl text-gray-600 dark:text-gray-300">{subtitle}</p>
+    )
+  }
+</div>

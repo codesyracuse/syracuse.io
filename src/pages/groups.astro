@@ -1,0 +1,37 @@
+---
+import Page from "../layouts/Page.astro";
+import GroupCards from "../components/GroupCards.astro";
+import Title from "../components/Title.astro";
+---
+
+<Page
+  wide={true}
+  content={{
+    title: "Developer Groups",
+    subtitle: "Meetups and groups in the Syracuse area",
+  }}
+>
+  <div class="not-prose">
+    <GroupCards />
+  </div>
+
+  <div class="max-w-3xl mx-auto mt-12">
+    <p>
+      Hey you! If you'd like to start a meetup in Syracuse, please reach out to
+      the organizers at Syracuse.io. We're happy to connect you with community
+      members who might be interested in attending.
+    </p>
+
+    <p>
+      You're also welcome to invite your members to join <a href="/community/"
+        >Syracuse.io slack</a
+      >, and coordinate events through this site.
+    </p>
+
+    <p>
+      As well, for other events we've hosted not in one of these particular
+      groups, visit the
+      <a href="/groups/other">Other Events Listing</a>
+    </p>
+  </div>
+</Page>

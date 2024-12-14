@@ -18,6 +18,10 @@ export default {
 					},
 				},
 			}),
+			fontFamily: {
+				mono: ['"Monaspace Xenon"', 'monospace'],
+				headers: ['"Monaspace Xenon"', 'monospace'],
+			},
 		},
 	},
 	plugins: [

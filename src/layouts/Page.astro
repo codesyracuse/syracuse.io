@@ -1,17 +1,45 @@
 ---
-const { content } = Astro.props;
+const { content, wide } = Astro.props;
 import BaseLayout from "./BaseLayout.astro";
 import Hero from "../components/Hero";
-import Footer from "../components/Footer.astro";
+import Title from "../components/Title.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { clsx } from "clsx";
 ---
 
 <BaseLayout>
-  {content.hero && <Hero {...content.hero} />}
+  {
+    content?.hero && (
+      <Hero
+        title={content.title}
+        subtitle={content.subtitle}
+        image={content.hero.image}
+        altText={content.hero.altText}
+        cta={content.hero.cta}
+      />
+    )
+  }
+  <div class="mx-4 sm:mx-0">
+    {
+      content?.breadcrumbs && (
+        <div class="max-w-3xl mx-auto pt-8">
+          <Breadcrumbs items={content.breadcrumbs} />
+        </div>
+      )
+    }
+    {
+      !content?.hero && content?.title && (
+        <Title title={content.title} subtitle={content.subtitle} />
+      )
+    }
 
-  <main
-    class="prose prose-xl lg:prose-2xl max-w-3xl mx-auto mt-12 dark:prose-invert"
-  >
-    <slot />
-  </main>
-  <Footer />
+    <main
+      class={clsx(
+        "prose prose-xl lg:prose-2xl mx-auto mt-12 dark:prose-invert",
+        wide ? "max-w-5xl" : "max-w-3xl",
+      )}
+    >
+      <slot />
+    </main>
+  </div>
 </BaseLayout>

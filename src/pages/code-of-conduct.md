@@ -1,5 +1,6 @@
 ---
 title: Code of Conduct
+subtitle: TL;DR Be kind to one another
 layout: ../layouts/Page.astro
 ---
 

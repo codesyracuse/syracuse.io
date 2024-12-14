@@ -5,8 +5,6 @@ subtitle: 'Your local developer community'
 hero: 
   image: '/src/assets/openhack-august-15.jpg'
   altText: OpenHack meetup
-  title: Community
-  description: Where the Syracuse tech community meets
 ---
 
 [Syracuse.io](/) was created as a resource to foster and help grow the software developer

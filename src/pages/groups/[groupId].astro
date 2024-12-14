@@ -1,0 +1,51 @@
+---
+import Page from "../../layouts/Page.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { getCollection } from "astro:content";
+
+// Get the dynamic parameter from the URL
+export async function getStaticPaths() {
+  const groups = await getCollection("groups");
+
+  return groups.map((group) => ({
+    params: { groupId: group.data.groupId },
+    props: { group },
+  }));
+}
+
+// The group will be passed as a prop
+const { group } = Astro.props;
+---
+
+<Page
+  content={{
+    hero: {
+      image: group.data.img,
+      altText: group.data.imgAlt,
+    },
+    breadcrumbs: [
+      { title: "Groups", href: "/groups" },
+      { title: group.data.title },
+    ],
+  }}
+>
+  <div class="max-w-3xl mx-auto pt-4">
+    <h1 class="text-3xl font-mono font-bold mb-4">{group.data.title}</h1>
+
+    <div class="prose prose-xl dark:prose-invert max-w-none">
+      <div set:html={group.rendered.html} />
+      {
+        group.data.organizers?.length > 0 && (
+          <div class="mt-8">
+            <h2 class="text-xl font-semibold mb-2">Organizers</h2>
+            <ul>
+              {group.data.organizers.map((organizer) => (
+                <li>{organizer}</li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</Page>

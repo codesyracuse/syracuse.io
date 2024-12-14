@@ -4,7 +4,6 @@ title: Slack
 hero: 
   image: '/src/assets/slack.jpg'
   description: your friendly local developer slack 
-  title: Slack
   altText: slack chat room
 ---
 

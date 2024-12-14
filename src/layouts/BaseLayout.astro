@@ -1,6 +1,8 @@
 ---
 const { content } = Astro.props;
 import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/fonts.css";
 ---
 
 <!doctype html>
@@ -10,11 +12,34 @@ import Navigation from "../components/Navigation.astro";
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{content?.title || "Syracuse.io"}</title>
+
+		<link
+			rel="preload"
+			href="https://cdn.jsdelivr.net/gh/githubnext/monaspace@latest/fonts/webfonts/MonaspaceNeon-Regular.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			href="https://cdn.jsdelivr.net/gh/githubnext/monaspace@latest/fonts/webfonts/MonaspaceNeon-Bold.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
+		<link
+			rel="preload"
+			href="https://cdn.jsdelivr.net/gh/githubnext/monaspace@latest/fonts/webfonts/MonaspaceNeon-ExtraBold.woff2"
+			as="font"
+			type="font/woff2"
+			crossorigin
+		/>
 	</head>
 	<body class="bg-neutral-50 dark:bg-neutral-900">
 		<Navigation />
-		<main>
+		<div class="min-h-screen">
 			<slot />
-		</main>
+		</div>
+		<Footer />
 	</body>
 </html>
