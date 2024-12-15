@@ -19,7 +19,7 @@ import Logo from "../assets/logo.svg";
       </div>
 
       <div
-        class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 opacity-100 sm:opacity-0"
+        class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 opacity-100 md:opacity-0"
         id="littleLogo"
       >
         <Logo class="w-full" />
@@ -27,7 +27,7 @@ import Logo from "../assets/logo.svg";
 
       <div
         id="bigLogo"
-        class="absolute left-1/2 z-50 -translate-x-1/2 w-20 -mt-16 hidden sm:block opacity-0 sm:opacity-100"
+        class="absolute left-1/2 z-50 -translate-x-1/2 w-20 -mt-16 opacity-0 md:opacity-100"
       >
         <Logo class="w-full" />
       </div>
@@ -101,14 +101,19 @@ import Logo from "../assets/logo.svg";
   function handleLogoTransitions() {
     const bigLogo = document.getElementById("bigLogo");
     const littleLogo = document.getElementById("littleLogo");
+    let scrollListener: (() => void) | null = null;
 
     if (!bigLogo || !littleLogo) {
       return;
     }
 
-    window.addEventListener("scroll", () => {
+    // Function to check if we're at md breakpoint or above
+    const isMdScreen = () => window.innerWidth >= 768;
+
+    // Function to handle scroll events
+    const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      const threshold = 150;
+      const threshold = 200;
 
       if (scrollPosition > threshold) {
         bigLogo.style.opacity = "0";
@@ -120,7 +125,33 @@ import Logo from "../assets/logo.svg";
         bigLogo.style.transform = `translate(-50%, ${-progress * 20}px)`;
         littleLogo.style.opacity = String(progress);
       }
-    });
+    };
+
+    // Function to setup or remove scroll listener based on screen size
+    const updateScrollListener = () => {
+      if (isMdScreen()) {
+        if (!scrollListener) {
+          scrollListener = handleScroll;
+          window.addEventListener("scroll", scrollListener);
+          // Initial call to set correct state
+          handleScroll();
+        }
+      } else {
+        if (scrollListener) {
+          window.removeEventListener("scroll", scrollListener);
+          scrollListener = null;
+          // Reset styles when going below md
+          bigLogo.style.opacity = "0";
+          littleLogo.style.opacity = "1";
+        }
+      }
+    };
+
+    // Listen for resize events
+    window.addEventListener("resize", updateScrollListener);
+
+    // Initial setup
+    updateScrollListener();
   }
 
   function setupMobileMenu() {
