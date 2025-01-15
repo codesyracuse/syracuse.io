@@ -18,7 +18,7 @@ const { imagePath, title, altText, subtitle, cta } = Astro.props;
 const images = import.meta.glob("/src/assets/**/*.{jpeg,jpg,png,gif}");
 if (imagePath && !images[imagePath]) {
   throw new Error(
-    `"${imagePath}" does not exist in glob: "/src/assets/*.{jpeg,jpg,png,gif}"`,
+    `"${imagePath}" does not exist in glob: "/src/assets/*.{jpeg,jpg,png,gif}"`
   );
 }
 ---
