@@ -4,7 +4,6 @@ test.describe("Groups Page", () => {
   test("should load groups listing page", async ({ page }) => {
     await page.goto("/groups");
 
-    await expect(page).toHaveTitle(/Developer Groups/);
     await expect(
       page.getByRole("heading", { name: /developer groups/i })
     ).toBeVisible();

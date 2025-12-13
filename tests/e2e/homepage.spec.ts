@@ -29,7 +29,9 @@ test.describe("Homepage", () => {
     await expect(
       page.getByRole("link", { name: /local data resources/i })
     ).toBeVisible();
-    await expect(page.getByRole("link", { name: /community/i })).toBeVisible();
+    await expect(
+      page.getByRole("link", { name: /community/i }).first()
+    ).toBeVisible();
   });
 
   test("should display welcome message", async ({ page }) => {
