@@ -11,17 +11,20 @@ This is the source code for the next generation of https://syracuse.io - a conso
 ## Local Development Setup
 
 1. Clone the repository:
+
    ```sh
    git clone https://github.com/codesyracuse/syracuse.io.git
    cd syracuse.io
    ```
 
 2. Install dependencies:
+
    ```sh
    npm install
    ```
 
 3. Start the development server:
+
    ```sh
    npm run dev
    ```
@@ -30,12 +33,12 @@ This is the source code for the next generation of https://syracuse.io - a conso
 
 ## Available Commands
 
-| Command                   | Purpose                                          |
-| :----------------------- | :----------------------------------------------- |
-| `npm run dev`            | Start development server at `localhost:4321`     |
-| `npm run build`          | Build production site to `./dist/`              |
-| `npm run preview`        | Preview production build locally                 |
-| `npm run astro ...`      | Run Astro CLI commands                          |
+| Command             | Purpose                                      |
+| :------------------ | :------------------------------------------- |
+| `npm run dev`       | Start development server at `localhost:4321` |
+| `npm run build`     | Build production site to `./dist/`           |
+| `npm run preview`   | Preview production build locally             |
+| `npm run astro ...` | Run Astro CLI commands                       |
 
 ## Project Structure
 

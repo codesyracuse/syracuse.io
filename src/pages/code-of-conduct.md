@@ -39,18 +39,18 @@ If you are being harassed by a member, notice that someone else is
 being harassed, or have any other concerns, please contact `@mike` or another admin directly via DM. If the person who is harassing you is on the admin team, they will recuse themselves from handling your
 incident. We will respond as promptly as we can.
 
-In order to protect volunteers from abuse and burnout, we reserve 
-the right to reject any report we believe to have been made in bad 
-faith. Reports intended to silence legitimate criticism may be 
+In order to protect volunteers from abuse and burnout, we reserve
+the right to reject any report we believe to have been made in bad
+faith. Reports intended to silence legitimate criticism may be
 deleted without response.
 
-We will respect confidentiality requests for the purpose of 
+We will respect confidentiality requests for the purpose of
 protecting victims of abuse. At our discretion, we may publicly
 name a person about whom we’ve received harassment complaints, or
-privately warn third parties about them, if we believe that doing 
-so will increase the safety of members or the general public. We 
+privately warn third parties about them, if we believe that doing
+so will increase the safety of members or the general public. We
 will not name harassment victims without their affirmative consent.
- 
+
 ### In summary
 
 Please treat each other with kindness, thank you. <3

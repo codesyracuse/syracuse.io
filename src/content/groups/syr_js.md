@@ -5,12 +5,12 @@ summary: >
   Whether you’re an experienced JavaScript programmer or just getting started,
   we welcome and encourage all proficiency levels.
   We meet on the third Tuesday of each month
-imagePath: '/src/assets/groups/syrjs.png'
+imagePath: "/src/assets/groups/syrjs.png"
 imgAlt: Syracuse JS Meetup logo
 groupType: meetup
-groupId: 'syr-js'
+groupId: "syr-js"
 organizers:
-  - 'Joey Buczek'
+  - "Joey Buczek"
 ---
 
 We are a group dedicated to discussing and working with the JavaScript programming language.

@@ -1,6 +1,5 @@
 ---
 import Page from "../../layouts/Page.astro";
-import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import { getCollection } from "astro:content";
 
 // Get the dynamic parameter from the URL
@@ -29,15 +28,15 @@ const { group } = Astro.props;
     ],
   }}
 >
-  <div class="max-w-3xl mx-auto pt-4">
-    <h1 class="text-3xl font-mono font-bold mb-4">{group.data.title}</h1>
+  <div class="mx-auto max-w-3xl pt-4">
+    <h1 class="mb-4 font-mono text-3xl font-bold">{group.data.title}</h1>
 
-    <div class="prose prose-xl dark:prose-invert max-w-none">
+    <div class="prose prose-xl max-w-none dark:prose-invert">
       <div set:html={group.rendered.html} />
       {
         group.data.organizers?.length > 0 && (
           <div class="mt-8">
-            <h2 class="text-xl font-semibold mb-2">Organizers</h2>
+            <h2 class="mb-2 text-xl font-semibold">Organizers</h2>
             <ul>
               {group.data.organizers.map((organizer) => (
                 <li>{organizer}</li>

@@ -13,7 +13,7 @@ interface Props {
   };
 }
 
-const { imagePath, title, altText, subtitle, cta } = Astro.props;
+const { imagePath, title, altText, subtitle } = Astro.props;
 
 const images = import.meta.glob("/src/assets/**/*.{jpeg,jpg,png,gif}");
 if (imagePath && !images[imagePath]) {
@@ -24,7 +24,7 @@ if (imagePath && !images[imagePath]) {
 ---
 
 <div
-  class="relative min-h-[30svh] md:min-h-[60svh] max-h-svh bg-gray-500 flex items-center"
+  class="relative flex max-h-svh min-h-[30svh] items-center bg-gray-500 md:min-h-[60svh]"
 >
   {
     imagePath && images[imagePath] && (
@@ -46,11 +46,11 @@ if (imagePath && !images[imagePath]) {
   }
 
   <div
-    class="relative mx-auto font-mono flex max-w-3xl flex-col items-center px-6 text-center lg:px-0 [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]"
+    class="relative mx-auto flex max-w-3xl flex-col items-center px-6 text-center font-mono [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)] lg:px-0"
   >
     {
       title && (
-        <h1 class="py-4 text-3xl sm:text-5xl font-mono font-extrabold tracking-widest text-white lg:text-6xl">
+        <h1 class="py-4 font-mono text-3xl font-extrabold tracking-widest text-white sm:text-5xl lg:text-6xl">
           {title}
         </h1>
       )
@@ -58,22 +58,24 @@ if (imagePath && !images[imagePath]) {
     {
       subtitle && (
         <>
-          <hr class="w-32 h-1 my-0 bg-white border-0 rounded shadow-2xl bg-blend-darken shadow-black" />
-          <div class="py-4 text-xl sm:text-2xl font-bold text-white lg:text-4xl">
+          <hr class="my-0 h-1 w-32 rounded border-0 bg-white bg-blend-darken shadow-2xl shadow-black" />
+          <div class="py-4 text-xl font-bold text-white sm:text-2xl lg:text-4xl">
             {subtitle}
           </div>
         </>
       )
     }
     {
+      /* TODO: Implement CTA functionality
       cta && (
         <a
-          href={pagePath(cta)}
+          href={cta.href}
           class="mt-8 inline-block rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100"
         >
           {cta.title || cta.target?.title}
         </a>
       )
+      */
     }
   </div>
 </div>
