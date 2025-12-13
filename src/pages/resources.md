@@ -1,9 +1,9 @@
 ---
 layout: ../layouts/Page.astro
 title: Dev Resources
-subtitle: 'Your local developer community'
-hero: 
-  imagePath: '/src/assets/resources.jpg'
+subtitle: "Your local developer community"
+hero:
+  imagePath: "/src/assets/resources.jpg"
   altText: WebDev Books image
 ---
 

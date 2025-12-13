@@ -1,21 +1,21 @@
 ---
 layout: ../layouts/Page.astro
-title: Slack 
-hero: 
-  imagePath: '/src/assets/slack.jpg'
-  description: your friendly local developer slack 
+title: Slack
+hero:
+  imagePath: "/src/assets/slack.jpg"
+  description: your friendly local developer slack
   altText: slack chat room
 ---
 
 Join our friendly local developer Slack group, and say hey to a great group of Syracuse developers. Learn and share in channels like:
 
-* #javascript
-* #jobs
-* #codenewbies
-* #womenincoding
-* #blockchain
-* #datascience
-* #vim
+- #javascript
+- #jobs
+- #codenewbies
+- #womenincoding
+- #blockchain
+- #datascience
+- #vim
 
 <div class='border border-neutral-500 dark:border-neutral-800 rounded-lg py-4 px-16 -mx-16'>
 
@@ -31,4 +31,3 @@ teams and, in our case, communities of like-minded folks.
 </p>
 
 </div>
-
