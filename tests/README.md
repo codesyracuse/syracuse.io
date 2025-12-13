@@ -12,13 +12,7 @@ npx playwright install chromium
 
 ## Running Tests
 
-Build the project first (required for preview server):
-
-```bash
-npm run build
-```
-
-Run all tests:
+Run all tests (dev server starts automatically):
 
 ```bash
 npm test
@@ -86,4 +80,4 @@ The Playwright config is set up to:
 - Run sequentially in CI
 - Retry failed tests 2 times in CI
 - Generate HTML reports
-- Start preview server automatically before tests
+- Start dev server automatically before tests
