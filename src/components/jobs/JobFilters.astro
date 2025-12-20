@@ -1,0 +1,91 @@
+---
+interface Props {
+  categories: string[];
+  terms: string[];
+}
+
+const { categories, terms } = Astro.props;
+---
+
+<div class="mb-8 rounded-lg border-2 border-neutral-200 bg-white p-4 dark:border-neutral-800 dark:bg-neutral-900">
+  <div class="flex flex-col gap-4 md:flex-row md:items-center md:gap-6">
+    <div class="flex-1">
+      <label for="category-filter" class="mb-2 block text-sm font-medium text-neutral-700 dark:text-neutral-300">
+        Category
+      </label>
+      <select
+        id="category-filter"
+        class="w-full rounded-lg border-2 border-neutral-300 bg-white px-4 py-2 text-neutral-900 focus:border-orange-500 focus:outline-none dark:border-neutral-700 dark:bg-neutral-800 dark:text-white"
+      >
+        <option value="">All Categories</option>
+        {categories.map((category) => (
+          <option value={category}>{category}</option>
+        ))}
+      </select>
+    </div>
+
+    <div class="flex-1">
+      <label for="term-filter" class="mb-2 block text-sm font-medium text-neutral-700 dark:text-neutral-300">
+        Job Type
+      </label>
+      <select
+        id="term-filter"
+        class="w-full rounded-lg border-2 border-neutral-300 bg-white px-4 py-2 text-neutral-900 focus:border-orange-500 focus:outline-none dark:border-neutral-700 dark:bg-neutral-800 dark:text-white"
+      >
+        <option value="">All Types</option>
+        {terms.map((term) => (
+          <option value={term}>{term}</option>
+        ))}
+      </select>
+    </div>
+
+    <div class="flex items-end">
+      <button
+        id="reset-filters"
+        type="button"
+        class="rounded-lg border-2 border-neutral-300 bg-white px-4 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700"
+      >
+        Reset
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function setupFilters() {
+    const categoryFilter = document.getElementById('category-filter') as HTMLSelectElement;
+    const termFilter = document.getElementById('term-filter') as HTMLSelectElement;
+    const resetButton = document.getElementById('reset-filters');
+    const jobCards = document.querySelectorAll('[data-job-card]');
+
+    function filterJobs() {
+      const selectedCategory = categoryFilter.value.toLowerCase();
+      const selectedTerm = termFilter.value.toLowerCase();
+
+      jobCards.forEach((card) => {
+        const category = (card.getAttribute('data-category') || '').toLowerCase();
+        const term = (card.getAttribute('data-term') || '').toLowerCase();
+
+        const categoryMatch = !selectedCategory || category === selectedCategory;
+        const termMatch = !selectedTerm || term === selectedTerm;
+
+        if (categoryMatch && termMatch) {
+          (card as HTMLElement).style.display = 'block';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    }
+
+    categoryFilter?.addEventListener('change', filterJobs);
+    termFilter?.addEventListener('change', filterJobs);
+
+    resetButton?.addEventListener('click', () => {
+      categoryFilter.value = '';
+      termFilter.value = '';
+      filterJobs();
+    });
+  }
+
+  setupFilters();
+</script>
