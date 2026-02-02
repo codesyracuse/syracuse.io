@@ -1,0 +1,110 @@
+---
+import type { JobKitJob } from "../../lib/jobkit";
+
+interface Props {
+  job: JobKitJob;
+}
+
+const { job } = Astro.props;
+
+// Parse location for addressLocality and addressRegion
+function parseLocation(location: string) {
+  const parts = location.split(",").map((p) => p.trim());
+  return {
+    addressLocality: parts[0] || "Syracuse",
+    addressRegion: parts[1] || "NY",
+    addressCountry: "US",
+  };
+}
+
+// Map arrangement to jobLocationType
+function getJobLocationType(arrangement: string) {
+  if (arrangement === "remote") return "TELECOMMUTE";
+  return undefined;
+}
+
+// Map term name to employment type
+function getEmploymentType(termName: string) {
+  const mapping: Record<string, string> = {
+    "Full-time": "FULL_TIME",
+    "Part-time": "PART_TIME",
+    Contract: "CONTRACTOR",
+    Freelance: "CONTRACTOR",
+    Internship: "INTERN",
+  };
+  return mapping[termName] || "FULL_TIME";
+}
+
+// Map salary period to unitText
+function getSalaryUnitText(period: string) {
+  const mapping: Record<string, string> = {
+    yearly: "YEAR",
+    monthly: "MONTH",
+    hourly: "HOUR",
+  };
+  return mapping[period] || "YEAR";
+}
+
+// Calculate validThrough date
+function getValidThrough(createdAt: string, period: number) {
+  const date = new Date(createdAt);
+  date.setDate(date.getDate() + period);
+  return date.toISOString().split("T")[0];
+}
+
+// Strip markdown from description for plain text
+function stripMarkdown(text: string): string {
+  return text
+    .replace(/#{1,6}\s/g, "")
+    .replace(/\*\*(.+?)\*\*/g, "$1")
+    .replace(/\*(.+?)\*/g, "$1")
+    .replace(/\[(.+?)\]\(.+?\)/g, "$1")
+    .replace(/`(.+?)`/g, "$1")
+    .replace(/\n+/g, " ")
+    .trim();
+}
+
+const location = parseLocation(job.location);
+const datePosted = new Date(job.created_at).toISOString().split("T")[0];
+const validThrough = getValidThrough(job.created_at, job.plan.period);
+const jobLocationType = getJobLocationType(job.arrangement);
+const employmentType = getEmploymentType(job.term.name);
+const description = stripMarkdown(job.description);
+
+const schema = {
+  "@context": "https://schema.org/",
+  "@type": "JobPosting",
+  title: job.title,
+  description: description,
+  datePosted: datePosted,
+  validThrough: validThrough,
+  hiringOrganization: {
+    "@type": "Organization",
+    name: job.company,
+    ...(job.company_website && { sameAs: job.company_website }),
+    ...(job.logo && { logo: job.logo }),
+  },
+  jobLocation: {
+    "@type": "Place",
+    address: {
+      "@type": "PostalAddress",
+      ...location,
+    },
+  },
+  ...(jobLocationType && { jobLocationType }),
+  employmentType: employmentType,
+  ...(job.salary && {
+    baseSalary: {
+      "@type": "MonetaryAmount",
+      currency: job.salary_currency || "USD",
+      value: {
+        "@type": "QuantitativeValue",
+        value: parseFloat(job.salary),
+        unitText: getSalaryUnitText(job.salary_period),
+      },
+    },
+  }),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

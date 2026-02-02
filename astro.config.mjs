@@ -9,4 +9,5 @@ import cloudflare from "@astrojs/cloudflare";
 export default defineConfig({
   integrations: [tailwind()],
   adapter: cloudflare(),
+  output: "server",
 });
