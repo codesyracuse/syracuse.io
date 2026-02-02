@@ -2,6 +2,8 @@
 import Page from "../../layouts/Page.astro";
 import { getCollection } from "astro:content";
 
+export const prerender = true;
+
 // Get the dynamic parameter from the URL
 export async function getStaticPaths() {
   const groups = await getCollection("groups");
