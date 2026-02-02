@@ -36,10 +36,11 @@ const relativeDate = formatRelativeDate(job.created_at);
 const descriptionHtml = marked(job.description);
 
 const pageTitle = `${job.title} at ${job.company} - Syracuse, NY | syracuse.io`;
-const pageDescription = job.description
-  .replace(/[#*\[\]]/g, "")
-  .slice(0, 160)
-  .trim() + "...";
+const pageDescription =
+  job.description
+    .replace(/[#*[\]]/g, "")
+    .slice(0, 160)
+    .trim() + "...";
 ---
 
 <BaseLayout
@@ -76,59 +77,80 @@ const pageDescription = job.description
       </a>
     </div>
 
-    <article class="overflow-hidden rounded-lg border-2 border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
-      <div class="border-b-2 border-neutral-200 bg-neutral-50 p-8 dark:border-neutral-800 dark:bg-neutral-950">
+    <article
+      class="overflow-hidden rounded-lg border-2 border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900"
+    >
+      <div
+        class="border-b-2 border-neutral-200 bg-neutral-50 p-8 dark:border-neutral-800 dark:bg-neutral-950"
+      >
         <div class="flex items-start gap-6">
-          {job.logo && (
-            <div class="flex-shrink-0">
-              <img
-                src={job.logo}
-                alt={`${job.company} logo`}
-                class="h-20 w-20 rounded-lg object-contain"
-              />
-            </div>
-          )}
+          {
+            job.logo && (
+              <div class="flex-shrink-0">
+                <img
+                  src={job.logo}
+                  alt={`${job.company} logo`}
+                  class="h-20 w-20 rounded-lg object-contain"
+                />
+              </div>
+            )
+          }
 
           <div class="flex-1">
-            <h1 class="mb-3 text-3xl font-bold text-neutral-900 dark:text-white md:text-4xl">
+            <h1
+              class="mb-3 text-3xl font-bold text-neutral-900 md:text-4xl dark:text-white"
+            >
               {job.title}
             </h1>
 
-            <div class="mb-4 flex flex-wrap items-center gap-2 text-lg text-neutral-700 dark:text-neutral-300">
+            <div
+              class="mb-4 flex flex-wrap items-center gap-2 text-lg text-neutral-700 dark:text-neutral-300"
+            >
               <span class="font-semibold">{job.company}</span>
-              {job.company_website && (
-                <>
-                  <span>•</span>
-                  <a
-                    href={job.company_website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="text-orange-600 hover:underline dark:text-orange-400"
-                  >
-                    Website
-                  </a>
-                </>
-              )}
+              {
+                job.company_website && (
+                  <>
+                    <span>•</span>
+                    <a
+                      href={job.company_website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-orange-600 hover:underline dark:text-orange-400"
+                    >
+                      Website
+                    </a>
+                  </>
+                )
+              }
             </div>
 
             <div class="flex flex-wrap gap-2">
               <JobBadge text={job.term.name} variant="primary" />
               <JobBadge text={job.category.name} variant="secondary" />
-              {job.arrangement && (
-                <JobBadge
-                  text={job.arrangement.charAt(0).toUpperCase() + job.arrangement.slice(1)}
-                  variant="accent"
-                />
-              )}
+              {
+                job.arrangement && (
+                  <JobBadge
+                    text={
+                      job.arrangement.charAt(0).toUpperCase() +
+                      job.arrangement.slice(1)
+                    }
+                    variant="accent"
+                  />
+                )
+              }
             </div>
           </div>
         </div>
       </div>
 
       <div class="p-8">
-        <div class="mb-6 grid gap-4 border-b-2 border-neutral-200 pb-6 dark:border-neutral-800 md:grid-cols-3">
+        <div
+          class="mb-6 grid gap-4 border-b-2 border-neutral-200 pb-6 md:grid-cols-3 dark:border-neutral-800"
+        >
           <div>
-            <h3 class="mb-1 text-sm font-medium text-neutral-500 dark:text-neutral-400">
+            <h3
+              class="mb-1 text-sm font-medium text-neutral-500 dark:text-neutral-400"
+            >
               Location
             </h3>
             <p class="text-lg font-semibold text-neutral-900 dark:text-white">
@@ -136,19 +158,23 @@ const pageDescription = job.description
             </p>
           </div>
 
-          {salary && (
-            <div>
-              <h3 class="mb-1 text-sm font-medium text-neutral-500 dark:text-neutral-400">
-                Salary
-              </h3>
-              <p class="text-lg font-semibold text-neutral-900 dark:text-white">
-                {salary}
-              </p>
-            </div>
-          )}
+          {
+            salary && (
+              <div>
+                <h3 class="mb-1 text-sm font-medium text-neutral-500 dark:text-neutral-400">
+                  Salary
+                </h3>
+                <p class="text-lg font-semibold text-neutral-900 dark:text-white">
+                  {salary}
+                </p>
+              </div>
+            )
+          }
 
           <div>
-            <h3 class="mb-1 text-sm font-medium text-neutral-500 dark:text-neutral-400">
+            <h3
+              class="mb-1 text-sm font-medium text-neutral-500 dark:text-neutral-400"
+            >
               Posted
             </h3>
             <p class="text-lg font-semibold text-neutral-900 dark:text-white">
@@ -157,11 +183,15 @@ const pageDescription = job.description
           </div>
         </div>
 
-        <div class="prose prose-lg max-w-none dark:prose-invert prose-headings:text-neutral-900 dark:prose-headings:text-white prose-a:text-orange-600 dark:prose-a:text-orange-400">
+        <div
+          class="prose prose-lg max-w-none dark:prose-invert prose-headings:text-neutral-900 prose-a:text-orange-600 dark:prose-headings:text-white dark:prose-a:text-orange-400"
+        >
           <Fragment set:html={descriptionHtml} />
         </div>
 
-        <div class="mt-8 flex flex-col gap-4 border-t-2 border-neutral-200 pt-8 dark:border-neutral-800 sm:flex-row">
+        <div
+          class="mt-8 flex flex-col gap-4 border-t-2 border-neutral-200 pt-8 sm:flex-row dark:border-neutral-800"
+        >
           <a
             href={`https://jobs.syracuse.io/jobs/${job.id}`}
             target="_blank"

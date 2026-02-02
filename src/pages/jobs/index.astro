@@ -24,59 +24,62 @@ const terms = [...new Set(jobs.map((job) => job.term.name))].sort();
   wide={true}
   content={{
     title: "Tech Jobs in Syracuse, NY",
-    subtitle: "Find software development, engineering, and tech jobs in Syracuse and Central New York",
+    subtitle:
+      "Find software development, engineering, and tech jobs in Syracuse and Central New York",
   }}
 >
   <div class="not-prose">
-    {error ? (
-      <div class="rounded-lg border-2 border-red-200 bg-red-50 p-6 text-center dark:border-red-900 dark:bg-red-950/20">
-        <p class="text-lg text-red-800 dark:text-red-300">
-          Unable to load jobs right now. Please try again later.
-        </p>
-      </div>
-    ) : jobs.length === 0 ? (
-      <div class="rounded-lg border-2 border-neutral-200 bg-white p-12 text-center dark:border-neutral-800 dark:bg-neutral-900">
-        <p class="mb-4 text-xl text-neutral-600 dark:text-neutral-400">
-          No jobs posted yet. Check back soon!
-        </p>
-        <a
-          href="https://jobs.syracuse.io/jobs/new"
-          class="inline-block rounded-lg bg-orange-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-orange-700"
-        >
-          Post the first one
-        </a>
-      </div>
-    ) : (
-      <>
-        <div class="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
-          <p class="text-lg text-neutral-600 dark:text-neutral-400">
-            {jobs.length} {jobs.length === 1 ? 'job' : 'jobs'} available
+    {
+      error ? (
+        <div class="rounded-lg border-2 border-red-200 bg-red-50 p-6 text-center dark:border-red-900 dark:bg-red-950/20">
+          <p class="text-lg text-red-800 dark:text-red-300">
+            Unable to load jobs right now. Please try again later.
+          </p>
+        </div>
+      ) : jobs.length === 0 ? (
+        <div class="rounded-lg border-2 border-neutral-200 bg-white p-12 text-center dark:border-neutral-800 dark:bg-neutral-900">
+          <p class="mb-4 text-xl text-neutral-600 dark:text-neutral-400">
+            No jobs posted yet. Check back soon!
           </p>
           <a
             href="https://jobs.syracuse.io/jobs/new"
-            class="inline-block rounded-lg bg-orange-600 px-6 py-3 text-center font-semibold text-white transition-colors hover:bg-orange-700"
+            class="inline-block rounded-lg bg-orange-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-orange-700"
           >
-            Post a Job
+            Post the first one
           </a>
         </div>
-
-        {categories.length > 0 && terms.length > 0 && (
-          <JobFilters categories={categories} terms={terms} />
-        )}
-
-        <div class="grid gap-6 md:grid-cols-2">
-          {jobs.map((job) => (
-            <div
-              data-job-card
-              data-category={job.category.name}
-              data-term={job.term.name}
+      ) : (
+        <>
+          <div class="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+            <p class="text-lg text-neutral-600 dark:text-neutral-400">
+              {jobs.length} {jobs.length === 1 ? "job" : "jobs"} available
+            </p>
+            <a
+              href="https://jobs.syracuse.io/jobs/new"
+              class="inline-block rounded-lg bg-orange-600 px-6 py-3 text-center font-semibold text-white transition-colors hover:bg-orange-700"
             >
-              <JobCard job={job} />
-            </div>
-          ))}
-        </div>
-      </>
-    )}
+              Post a Job
+            </a>
+          </div>
+
+          {categories.length > 0 && terms.length > 0 && (
+            <JobFilters categories={categories} terms={terms} />
+          )}
+
+          <div class="grid gap-6 md:grid-cols-2">
+            {jobs.map((job) => (
+              <div
+                data-job-card
+                data-category={job.category.name}
+                data-term={job.term.name}
+              >
+                <JobCard job={job} />
+              </div>
+            ))}
+          </div>
+        </>
+      )
+    }
   </div>
 
   <div class="mx-auto mt-12 max-w-3xl">
@@ -85,9 +88,9 @@ const terms = [...new Set(jobs.map((job) => job.term.name))].sort();
       from local companies and organizations in the Central New York tech scene.
     </p>
     <p>
-      Looking to hire? <a href="https://jobs.syracuse.io/jobs/new">Post your
-      job listing</a> to reach talented developers and tech professionals in the
-      Syracuse area.
+      Looking to hire? <a href="https://jobs.syracuse.io/jobs/new"
+        >Post your job listing</a
+      > to reach talented developers and tech professionals in the Syracuse area.
     </p>
   </div>
 </Page>

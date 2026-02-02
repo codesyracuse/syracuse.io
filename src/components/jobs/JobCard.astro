@@ -1,6 +1,10 @@
 ---
 import type { JobKitJob } from "../../lib/jobkit";
-import { generateSlug, formatRelativeDate, formatSalary } from "../../lib/jobkit";
+import {
+  generateSlug,
+  formatRelativeDate,
+  formatSalary,
+} from "../../lib/jobkit";
 import JobBadge from "./JobBadge.astro";
 
 interface Props {
@@ -21,26 +25,32 @@ const relativeDate = formatRelativeDate(job.created_at);
       : "border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-900"
   }`}
 >
-  {isFeatured && (
-    <div class="absolute right-0 top-0 rounded-bl-lg bg-orange-500 px-3 py-1 text-xs font-bold text-white">
-      Featured
-    </div>
-  )}
+  {
+    isFeatured && (
+      <div class="absolute right-0 top-0 rounded-bl-lg bg-orange-500 px-3 py-1 text-xs font-bold text-white">
+        Featured
+      </div>
+    )
+  }
 
   <a href={`/jobs/${slug}`} class="block p-6">
     <div class="flex items-start gap-4">
-      {job.logo && (
-        <div class="flex-shrink-0">
-          <img
-            src={job.logo}
-            alt={`${job.company} logo`}
-            class="h-12 w-12 rounded-lg object-contain"
-          />
-        </div>
-      )}
+      {
+        job.logo && (
+          <div class="flex-shrink-0">
+            <img
+              src={job.logo}
+              alt={`${job.company} logo`}
+              class="h-12 w-12 rounded-lg object-contain"
+            />
+          </div>
+        )
+      }
 
-      <div class="flex-1 min-w-0">
-        <h3 class="text-xl font-bold text-neutral-900 group-hover:text-orange-600 dark:text-white dark:group-hover:text-orange-400 mb-2">
+      <div class="min-w-0 flex-1">
+        <h3
+          class="mb-2 text-xl font-bold text-neutral-900 group-hover:text-orange-600 dark:text-white dark:group-hover:text-orange-400"
+        >
           {job.title}
         </h3>
 
@@ -50,20 +60,33 @@ const relativeDate = formatRelativeDate(job.created_at);
           <span>{job.location}</span>
         </div>
 
-        <div class="flex flex-wrap gap-2 mb-3">
+        <div class="mb-3 flex flex-wrap gap-2">
           <JobBadge text={job.term.name} variant="primary" />
           <JobBadge text={job.category.name} variant="secondary" />
-          {job.arrangement && (
-            <JobBadge
-              text={job.arrangement.charAt(0).toUpperCase() + job.arrangement.slice(1)}
-              variant="accent"
-            />
-          )}
+          {
+            job.arrangement && (
+              <JobBadge
+                text={
+                  job.arrangement.charAt(0).toUpperCase() +
+                  job.arrangement.slice(1)
+                }
+                variant="accent"
+              />
+            )
+          }
         </div>
 
-        <div class="flex items-center justify-between text-sm text-neutral-500 dark:text-neutral-400">
+        <div
+          class="flex items-center justify-between text-sm text-neutral-500 dark:text-neutral-400"
+        >
           <span>{relativeDate}</span>
-          {salary && <span class="font-semibold text-neutral-700 dark:text-neutral-300">{salary}</span>}
+          {
+            salary && (
+              <span class="font-semibold text-neutral-700 dark:text-neutral-300">
+                {salary}
+              </span>
+            )
+          }
         </div>
       </div>
     </div>

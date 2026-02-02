@@ -86,9 +86,7 @@ export function sortJobs(jobs: JobKitJob[]): JobKitJob[] {
     const bFeatured = b.plan.pin || b.plan.highlight;
     if (aFeatured && !bFeatured) return -1;
     if (!aFeatured && bFeatured) return 1;
-    return (
-      new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-    );
+    return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
   });
 }
 
@@ -117,6 +115,15 @@ export function formatRelativeDate(dateString: string): string {
   const now = new Date();
   const diffMs = now.getTime() - date.getTime();
   const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+  // If the date is in the future, fall back to an absolute date format
+  if (diffMs < 0) {
+    return date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  }
 
   if (diffDays === 0) return "Today";
   if (diffDays === 1) return "Yesterday";
