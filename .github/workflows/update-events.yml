@@ -31,7 +31,22 @@ jobs:
         run: npx playwright install chromium --with-deps
 
       - name: Fetch events from Meetup
+        id: scrape
         run: npm run fetch-events
+        continue-on-error: true
+
+      - name: Notify Slack on scrape failure
+        if: steps.scrape.outcome == 'failure' && vars.SLACK_WEBHOOK_URL != ''
+        run: |
+          curl -s -X POST "${{ vars.SLACK_WEBHOOK_URL }}" \
+            -H 'Content-Type: application/json' \
+            -d '{
+              "text": ":warning: *Meetup event scraper failed*\nThe Meetup page may have been redesigned or is temporarily unavailable.\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow run>"
+            }'
+
+      - name: Fail the workflow if scrape failed
+        if: steps.scrape.outcome == 'failure'
+        run: exit 1
 
       - name: Check for changes
         id: changes
