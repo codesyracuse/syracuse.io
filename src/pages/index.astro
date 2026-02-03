@@ -2,8 +2,7 @@
 import Layout from "../layouts/Page.astro";
 import { getUpcomingEvents } from "../lib/meetup";
 
-const events = await getUpcomingEvents();
-console.log(events);
+const events = getUpcomingEvents();
 ---
 
 <Layout
@@ -47,7 +46,7 @@ console.log(events);
             <article class="flex flex-col items-start justify-between">
               <div class="relative w-full">
                 <img
-                  src={event.images?.[0].source || "/default-event-image.jpg"}
+                  src={event.images?.[0]?.source || ""}
                   alt={event.name}
                   class="aspect-video w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
                 />
@@ -87,11 +86,13 @@ console.log(events);
                   </p>
                 </div>
                 <div class="relative mt-8 flex items-center gap-x-4">
-                  <img
-                    src={event.hostPhoto.source}
-                    alt=""
-                    class="size-10 rounded-full bg-gray-100 object-cover object-top"
-                  />
+                  {event.hostPhoto?.source && (
+                    <img
+                      src={event.hostPhoto.source}
+                      alt=""
+                      class="size-10 rounded-full bg-gray-100 object-cover object-top"
+                    />
+                  )}
                   <div class="text-sm/6">
                     <p class="text-gray-600 dark:text-gray-400">Hosted by:</p>
                     <p class="font-semibold text-gray-900 dark:text-white">
