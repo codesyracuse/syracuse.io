@@ -5,6 +5,9 @@
  * browser to load the public events page and extract structured event data from
  * the rendered DOM.
  *
+ * Scraped events are merged with the existing events.json — historical events
+ * are preserved and new/updated upcoming events are added or refreshed.
+ *
  * Usage:
  *   npx playwright install chromium
  *   node scripts/fetch-meetup-events.mjs
@@ -13,7 +16,7 @@
  */
 
 import { chromium } from "playwright";
-import { writeFileSync } from "fs";
+import { readFileSync, writeFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 
@@ -60,7 +63,6 @@ async function scrapeMeetupEvents() {
       // Date/time — look for <time> element
       const timeEl = card.querySelector("time");
       const dateTime = timeEl?.getAttribute("datetime") || "";
-      const dateDisplay = timeEl?.textContent?.trim() || "";
 
       // Description — paragraph text in the card
       const descEl =
@@ -88,7 +90,6 @@ async function scrapeMeetupEvents() {
         name,
         description,
         dateTime,
-        dateDisplay,
         url,
         images: imageSource
           ? [{ baseUrl: imageSource, source: imageSource }]
@@ -116,11 +117,41 @@ async function scrapeMeetupEvents() {
   return events;
 }
 
-try {
-  const events = await scrapeMeetupEvents();
-  console.log(`Found ${events.length} upcoming event(s).`);
+function mergeEvents(existing, scraped) {
+  // Index existing events by URL for deduplication
+  const byUrl = new Map(existing.map((e) => [e.url, e]));
 
-  writeFileSync(OUTPUT_PATH, JSON.stringify(events, null, 2) + "\n");
+  // Upsert scraped events (new ones get added, existing ones get refreshed)
+  for (const event of scraped) {
+    if (event.url) {
+      byUrl.set(event.url, event);
+    }
+  }
+
+  // Sort newest first
+  return Array.from(byUrl.values()).sort(
+    (a, b) => new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime()
+  );
+}
+
+try {
+  const scraped = await scrapeMeetupEvents();
+  console.log(`Scraped ${scraped.length} upcoming event(s).`);
+
+  // Load existing events to preserve historical data
+  let existing = [];
+  try {
+    existing = JSON.parse(readFileSync(OUTPUT_PATH, "utf-8"));
+  } catch {
+    console.log("No existing events file found, starting fresh.");
+  }
+
+  const merged = mergeEvents(existing, scraped);
+  console.log(
+    `Merged result: ${merged.length} total events (was ${existing.length}).`
+  );
+
+  writeFileSync(OUTPUT_PATH, JSON.stringify(merged, null, 2) + "\n");
   console.log(`Events written to ${OUTPUT_PATH}`);
 } catch (error) {
   console.error("Failed to scrape Meetup events:", error);
