@@ -31,7 +31,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "OpenHack: Code together, on anything",
@@ -65,7 +66,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "OpenHack: Code together, on anything",
@@ -99,7 +101,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "OpenHack: Code together, on anything",
@@ -133,7 +136,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "OpenHack: Code together, on anything",
@@ -167,7 +171,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "OpenHack: Code together, on anything",
@@ -201,7 +206,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "OpenHack: Code together, on anything",
@@ -235,7 +241,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "~Open Hack~ Holiday Happy Hour!",
@@ -269,7 +276,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "CODES Coworking Day at Salt City Market",
@@ -303,7 +311,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -337,7 +346,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "CODES x Commonspace Free Coworking Day",
@@ -371,7 +381,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -405,7 +416,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "CODES x Commonspace Free Coworking Day",
@@ -439,7 +451,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "Syracuse Civic Tech Happy Hour",
@@ -473,7 +486,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -507,7 +521,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "CODES x Commonspace Free Coworking Day",
@@ -541,7 +556,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -575,7 +591,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "CODES x Commonspace Free Coworking Day",
@@ -609,7 +626,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "Geek Night with the Syracuse Mets!!  Free tickets.",
@@ -638,7 +656,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/0/9/5/highres_1324245.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "CODES x Commonspace Free Coworking Day",
@@ -672,7 +691,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -706,7 +726,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -740,7 +761,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/4/4/5/highres_252706149.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "CODES x Commonspace Free Coworking Day",
@@ -774,7 +796,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/4/4/5/highres_252706149.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "Computer Science Book club / Coffee & Code",
@@ -808,7 +831,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/0/9/5/highres_1324245.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -842,7 +866,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "CODES x Commonspace Free Coworking Day",
@@ -876,7 +901,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "Comp Sci Fight Club................just kidding, book club / coffee & code",
@@ -910,7 +936,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/0/9/5/highres_1324245.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -944,7 +971,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/4/4/5/highres_252706149.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Comp Sci Book Club IRL / Coffee + Code / Reorganizing this event",
@@ -978,7 +1006,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/0/9/5/highres_1324245.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "CODES x Commonspace Free Coworking Day",
@@ -1012,7 +1041,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -1046,7 +1076,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -1080,7 +1111,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "CODES x Commonspace Free Coworking Day",
@@ -1114,7 +1146,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -1148,7 +1181,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "CODES x Commonspace Free Coworking Day",
@@ -1182,7 +1216,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -1216,7 +1251,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -1250,7 +1286,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -1284,7 +1321,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "CODES x Commonspace Free Coworking Day",
@@ -1318,7 +1356,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/0/9/5/highres_1324245.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -1352,7 +1391,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "CODES x Commonspace Free Coworking Day",
@@ -1386,7 +1426,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/0/9/5/highres_1324245.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -1420,7 +1461,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -1454,7 +1496,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "CODES x Commonspace Free Coworking Day",
@@ -1488,7 +1531,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/0/9/5/highres_1324245.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -1522,7 +1566,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -1556,7 +1601,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "SQL Saturday Syracuse Call for Volunteers",
@@ -1590,7 +1636,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/4/7/a/9/highres_319938345.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "SQL Saturday #1095, Syracuse",
@@ -1624,7 +1671,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/4/7/a/9/highres_319938345.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Geek Night with the Syracuse Mets!!  Free tickets.",
@@ -1653,7 +1701,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/0/9/5/highres_1324245.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "CODES x Commonspace Free Coworking Day",
@@ -1687,7 +1736,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/0/9/5/highres_1324245.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -1721,7 +1771,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "CODES x Commonspace Free Coworking Day",
@@ -1755,7 +1806,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/0/9/5/highres_1324245.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -1789,7 +1841,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -1823,7 +1876,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "CODES x Commonspace Free Coworking Day",
@@ -1857,7 +1911,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/0/9/5/highres_1324245.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "WIC Class: Digital Accessibility Jumpstart",
@@ -1891,7 +1946,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/3/5/7/highres_309929527.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -1925,7 +1981,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -1959,7 +2016,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "CODES x Commonspace Free Coworking Day",
@@ -1993,7 +2051,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/0/9/5/highres_1324245.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -2027,7 +2086,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -2061,7 +2121,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -2095,7 +2156,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "Syracuse Tech Week - Capture The Flag",
@@ -2129,7 +2191,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/0/9/5/highres_1324245.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Exploring Tech Career Paths: From Software Development to Cybersecurity",
@@ -2163,7 +2226,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/a/7/f/3/highres_318042995.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -2197,7 +2261,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "CODES x Commonspace Free Coworking Day - ECLIPSE DAY!!",
@@ -2231,7 +2296,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/0/9/5/highres_1324245.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -2265,7 +2331,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "CODES x Commonspace Free Coworking Day - Dining Weeks Edition",
@@ -2299,7 +2366,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/0/9/5/highres_1324245.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "Women in Coding: Design Tokens",
@@ -2333,7 +2401,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/4/f/1/c/highres_216380252.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -2367,7 +2436,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -2401,7 +2471,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "Women in Coding: Overcoming Impostor Syndrome",
@@ -2435,7 +2506,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/a/7/f/3/highres_318042995.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -2469,7 +2541,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -2503,7 +2576,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "CODES x Commonspace Free Coworking Day",
@@ -2537,7 +2611,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "Crafting Web Developer Resumes That Soar Through ATS Scans",
@@ -2571,7 +2646,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/a/7/f/3/highres_318042995.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -2605,7 +2681,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -2639,7 +2716,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -2673,7 +2751,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "CODES Common Space Day [October]",
@@ -2707,7 +2786,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/2/8/5/6/highres_317950326.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "Women in Coding: Coffee + Code  \u2615\ufe0f",
@@ -2741,7 +2821,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/a/7/f/3/highres_318042995.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -2775,7 +2856,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -2809,7 +2891,8 @@
     },
     "hostPhoto": {
       "source": ""
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "WIC Class: An Overview of Syracuse\u2019s Open Data Portal",
@@ -2843,7 +2926,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "CODES Common Space Day [September]",
@@ -2877,7 +2961,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/2/8/5/6/highres_317950326.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -2911,7 +2996,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/2/8/5/6/highres_317950326.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -2945,7 +3031,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "Women in Coding: Design Systems",
@@ -2979,7 +3066,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/4/f/1/c/highres_216380252.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "CODES Common Space Day [August]",
@@ -3013,7 +3101,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/2/8/5/6/highres_317950326.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -3047,7 +3136,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Women in Coding - Show & Tell",
@@ -3081,7 +3171,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/a/7/f/3/highres_318042995.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -3115,7 +3206,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -3149,7 +3241,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -3183,7 +3276,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -3217,7 +3311,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Special CODES Common Space Day [June]",
@@ -3251,7 +3346,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/2/8/5/6/highres_317950326.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "Women in Coding - A chat about AI & chatGPT, and our development workflow ",
@@ -3280,7 +3376,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/a/7/f/3/highres_318042995.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Get a Headshot Refresh from CODES",
@@ -3314,7 +3411,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -3348,7 +3446,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -3382,7 +3481,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "CODES Common Space Day [April]",
@@ -3416,7 +3516,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/2/8/5/6/highres_317950326.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -3450,7 +3551,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "WIC Class: Intro to Website Accessibility",
@@ -3484,7 +3586,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/3/5/7/highres_309929527.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "WIC Class",
@@ -3518,7 +3621,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/3/5/7/highres_309929527.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -3552,7 +3656,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "Let's Talk About Tech! Guided Discussion: Women in Coding",
@@ -3586,7 +3691,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -3620,7 +3726,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Notion Syracuse",
@@ -3654,7 +3761,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "CODES Common Space Day",
@@ -3688,7 +3796,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/2/8/5/6/highres_317950326.jpeg"
-    }
+    },
+    "groupId": "coworking"
   },
   {
     "name": "WIC Class",
@@ -3722,7 +3831,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "WIC Class: Introduction to Open Source Software",
@@ -3756,7 +3866,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -3790,7 +3901,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -3824,7 +3936,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "job chat: change, keep, or get a job with density.io co-founder Ben Redfield",
@@ -3858,7 +3971,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "syr(js): Syracuse JavaScript Meetup [Astro]",
@@ -3892,7 +4006,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/3/2/2/highres_308880802.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "WIC Class: Introduction to Python",
@@ -3926,7 +4041,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -3960,7 +4076,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "syr(js): Syracuse JavaScript Meetup [Remix]",
@@ -3994,7 +4111,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/3/2/2/highres_308880802.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Women in Coding - Holiday Cookies, Code, Chat and Network",
@@ -4028,7 +4146,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/a/7/f/3/highres_318042995.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "holiday hometown help: from code to jobs ",
@@ -4062,7 +4181,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -4096,7 +4216,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -4130,7 +4251,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "job chat: change, keep, or get a job",
@@ -4164,7 +4286,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "syr(js): Syracuse JavaScript Meetup",
@@ -4198,7 +4321,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/3/2/2/highres_308880802.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Women in Coding - Q&A session",
@@ -4232,7 +4356,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/a/7/f/3/highres_318042995.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -4266,7 +4391,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -4300,7 +4426,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -4334,7 +4461,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -4368,7 +4496,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Comp Sci Book Club IRL 1st Anniversary Celebration!",
@@ -4402,7 +4531,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -4436,7 +4566,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "WIC Class: Interactive Intro to SQL",
@@ -4470,7 +4601,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "syr(js): Syracuse JavaScript Meetup",
@@ -4504,7 +4636,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/3/2/2/highres_308880802.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -4538,7 +4671,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -4572,7 +4706,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Web Accessibility Basics: Tools for Testing and Reporting Problems",
@@ -4606,7 +4741,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/3/5/7/highres_309929527.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "/dev/drinks : developer happy hour",
@@ -4640,7 +4776,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "dev-drinks"
   },
   {
     "name": "syr(js): Syracuse JavaScript Meetup",
@@ -4674,7 +4811,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/3/2/2/highres_308880802.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -4708,7 +4846,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -4742,7 +4881,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "syr(js): Syracuse JavaScript Meetup",
@@ -4776,7 +4916,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/3/2/2/highres_308880802.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "WIC Class: Intro to Website Accessibility ",
@@ -4810,7 +4951,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/3/5/7/highres_309929527.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -4844,7 +4986,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "syr(js): Syracuse JavaScript Meetup",
@@ -4878,7 +5021,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/3/2/2/highres_308880802.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Women in Coding: Web Development Freelancing 101",
@@ -4912,7 +5056,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/a/7/f/3/highres_318042995.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -4946,7 +5091,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -4980,7 +5126,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "IRL syr(js) April 2022",
@@ -5014,7 +5161,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/3/2/2/highres_308880802.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -5048,7 +5196,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "Virtual Coffee and Co-working Session",
@@ -5082,7 +5231,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "/dev/drinks : fundraiser for syracuse devs, by syracuse devs",
@@ -5109,7 +5259,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "dev-drinks"
   },
   {
     "name": "IRL syr(js) March 2022",
@@ -5143,7 +5294,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/3/2/2/highres_308880802.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Intermediate Git",
@@ -5177,7 +5329,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -5211,7 +5364,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -5245,7 +5399,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "IRL syr(js) February 2022",
@@ -5279,7 +5434,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/3/2/2/highres_308880802.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Introduction to Git",
@@ -5313,7 +5469,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -5347,7 +5504,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "syr(js) January 2022",
@@ -5381,7 +5539,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/3/2/2/highres_308880802.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Virtual Show-n-Tell \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -5415,7 +5574,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Women in Coding - How to get Experience Before Getting Hired",
@@ -5449,7 +5609,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/a/7/f/3/highres_318042995.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "OpenHack Holiday Happy Hour!",
@@ -5483,7 +5644,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Women in Coding: Coffee & Chat, Show & Tell",
@@ -5517,7 +5679,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/a/7/f/3/highres_318042995.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -5551,7 +5714,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -5585,7 +5749,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "WIC Class: Coding Career Advice and Prep",
@@ -5619,7 +5784,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -5653,7 +5819,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "flexin launch featuring Simon Ata",
@@ -5680,7 +5847,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "A Look into Web Dev Jobs",
@@ -5714,7 +5882,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/a/7/f/3/highres_318042995.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "WIC Virtual Code and Chat",
@@ -5748,7 +5917,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -5782,7 +5952,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "Happy Hour hosted by WIC and CODES",
@@ -5816,7 +5987,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -5850,7 +6022,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Comp Sci Book Club IRL",
@@ -5884,7 +6057,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -5918,7 +6092,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Women in Coding: Caffeinated Code Chat",
@@ -5952,7 +6127,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/8/highres_302703624.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "OpenHack: Code together, on anything. \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -5986,7 +6162,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Mentor\ud83d\udef3\ufe0f  Ship: Becoming a Mentor",
@@ -6020,7 +6197,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Women in Coding: Caffeinated Code Chat",
@@ -6054,7 +6232,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Mentor\ud83d\udef3\ufe0f  Ship: Becoming a Mentor",
@@ -6088,7 +6267,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "OpenHack: Remote Show-n-Tell \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -6122,7 +6302,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "NFT School Study Session",
@@ -6156,7 +6337,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "/dev/drinks",
@@ -6190,7 +6372,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "dev-drinks"
   },
   {
     "name": "Syracuse JavaScript Meetup | Open Office Hours",
@@ -6224,7 +6407,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Remote Show-n-Tell \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -6258,7 +6442,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Women in Coding - How to Create a  Web Developer Portfolio & Resources",
@@ -6292,7 +6477,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/a/7/f/3/highres_318042995.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Comp Sci Book Club",
@@ -6326,7 +6512,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/7/0/6/highres_296730470.jpeg"
-    }
+    },
+    "groupId": "book-club"
   },
   {
     "name": "syr(js) | How Angular, Nx, Domain Driven Design Improve Large Development Teams",
@@ -6360,7 +6547,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Remote Show-n-Tell \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -6394,7 +6582,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "WIC Class: Learn the User Side of Web Accessibility",
@@ -6428,7 +6617,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/3/5/7/highres_309929527.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Mentor\ud83d\udef3\ufe0f  Ship: Becoming a Mentor",
@@ -6462,7 +6652,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Syracuse JavaScript Meetup | Open Office Hours",
@@ -6496,7 +6687,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "WIC Class: How to Host a Completely Decentralized Website (using IPFS)",
@@ -6530,7 +6722,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Mentor\ud83d\udef3\ufe0f  Ship: Becoming a Mentor",
@@ -6564,7 +6757,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "OpenHack: Remote Show-n-Tell \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -6598,7 +6792,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Introduction to Social Tokens (Social Crypto)",
@@ -6632,7 +6827,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Syracuse JavaScript Meetup | Open Office Hours",
@@ -6666,7 +6862,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "WIC Class: Intro to Code Editors and the Command Line",
@@ -6700,7 +6897,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Mentor\ud83d\udef3\ufe0f  Ship: Becoming a Mentor",
@@ -6734,7 +6932,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "OpenHack: Remote Show-n-Tell \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -6768,7 +6967,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Tachyon Accelerator (Consensys and Protocol Labs) Demo Day",
@@ -6802,7 +7002,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Syracuse JavaScript Meetup | Open Office Hours",
@@ -6836,7 +7037,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Mentor\ud83d\udef3\ufe0f  Ship: Becoming a Mentor",
@@ -6870,7 +7072,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "OpenHack: Remote Show-n-Tell \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -6904,7 +7107,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Using CSS Frameworks: Style Your Webpage Quickly",
@@ -6938,7 +7142,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Introduction to the Social Blockchain",
@@ -6972,7 +7177,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Syracuse JavaScript Meetup | Open Office Hours",
@@ -7006,7 +7212,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Women in Coding: Caffeinated Code Chat",
@@ -7040,7 +7247,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Mentor\ud83d\udef3\ufe0f  Ship: Becoming a Mentor",
@@ -7074,7 +7282,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "OpenHack: Remote Show-n-Tell \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -7108,7 +7317,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Code for Syracuse - Monthly Hack Night",
@@ -7142,7 +7352,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/5/6/highres_311581878.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Careers in Tech: A panel of local women talk about their work",
@@ -7176,7 +7387,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Syracuse JavaScript Meetup | Open Office Hours",
@@ -7210,7 +7422,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Mentor\ud83d\udef3\ufe0f  Ship: Becoming a Mentor",
@@ -7244,7 +7457,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "OpenHack: Remote Show-n-Tell \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -7278,7 +7492,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Code for Syracuse - Monthly Hack Night",
@@ -7312,7 +7527,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/5/6/highres_311581878.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Syracuse JavaScript Meetup | Open Office Hours",
@@ -7346,7 +7562,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Remote Show-n-Tell \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -7380,7 +7597,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Mentor\ud83d\udef3\ufe0f  Ship: Becoming a Mentor",
@@ -7414,7 +7632,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "How to learn Salesforce skills for free, join a community and rock your career",
@@ -7448,7 +7667,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Anyone Can Make a Game!: Rapid Prototyping for All",
@@ -7482,7 +7702,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Local Tech Meetup Showcase and Networking - Hack Upstate XV",
@@ -7516,7 +7737,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "hack-upstate"
   },
   {
     "name": "What is Design Technology - Lightning Talk at Hack Upstate XV",
@@ -7550,7 +7772,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "hack-upstate"
   },
   {
     "name": "Farm to Community: Key takeaways from leading a local social impact project",
@@ -7584,7 +7807,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Live in CNY, Work Remotely - Panel on Working Remotely as a Software Developer",
@@ -7618,7 +7842,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Hack Upstate XV",
@@ -7652,7 +7877,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "hack-upstate"
   },
   {
     "name": "Code for Syracuse - City of Syracuse Innovation Team Presentation and NDCH",
@@ -7686,7 +7912,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "National Day of Civic Hacking - Code for Syracuse, Code for Buffalo, BetaNYC",
@@ -7720,7 +7947,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Intro to HTML/CSS Part II (ONLINE with Community Library of Dewitt/Jamesville)",
@@ -7754,7 +7982,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "OpenHack: IRL Happy Hour! \ud83d\udcbb\ufe0f\ud83c\udf7b\ufe0f\ud83d\ude37\ufe0f",
@@ -7788,7 +8017,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Nx, NgRx, and xPlat: Getting Started",
@@ -7822,7 +8052,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Code for Syracuse - Monthly Hack Night",
@@ -7856,7 +8087,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Syracuse JavaScript Meetup | Open Office Hours",
@@ -7890,7 +8122,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Code for Syracuse - 2020-2021 Planning Meeting",
@@ -7924,7 +8157,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Introduction to Solidity (for Blockchain)",
@@ -7958,7 +8192,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Workers' Center of CNY Website Revamp Planning Meeting - Code for Syracuse",
@@ -7992,7 +8227,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "How Code for Syracuse Uses Data - Community Data Group Collab",
@@ -8026,7 +8262,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "One Year Anniversary of Code for Syracuse - Office Hours/Updates",
@@ -8060,7 +8297,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Syracuse JavaScript Meetup | Open Office Hours",
@@ -8094,7 +8332,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Remote Show-n-Tell \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -8128,7 +8367,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Introduction to Google Data Studio",
@@ -8162,7 +8402,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Creative Coding: Interactive Graphics On the Web with p5.js",
@@ -8191,7 +8432,8 @@
     },
     "hostPhoto": {
       "source": null
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "National Code for America Standup",
@@ -8220,7 +8462,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Twilio, CofS Website - Code for Syracuse Monthly Hack Night",
@@ -8254,7 +8497,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "ROI of Civic Engagement (with Leadership Greater Syracuse and Code for Syracuse)",
@@ -8283,7 +8527,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Intro to HTML/CSS (ONLINE event w/Community Library of Dewitt and Jamesville)",
@@ -8317,7 +8562,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Introduction to Python",
@@ -8351,7 +8597,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "OpenHack: Remote Show-n-Tell \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -8385,7 +8632,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Automate and Collaborate with Tom Monks (COVID Accelerator)",
@@ -8419,7 +8667,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Intro to Github and getting pages online - WIC Class (remote)",
@@ -8453,7 +8702,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/3/5/7/highres_309929527.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Code for Syracuse - Monthly Hack Night",
@@ -8487,7 +8737,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Intro to Github and getting pages online - WIC Class (remote)",
@@ -8521,7 +8772,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/3/5/7/highres_309929527.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: TBD",
@@ -8555,7 +8807,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Accessible Web Development",
@@ -8589,7 +8842,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "OpenHack: Remote Show-n-Tell \ud83e\udd13\ufe0f\ud83d\udcbb\ufe0f\ud83e\udd18\ufe0f",
@@ -8623,7 +8877,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Code for Syracuse - Planning/Standup Meeting",
@@ -8657,7 +8912,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "CSS, Images, and Page Layout - WIC Class (remote)",
@@ -8691,7 +8947,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/3/5/7/highres_309929527.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Code for Syracuse - Monthly Hack Night",
@@ -8725,7 +8982,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Code for Syracuse - Monthly Hack Night (Remote)",
@@ -8759,7 +9017,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: TBD",
@@ -8793,7 +9052,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Lightning Talk Edition \u26a1\ufe0f\u26a1\ufe0f\u26a1\ufe0f",
@@ -8827,7 +9087,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Code for Syracuse - Planning/Standup Meeting",
@@ -8861,7 +9122,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "WIC Class: Adding JavaScript to HTML (Remote)",
@@ -8895,7 +9157,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Intro to HTML and Inline Styling - WIC Class (remote)",
@@ -8929,7 +9192,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/7/3/5/7/highres_309929527.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Code for Syracuse - Monthly Hack Night (Remote)",
@@ -8963,7 +9227,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: Getting Started with Gatsby.js",
@@ -8997,7 +9262,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -9031,7 +9297,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Coffee & Code",
@@ -9065,7 +9332,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Get Online: Website, Email & Domain",
@@ -9099,7 +9367,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/5/9/2/9/highres_281662825.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Code for Syracuse - New Project Launch",
@@ -9133,7 +9402,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: D3.js",
@@ -9167,7 +9437,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -9201,7 +9472,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "WIC Class- JavaScript Basics",
@@ -9235,7 +9507,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Cuse Video Game Jam",
@@ -9269,7 +9542,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Code for Syracuse Monthly Hack Night",
@@ -9303,7 +9577,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Major League Hacking Build Event",
@@ -9337,7 +9612,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: TBD",
@@ -9371,7 +9647,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -9405,7 +9682,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Women in Coding - Monthly Workshop",
@@ -9439,7 +9717,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: Functional JavaScript",
@@ -9473,7 +9752,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Women in Coding - Monthly Workshop",
@@ -9507,7 +9787,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -9541,7 +9822,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Code for Syracuse Monthly Hack Night",
@@ -9575,7 +9857,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: GitHub Actions and Design Technology",
@@ -9609,7 +9892,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "CNY Developers Happy Hour at Middle Ages Brewery (Sponsored by Metis)",
@@ -9638,7 +9922,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -9672,7 +9957,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Women in Coding - Monthly Workshop",
@@ -9706,7 +9992,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: Hacktoberfest",
@@ -9740,7 +10027,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Code for Syracuse Monthly Hack Night",
@@ -9774,7 +10062,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Technology Learning Day Conference by Major League Hacking",
@@ -9803,7 +10092,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Coffee & Code",
@@ -9837,7 +10127,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Women in Coding - Monthly Workshop",
@@ -9871,7 +10162,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -9905,7 +10197,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Code for Syracuse Monthly Hack Night",
@@ -9939,7 +10232,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: TBD",
@@ -9973,7 +10267,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Women in Coding - Monthly Workshop",
@@ -10007,7 +10302,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/2/8/highres_316862344.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -10041,7 +10337,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Code for Syracuse Project Follow-up Discussion",
@@ -10075,7 +10372,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: Open JS Forum",
@@ -10109,7 +10407,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Women in Coding - Arduino Lab",
@@ -10143,7 +10442,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/5/f/highres_296985919.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -10177,7 +10477,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Bubble Tea and Code",
@@ -10206,7 +10507,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Code for Syracuse Kick-Off",
@@ -10240,7 +10542,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/9/c/highres_269925980.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: Open Source Development Talk & Q&A",
@@ -10274,7 +10577,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Women in Coding - Accessible Web Development Class",
@@ -10308,7 +10612,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/5/f/highres_296985919.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -10342,7 +10647,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: Making a RESTful API with Sails.js",
@@ -10376,7 +10682,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -10410,7 +10717,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Women in Coding - Monthly Workshop",
@@ -10444,7 +10752,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/5/f/highres_296985919.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: Open JS Forum",
@@ -10478,7 +10787,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -10512,7 +10822,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Women in Coding - Monthly Workshop",
@@ -10546,7 +10857,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/5/f/highres_296985919.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: End to End Testing w/ Cypress",
@@ -10580,7 +10892,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -10614,7 +10927,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: React",
@@ -10648,7 +10962,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -10682,7 +10997,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Intro to Python and Arduino Lab by Women in Coding",
@@ -10716,7 +11032,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/5/f/highres_296985919.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Coffee & Code",
@@ -10750,7 +11067,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: NodeJS Servers",
@@ -10784,7 +11102,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Women in Coding - Intro to Mobile Development with JavaScript",
@@ -10818,7 +11137,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/5/f/highres_296985919.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: GatsbyJS (or Houdini)",
@@ -10852,7 +11172,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Women in Coding - Monthly Workshop",
@@ -10886,7 +11207,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/5/f/highres_296985919.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -10920,7 +11242,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: Creating visuals with JavaScript (p5.js)",
@@ -10954,7 +11277,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -10988,7 +11312,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Intro to JavaScript - Library Workshop by Women in Coding",
@@ -11022,7 +11347,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/5/f/highres_296985919.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Syracuse JavaScript Meetup | Offline Web Apps",
@@ -11056,7 +11382,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -11090,7 +11417,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Women in Coding - Monthly Workshop",
@@ -11124,7 +11452,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/5/f/highres_296985919.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: JS and the DOM",
@@ -11158,7 +11487,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Intro to HTML & CSS - Library Workshop by Women in Coding",
@@ -11192,7 +11522,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/b/3/5/f/highres_296985919.jpeg"
-    }
+    },
+    "groupId": "women-in-coding"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -11226,7 +11557,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "React Components Workshop (Intermediate)",
@@ -11260,7 +11592,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Intro to React Workshop",
@@ -11294,7 +11627,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: ES6+ Syntax + Challenges/Prizes!",
@@ -11328,7 +11662,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -11362,7 +11697,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: JavaScript Components without a Framework",
@@ -11396,7 +11732,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: JavaScript Components without a Framework",
@@ -11430,7 +11767,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -11464,7 +11802,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Intro to React Workshop",
@@ -11498,7 +11837,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Coffee & Code",
@@ -11532,7 +11872,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Blockchain BaBBle",
@@ -11566,7 +11907,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/e/2/5/6/highres_303897942.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -11600,7 +11942,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Developer Happy Hour! \ud83c\udf7b ",
@@ -11634,7 +11977,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "dev-drinks"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: Callbacks, Promises & Observables",
@@ -11668,7 +12012,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -11702,7 +12047,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: Open JS Discussions",
@@ -11736,7 +12082,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -11770,7 +12117,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Developer Happy Hour! \ud83c\udf7b ",
@@ -11804,7 +12152,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "dev-drinks"
   },
   {
     "name": "Syracuse JavaScript Meetup | Topic: General JS",
@@ -11838,7 +12187,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -11872,7 +12222,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Happy Hour hosted by Upstate Interactive and Euphony! \ud83c\udf7b",
@@ -11906,7 +12257,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "other"
   },
   {
     "name": "Syracuse JavaScript Meetup | Current Topic: Asynchronous JavaScript",
@@ -11940,7 +12292,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -11974,7 +12327,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Syracuse JavaScript Meetup | Current Topic: NodeJS",
@@ -12008,7 +12362,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/1/5/c/e/highres_272225582.jpeg"
-    }
+    },
+    "groupId": "syr-js"
   },
   {
     "name": "OpenHack: Code together, on anything.",
@@ -12042,7 +12397,8 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "open-hack"
   },
   {
     "name": "Developer Happy Hour! \ud83c\udf7b ",
@@ -12076,6 +12432,7 @@
     },
     "hostPhoto": {
       "source": "https://secure.meetupstatic.com/photos/member/9/d/c/highres_320702524.jpeg"
-    }
+    },
+    "groupId": "dev-drinks"
   }
 ]

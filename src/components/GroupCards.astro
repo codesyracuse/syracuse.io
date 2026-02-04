@@ -1,8 +1,20 @@
 ---
 import { getCollection } from "astro:content";
-const groups = await getCollection("groups");
 import { Image } from "astro:assets";
+import { getMostRecentEventDate } from "../lib/meetup";
+
+const allGroups = await getCollection("groups");
 const images = import.meta.glob("/src/assets/groups/*");
+
+// Sort groups by most recent event (newest first), groups with no events last
+const groups = allGroups.sort((a, b) => {
+  const dateA = getMostRecentEventDate(a.data.groupId);
+  const dateB = getMostRecentEventDate(b.data.groupId);
+  if (!dateA && !dateB) return 0;
+  if (!dateA) return 1;
+  if (!dateB) return -1;
+  return dateB.getTime() - dateA.getTime();
+});
 ---
 
 <div

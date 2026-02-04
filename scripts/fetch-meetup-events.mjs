@@ -117,6 +117,30 @@ async function scrapeMeetupEvents() {
   return events;
 }
 
+function classifyEvent(title) {
+  const t = title.toLowerCase();
+  if (t.includes("openhack") || t.includes("open hack")) return "open-hack";
+  if (
+    t.includes("syracuse javascript") ||
+    t.includes("syr(js)") ||
+    t.includes("syrjs")
+  )
+    return "syr-js";
+  if (t.includes("women in coding") || t.startsWith("wic "))
+    return "women-in-coding";
+  if (t.includes("/dev/drinks") || t.includes("developer happy hour"))
+    return "dev-drinks";
+  if (t.includes("hack upstate")) return "hack-upstate";
+  if (t.includes("book club") || t.includes("fight club")) return "book-club";
+  if (
+    t.includes("coworking") ||
+    t.includes("common space day") ||
+    t.includes("commonspace")
+  )
+    return "coworking";
+  return "other";
+}
+
 function mergeEvents(existing, scraped) {
   // Index existing events by URL for deduplication
   const byUrl = new Map(existing.map((e) => [e.url, e]));
@@ -136,6 +160,9 @@ function mergeEvents(existing, scraped) {
 
 try {
   const scraped = await scrapeMeetupEvents();
+  for (const event of scraped) {
+    event.groupId = classifyEvent(event.name);
+  }
   console.log(`Scraped ${scraped.length} upcoming event(s).`);
 
   // Load existing events to preserve historical data
