@@ -19,7 +19,12 @@ export async function getStaticPaths() {
 const { group } = Astro.props;
 const events = getEventsByGroup(group.data.groupId);
 const now = new Date();
-const upcomingEvents = events.filter((e) => new Date(e.dateTime) >= now);
+const nextEvent = events
+  .filter((e) => new Date(e.dateTime) >= now)
+  .sort(
+    (a, b) => new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime()
+  )
+  .at(0);
 const pastEvents = events.filter((e) => new Date(e.dateTime) < now);
 ---
 
@@ -55,36 +60,32 @@ const pastEvents = events.filter((e) => new Date(e.dateTime) < now);
     </div>
 
     {
-      upcomingEvents.length > 0 && (
+      nextEvent && (
         <div class="mt-12">
-          <h2 class="mb-6 font-mono text-2xl font-bold">Upcoming Events</h2>
-          <ul class="space-y-4">
-            {upcomingEvents.map((event) => (
-              <li class="rounded-lg border border-neutral-200 p-4 dark:border-neutral-700">
-                <a
-                  href={event.url}
-                  class="text-lg font-semibold text-blue-600 hover:underline dark:text-blue-400"
-                >
-                  {event.name}
-                </a>
-                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                  {new Date(event.dateTime).toLocaleDateString("en-US", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                    hour: "numeric",
-                    minute: "2-digit",
-                  })}
-                </p>
-                {event.venue && (
-                  <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                    {event.venue.name}
-                  </p>
-                )}
-              </li>
-            ))}
-          </ul>
+          <h2 class="mb-6 font-mono text-2xl font-bold">Next Event</h2>
+          <div class="rounded-lg border border-neutral-200 p-4 dark:border-neutral-700">
+            <a
+              href={nextEvent.url}
+              class="text-lg font-semibold text-blue-600 hover:underline dark:text-blue-400"
+            >
+              {nextEvent.name}
+            </a>
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+              {new Date(nextEvent.dateTime).toLocaleDateString("en-US", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "numeric",
+                minute: "2-digit",
+              })}
+            </p>
+            {nextEvent.venue && (
+              <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                {nextEvent.venue.name}
+              </p>
+            )}
+          </div>
         </div>
       )
     }
