@@ -46,7 +46,7 @@ const groups = allGroups.sort((a, b) => {
               {group.data.summary}
             </p>
           </div>
-          <div class="relative mt-auto flex items-center gap-x-4 pt-8">
+          <div class="relative mt-auto flex items-center justify-between gap-x-4 pt-8">
             <div class="text-sm/6">
               {group.data.organizers?.length > 0 && (
                 <div>
@@ -61,6 +61,15 @@ const groups = allGroups.sort((a, b) => {
                 </div>
               )}
             </div>
+            {getMostRecentEventDate(group.data.groupId) && (
+              <p class="text-sm text-gray-500 dark:text-gray-400">
+                Last event:{" "}
+                {getMostRecentEventDate(group.data.groupId)!.toLocaleDateString(
+                  "en-US",
+                  { month: "short", day: "numeric", year: "numeric" }
+                )}
+              </p>
+            )}
           </div>
         </div>
       </article>

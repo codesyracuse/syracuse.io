@@ -2,7 +2,15 @@
 import Layout from "../layouts/Page.astro";
 import { getUpcomingEvents } from "../lib/meetup";
 
-const events = getUpcomingEvents();
+// Get the next upcoming event per group
+const allUpcoming = getUpcomingEvents();
+const seen = new Set<string>();
+const events = allUpcoming.filter((event) => {
+  const gid = event.groupId || "other";
+  if (seen.has(gid)) return false;
+  seen.add(gid);
+  return true;
+});
 ---
 
 <Layout
