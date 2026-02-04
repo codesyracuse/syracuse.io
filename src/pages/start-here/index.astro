@@ -1,0 +1,71 @@
+---
+import Layout from "../../layouts/Page.astro";
+import StepCard from "../../components/StepCard.astro";
+---
+
+<Layout
+  content={{
+    title: "Start Here",
+    subtitle: "Your guide to joining the Syracuse tech community",
+    hero: {
+      imagePath: "/src/assets/clintonsquare.jpg",
+      altText: "Historic photo of Clinton Square in Downtown Syracuse",
+    },
+  }}
+>
+  <p>
+    Welcome! Whether you're new to Syracuse, new to tech, or just discovering our community,
+    we're excited to have you. Here are the best ways to get involved:
+  </p>
+
+  <div class="not-prose">
+    <div class="grid gap-6 md:grid-cols-2">
+      <StepCard
+        title="Join Our Slack Community"
+        description="Connect with 700+ local developers in our active Slack workspace. Get help with code, share opportunities, and chat in channels like #general, #javascript, and #jobs."
+        ctaText="Learn More"
+        ctaHref="/start-here/slack"
+        ctaExternal={false}
+      />
+
+      <StepCard
+        title="Subscribe to Our Newsletter"
+        description="Stay updated with monthly roundups of local tech events, job postings, and community highlights. Join 1,650+ subscribers!"
+        ctaText="Learn More"
+        ctaHref="/start-here/newsletter"
+        ctaExternal={false}
+      />
+
+      <StepCard
+        title="Attend a Meetup"
+        description="Learn, network, and collaborate at recurring in-person events like OpenHack, Comp Sci Book Club, and general tech meetups. All skill levels welcome!"
+        ctaText="Learn More"
+        ctaHref="/start-here/meetups"
+        ctaExternal={false}
+      />
+
+      <StepCard
+        title="Browse Local Tech Jobs"
+        description="Explore tech job opportunities from companies in Syracuse and Central New York. From startups to established firms, find your next role here."
+        ctaText="Browse Jobs"
+        ctaHref="/jobs"
+        ctaExternal={false}
+      />
+    </div>
+  </div>
+
+  <h2>No Experience Required</h2>
+
+  <p>
+    Our community welcomes everyone regardless of experience level. Whether you're a beginner
+    learning your first programming language or a senior engineer with decades of experience,
+    you'll find supportive people who are excited to learn with you.
+  </p>
+
+  <h2>Code of Conduct</h2>
+
+  <p>
+    We're committed to maintaining a welcoming, inclusive community. Please review our
+    <a href="/code-of-conduct">Code of Conduct</a> to understand our community standards.
+  </p>
+</Layout>

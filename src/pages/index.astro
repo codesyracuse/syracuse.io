@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Page.astro";
+import StepCard from "../components/StepCard.astro";
 import { getUpcomingEvents } from "../lib/meetup";
 
 const events = await getUpcomingEvents();
@@ -17,26 +18,50 @@ console.log(events);
   }}
 >
   <p>
-    Welcome to <a href="https://syracuse.io">Syracuse.io</a>, home to Syracuse's
-    diverse and growing tech scene.
+    Welcome to <a href="https://syracuse.io">Syracuse.io</a>, home to Central New York's
+    diverse and growing tech community. Whether you're a seasoned developer, just starting
+    your coding journey, or new to the area, you'll find a welcoming community here with
+    active <a href="/groups/">meetups</a>, an engaged <a href="https://join.slack.com/t/syracuseio/shared_invite/zt-aw7rkg3q-2cgCecN524oOVarFJWMOPw">Slack community</a>,
+    <a href="/jobs">local job opportunities</a>, and <a href="/resources/">resources</a> for developers.
   </p>
 
-  <p>
-    This is your one stop for information on <a href="/groups/"
-      >local meet ups</a
-    >, lists of <a href="/resources/">local data resources</a>, an active slack <a
-      href="/community/">community</a
-    >, and more to come.
-  </p>
+  <h2>Start Here</h2>
 
-  <p>
-    Whether you are new to the area or a seasoned veteran, please check out <a
-      href="/groups">tech meetups</a
-    > and hang out with our <a
-      href="https://join.slack.com/t/syracuseio/shared_invite/zt-aw7rkg3q-2cgCecN524oOVarFJWMOPw"
-      >local slack group.</a
-    >
-  </p>
+  <div class="not-prose">
+    <div class="grid gap-6 md:grid-cols-2">
+      <StepCard
+        title="Join Our Slack Community"
+        description="Connect with 700+ local developers in our active Slack workspace. Get help with code, share opportunities, and chat in channels like #general, #javascript, and #jobs."
+        ctaText="Learn More"
+        ctaHref="/start-here/slack"
+        ctaExternal={false}
+      />
+
+      <StepCard
+        title="Subscribe to Our Newsletter"
+        description="Stay updated with monthly roundups of local tech events, job postings, and community highlights. Join 1,650+ subscribers!"
+        ctaText="Learn More"
+        ctaHref="/start-here/newsletter"
+        ctaExternal={false}
+      />
+
+      <StepCard
+        title="Attend a Meetup"
+        description="Learn, network, and collaborate at recurring in-person events like OpenHack, Comp Sci Book Club, and general tech meetups. All skill levels welcome!"
+        ctaText="Learn More"
+        ctaHref="/start-here/meetups"
+        ctaExternal={false}
+      />
+
+      <StepCard
+        title="Browse Local Tech Jobs"
+        description="Explore tech job opportunities from companies in Syracuse and Central New York. From startups to established firms, find your next role here."
+        ctaText="Browse Jobs"
+        ctaHref="/jobs"
+        ctaExternal={false}
+      />
+    </div>
+  </div>
 
   {
     events.length > 0 && (

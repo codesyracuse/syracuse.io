@@ -1,6 +1,5 @@
 ---
 const links = [
-  { href: "/community", text: "COMMUNITY" },
   { href: "/groups", text: "GROUPS" },
   { href: "/resources", text: "RESOURCES" },
 ];
@@ -71,6 +70,12 @@ import Logo from "../assets/logo.svg";
             </a>
           ))
         }
+        <a
+          href="/start-here"
+          class="rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-orange-700"
+        >
+          START HERE
+        </a>
       </div>
 
       <!-- Mobile menu -->
@@ -80,6 +85,12 @@ import Logo from "../assets/logo.svg";
       >
         <div class="px-4 py-3">
           <div class="space-y-1">
+            <a
+              href="/start-here"
+              class="block rounded-lg bg-orange-600 px-4 py-2.5 text-center text-sm font-semibold text-white hover:bg-orange-700"
+            >
+              START HERE
+            </a>
             {
               links.map((link) => (
                 <a

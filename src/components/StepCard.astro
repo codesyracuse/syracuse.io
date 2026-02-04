@@ -1,0 +1,34 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  ctaText: string;
+  ctaHref: string;
+  ctaExternal?: boolean;
+}
+
+const { title, description, ctaText, ctaHref, ctaExternal } = Astro.props;
+---
+
+<article
+  class="group rounded-lg border-2 border-neutral-200 bg-white p-6 transition-all hover:border-orange-500 hover:shadow-lg dark:border-neutral-800 dark:bg-neutral-900"
+>
+  <h3
+    class="mb-3 text-xl font-semibold text-neutral-900 dark:text-white"
+  >
+    {title}
+  </h3>
+
+  <p class="mb-4 text-base text-neutral-600 dark:text-neutral-300">
+    {description}
+  </p>
+
+  <a
+    href={ctaHref}
+    target={ctaExternal ? "_blank" : undefined}
+    rel={ctaExternal ? "noopener noreferrer" : undefined}
+    class="inline-block rounded-lg bg-orange-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-orange-700"
+  >
+    {ctaText}
+  </a>
+</article>
