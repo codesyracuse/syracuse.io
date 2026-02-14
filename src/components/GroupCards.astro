@@ -1,8 +1,20 @@
 ---
 import { getCollection } from "astro:content";
-const groups = await getCollection("groups");
 import { Image } from "astro:assets";
+import { getMostRecentEventDate } from "../lib/meetup";
+
+const allGroups = await getCollection("groups");
 const images = import.meta.glob("/src/assets/groups/*");
+
+// Sort groups by most recent event (newest first), groups with no events last
+const groups = allGroups.sort((a, b) => {
+  const dateA = getMostRecentEventDate(a.data.groupId);
+  const dateB = getMostRecentEventDate(b.data.groupId);
+  if (!dateA && !dateB) return 0;
+  if (!dateA) return 1;
+  if (!dateB) return -1;
+  return dateB.getTime() - dateA.getTime();
+});
 ---
 
 <div
@@ -34,7 +46,7 @@ const images = import.meta.glob("/src/assets/groups/*");
               {group.data.summary}
             </p>
           </div>
-          <div class="relative mt-auto flex items-center gap-x-4 pt-8">
+          <div class="relative mt-auto flex items-center justify-between gap-x-4 pt-8">
             <div class="text-sm/6">
               {group.data.organizers?.length > 0 && (
                 <div>
@@ -49,6 +61,15 @@ const images = import.meta.glob("/src/assets/groups/*");
                 </div>
               )}
             </div>
+            {getMostRecentEventDate(group.data.groupId) && (
+              <p class="text-sm text-gray-500 dark:text-gray-400">
+                Last event:{" "}
+                {getMostRecentEventDate(group.data.groupId)!.toLocaleDateString(
+                  "en-US",
+                  { month: "short", day: "numeric", year: "numeric" }
+                )}
+              </p>
+            )}
           </div>
         </div>
       </article>

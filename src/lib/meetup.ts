@@ -1,11 +1,16 @@
-const MEETUP_API_URL = "https://api.meetup.com/gql";
-const MEETUP_GROUP_URLNAME = "syracuse-software-development-meetup";
+import eventsData from "../data/events.json";
 
-interface MeetupEvent {
+export interface MeetupEvent {
   name: string;
   description: string;
   dateTime: string;
+  endTime?: string;
+  duration?: string;
+  eventType?: string;
+  status?: string;
   url: string;
+  goingCount?: number;
+  groupId?: string;
   images: { baseUrl: string; source: string }[];
   venue: {
     name: string;
@@ -14,83 +19,47 @@ interface MeetupEvent {
     state: string;
     postalCode: string;
     venueType: string;
-  };
+  } | null;
   host: { name: string; memberPhoto: { source: string } };
   hostPhoto: { source: string };
 }
 
-export async function getUpcomingEvents(): Promise<MeetupEvent[]> {
-  try {
-    const query = `
-      query {
-      groupByUrlname(urlname: "${MEETUP_GROUP_URLNAME}") {
-      upcomingEvents(input: { first: 3 }) {
-        edges {
-          node {
-            title
-            description
-            dateTime
-            eventUrl
-            venue {
-              name
-              address
-              city
-              state
-              postalCode
-              venueType
-            }
-            images {
-              baseUrl
-              source
-            }
-            host {
-              name
-              memberPhoto { source }
-            }
-          }
-        }
-      }
-    }
-      }
-    `;
+const allEvents = eventsData as MeetupEvent[];
 
-    const response = await fetch(MEETUP_API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        // You'll need to add your Meetup API key here
-        Authorization: `Bearer ${import.meta.env.MEETUP_API_KEY}`,
-      },
-      body: JSON.stringify({ query }),
-    });
-
-    if (!response.ok) {
-      console.warn(`Meetup API returned status ${response.status}`);
-      return [];
-    }
-
-    const data = await response.json();
-
-    if (!data?.data?.groupByUrlname?.upcomingEvents?.edges) {
-      console.warn("Meetup API returned unexpected data structure");
-      return [];
-    }
-
-    return data.data.groupByUrlname.upcomingEvents.edges.map(
-      ({ node }: { node: Record<string, unknown> }) => ({
-        name: node.title,
-        description: node.description,
-        dateTime: node.dateTime,
-        url: node.eventUrl,
-        images: node.images,
-        venue: node.venue,
-        eventUrl: node.eventUrl,
-        hostPhoto: node.host.memberPhoto,
-        host: node.host,
-      })
+export function getUpcomingEvents(): MeetupEvent[] {
+  const now = new Date();
+  return allEvents
+    .filter((event) => new Date(event.dateTime) >= now)
+    .sort(
+      (a, b) => new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime()
     );
-  } catch (error) {
-    console.warn("Failed to fetch upcoming events from Meetup:", error);
-    return [];
-  }
+}
+
+export function getPastEvents(): MeetupEvent[] {
+  const now = new Date();
+  return allEvents
+    .filter((event) => new Date(event.dateTime) < now)
+    .sort(
+      (a, b) => new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime()
+    );
+}
+
+export function getAllEvents(): MeetupEvent[] {
+  return allEvents;
+}
+
+export function getEventsByGroup(groupId: string): MeetupEvent[] {
+  return allEvents
+    .filter((event) => event.groupId === groupId)
+    .sort(
+      (a, b) => new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime()
+    );
+}
+
+export function getMostRecentEventDate(groupId: string): Date | null {
+  const events = allEvents.filter((event) => event.groupId === groupId);
+  if (events.length === 0) return null;
+  return new Date(
+    Math.max(...events.map((e) => new Date(e.dateTime).getTime()))
+  );
 }

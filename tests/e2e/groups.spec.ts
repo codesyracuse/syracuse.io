@@ -14,7 +14,7 @@ test.describe("Groups Page", () => {
 
     // Check that at least one group card is visible
     const groupCards = page.locator("article");
-    await expect(groupCards).toHaveCount(5); // We know there are 5 groups
+    await expect(groupCards).toHaveCount(8); // 5 original + book-club, coworking, other
 
     // Verify group card content structure
     const firstCard = groupCards.first();

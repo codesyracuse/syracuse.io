@@ -10,7 +10,8 @@
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "lint": "eslint . && prettier --check .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "fetch-events": "node scripts/fetch-meetup-events.mjs"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",

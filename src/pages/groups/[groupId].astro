@@ -1,6 +1,7 @@
 ---
 import Page from "../../layouts/Page.astro";
 import { getCollection } from "astro:content";
+import { getEventsByGroup } from "../../lib/meetup";
 
 export const prerender = true;
 
@@ -16,6 +17,15 @@ export async function getStaticPaths() {
 
 // The group will be passed as a prop
 const { group } = Astro.props;
+const events = getEventsByGroup(group.data.groupId);
+const now = new Date();
+const nextEvent = events
+  .filter((e) => new Date(e.dateTime) >= now)
+  .sort(
+    (a, b) => new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime()
+  )
+  .at(0);
+const pastEvents = events.filter((e) => new Date(e.dateTime) < now);
 ---
 
 <Page
@@ -40,7 +50,7 @@ const { group } = Astro.props;
           <div class="mt-8">
             <h2 class="mb-2 text-xl font-semibold">Organizers</h2>
             <ul>
-              {group.data.organizers.map((organizer) => (
+              {group.data.organizers.map((organizer: string) => (
                 <li>{organizer}</li>
               ))}
             </ul>
@@ -48,5 +58,68 @@ const { group } = Astro.props;
         )
       }
     </div>
+
+    {
+      nextEvent && (
+        <div class="mt-12">
+          <h2 class="mb-6 font-mono text-2xl font-bold">Next Event</h2>
+          <div class="rounded-lg border border-neutral-200 p-4 dark:border-neutral-700">
+            <a
+              href={nextEvent.url}
+              class="text-lg font-semibold text-blue-600 hover:underline dark:text-blue-400"
+            >
+              {nextEvent.name}
+            </a>
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+              {new Date(nextEvent.dateTime).toLocaleDateString("en-US", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "numeric",
+                minute: "2-digit",
+              })}
+            </p>
+            {nextEvent.venue && (
+              <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                {nextEvent.venue.name}
+              </p>
+            )}
+          </div>
+        </div>
+      )
+    }
+
+    {
+      pastEvents.length > 0 && (
+        <div class="mt-12">
+          <h2 class="mb-6 font-mono text-2xl font-bold">Past Events</h2>
+          <ul class="space-y-3">
+            {pastEvents.slice(0, 10).map((event) => (
+              <li class="flex items-baseline justify-between gap-4 border-b border-neutral-100 pb-3 dark:border-neutral-800">
+                <a
+                  href={event.url}
+                  class="text-gray-900 hover:underline dark:text-gray-100"
+                >
+                  {event.name}
+                </a>
+                <span class="shrink-0 text-sm text-gray-500 dark:text-gray-400">
+                  {new Date(event.dateTime).toLocaleDateString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </span>
+              </li>
+            ))}
+          </ul>
+          {pastEvents.length > 10 && (
+            <p class="mt-4 text-sm text-gray-500 dark:text-gray-400">
+              And {pastEvents.length - 10} more past events.
+            </p>
+          )}
+        </div>
+      )
+    }
   </div>
 </Page>
