@@ -32,7 +32,7 @@ async function scrapeMeetupEvents() {
   const page = await browser.newPage();
 
   console.log(`Fetching events from ${MEETUP_GROUP_URL}`);
-  await page.goto(MEETUP_GROUP_URL, { waitUntil: "networkidle" });
+  await page.goto(MEETUP_GROUP_URL, { waitUntil: "domcontentloaded", timeout: 60000 });
 
   // Wait for event cards to render (Meetup is a React SPA)
   // Use a generous timeout — if no events exist the selector simply won't appear
