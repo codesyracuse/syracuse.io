@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-family-mono: "Monaspace Xenon", monospace;
+  --font-family-headers: "Monaspace Xenon", monospace;
+}
+
+@layer base {
+  .prose {
+    --tw-prose-links: var(--color-black);
+  }
+
+  .prose-invert {
+    --tw-prose-links: var(--color-white);
+  }
+}

@@ -43,7 +43,7 @@ const pastEvents = events.filter((e) => new Date(e.dateTime) < now);
   <div class="mx-auto max-w-3xl pt-4">
     <h1 class="mb-4 font-mono text-3xl font-bold">{group.data.title}</h1>
 
-    <div class="prose prose-xl max-w-none dark:prose-invert">
+    <div class="prose prose-xl dark:prose-invert max-w-none">
       <div set:html={group.rendered.html} />
       {
         group.data.organizers?.length > 0 && (
