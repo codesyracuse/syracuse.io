@@ -26,19 +26,25 @@ export interface MeetupEvent {
 
 const allEvents = eventsData as MeetupEvent[];
 
+function startOfToday(): Date {
+  const d = new Date();
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+
 export function getUpcomingEvents(): MeetupEvent[] {
-  const now = new Date();
+  const today = startOfToday();
   return allEvents
-    .filter((event) => new Date(event.dateTime) >= now)
+    .filter((event) => new Date(event.dateTime) >= today)
     .sort(
       (a, b) => new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime()
     );
 }
 
 export function getPastEvents(): MeetupEvent[] {
-  const now = new Date();
+  const today = startOfToday();
   return allEvents
-    .filter((event) => new Date(event.dateTime) < now)
+    .filter((event) => new Date(event.dateTime) < today)
     .sort(
       (a, b) => new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime()
     );
