@@ -47,6 +47,8 @@ export async function fetchJobs(): Promise<JobKitJob[]> {
     const response = await fetch(JOBKIT_API, {
       headers: {
         Accept: "application/json",
+        "User-Agent":
+          "Mozilla/5.0 (compatible; syracuse.io/1.0; +https://syracuse.io)",
       },
     });
 

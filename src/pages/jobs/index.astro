@@ -1,8 +1,9 @@
 ---
 import Page from "../../layouts/Page.astro";
 import JobCard from "../../components/jobs/JobCard.astro";
-import JobFilters from "../../components/jobs/JobFilters.astro";
 import { fetchJobs, sortJobs } from "../../lib/jobkit";
+
+const SUBJECT = "Post a Job on Syracuse.io";
 
 let jobs = [];
 let error = null;
@@ -14,18 +15,13 @@ try {
   error = e;
   console.error("Failed to fetch jobs:", e);
 }
-
-// Extract unique categories and terms for filters
-const categories = [...new Set(jobs.map((job) => job.category.name))].sort();
-const terms = [...new Set(jobs.map((job) => job.term.name))].sort();
 ---
 
 <Page
-  wide={true}
   content={{
     title: "Tech Jobs in Syracuse, NY",
     subtitle:
-      "Find software development, engineering, and tech jobs in Syracuse and Central New York",
+      "Software development, engineering, and tech jobs in Syracuse and Central New York",
   }}
 >
   <div class="not-prose">
@@ -37,44 +33,37 @@ const terms = [...new Set(jobs.map((job) => job.term.name))].sort();
           </p>
         </div>
       ) : jobs.length === 0 ? (
-        <div class="rounded-lg border-2 border-neutral-200 bg-white p-12 text-center dark:border-neutral-800 dark:bg-neutral-900">
-          <p class="mb-4 text-xl text-neutral-600 dark:text-neutral-400">
-            No jobs posted yet. Check back soon!
+        <div class="rounded-lg border-2 border-dashed border-neutral-200 py-16 text-center dark:border-neutral-800">
+          <p class="mb-2 text-lg font-semibold text-neutral-700 dark:text-neutral-300">
+            No jobs posted yet.
           </p>
-          <a
-            href="https://jobs.syracuse.io/jobs/new"
-            class="inline-block rounded-lg bg-orange-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-orange-700"
-          >
-            Post the first one
-          </a>
+          <p class="text-neutral-500 dark:text-neutral-400">
+            Know of a tech job in Syracuse?{" "}
+            <button
+              id="post-job-trigger-empty"
+              class="font-medium text-orange-600 hover:underline dark:text-orange-400"
+            >
+              Get it listed.
+            </button>
+          </p>
         </div>
       ) : (
         <>
-          <div class="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
-            <p class="text-lg text-neutral-600 dark:text-neutral-400">
-              {jobs.length} {jobs.length === 1 ? "job" : "jobs"} available
+          <div class="mb-6 flex items-center justify-between">
+            <p class="text-sm text-neutral-500 dark:text-neutral-400">
+              {jobs.length} {jobs.length === 1 ? "opening" : "openings"}
             </p>
-            <a
-              href="https://jobs.syracuse.io/jobs/new"
-              class="inline-block rounded-lg bg-orange-600 px-6 py-3 text-center font-semibold text-white transition-colors hover:bg-orange-700"
+            <button
+              id="post-job-trigger"
+              class="rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-orange-700"
             >
-              Post a Job
-            </a>
+              + Post a Job
+            </button>
           </div>
 
-          {categories.length > 0 && terms.length > 0 && (
-            <JobFilters categories={categories} terms={terms} />
-          )}
-
-          <div class="grid gap-6 md:grid-cols-2">
+          <div>
             {jobs.map((job) => (
-              <div
-                data-job-card
-                data-category={job.category.name}
-                data-term={job.term.name}
-              >
-                <JobCard job={job} />
-              </div>
+              <JobCard job={job} />
             ))}
           </div>
         </>
@@ -82,15 +71,117 @@ const terms = [...new Set(jobs.map((job) => job.term.name))].sort();
     }
   </div>
 
-  <div class="mx-auto mt-12 max-w-3xl">
+  <div class="mx-auto mt-12 max-w-2xl">
     <p>
-      These job listings are powered by the Syracuse.io community. All jobs are
-      from local companies and organizations in the Central New York tech scene.
+      Listings curated by the{" "}
+      <a href="https://codesyracuse.org">Code Syracuse</a> community — tech
+      jobs in the Central New York area.
     </p>
     <p>
-      Looking to hire? <a href="https://jobs.syracuse.io/jobs/new"
-        >Post your job listing</a
-      > to reach talented developers and tech professionals in the Syracuse area.
+      <button
+        id="post-job-trigger-footer"
+        class="rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-orange-700"
+        >+ Post a Job</button
+      >
     </p>
   </div>
 </Page>
+
+<!-- Post a Job modal -->
+<dialog
+  id="post-job-modal"
+  class="w-full max-w-md rounded-2xl bg-white p-8 shadow-2xl backdrop:bg-black/50 dark:bg-neutral-900"
+>
+  <div class="mb-6 flex items-start justify-between">
+    <h2 class="text-2xl font-bold text-neutral-900 dark:text-white">
+      Post a Job
+    </h2>
+    <button
+      id="post-job-close"
+      aria-label="Close"
+      class="rounded-full border-2 border-neutral-300 p-1.5 text-neutral-500 transition-colors hover:border-neutral-400 hover:text-neutral-700 dark:border-neutral-600 dark:text-neutral-400 dark:hover:border-neutral-500 dark:hover:text-neutral-200"
+    >
+      <svg
+        class="h-4 w-4"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+
+  <p class="mb-3 text-neutral-600 dark:text-neutral-400">
+    Send us an email at:
+  </p>
+
+  <div
+    class="mb-4 flex items-center gap-3 rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3 dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <span
+      id="modal-email"
+      class="flex-1 font-mono text-sm text-neutral-800 dark:text-neutral-200"
+    ></span>
+    <button
+      id="copy-email-btn"
+      class="flex items-center gap-1.5 rounded-lg bg-orange-600 px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-orange-700"
+    >
+      <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 20 20">
+        <path
+          d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"
+        ></path>
+      </svg>
+      <span id="copy-label">Copy</span>
+    </button>
+  </div>
+
+  <p class="mb-6 text-sm text-neutral-500 dark:text-neutral-400">
+    Subject: <span class="font-mono text-neutral-700 dark:text-neutral-300"
+      >{SUBJECT}</span
+    >
+  </p>
+
+  <a
+    id="open-email-link"
+    href="#"
+    class="flex w-full items-center justify-center gap-2 rounded-lg bg-neutral-900 py-3 text-base font-semibold text-white transition-colors hover:bg-neutral-700 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100"
+  >
+    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+      ></path>
+    </svg>
+    Open in email app
+  </a>
+</dialog>
+
+<script define:vars={{ SUBJECT }}>
+  const e = ["mike", "codesyracuse.org"].join("@");
+
+  document.getElementById("modal-email").textContent = e;
+  document.getElementById("open-email-link").href =
+    `mailto:${e}?subject=${encodeURIComponent(SUBJECT)}`;
+
+  const modal = document.getElementById("post-job-modal");
+  ["post-job-trigger", "post-job-trigger-empty", "post-job-trigger-footer"].forEach(
+    (id) => document.getElementById(id)?.addEventListener("click", () => modal.showModal())
+  );
+
+  document.getElementById("post-job-close").addEventListener("click", () => modal.close());
+  modal.addEventListener("click", (ev) => { if (ev.target === modal) modal.close(); });
+
+  const copyLabel = document.getElementById("copy-label");
+  document.getElementById("copy-email-btn").addEventListener("click", async () => {
+    await navigator.clipboard.writeText(e);
+    copyLabel.textContent = "Copied!";
+    setTimeout(() => (copyLabel.textContent = "Copy"), 2000);
+  });
+</script>
