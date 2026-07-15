@@ -20,11 +20,13 @@ npm run fetch-events # Scrape Meetup.com and update src/data/events.json
 ```
 
 To run a single Playwright test file:
+
 ```bash
 npx playwright test tests/e2e/groups.spec.ts
 ```
 
 Playwright requires Chromium to be installed before first test run:
+
 ```bash
 npx playwright install chromium
 ```
@@ -32,6 +34,7 @@ npx playwright install chromium
 ## Architecture
 
 ### Rendering model
+
 The site uses Astro's SSR output mode with the Cloudflare adapter. Individual pages can opt into static prerendering with `export const prerender = true` — most pages do this since the data doesn't change at request time.
 
 ### Data flow
@@ -43,16 +46,19 @@ The site uses Astro's SSR output mode with the Cloudflare adapter. Individual pa
 **Jobs** — fetched at runtime from `https://jobs.syracuse.io/jobs.json` via `src/lib/jobkit.ts`. No local cache; Cloudflare handles edge caching.
 
 ### Key relationships
+
 - `src/content/groups/{name}.md` → defines a group with `groupId`
 - `src/data/events.json` → each event has a `groupId` matching a group file
 - `src/pages/groups/[groupId].astro` → dynamic group detail page, uses `getStaticPaths()` from the content collection
 - `src/components/GroupCards.astro` → grid on `/groups`, sorts by most recent event date using `getMostRecentEventDate(groupId)`
 
 ### Layouts
+
 - `BaseLayout.astro` — HTML shell with nav, footer, fonts
 - `Page.astro` — content wrapper supporting hero images, breadcrumbs, title, and a `wide` prop for wider content areas. Most pages use this.
 
 ### Styling
+
 Tailwind CSS with the Typography plugin (`prose` classes for Markdown-rendered content). Dark mode is supported via `dark:` variants.
 
 ## Adding a New Group
