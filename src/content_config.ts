@@ -5,12 +5,14 @@ const groups = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/groups" }),
   schema: z.object({
     title: z.string(),
-    group: z.string(),
-    img: z.string(),
+    group: z.string().optional(),
+    imagePath: z.string(),
     summary: z.string(),
     imgAlt: z.string(),
     groupType: z.string(),
     groupId: z.string(),
+    subtitle: z.string().optional(),
+    organizers: z.array(z.string()).optional(),
   }),
 });
 
