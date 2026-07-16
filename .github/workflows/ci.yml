@@ -70,4 +70,8 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # Pin to the wrangler version in package-lock.json — the @astrojs/cloudflare
+          # adapter generates config for this version; floating to latest can break
+          # (e.g. wrangler 4.111 rejects the legacy_env field the adapter emits).
+          wranglerVersion: "4.110.0"
           command: deploy --config dist/server/wrangler.json
