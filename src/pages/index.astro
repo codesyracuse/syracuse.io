@@ -1,118 +1,149 @@
 ---
-import Layout from "../layouts/Page.astro";
-import { getUpcomingEvents } from "../lib/meetup";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHead from "../components/SectionHead.astro";
+import Row from "../components/Row.astro";
+import StatsStrip from "../components/StatsStrip.astro";
+import Startcard from "../components/Startcard.astro";
+import { getUpcomingEvents, type MeetupEvent } from "../lib/meetup";
+import { fetchJobs, generateSlug, type JobKitJob } from "../lib/jobkit";
+import { getEventsThisMonth, SLACK_MEMBER_COUNT } from "../lib/stats";
+import { SLACK_INVITE_URL } from "../lib/site";
 
-// Get the next upcoming event per group
-const allUpcoming = getUpcomingEvents();
-const seen = new Set<string>();
-const events = allUpcoming.filter((event) => {
-  const gid = event.groupId || "other";
-  if (seen.has(gid)) return false;
-  seen.add(gid);
-  return true;
-});
+export const prerender = true;
+
+const TZ = "America/New_York";
+
+function formatWhen(iso: string): string {
+  const d = new Date(iso);
+  const weekday = d
+    .toLocaleDateString("en-US", { weekday: "short", timeZone: TZ })
+    .toUpperCase();
+  const [month, day] = d
+    .toLocaleDateString("en-US", {
+      month: "2-digit",
+      day: "2-digit",
+      timeZone: TZ,
+    })
+    .split("/");
+  return `${weekday} ${month}·${day}`;
+}
+
+function formatTime(iso: string): string {
+  const d = new Date(iso);
+  return d
+    .toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+      timeZone: TZ,
+    })
+    .replace(":00", "")
+    .replace(" ", "")
+    .toLowerCase();
+}
+
+function eventWhere(event: MeetupEvent): string {
+  const venue = event.venue?.name ?? "location TBA";
+  return `${venue} · ${formatTime(event.dateTime)}`;
+}
+
+const nextEvents = getUpcomingEvents().slice(0, 3);
+
+// Fetched at build time; the section degrades to a pointer at /jobs if the
+// API is unreachable so a bad fetch never breaks the deploy.
+let recentJobs: JobKitJob[] | null = null;
+let openJobCount: number | null = null;
+try {
+  const jobs = await fetchJobs();
+  openJobCount = jobs.length;
+  recentJobs = [...jobs]
+    .sort(
+      (a, b) =>
+        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    )
+    .slice(0, 3);
+} catch {
+  recentJobs = null;
+}
+
+const stats = [
+  { value: getEventsThisMonth(), label: "events this month" },
+  { value: SLACK_MEMBER_COUNT, label: "members on Slack" },
+  { value: openJobCount ?? "—", label: "open roles" },
+];
 ---
 
-<Layout
+<BaseLayout
   content={{
-    title: "Syracuse.io",
-    subtitle: "Your local developer community",
-    hero: {
-      imagePath: "/src/assets/clintonsquare.jpg",
-      altText: "Historic photo of Clinton Square in Downtown Syracuse",
-    },
+    title: "Syracuse.io — the Syracuse, NY tech community",
+    description:
+      "Every meetup, every hiring company, every good place to open a laptop in the Salt City — maintained in the open by the people in it.",
   }}
+  editPath="src/pages/index.astro"
 >
-  <p>
-    Welcome to <a href="https://syracuse.io">Syracuse.io</a>, home to Syracuse's
-    diverse and growing tech scene.
-  </p>
+  <Fragment slot="hero">
+    <div class="wrap pb-8 pt-7">
+      <p class="eyebrow mb-3.5">Salt City · Central New York</p>
+      <h1
+        class="max-w-[18ch] text-[clamp(28px,6vw,52px)] font-extrabold leading-[1.05]"
+      >
+        Syracuse builds software. <em class="not-italic text-plow"
+          >Come build with us.</em
+        >
+      </h1>
+      <p class="mt-3 max-w-[52ch] text-[15px] text-[#c9cdc8]">
+        Every meetup, every hiring company, every good place to open a laptop
+        in the Salt City — maintained in the open by the people in it. New
+        here? We were all new here once.
+      </p>
+      <div class="mt-5 flex flex-wrap gap-2.5">
+        <a href="/start" class="btn btn-primary">Start here →</a>
+        <a href={SLACK_INVITE_URL} class="btn btn-ghost">join the Slack</a>
+      </div>
+    </div>
+  </Fragment>
 
-  <p>
-    This is your one stop for information on <a href="/groups/"
-      >local meet ups</a
-    >, lists of <a href="/resources/">local data resources</a>, an active slack <a
-      href="/community/">community</a
-    >, and more to come.
-  </p>
+  <StatsStrip stats={stats} />
 
-  <p>
-    Whether you are new to the area or a seasoned veteran, please check out <a
-      href="/groups">tech meetups</a
-    > and hang out with our <a
-      href="https://join.slack.com/t/syracuseio/shared_invite/zt-aw7rkg3q-2cgCecN524oOVarFJWMOPw"
-      >local slack group.</a
-    >
-  </p>
+  <main class="wrap">
+    <section class="pb-1.5 pt-7">
+      <SectionHead
+        title="NEXT UP"
+        href="/groups"
+        linkText="all groups + events →"
+      />
+      {
+        nextEvents.map((event) => (
+          <Row
+            href={event.url}
+            when={formatWhen(event.dateTime)}
+            what={event.name}
+            where={eventWhere(event)}
+          />
+        ))
+      }
+    </section>
 
-  {
-    events.length > 0 && (
-      <>
-        <h2>Upcoming Events</h2>
-        <div class="not-prose mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-          {events.map((event) => (
-            <article class="flex flex-col items-start justify-between">
-              <div class="relative w-full">
-                <img
-                  src={event.images?.[0]?.source || ""}
-                  alt={event.name}
-                  class="aspect-video w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
-                />
-                <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
-              </div>
-              <div class="w-full">
-                <div class="mt-8 flex items-center gap-x-4 text-xs">
-                  <time
-                    datetime="2020-03-16"
-                    class="text-gray-500 dark:text-gray-300"
-                  >
-                    {new Date(event.dateTime).toLocaleDateString("en-US", {
-                      weekday: "long",
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                      hour: "numeric",
-                      minute: "2-digit",
-                    })}
-                  </time>
-                  {/* <a
-                href="#"
-                class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
-              >
-                Marketing
-              </a> */}
-                </div>
-                <div class="group relative">
-                  <h3 class="mt-3 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600 dark:text-white dark:group-hover:text-gray-400">
-                    <a href={event.url}>
-                      <span class="absolute inset-0" />
-                      {event.name}
-                    </a>
-                  </h3>
-                  <p class="mt-5 line-clamp-3 text-sm/6 text-gray-600 dark:text-white">
-                    {event.description}
-                  </p>
-                </div>
-                <div class="relative mt-8 flex items-center gap-x-4">
-                  {event.hostPhoto?.source && (
-                    <img
-                      src={event.hostPhoto.source}
-                      alt=""
-                      class="size-10 rounded-full bg-gray-100 object-cover object-top"
-                    />
-                  )}
-                  <div class="text-sm/6">
-                    <p class="text-gray-600 dark:text-gray-400">Hosted by:</p>
-                    <p class="font-semibold text-gray-900 dark:text-white">
-                      {event.host.name}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </>
-    )
-  }
-</Layout>
+    <section class="pb-1.5 pt-7">
+      <SectionHead
+        title="WHO'S HIRING"
+        href="/jobs"
+        linkText={openJobCount ? `all ${openJobCount} roles →` : "the board →"}
+      />
+      {
+        recentJobs ? (
+          recentJobs.map((job) => (
+            <Row
+              href={`/jobs/${generateSlug(job)}`}
+              what={job.title}
+              where={`${job.company} · ${job.arrangement}`}
+            />
+          ))
+        ) : (
+          <Row href="/jobs" what="See who's hiring on the job board" />
+        )
+      }
+    </section>
+
+    <Startcard />
+  </main>
+</BaseLayout>

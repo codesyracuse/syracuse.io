@@ -1,0 +1,34 @@
+---
+interface Props {
+  href: string;
+  when?: string;
+  what: string;
+  where?: string;
+}
+
+const { href, when, what, where } = Astro.props;
+---
+
+<a
+  href={href}
+  class="flex items-baseline gap-2.5 border-b border-line px-0.5 py-3 hover:bg-[#e9ebe5]"
+>
+  {
+    when && (
+      <span class="min-w-[76px] whitespace-nowrap font-mono text-xs text-steel">
+        {when}
+      </span>
+    )
+  }
+  <span class="text-[15px] font-[650]">{what}</span>
+  <span
+    class="min-w-[20px] flex-1 -translate-y-1 border-b-2 border-dotted border-[#b9bcb4]"
+  ></span>
+  {
+    where && (
+      <span class="hidden whitespace-nowrap font-mono text-xs opacity-75 min-[560px]:inline">
+        {where}
+      </span>
+    )
+  }
+</a>
