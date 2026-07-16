@@ -33,6 +33,24 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install chromium --with-deps
 
+      - name: Start dev server
+        run: npm run dev
+
+      - name: Wait for dev server to be ready
+        run: |
+          echo "Waiting for dev server..."
+          for i in $(seq 1 60); do
+            status=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:4321/)
+            if [ "$status" = "200" ]; then
+              echo "Dev server ready"
+              exit 0
+            fi
+            echo "Attempt $i: HTTP $status"
+            sleep 1
+          done
+          echo "Dev server did not become ready in 60s"
+          exit 1
+
       - name: Run E2E tests
         run: npm test
 
