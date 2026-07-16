@@ -1,0 +1,43 @@
+---
+import { SLACK_MEMBER_COUNT, SNOWFALL_INCHES } from "../lib/stats";
+
+interface Props {
+  companyCount?: number;
+}
+
+const { companyCount } = Astro.props;
+---
+
+<div
+  class="statusbar fixed bottom-0 left-0 right-0 z-40 border-t-[3px] border-plow bg-ink py-[9px] font-mono text-xs"
+>
+  <div class="wrap flex flex-wrap justify-between gap-2">
+    <span class="seg">[<b>{SLACK_MEMBER_COUNT}</b> on slack]</span>
+    {
+      companyCount !== undefined && (
+        <span class="seg hidden min-[560px]:inline">
+          [<b>{companyCount}</b> companies]
+        </span>
+      )
+    }
+    <span class="seg"
+      >[❄ <b class="snow">{SNOWFALL_INCHES}″</b> SYR leads the snowball]</span
+    >
+    <a href="/start" class="seg hidden min-[560px]:inline"
+      >[<b>?</b> start here]</a
+    >
+  </div>
+</div>
+
+<style>
+  .seg {
+    color: #9aa09a;
+  }
+  .seg b {
+    color: var(--salt);
+    font-weight: 700;
+  }
+  .seg b.snow {
+    color: var(--plow);
+  }
+</style>

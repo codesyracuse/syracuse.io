@@ -1,0 +1,35 @@
+---
+const navLinks = [
+  { href: "/start", label: "start here", hot: true },
+  { href: "/groups", label: "groups" },
+  { href: "/work", label: "where to work" },
+  { href: "/companies", label: "companies" },
+  { href: "/jobs", label: "jobs" },
+];
+---
+
+<header class="bg-ink text-salt">
+  <div
+    class="wrap flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-3.5"
+  >
+    <a href="/" class="font-mono text-lg font-bold"
+      >syracuse<span class="text-plow">.io</span></a
+    >
+    <nav class="flex flex-wrap gap-x-3.5 gap-y-1 font-mono text-xs">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              "border-b-2 border-transparent pb-0.5 hover:border-plow focus-visible:border-plow focus-visible:outline-none",
+              link.hot && "text-plow",
+            ]}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+  <slot />
+</header>
