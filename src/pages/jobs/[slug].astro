@@ -16,7 +16,8 @@ const jobId = parseIdFromSlug(slug);
 if (!jobId) return Astro.redirect("/jobs");
 
 const job = await fetchJobById(jobId);
-if (!job) return new Response(null, { status: 404, statusText: "Job not found" });
+if (!job)
+  return new Response(null, { status: 404, statusText: "Job not found" });
 
 const salary = formatSalary(job);
 const relativeDate = formatRelativeDate(job.created_at);
@@ -149,7 +150,9 @@ const metaDescription = job.description
       <a
         href={applyHref}
         target={job.application_type === "link" ? "_blank" : undefined}
-        rel={job.application_type === "link" ? "noopener noreferrer" : undefined}
+        rel={job.application_type === "link"
+          ? "noopener noreferrer"
+          : undefined}
         class="inline-block rounded-lg bg-orange-600 px-8 py-3 text-base font-semibold text-white transition-colors hover:bg-orange-700"
       >
         Apply for this role

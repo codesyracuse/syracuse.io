@@ -74,8 +74,8 @@ try {
   <div class="mx-auto mt-12 max-w-2xl">
     <p>
       Listings curated by the{" "}
-      <a href="https://syracuse.io/codes">Code Syracuse</a> community — tech
-      jobs in the Central New York area.
+      <a href="https://syracuse.io/codes">Code Syracuse</a> community — tech jobs
+      in the Central New York area.
     </p>
     <p>
       <button
@@ -148,7 +148,7 @@ try {
 
   <a
     id="open-email-link"
-    href="#"
+    href="mailto:"
     class="flex w-full items-center justify-center gap-2 rounded-lg bg-neutral-900 py-3 text-base font-semibold text-white transition-colors hover:bg-neutral-700 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100"
   >
     <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -171,17 +171,29 @@ try {
     `mailto:${e}?subject=${encodeURIComponent(SUBJECT)}`;
 
   const modal = document.getElementById("post-job-modal");
-  ["post-job-trigger", "post-job-trigger-empty", "post-job-trigger-footer"].forEach(
-    (id) => document.getElementById(id)?.addEventListener("click", () => modal.showModal())
+  [
+    "post-job-trigger",
+    "post-job-trigger-empty",
+    "post-job-trigger-footer",
+  ].forEach((id) =>
+    document
+      .getElementById(id)
+      ?.addEventListener("click", () => modal.showModal())
   );
 
-  document.getElementById("post-job-close").addEventListener("click", () => modal.close());
-  modal.addEventListener("click", (ev) => { if (ev.target === modal) modal.close(); });
+  document
+    .getElementById("post-job-close")
+    .addEventListener("click", () => modal.close());
+  modal.addEventListener("click", (ev) => {
+    if (ev.target === modal) modal.close();
+  });
 
   const copyLabel = document.getElementById("copy-label");
-  document.getElementById("copy-email-btn").addEventListener("click", async () => {
-    await navigator.clipboard.writeText(e);
-    copyLabel.textContent = "Copied!";
-    setTimeout(() => (copyLabel.textContent = "Copy"), 2000);
-  });
+  document
+    .getElementById("copy-email-btn")
+    .addEventListener("click", async () => {
+      await navigator.clipboard.writeText(e);
+      copyLabel.textContent = "Copied!";
+      setTimeout(() => (copyLabel.textContent = "Copy"), 2000);
+    });
 </script>
