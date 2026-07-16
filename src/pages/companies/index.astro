@@ -1,0 +1,147 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Chip from "../../components/Chip.astro";
+import SectionHead from "../../components/SectionHead.astro";
+import { ADD_COMPANY_URL } from "../../lib/site";
+
+const all = await getCollection("companies");
+
+const activeTag = Astro.url.searchParams.get("tag");
+const activeSize = Astro.url.searchParams.get("size");
+
+const tags = [...new Set(all.flatMap((c) => c.data.tags))].sort();
+const sizes = ["1-10", "11-50", "51-200", "200+"];
+
+const filtered = all
+  .filter(
+    (c) =>
+      (!activeTag || c.data.tags.includes(activeTag)) &&
+      (!activeSize || c.data.size === activeSize)
+  )
+  .sort(
+    (a, b) =>
+      Number(b.data.sponsor) - Number(a.data.sponsor) ||
+      b.data.added.getTime() - a.data.added.getTime()
+  );
+
+function filterHref(tag: string | null, size: string | null): string {
+  const params = new URLSearchParams();
+  if (tag) params.set("tag", tag);
+  if (size) params.set("size", size);
+  const qs = params.toString();
+  return qs ? `/companies?${qs}` : "/companies";
+}
+
+// Filtering happens via query params (no client JS); cache so Cloudflare
+// doesn't invoke the worker on every hit.
+Astro.response.headers.set("Cache-Control", "public, max-age=3600");
+---
+
+<BaseLayout
+  content={{
+    title: "Who's building — Syracuse.io",
+    description:
+      "The companies writing software in Syracuse and Central New York.",
+  }}
+  editPath="src/content/companies"
+>
+  <div class="wrap">
+    <div class="pb-6 pt-10">
+      <h1 class="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
+        Who's building
+      </h1>
+      <p class="mt-3 max-w-[52ch] text-[15px]">
+        The companies writing software in Central New York — from two-person
+        shops to the ones building fabs. Listed by the community; your company
+        belongs here too.
+      </p>
+    </div>
+
+    <div class="flex flex-wrap items-baseline gap-2 pb-2 font-mono text-xs">
+      <span class="opacity-60">tag:</span>
+      {
+        tags.map((tag) => (
+          <a
+            href={filterHref(activeTag === tag ? null : tag, activeSize)}
+            class:list={[
+              "rounded-[3px] border border-ink px-2 py-1",
+              activeTag === tag ? "bg-ink text-salt" : "hover:bg-[#e9ebe5]",
+            ]}
+          >
+            {tag}
+          </a>
+        ))
+      }
+    </div>
+    <div class="flex flex-wrap items-baseline gap-2 pb-4 font-mono text-xs">
+      <span class="opacity-60">size:</span>
+      {
+        sizes.map((size) => (
+          <a
+            href={filterHref(activeTag, activeSize === size ? null : size)}
+            class:list={[
+              "rounded-[3px] border border-ink px-2 py-1",
+              activeSize === size ? "bg-ink text-salt" : "hover:bg-[#e9ebe5]",
+            ]}
+          >
+            {size}
+          </a>
+        ))
+      }
+      {
+        (activeTag || activeSize) && (
+          <a href="/companies" class="px-2 py-1 text-brick hover:underline">
+            × clear filters
+          </a>
+        )
+      }
+    </div>
+
+    <SectionHead
+      title={`${filtered.length} ${filtered.length === 1 ? "COMPANY" : "COMPANIES"}`}
+    />
+
+    <div class="flex flex-wrap gap-2 pb-2 pt-4">
+      {
+        filtered.map((company) =>
+          company.data.sponsor ? (
+            <a
+              href={company.data.url}
+              class="flex w-full flex-col gap-1.5 rounded border-2 border-ink bg-card p-4 hover:shadow-[4px_4px_0_var(--steel)] sm:w-[calc(50%-4px)]"
+            >
+              <span class="flex items-baseline gap-2">
+                <span class="text-[15px] font-extrabold">
+                  {company.data.name}
+                </span>
+                <span class="rounded-sm bg-brick px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-salt">
+                  sponsor
+                </span>
+              </span>
+              <span class="font-mono text-[11px] opacity-70">
+                {company.data.tagline} · {company.data.size}
+              </span>
+              {company.data.blurb && (
+                <span class="text-[13px] leading-snug">
+                  {company.data.blurb}
+                </span>
+              )}
+            </a>
+          ) : (
+            <Chip
+              href={company.data.url}
+              name={company.data.name}
+              meta={company.data.tagline}
+            />
+          )
+        )
+      }
+      <Chip href={ADD_COMPANY_URL} name="+ add your company" add />
+    </div>
+
+    <p class="pb-4 pt-6 font-mono text-xs opacity-60">
+      Adding your company is a five-minute pull request — one markdown file.
+      Sponsors get an enhanced card and keep the meetups fed.
+    </p>
+  </div>
+</BaseLayout>

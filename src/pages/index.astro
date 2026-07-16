@@ -1,13 +1,15 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHead from "../components/SectionHead.astro";
 import Row from "../components/Row.astro";
+import Chip from "../components/Chip.astro";
 import StatsStrip from "../components/StatsStrip.astro";
 import Startcard from "../components/Startcard.astro";
 import { getUpcomingEvents, type MeetupEvent } from "../lib/meetup";
 import { fetchJobs, generateSlug, type JobKitJob } from "../lib/jobkit";
 import { getEventsThisMonth, SLACK_MEMBER_COUNT } from "../lib/stats";
-import { SLACK_INVITE_URL } from "../lib/site";
+import { SLACK_INVITE_URL, ADD_COMPANY_URL } from "../lib/site";
 
 export const prerender = true;
 
@@ -65,9 +67,15 @@ try {
   recentJobs = null;
 }
 
+const companies = await getCollection("companies");
+const newestCompanies = [...companies]
+  .sort((a, b) => b.data.added.getTime() - a.data.added.getTime())
+  .slice(0, 5);
+
 const stats = [
   { value: getEventsThisMonth(), label: "events this month" },
   { value: SLACK_MEMBER_COUNT, label: "members on Slack" },
+  { value: companies.length, label: "companies listed" },
   { value: openJobCount ?? "—", label: "open roles" },
 ];
 ---
@@ -142,6 +150,26 @@ const stats = [
           <Row href="/jobs" what="See who's hiring on the job board" />
         )
       }
+    </section>
+
+    <section class="pb-1.5 pt-7">
+      <SectionHead
+        title="WHO'S BUILDING"
+        href="/companies"
+        linkText={`all ${companies.length} companies →`}
+      />
+      <div class="flex flex-wrap gap-2 pb-2 pt-3.5">
+        {
+          newestCompanies.map((company) => (
+            <Chip
+              href={company.data.url}
+              name={company.data.name}
+              meta={company.data.tagline}
+            />
+          ))
+        }
+        <Chip href={ADD_COMPANY_URL} name="+ add your company" add />
+      </div>
     </section>
 
     <Startcard />

@@ -1,11 +1,8 @@
 ---
+import { getCollection } from "astro:content";
 import { SLACK_MEMBER_COUNT, SNOWFALL_INCHES } from "../lib/stats";
 
-interface Props {
-  companyCount?: number;
-}
-
-const { companyCount } = Astro.props;
+const companyCount = (await getCollection("companies")).length;
 ---
 
 <div
@@ -13,13 +10,9 @@ const { companyCount } = Astro.props;
 >
   <div class="wrap flex flex-wrap justify-between gap-2">
     <span class="seg">[<b>{SLACK_MEMBER_COUNT}</b> on slack]</span>
-    {
-      companyCount !== undefined && (
-        <span class="seg hidden min-[560px]:inline">
-          [<b>{companyCount}</b> companies]
-        </span>
-      )
-    }
+    <span class="seg hidden min-[560px]:inline"
+      >[<b>{companyCount}</b> companies]</span
+    >
     <span class="seg"
       >[❄ <b class="snow">{SNOWFALL_INCHES}″</b> SYR leads the snowball]</span
     >

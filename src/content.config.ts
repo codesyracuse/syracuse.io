@@ -16,4 +16,35 @@ const groups = defineCollection({
   }),
 });
 
-export const collections = { groups };
+const companies = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/companies" }),
+  schema: z.object({
+    name: z.string(),
+    tagline: z.string(),
+    url: z.string().url(),
+    tags: z.array(z.string()),
+    size: z.enum(["1-10", "11-50", "51-200", "200+"]),
+    added: z.coerce.date(),
+    sponsor: z.boolean().default(false),
+    blurb: z.string().optional(),
+  }),
+});
+
+const venues = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/venues" }),
+  schema: z.object({
+    name: z.string(),
+    type: z.enum(["cowork", "cafe", "free"]),
+    neighborhood: z.string(),
+    address: z.string(),
+    url: z.string().url(),
+    pricingUrl: z.string().url().optional(),
+    hours: z.string(),
+    vibe: z.string(),
+    meetingRooms: z.boolean(),
+    notes: z.string().optional(),
+    added: z.coerce.date(),
+  }),
+});
+
+export const collections = { groups, companies, venues };
