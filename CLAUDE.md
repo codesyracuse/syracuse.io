@@ -41,7 +41,7 @@ The site uses Astro's SSR output mode with the Cloudflare adapter. Individual pa
 
 **Events** — `src/data/events.json` is the source of truth for Meetup events. It's a static JSON file committed to the repo and updated by running `npm run fetch-events`. That script (`scripts/fetch-meetup-events.mjs`) uses Playwright to scrape Meetup.com (no API key required). Scraped events are merged with existing data so historical events are preserved. The `src/lib/meetup.ts` module reads this file and exposes filtering/sorting helpers used by pages and components.
 
-**Groups** — defined as Markdown files in `src/content/groups/*.md` using Astro content collections (schema in `content_config.ts`). Each group has a `groupId` field that links it to events in `events.json`. The `classifyEvent()` function in the fetch script maps event titles to `groupId` values — keep these in sync when adding groups.
+**Groups** — defined as Markdown files in `src/content/groups/*.md` using Astro content collections (schema in `src/content.config.ts`). Each group has a `groupId` field that links it to events in `events.json`. The `classifyEvent()` function in the fetch script maps event titles to `groupId` values — keep these in sync when adding groups.
 
 **Jobs** — fetched at runtime from `https://jobs.syracuse.io/jobs.json` via `src/lib/jobkit.ts`. No local cache; Cloudflare handles edge caching.
 
