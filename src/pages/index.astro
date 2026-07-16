@@ -69,7 +69,11 @@ try {
 
 const companies = await getCollection("companies");
 const venues = await getCollection("venues");
-const venueTypeLabel = { cowork: "COWORK", cafe: "CAFÉ", free: "FREE" } as const;
+const venueTypeLabel = {
+  cowork: "COWORK",
+  cafe: "CAFÉ",
+  free: "FREE",
+} as const;
 const featuredVenues = (["cowork", "cafe", "free"] as const)
   .map((type) => venues.find((v) => v.data.type === type))
   .filter((v) => v !== undefined);
@@ -104,9 +108,9 @@ const stats = [
         >
       </h1>
       <p class="mt-3 max-w-[52ch] text-[15px] text-[#c9cdc8]">
-        Every meetup, every hiring company, every good place to open a laptop
-        in the Salt City — maintained in the open by the people in it. New
-        here? We were all new here once.
+        Every meetup, every hiring company, every good place to open a laptop in
+        the Salt City — maintained in the open by the people in it. New here? We
+        were all new here once.
       </p>
       <div class="mt-5 flex flex-wrap gap-2.5">
         <a href="/start" class="btn btn-primary">Start here →</a>
@@ -125,14 +129,21 @@ const stats = [
         linkText="all groups + events →"
       />
       {
-        nextEvents.map((event) => (
+        nextEvents.length > 0 ? (
+          nextEvents.map((event) => (
+            <Row
+              href={event.url}
+              when={formatWhen(event.dateTime)}
+              what={event.name}
+              where={eventWhere(event)}
+            />
+          ))
+        ) : (
           <Row
-            href={event.url}
-            when={formatWhen(event.dateTime)}
-            what={event.name}
-            where={eventWhere(event)}
+            href="/groups"
+            what="Nothing on the calendar yet — check the groups"
           />
-        ))
+        )
       }
     </section>
 
@@ -143,7 +154,7 @@ const stats = [
         linkText={openJobCount ? `all ${openJobCount} roles →` : "the board →"}
       />
       {
-        recentJobs ? (
+        recentJobs && recentJobs.length > 0 ? (
           recentJobs.map((job) => (
             <Row
               href={`/jobs/${generateSlug(job)}`}

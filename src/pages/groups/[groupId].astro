@@ -43,7 +43,7 @@ const pastEvents = events.filter((e) => new Date(e.dateTime) < now);
   <div class="mx-auto max-w-3xl pt-4">
     <h1 class="mb-4 font-mono text-3xl font-bold">{group.data.title}</h1>
 
-    <div class="prose prose-xl max-w-none dark:prose-invert">
+    <div class="prose prose-xl max-w-none">
       <div set:html={group.rendered.html} />
       {
         group.data.organizers?.length > 0 && (
@@ -63,14 +63,14 @@ const pastEvents = events.filter((e) => new Date(e.dateTime) < now);
       nextEvent && (
         <div class="mt-12">
           <h2 class="mb-6 font-mono text-2xl font-bold">Next Event</h2>
-          <div class="rounded-lg border border-neutral-200 p-4 dark:border-neutral-700">
+          <div class="rounded-lg border-2 border-ink bg-card p-4">
             <a
               href={nextEvent.url}
-              class="text-lg font-semibold text-blue-600 hover:underline dark:text-blue-400"
+              class="text-lg font-semibold text-brick hover:underline"
             >
               {nextEvent.name}
             </a>
-            <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+            <p class="mt-1 text-sm opacity-70">
               {new Date(nextEvent.dateTime).toLocaleDateString("en-US", {
                 weekday: "long",
                 year: "numeric",
@@ -81,9 +81,7 @@ const pastEvents = events.filter((e) => new Date(e.dateTime) < now);
               })}
             </p>
             {nextEvent.venue && (
-              <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                {nextEvent.venue.name}
-              </p>
+              <p class="mt-1 text-sm opacity-70">{nextEvent.venue.name}</p>
             )}
           </div>
         </div>
@@ -96,14 +94,14 @@ const pastEvents = events.filter((e) => new Date(e.dateTime) < now);
           <h2 class="mb-6 font-mono text-2xl font-bold">Past Events</h2>
           <ul class="space-y-3">
             {pastEvents.slice(0, 10).map((event) => (
-              <li class="flex items-baseline justify-between gap-4 border-b border-neutral-100 pb-3 dark:border-neutral-800">
+              <li class="flex items-baseline justify-between gap-4 border-b border-neutral-100 pb-3">
                 <a
                   href={event.url}
-                  class="text-gray-900 hover:underline dark:text-gray-100"
+                  class="text-ink hover:text-brick hover:underline"
                 >
                   {event.name}
                 </a>
-                <span class="shrink-0 text-sm text-gray-500 dark:text-gray-400">
+                <span class="shrink-0 text-sm opacity-70">
                   {new Date(event.dateTime).toLocaleDateString("en-US", {
                     month: "short",
                     day: "numeric",
@@ -114,7 +112,7 @@ const pastEvents = events.filter((e) => new Date(e.dateTime) < now);
             ))}
           </ul>
           {pastEvents.length > 10 && (
-            <p class="mt-4 text-sm text-gray-500 dark:text-gray-400">
+            <p class="mt-4 text-sm opacity-70">
               And {pastEvents.length - 10} more past events.
             </p>
           )}

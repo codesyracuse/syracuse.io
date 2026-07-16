@@ -6,8 +6,17 @@ interface Props {
 }
 
 const { venue } = Astro.props;
-const { name, type, neighborhood, url, pricingUrl, hours, vibe, meetingRooms, notes } =
-  venue.data;
+const {
+  name,
+  type,
+  neighborhood,
+  url,
+  pricingUrl,
+  hours,
+  vibe,
+  meetingRooms,
+  notes,
+} = venue.data;
 
 const tagColor = {
   cowork: "bg-steel",

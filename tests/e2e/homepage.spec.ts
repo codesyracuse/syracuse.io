@@ -38,8 +38,16 @@ test.describe("Homepage", () => {
   test("should show live data sections", async ({ page }) => {
     await page.goto("/");
 
-    await expect(page.getByText("NEXT UP")).toBeVisible();
-    await expect(page.getByText("WHO'S HIRING")).toBeVisible();
+    for (const section of [
+      "NEXT UP",
+      "WHO'S HIRING",
+      "WHO'S BUILDING",
+      "WHERE TO WORK",
+    ]) {
+      await expect(
+        page.getByRole("heading", { name: new RegExp(section) })
+      ).toBeVisible();
+    }
   });
 
   test("should show the startcard", async ({ page }) => {

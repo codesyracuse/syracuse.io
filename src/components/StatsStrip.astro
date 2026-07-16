@@ -7,10 +7,7 @@ const { stats } = Astro.props;
 ---
 
 <div class="bg-steel text-salt">
-  <div
-    class="wrap grid grid-cols-2"
-    style={`--stat-cols: ${stats.length}`}
-  >
+  <div class="wrap grid grid-cols-2" style={`--stat-cols: ${stats.length}`}>
     {
       stats.map((stat) => (
         <div class="stat px-2 py-3">
