@@ -68,6 +68,11 @@ try {
 }
 
 const companies = await getCollection("companies");
+const venues = await getCollection("venues");
+const venueTypeLabel = { cowork: "COWORK", cafe: "CAFÉ", free: "FREE" } as const;
+const featuredVenues = (["cowork", "cafe", "free"] as const)
+  .map((type) => venues.find((v) => v.data.type === type))
+  .filter((v) => v !== undefined);
 const newestCompanies = [...companies]
   .sort((a, b) => b.data.added.getTime() - a.data.added.getTime())
   .slice(0, 5);
@@ -170,6 +175,24 @@ const stats = [
         }
         <Chip href={ADD_COMPANY_URL} name="+ add your company" add />
       </div>
+    </section>
+
+    <section class="pb-1.5 pt-7">
+      <SectionHead
+        title="WHERE TO WORK"
+        href="/work"
+        linkText="all spots + day rates →"
+      />
+      {
+        featuredVenues.map((venue) => (
+          <Row
+            href="/work"
+            when={venueTypeLabel[venue.data.type]}
+            what={venue.data.name}
+            where={venue.data.neighborhood}
+          />
+        ))
+      }
     </section>
 
     <Startcard />
