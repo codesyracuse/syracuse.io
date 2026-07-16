@@ -34,7 +34,9 @@ jobs:
         run: npx playwright install chromium --with-deps
 
       - name: Start dev server
-        run: npm run dev
+        # Redirect all fds so the Astro daemon doesn't hold the step's
+        # output pipes open (which makes the runner wait forever).
+        run: npm run dev < /dev/null > dev-server.log 2>&1
 
       - name: Wait for dev server to be ready
         run: |
