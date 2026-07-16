@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "syracuse-io",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -11,7 +11,8 @@
     "test:ui": "playwright test --ui",
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
-    "fetch-events": "node scripts/fetch-meetup-events.mjs"
+    "fetch-events": "node scripts/fetch-meetup-events.mjs",
+    "deploy": "npm run build && wrangler deploy --config dist/server/wrangler.json"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^14.1.3",
