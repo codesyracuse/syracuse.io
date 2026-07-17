@@ -1,0 +1,156 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHead from "../components/SectionHead.astro";
+import { CODES_EMAIL, GITHUB_REPO_URL } from "../lib/site";
+
+export const prerender = true;
+
+const board = ["Mike Vormwald", "Annalena Davis", "Ed Forth"];
+
+const tiers = [
+  {
+    name: "Sponsor an event",
+    price: "$250",
+    unit: "per event",
+    blurb:
+      "Covers pizza, drinks, and space for one meetup. Your logo on the event listing and a thank-you from the host.",
+  },
+  {
+    name: "Sponsor the year",
+    price: "$1,500",
+    unit: "per year",
+    blurb:
+      "Keeps the lights on across the calendar. Enhanced company card in the directory, logo placement sitewide, and our gratitude at every event.",
+  },
+  {
+    name: "Host in kind",
+    price: "space",
+    unit: "as available",
+    blurb:
+      "Got a conference room, a training space, or a big table? Hosting an event is worth as much as writing a check.",
+  },
+];
+---
+
+<BaseLayout
+  content={{
+    title: "CODES — the nonprofit behind syracuse.io",
+    description:
+      "The Coalition of Digital Engagements in Syracuse: a small 501(c)(3) serving the Syracuse tech community through education, mentoring, and economic opportunity.",
+  }}
+  editPath="src/pages/codes.astro"
+>
+  <div class="wrap max-w-[720px]">
+    <div class="pt-10">
+      <p class="eyebrow">Coalition of Digital Engagements in Syracuse</p>
+      <h1
+        class="mt-2 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl"
+      >
+        CODES
+      </h1>
+      <p class="mt-3 max-w-[52ch] text-[15px]">
+        CODES is on a mission to serve and grow the technology community in
+        Syracuse, New York through education, mentoring, and creating economic
+        opportunity. It's a small 501(c)(3) nonprofit — a few volunteers, a bank
+        account for pizza money, and this website. That's the honest scale, and
+        it's enough.
+      </p>
+    </div>
+
+    <section class="pt-10">
+      <SectionHead title="WHAT WE DO" />
+      <div class="space-y-3 pt-4 text-[15px]">
+        <p>
+          We keep the meetups fed and free, maintain
+          <a href="/" class="text-brick hover:underline">syracuse.io</a> in the open,
+          and run <strong>Mentor Ship</strong> — a program matching mentors with trainees
+          for 30-minute weekly or biweekly sessions. Less like job training, more
+          like gym training: the only way to make progress is to put in your reps.
+        </p>
+        <p class="font-mono text-xs">
+          <a href="https://codesyracuse.org" class="text-brick hover:underline"
+            >more at codesyracuse.org →</a
+          >
+        </p>
+      </div>
+    </section>
+
+    <section class="pt-10">
+      <SectionHead title="THE BOARD" />
+      <div class="flex flex-wrap gap-2 pt-4">
+        {
+          board.map((name) => (
+            <span class="rounded-[3px] border-2 border-ink bg-card px-3 py-1.5 font-mono text-xs">
+              {name}
+            </span>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="pt-10">
+      <SectionHead title="SPONSOR" />
+      <p class="pt-4 text-[15px]">
+        Sponsorship buys the pizza — nothing more, nothing less. No talent
+        pipelines, no attendee lists, no stage time for sales decks. Here's what
+        it costs and what you get:
+      </p>
+      <div class="grid gap-3 pt-4 sm:grid-cols-3">
+        {
+          tiers.map((tier) => (
+            <div class="flex flex-col gap-1.5 rounded border-2 border-ink bg-card p-3.5">
+              <span class="font-mono text-[22px] font-bold text-brick">
+                {tier.price}
+              </span>
+              <span class="font-mono text-[11px] uppercase tracking-wider opacity-60">
+                {tier.unit}
+              </span>
+              <span class="text-[15px] font-extrabold">{tier.name}</span>
+              <span class="text-[13px] leading-snug">{tier.blurb}</span>
+            </div>
+          ))
+        }
+      </div>
+      <p class="pt-5">
+        <a
+          href={`mailto:${CODES_EMAIL}?subject=${encodeURIComponent("Sponsoring the Syracuse tech community")}`}
+          class="btn btn-primary">Sponsor or donate →</a
+        >
+      </p>
+      <p class="pt-3 font-mono text-xs opacity-60">
+        Every dollar goes to community programming. Reach us any time at
+        <a href={`mailto:${CODES_EMAIL}`} class="text-brick hover:underline"
+          >{CODES_EMAIL}</a
+        >.
+      </p>
+    </section>
+
+    <section class="pb-4 pt-10">
+      <SectionHead title="THE FINE PRINT" />
+      <div class="space-y-3 pt-4 text-sm">
+        <p>
+          CODES (Coalition of Digital Engagements in Syracuse) is a registered
+          501(c)(3) nonprofit organization. Donations are tax-deductible to the
+          extent allowed by law — email
+          <a href={`mailto:${CODES_EMAIL}`} class="text-brick hover:underline"
+            >{CODES_EMAIL}</a
+          > for our EIN and receipts.
+        </p>
+        <p class="font-mono text-xs opacity-60">
+          Everything we run is on GitHub:
+          <a href={GITHUB_REPO_URL} class="text-brick hover:underline"
+            >this site</a
+          > ·
+          <a
+            href="https://github.com/codesyracuse/mentor-ship"
+            class="text-brick hover:underline">Mentor Ship</a
+          > ·
+          <a
+            href="https://github.com/codesyracuse/website"
+            class="text-brick hover:underline">codesyracuse.org</a
+          >
+        </p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
