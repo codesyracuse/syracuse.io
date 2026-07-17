@@ -5,9 +5,6 @@ import { fetchJobs } from "./jobkit";
 // Slack API becomes available.
 export const SLACK_MEMBER_COUNT = 712;
 
-// Season total for SYR; hardcoded until the NWS fetch lands (redesign phase 7).
-export const SNOWFALL_INCHES = "127.4";
-
 /** Events whose dateTime falls in the current calendar month (past + upcoming — activity proof, not just what's left). */
 export function getEventsThisMonth(): number {
   const now = new Date();

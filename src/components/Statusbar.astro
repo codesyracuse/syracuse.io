@@ -1,8 +1,10 @@
 ---
 import { getCollection } from "astro:content";
-import { SLACK_MEMBER_COUNT, SNOWFALL_INCHES } from "../lib/stats";
+import { SLACK_MEMBER_COUNT } from "../lib/stats";
+import { getSnowfall } from "../lib/snowfall";
 
 const companyCount = (await getCollection("companies")).length;
+const snowfall = await getSnowfall();
 ---
 
 <div
@@ -14,7 +16,7 @@ const companyCount = (await getCollection("companies")).length;
       >[<b>{companyCount}</b> companies]</span
     >
     <span class="seg"
-      >[❄ <b class="snow">{SNOWFALL_INCHES}″</b> SYR leads the snowball]</span
+      >[❄ <b class="snow">{snowfall.inches}″</b> {snowfall.label}]</span
     >
     <a href="/start" class="seg hidden min-[560px]:inline"
       >[<b>?</b> start here]</a
