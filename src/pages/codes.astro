@@ -77,10 +77,11 @@ const tiers = [
 
     <section class="pt-10">
       <SectionHead title="THE BOARD" />
+      {/* Hairline borders, not Chip's — these aren't clickable. */}
       <div class="flex flex-wrap gap-2 pt-4">
         {
           board.map((name) => (
-            <span class="rounded-[3px] border-2 border-ink bg-card px-3 py-1.5 font-mono text-xs">
+            <span class="rounded-[3px] border border-line bg-card px-3 py-1.5 font-mono text-xs">
               {name}
             </span>
           ))
@@ -98,7 +99,7 @@ const tiers = [
       <div class="grid gap-3 pt-4 sm:grid-cols-3">
         {
           tiers.map((tier) => (
-            <div class="flex flex-col gap-1.5 rounded border-2 border-ink bg-card p-3.5">
+            <div class="card flex flex-col gap-1.5 p-3.5">
               <span class="font-mono text-[22px] font-bold text-brick">
                 {tier.price}
               </span>

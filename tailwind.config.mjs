@@ -15,6 +15,7 @@ export default {
         plow: "var(--plow)",
         card: "var(--card)",
         line: "var(--line)",
+        mist: "var(--mist)",
       },
       typography: () => ({
         DEFAULT: {

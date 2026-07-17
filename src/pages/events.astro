@@ -84,7 +84,7 @@ const submitUrl = `${GITHUB_REPO_URL}/issues/new?title=${encodeURIComponent("Sub
       {
         pastByMonth.map(([month, events]) => (
           <details class="border-b border-line">
-            <summary class="cursor-pointer px-0.5 py-3 font-mono text-xs hover:bg-[#e9ebe5]">
+            <summary class="cursor-pointer px-0.5 py-3 font-mono text-xs hover:bg-mist">
               {month}
               <span class="opacity-60">
                 · {events.length} event{events.length === 1 ? "" : "s"}

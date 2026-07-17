@@ -124,10 +124,7 @@ const pointers = [
       <div class="grid gap-3 pt-4 sm:grid-cols-3">
         {
           pointers.map((p) => (
-            <a
-              href={p.href}
-              class="flex flex-col gap-1.5 rounded border-2 border-ink bg-card p-3.5 hover:shadow-[4px_4px_0_var(--steel)]"
-            >
+            <a href={p.href} class="card card-link flex flex-col gap-1.5 p-3.5">
               <span class="text-[15px] font-extrabold">{p.title}</span>
               <span class="text-[13px] leading-snug">{p.blurb}</span>
             </a>

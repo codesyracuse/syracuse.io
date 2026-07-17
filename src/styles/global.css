@@ -10,6 +10,7 @@
   --plow: #edb230;
   --card: #fbfbf9;
   --line: #d4d6d0;
+  --mist: #e9ebe5; /* hover fill for rows and filter chips */
 }
 
 @layer components {
@@ -44,5 +45,16 @@
 
   .btn-ghost:hover {
     @apply border-plow text-plow;
+  }
+
+  /* Interaction language:
+     rows fill (--mist), chips invert to ink, cards that are links lift
+     with the steel backshadow, static cards don't move. */
+  .card {
+    @apply rounded border-2 border-ink bg-card;
+  }
+
+  .card-link:hover {
+    box-shadow: 4px 4px 0 var(--steel);
   }
 }

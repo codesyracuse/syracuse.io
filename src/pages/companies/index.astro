@@ -68,7 +68,7 @@ Astro.response.headers.set("Cache-Control", "public, max-age=3600");
             href={filterHref(activeTag === tag ? null : tag, activeSize)}
             class:list={[
               "rounded-[3px] border border-ink px-2 py-1",
-              activeTag === tag ? "bg-ink text-salt" : "hover:bg-[#e9ebe5]",
+              activeTag === tag ? "bg-ink text-salt" : "hover:bg-mist",
             ]}
           >
             {tag}
@@ -84,7 +84,7 @@ Astro.response.headers.set("Cache-Control", "public, max-age=3600");
             href={filterHref(activeTag, activeSize === size ? null : size)}
             class:list={[
               "rounded-[3px] border border-ink px-2 py-1",
-              activeSize === size ? "bg-ink text-salt" : "hover:bg-[#e9ebe5]",
+              activeSize === size ? "bg-ink text-salt" : "hover:bg-mist",
             ]}
           >
             {size}
@@ -110,7 +110,7 @@ Astro.response.headers.set("Cache-Control", "public, max-age=3600");
           company.data.sponsor ? (
             <a
               href={company.data.url}
-              class="flex w-full flex-col gap-1.5 rounded border-2 border-ink bg-card p-4 hover:shadow-[4px_4px_0_var(--steel)] sm:w-[calc(50%-4px)]"
+              class="card card-link flex w-full flex-col gap-1.5 p-4 sm:w-[calc(50%-4px)]"
             >
               <span class="flex items-baseline gap-2">
                 <span class="text-[15px] font-extrabold">
