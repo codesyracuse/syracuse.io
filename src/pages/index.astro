@@ -119,7 +119,7 @@ const stats = [
         recentJobs && recentJobs.length > 0 ? (
           recentJobs.map((job) => (
             <Row
-              href={`/jobs/${generateSlug(job)}`}
+              href={`/jobs#${generateSlug(job)}`}
               what={job.title}
               where={`${job.company} · ${job.arrangement}`}
             />

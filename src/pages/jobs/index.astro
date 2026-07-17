@@ -1,166 +1,226 @@
 ---
-import Page from "../../layouts/Page.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SectionHead from "../../components/SectionHead.astro";
 import JobCard from "../../components/jobs/JobCard.astro";
-import { fetchJobs, sortJobs } from "../../lib/jobkit";
+import { fetchJobs, sortJobs, type JobKitJob } from "../../lib/jobkit";
+import { CONTACT_EMAIL } from "../../lib/site";
 
 const SUBJECT = "Post a Job on Syracuse.io";
 
-let jobs = [];
+let jobs: JobKitJob[] = [];
 let error = null;
 
 try {
-  const allJobs = await fetchJobs();
-  jobs = sortJobs(allJobs);
+  jobs = sortJobs(await fetchJobs());
 } catch (e) {
   error = e;
   console.error("Failed to fetch jobs:", e);
 }
+
+const activeWork = Astro.url.searchParams.get("work");
+const activeCategory = Astro.url.searchParams.get("category");
+
+const arrangementLabel = (a: string) => (a === "onsite" ? "on-site" : a);
+
+function countBy<T>(items: T[], key: (item: T) => string): [string, number][] {
+  const counts = new Map<string, number>();
+  for (const item of items) {
+    const k = key(item);
+    counts.set(k, (counts.get(k) ?? 0) + 1);
+  }
+  return [...counts.entries()].sort((a, b) => b[1] - a[1]);
+}
+
+const workFilters = countBy(jobs, (j) => j.arrangement);
+const categoryFilters = countBy(jobs, (j) => j.category.name);
+
+const filtered = jobs.filter(
+  (j) =>
+    (!activeWork || j.arrangement === activeWork) &&
+    (!activeCategory || j.category.name === activeCategory)
+);
+
+const companyCount = new Set(jobs.map((j) => j.company)).size;
+
+function filterHref(work: string | null, category: string | null): string {
+  const params = new URLSearchParams();
+  if (work) params.set("work", work);
+  if (category) params.set("category", category);
+  const qs = params.toString();
+  return qs ? `/jobs?${qs}` : "/jobs";
+}
+
+// Filters are query params (no client JS); cache so Cloudflare doesn't hit
+// origin per request. Short TTL — listings should feel fresh.
+Astro.response.headers.set("Cache-Control", "public, max-age=900");
 ---
 
-<Page
+<BaseLayout
   content={{
-    title: "Tech Jobs in Syracuse, NY",
-    subtitle:
-      "Software development, engineering, and tech jobs in Syracuse and Central New York",
+    title: "Tech jobs in Syracuse, NY — Syracuse.io",
+    description:
+      "Software development, engineering, and tech jobs in Syracuse and Central New York, curated by the community.",
   }}
+  editPath="src/pages/jobs/index.astro"
 >
-  <div class="not-prose">
-    {
-      error ? (
-        <div class="rounded-lg border-2 border-red-200 bg-red-50 p-6 text-center dark:border-red-900 dark:bg-red-950/20">
-          <p class="text-lg text-red-800 dark:text-red-300">
-            Unable to load jobs right now. Please try again later.
-          </p>
-        </div>
-      ) : jobs.length === 0 ? (
-        <div class="rounded-lg border-2 border-dashed border-neutral-200 py-16 text-center dark:border-neutral-800">
-          <p class="mb-2 text-lg font-semibold text-neutral-700 dark:text-neutral-300">
-            No jobs posted yet.
-          </p>
-          <p class="text-neutral-500 dark:text-neutral-400">
-            Know of a tech job in Syracuse?{" "}
-            <button
-              id="post-job-trigger-empty"
-              class="font-medium text-orange-600 hover:underline dark:text-orange-400"
-            >
-              Get it listed.
-            </button>
-          </p>
-        </div>
-      ) : (
-        <>
-          <div class="mb-6 flex items-center justify-between">
-            <p class="text-sm text-neutral-500 dark:text-neutral-400">
-              {jobs.length} {jobs.length === 1 ? "opening" : "openings"}
-            </p>
-            <button
-              id="post-job-trigger"
-              class="rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-orange-700"
-            >
-              + Post a Job
-            </button>
-          </div>
+  <div class="wrap">
+    <div class="flex flex-wrap items-end justify-between gap-4 pb-6 pt-10">
+      <div>
+        <h1
+          class="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl"
+        >
+          Who's hiring
+        </h1>
+        <p class="mt-3 max-w-[52ch] text-[15px]">
+          Tech jobs in Syracuse and Central New York, curated by the community.
+          Listings link to the company's own posting — no middlemen, no stale
+          roles.
+        </p>
+        <p class="mt-3 font-mono text-xs opacity-70">
+          {
+            `${jobs.length} ${jobs.length === 1 ? "open role" : "open roles"} · ${companyCount} ${companyCount === 1 ? "company" : "companies"} hiring`
+          }
+        </p>
+      </div>
+      <button id="post-job-trigger" class="btn btn-primary">+ Post a job</button
+      >
+    </div>
 
-          <div>
-            {jobs.map((job) => (
-              <JobCard job={job} />
-            ))}
-          </div>
-        </>
+    {
+      !error && jobs.length > 0 && (
+        <div class="flex flex-wrap items-baseline gap-2 pb-4 font-mono text-xs">
+          <span class="opacity-60">work:</span>
+          {workFilters.map(([work, count]) => (
+            <a
+              href={filterHref(
+                activeWork === work ? null : work,
+                activeCategory
+              )}
+              class:list={[
+                "rounded-[3px] border border-ink px-2 py-1",
+                activeWork === work ? "bg-ink text-salt" : "hover:bg-[#e9ebe5]",
+              ]}
+            >
+              {arrangementLabel(work)}
+              <span class="opacity-60">{count}</span>
+            </a>
+          ))}
+          {categoryFilters.length > 1 && (
+            <>
+              <span class="pl-2 opacity-60">category:</span>
+              {categoryFilters.map(([category, count]) => (
+                <a
+                  href={filterHref(
+                    activeWork,
+                    activeCategory === category ? null : category
+                  )}
+                  class:list={[
+                    "rounded-[3px] border border-ink px-2 py-1",
+                    activeCategory === category
+                      ? "bg-ink text-salt"
+                      : "hover:bg-[#e9ebe5]",
+                  ]}
+                >
+                  {category.toLowerCase()}
+                  <span class="opacity-60">{count}</span>
+                </a>
+              ))}
+            </>
+          )}
+          {(activeWork || activeCategory) && (
+            <a href="/jobs" class="px-2 py-1 text-brick hover:underline">
+              × clear filters
+            </a>
+          )}
+        </div>
       )
     }
-  </div>
 
-  <div class="mx-auto mt-12 max-w-2xl">
-    <p>
-      Listings curated by the{" "}
-      <a href="https://syracuse.io/codes">Code Syracuse</a> community — tech jobs
-      in the Central New York area.
-    </p>
-    <p>
-      <button
-        id="post-job-trigger-footer"
-        class="rounded-lg bg-orange-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-orange-700"
-        >+ Post a Job</button
-      >
+    <SectionHead
+      title={error
+        ? "THE BOARD"
+        : `${filtered.length} ${filtered.length === 1 ? "ROLE" : "ROLES"}`}
+    />
+
+    <div class="space-y-3 pb-2 pt-4">
+      {
+        error ? (
+          <p class="py-8 text-center text-[15px]">
+            The job board is snoozing — try again in a minute, or email a
+            posting to
+            <button
+              id="post-job-trigger-error"
+              class="font-mono text-brick hover:underline"
+            >
+              {CONTACT_EMAIL}
+            </button>
+          </p>
+        ) : filtered.length === 0 ? (
+          <p class="py-8 text-center text-[15px]">
+            {jobs.length === 0
+              ? "No open roles right now. Hiring? "
+              : "Nothing matches those filters. Hiring? "}
+            <button
+              id="post-job-trigger-empty"
+              class="font-semibold text-brick hover:underline"
+            >
+              Get your job listed.
+            </button>
+          </p>
+        ) : (
+          filtered.map((job) => <JobCard job={job} />)
+        )
+      }
+    </div>
+
+    <p class="pb-4 pt-6 font-mono text-xs opacity-60">
+      Listings curated by <a href="/codes" class="text-brick hover:underline"
+        >CODES</a
+      > — posting is free for community companies; featured slots keep the meetups
+      fed.
     </p>
   </div>
-</Page>
+</BaseLayout>
 
 <!-- Post a Job modal -->
 <dialog
   id="post-job-modal"
-  class="w-full max-w-md rounded-2xl bg-white p-8 shadow-2xl backdrop:bg-black/50 dark:bg-neutral-900"
+  class="backdrop:bg-ink/60 w-full max-w-md rounded border-2 border-ink bg-card p-7"
 >
-  <div class="mb-6 flex items-start justify-between">
-    <h2 class="text-2xl font-bold text-neutral-900 dark:text-white">
-      Post a Job
-    </h2>
+  <div class="mb-5 flex items-start justify-between">
+    <h2 class="sign text-xl">Post a job</h2>
     <button
       id="post-job-close"
       aria-label="Close"
-      class="rounded-full border-2 border-neutral-300 p-1.5 text-neutral-500 transition-colors hover:border-neutral-400 hover:text-neutral-700 dark:border-neutral-600 dark:text-neutral-400 dark:hover:border-neutral-500 dark:hover:text-neutral-200"
+      class="rounded-[3px] border-2 border-ink px-2 py-0.5 font-mono text-xs hover:bg-ink hover:text-salt"
     >
-      <svg
-        class="h-4 w-4"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M6 18L18 6M6 6l12 12"></path>
-      </svg>
+      esc
     </button>
   </div>
 
-  <p class="mb-3 text-neutral-600 dark:text-neutral-400">
-    Send us an email at:
-  </p>
+  <p class="mb-3 text-sm">Send us an email at:</p>
 
   <div
-    class="mb-4 flex items-center gap-3 rounded-lg border border-neutral-200 bg-neutral-50 px-4 py-3 dark:border-neutral-700 dark:bg-neutral-800"
+    class="mb-4 flex items-center gap-3 rounded-[3px] border border-line bg-salt px-3.5 py-2.5"
   >
-    <span
-      id="modal-email"
-      class="flex-1 font-mono text-sm text-neutral-800 dark:text-neutral-200"
-    ></span>
+    <span id="modal-email" class="flex-1 font-mono text-sm"></span>
     <button
       id="copy-email-btn"
-      class="flex items-center gap-1.5 rounded-lg bg-orange-600 px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-orange-700"
+      class="rounded-[3px] bg-ink px-2.5 py-1 font-mono text-xs font-bold text-salt hover:bg-brick"
     >
-      <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 20 20">
-        <path
-          d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"
-        ></path>
-      </svg>
-      <span id="copy-label">Copy</span>
+      <span id="copy-label">copy</span>
     </button>
   </div>
 
-  <p class="mb-6 text-sm text-neutral-500 dark:text-neutral-400">
-    Subject: <span class="font-mono text-neutral-700 dark:text-neutral-300"
-      >{SUBJECT}</span
-    >
+  <p class="mb-5 font-mono text-xs opacity-70">
+    subject: {SUBJECT}
   </p>
 
   <a
     id="open-email-link"
     href="mailto:"
-    class="flex w-full items-center justify-center gap-2 rounded-lg bg-neutral-900 py-3 text-base font-semibold text-white transition-colors hover:bg-neutral-700 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-100"
+    class="btn btn-primary block w-full text-center">Open in email app →</a
   >
-    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-      ></path>
-    </svg>
-    Open in email app
-  </a>
 </dialog>
 
 <script define:vars={{ SUBJECT }}>
@@ -174,7 +234,7 @@ try {
   [
     "post-job-trigger",
     "post-job-trigger-empty",
-    "post-job-trigger-footer",
+    "post-job-trigger-error",
   ].forEach((id) =>
     document
       .getElementById(id)
@@ -193,7 +253,27 @@ try {
     .getElementById("copy-email-btn")
     .addEventListener("click", async () => {
       await navigator.clipboard.writeText(e);
-      copyLabel.textContent = "Copied!";
-      setTimeout(() => (copyLabel.textContent = "Copy"), 2000);
+      copyLabel.textContent = "copied!";
+      setTimeout(() => (copyLabel.textContent = "copy"), 2000);
     });
+
+  // Copy-link anchors: without JS they navigate to /jobs#slug (URL bar has
+  // the link); with JS they copy it and flash confirmation.
+  document.querySelectorAll(".copy-link").forEach((link) => {
+    link.addEventListener("click", async (ev) => {
+      ev.preventDefault();
+      const url = `${location.origin}/jobs#${link.dataset.slug}`;
+      history.replaceState(null, "", `#${link.dataset.slug}`);
+      await navigator.clipboard.writeText(url);
+      const original = link.textContent;
+      link.textContent = "copied!";
+      setTimeout(() => (link.textContent = original), 2000);
+    });
+  });
+
+  // Arriving on /jobs#slug: expand that card's details.
+  if (location.hash) {
+    const card = document.getElementById(location.hash.slice(1));
+    card?.querySelector("details")?.setAttribute("open", "");
+  }
 </script>

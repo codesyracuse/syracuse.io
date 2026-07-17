@@ -1,5 +1,4 @@
 ---
-import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHead from "../components/SectionHead.astro";
 import Row from "../components/Row.astro";
@@ -12,13 +11,6 @@ import { formatWhen, formatMonth, eventWhere } from "../lib/format";
 import { GITHUB_REPO_URL } from "../lib/site";
 
 export const prerender = true;
-
-const groups = await getCollection("groups");
-const hostByGroupId = new Map(
-  groups.map((g) => [g.data.groupId, g.data.title])
-);
-const hostOf = (event: MeetupEvent) =>
-  event.groupId ? hostByGroupId.get(event.groupId) : undefined;
 
 function groupByMonth(events: MeetupEvent[]): [string, MeetupEvent[]][] {
   const months = new Map<string, MeetupEvent[]>();
@@ -70,7 +62,7 @@ const submitUrl = `${GITHUB_REPO_URL}/issues/new?title=${encodeURIComponent("Sub
                 href={event.url}
                 when={formatWhen(event.dateTime)}
                 what={event.name}
-                tag={hostOf(event)}
+                tag="meetup ↗"
                 where={eventWhere(event)}
               />
             ))}
@@ -103,7 +95,7 @@ const submitUrl = `${GITHUB_REPO_URL}/issues/new?title=${encodeURIComponent("Sub
                 href={event.url}
                 when={formatWhen(event.dateTime)}
                 what={event.name}
-                tag={hostOf(event)}
+                tag="meetup ↗"
                 where={eventWhere(event)}
               />
             ))}
