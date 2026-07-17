@@ -47,4 +47,24 @@ const venues = defineCollection({
   }),
 });
 
-export const collections = { groups, companies, venues };
+const jobs = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/jobs" }),
+  schema: z.object({
+    title: z.string(),
+    company: z.string(),
+    url: z.string().url(),
+    applyEmail: z.string().email().optional(),
+    location: z.string(),
+    arrangement: z.enum(["on-site", "hybrid", "remote"]),
+    term: z
+      .enum(["full-time", "part-time", "contract", "internship"])
+      .default("full-time"),
+    category: z.string().default("engineering"),
+    salary: z.string().optional(),
+    posted: z.coerce.date(),
+    expires: z.coerce.date(),
+    featured: z.boolean().default(false),
+  }),
+});
+
+export const collections = { groups, companies, venues, jobs };

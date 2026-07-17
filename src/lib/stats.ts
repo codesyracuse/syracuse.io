@@ -1,5 +1,4 @@
 import { getAllEvents } from "./meetup";
-import { fetchJobs } from "./jobkit";
 
 // Updated by hand occasionally; a build-time fetch may replace it if the
 // Slack API becomes available.
@@ -14,14 +13,4 @@ export function getEventsThisMonth(): number {
       d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth()
     );
   }).length;
-}
-
-/** Open role count from JobKit, or null when the API is unreachable at build time. */
-export async function getOpenJobCount(): Promise<number | null> {
-  try {
-    const jobs = await fetchJobs();
-    return jobs.length;
-  } catch {
-    return null;
-  }
 }

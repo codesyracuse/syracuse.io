@@ -8,7 +8,7 @@ import StatsStrip from "../components/StatsStrip.astro";
 import Startcard from "../components/Startcard.astro";
 import { getUpcomingEvents } from "../lib/meetup";
 import { formatWhen, eventWhere } from "../lib/format";
-import { fetchJobs, generateSlug, type JobKitJob } from "../lib/jobkit";
+import { getOpenJobs } from "../lib/jobs";
 import { getEventsThisMonth, SLACK_MEMBER_COUNT } from "../lib/stats";
 import { SLACK_INVITE_URL, ADD_COMPANY_URL } from "../lib/site";
 
@@ -16,22 +16,8 @@ export const prerender = true;
 
 const nextEvents = getUpcomingEvents().slice(0, 3);
 
-// Fetched at build time; the section degrades to a pointer at /jobs if the
-// API is unreachable so a bad fetch never breaks the deploy.
-let recentJobs: JobKitJob[] | null = null;
-let openJobCount: number | null = null;
-try {
-  const jobs = await fetchJobs();
-  openJobCount = jobs.length;
-  recentJobs = [...jobs]
-    .sort(
-      (a, b) =>
-        new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-    )
-    .slice(0, 3);
-} catch {
-  recentJobs = null;
-}
+const openJobs = await getOpenJobs();
+const recentJobs = openJobs.slice(0, 3);
 
 const companies = await getCollection("companies");
 const venues = await getCollection("venues");
@@ -51,7 +37,7 @@ const stats = [
   { value: getEventsThisMonth(), label: "events this month" },
   { value: SLACK_MEMBER_COUNT, label: "members on Slack" },
   { value: companies.length, label: "companies listed" },
-  { value: openJobCount ?? "—", label: "open roles" },
+  { value: openJobs.length, label: "open roles" },
 ];
 ---
 
@@ -113,19 +99,21 @@ const stats = [
       <SectionHead
         title="WHO'S HIRING"
         href="/jobs"
-        linkText={openJobCount ? `all ${openJobCount} roles →` : "the board →"}
+        linkText={openJobs.length > 0
+          ? `all ${openJobs.length} roles →`
+          : "the board →"}
       />
       {
-        recentJobs && recentJobs.length > 0 ? (
+        recentJobs.length > 0 ? (
           recentJobs.map((job) => (
             <Row
-              href={`/jobs#${generateSlug(job)}`}
-              what={job.title}
-              where={`${job.company} · ${job.arrangement}`}
+              href={`/jobs#${job.id}`}
+              what={job.data.title}
+              where={`${job.data.company} · ${job.data.arrangement}`}
             />
           ))
         ) : (
-          <Row href="/jobs" what="See who's hiring on the job board" />
+          <Row href="/jobs" what="No open roles right now — post one?" />
         )
       }
     </section>

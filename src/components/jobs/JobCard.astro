@@ -1,66 +1,54 @@
 ---
-import type { JobKitJob } from "../../lib/jobkit";
-import {
-  generateSlug,
-  formatRelativeDate,
-  formatSalary,
-} from "../../lib/jobkit";
+import { render } from "astro:content";
+import type { Job } from "../../lib/jobs";
+import { formatRelativeDate } from "../../lib/format";
 
 interface Props {
-  job: JobKitJob;
+  job: Job;
 }
 
 const { job } = Astro.props;
-const slug = generateSlug(job);
-const salary = formatSalary(job);
-const relativeDate = formatRelativeDate(job.created_at);
-const isFeatured = job.plan.pin || job.plan.highlight;
+const {
+  title,
+  company,
+  url,
+  applyEmail,
+  location,
+  arrangement,
+  term,
+  category,
+  salary,
+  posted,
+  featured,
+} = job.data;
 
-const arrangementLabel =
-  job.arrangement === "onsite" ? "on-site" : job.arrangement;
+const { Content } = await render(job);
 
-const applyHref =
-  job.application_type === "email" && job.application_email
-    ? `mailto:${job.application_email}?subject=${encodeURIComponent(`Applying: ${job.title}`)}`
-    : job.url;
-
-// JobKit descriptions are markdown; strip to readable plaintext for the
-// expandable summary — the full posting lives at job.url.
-const summary =
-  job.description
-    .replace(/^#{1,6}\s+.*/gm, "")
-    .replace(/\*\*(.+?)\*\*/gs, "$1")
-    .replace(/\*(.+?)\*/gs, "$1")
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
-    .replace(/`([^`]+)`/g, "$1")
-    .replace(/^[-*+]\s+/gm, "")
-    .replace(/\n+/g, " ")
-    .replace(/\s+/g, " ")
-    .trim()
-    .slice(0, 600)
-    .replace(/\s+\S*$/, "") + "…";
+const applyHref = applyEmail
+  ? `mailto:${applyEmail}?subject=${encodeURIComponent(`Applying: ${title}`)}`
+  : url;
 ---
 
 <article
-  id={slug}
+  id={job.id}
   class:list={[
     "job-card scroll-mt-4 rounded border-2 bg-card p-4",
-    isFeatured ? "border-brick" : "border-ink",
+    featured ? "border-brick" : "border-ink",
   ]}
 >
   <div class="flex items-start justify-between gap-3">
     <div class="min-w-0">
       <div class="flex flex-wrap items-baseline gap-2">
-        <h3 class="text-[17px] font-extrabold leading-snug">{job.title}</h3>
+        <h3 class="text-[17px] font-extrabold leading-snug">{title}</h3>
         {
-          isFeatured && (
+          featured && (
             <span class="rounded-sm bg-brick px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-salt">
               featured
             </span>
           )
         }
       </div>
-      <p class="mt-0.5 text-[15px] font-[650]">{job.company}</p>
+      <p class="mt-0.5 text-[15px] font-[650]">{company}</p>
     </div>
     <a href={applyHref} class="btn btn-primary shrink-0 !px-3.5 !py-2 text-xs"
       >Apply →</a
@@ -71,13 +59,13 @@ const summary =
     class="mt-2.5 flex flex-wrap items-baseline gap-1.5 font-mono text-[11px]"
   >
     <span class="rounded-[3px] border border-line bg-salt px-2 py-0.5">
-      {job.location} · {arrangementLabel}
+      {location} · {arrangement}
     </span>
     <span class="rounded-[3px] border border-line bg-salt px-2 py-0.5">
-      {job.term.name.toLowerCase()}
+      {term}
     </span>
     <span class="rounded-[3px] border border-line bg-salt px-2 py-0.5">
-      {job.category.name.toLowerCase()}
+      {category}
     </span>
     {
       salary && (
@@ -94,22 +82,22 @@ const summary =
     >
       details <span class="chevron">⌄</span>
     </summary>
-    <p class="mt-3 max-w-[72ch] text-sm leading-relaxed">{summary}</p>
+    <div class="prose prose-sm mt-3 max-w-[72ch] prose-a:text-brick">
+      <Content />
+    </div>
     <p class="mt-3 font-mono text-xs">
-      <a href={job.url} class="text-brick hover:underline"
-        >view full posting ↗</a
-      >
+      <a href={url} class="text-brick hover:underline">view full posting ↗</a>
     </p>
   </details>
 
   <div
     class="mt-3 flex items-baseline justify-between border-t border-dotted border-line pt-2 font-mono text-[11px] opacity-70"
   >
-    <time datetime={job.created_at}>{relativeDate}</time>
+    <time datetime={posted.toISOString()}>{formatRelativeDate(posted)}</time>
     <a
-      href={`/jobs#${slug}`}
+      href={`/jobs#${job.id}`}
       class="copy-link hover:text-brick"
-      data-slug={slug}
+      data-slug={job.id}
       title="Link to this job"># copy link</a
     >
   </div>
