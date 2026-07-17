@@ -123,6 +123,50 @@ async function scrapeMeetupEvents() {
     });
   });
 
+  // The list cards rarely carry venue info; each event's detail page
+  // publishes it as JSON-LD for SEO, which is far sturdier than DOM selectors.
+  for (const event of events) {
+    if (!event.url || event.venue) continue;
+    try {
+      await page.goto(event.url, {
+        waitUntil: "domcontentloaded",
+        timeout: 30000,
+      });
+      const venue = await page.evaluate(() => {
+        for (const script of document.querySelectorAll(
+          'script[type="application/ld+json"]'
+        )) {
+          try {
+            const data = JSON.parse(script.textContent);
+            const eventData = (Array.isArray(data) ? data : [data]).find(
+              (d) => d["@type"] === "Event" && d.location
+            );
+            const loc = eventData?.location;
+            if (!loc?.name) continue;
+            const addr = loc.address || {};
+            return {
+              name: loc.name,
+              address: addr.streetAddress || "",
+              city: addr.addressLocality || "Syracuse",
+              state: addr.addressRegion || "NY",
+              postalCode: addr.postalCode || "",
+              venueType: "physical",
+            };
+          } catch {
+            continue;
+          }
+        }
+        return null;
+      });
+      if (venue) {
+        event.venue = venue;
+        console.log(`  venue for "${event.name}": ${venue.name}`);
+      }
+    } catch {
+      console.log(`  could not fetch venue for ${event.url}`);
+    }
+  }
+
   await browser.close();
   return events;
 }
@@ -155,9 +199,14 @@ function mergeEvents(existing, scraped) {
   // Index existing events by URL for deduplication
   const byUrl = new Map(existing.map((e) => [e.url, e]));
 
-  // Upsert scraped events (new ones get added, existing ones get refreshed)
+  // Upsert scraped events (new ones get added, existing ones get refreshed).
+  // A rescrape that failed to resolve the venue must not erase one we have.
   for (const event of scraped) {
     if (event.url) {
+      const previous = byUrl.get(event.url);
+      if (previous?.venue && !event.venue) {
+        event.venue = previous.venue;
+      }
       byUrl.set(event.url, event);
     }
   }
