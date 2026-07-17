@@ -26,6 +26,8 @@ const __dirname = dirname(__filename);
 const MEETUP_GROUP_URL =
   "https://www.meetup.com/syracuse-software-development-meetup/events/";
 const OUTPUT_PATH = join(__dirname, "..", "src", "data", "events.json");
+const EVENT_CARD_SELECTOR =
+  '[data-testid="group-events-card"], [id^="event-card"]';
 
 async function scrapeMeetupEvents() {
   const browser = await chromium.launch();
@@ -40,7 +42,7 @@ async function scrapeMeetupEvents() {
   // Wait for event cards to render (Meetup is a React SPA)
   // Use a generous timeout — if no events exist the selector simply won't appear
   try {
-    await page.waitForSelector("[id^='event-card']", { timeout: 15000 });
+    await page.waitForSelector(EVENT_CARD_SELECTOR, { timeout: 15000 });
   } catch {
     console.log(
       "No event cards found — the group may have no upcoming events."
@@ -51,7 +53,9 @@ async function scrapeMeetupEvents() {
 
   // Extract event data from the rendered page
   const events = await page.evaluate(() => {
-    const cards = document.querySelectorAll("[id^='event-card']");
+    const cards = document.querySelectorAll(
+      '[data-testid="group-events-card"], [id^="event-card"]'
+    );
     return Array.from(cards).map((card) => {
       const linkEl = card.querySelector("a[href*='/events/']");
       const url = linkEl?.href || "";
@@ -65,7 +69,10 @@ async function scrapeMeetupEvents() {
 
       // Date/time — look for <time> element
       const timeEl = card.querySelector("time");
-      const dateTime = timeEl?.getAttribute("datetime") || "";
+      const rawDateTime = timeEl?.getAttribute("datetime") || "";
+      // Meetup appends an IANA zone in brackets; JavaScript Date cannot parse
+      // that suffix, while the preceding numeric offset preserves the instant.
+      const dateTime = rawDateTime.replace(/\[[^\]]+\]$/, "");
 
       // Description — paragraph text in the card
       const descEl =
