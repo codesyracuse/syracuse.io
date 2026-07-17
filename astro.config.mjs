@@ -12,5 +12,6 @@ export default defineConfig({
     "/community": { status: 301, destination: "/start" },
     "/slack": { status: 301, destination: "/start" },
     "/resources": { status: 301, destination: "/start" },
+    "/groups": { status: 301, destination: "/events" },
   },
 });

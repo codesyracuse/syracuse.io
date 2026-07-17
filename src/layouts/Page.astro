@@ -3,7 +3,6 @@ const { content, wide } = Astro.props;
 import BaseLayout from "./BaseLayout.astro";
 import Title from "../components/Title.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
-import { clsx } from "clsx";
 ---
 
 <BaseLayout content={content}>
@@ -22,10 +21,10 @@ import { clsx } from "clsx";
     }
 
     <main
-      class={clsx(
+      class:list={[
         "prose prose-lg mt-10 prose-a:text-brick",
-        wide && "max-w-none"
-      )}
+        wide && "max-w-none",
+      ]}
     >
       <slot />
     </main>

@@ -6,47 +6,13 @@ import Row from "../components/Row.astro";
 import Chip from "../components/Chip.astro";
 import StatsStrip from "../components/StatsStrip.astro";
 import Startcard from "../components/Startcard.astro";
-import { getUpcomingEvents, type MeetupEvent } from "../lib/meetup";
+import { getUpcomingEvents } from "../lib/meetup";
+import { formatWhen, eventWhere } from "../lib/format";
 import { fetchJobs, generateSlug, type JobKitJob } from "../lib/jobkit";
 import { getEventsThisMonth, SLACK_MEMBER_COUNT } from "../lib/stats";
 import { SLACK_INVITE_URL, ADD_COMPANY_URL } from "../lib/site";
 
 export const prerender = true;
-
-const TZ = "America/New_York";
-
-function formatWhen(iso: string): string {
-  const d = new Date(iso);
-  const weekday = d
-    .toLocaleDateString("en-US", { weekday: "short", timeZone: TZ })
-    .toUpperCase();
-  const [month, day] = d
-    .toLocaleDateString("en-US", {
-      month: "2-digit",
-      day: "2-digit",
-      timeZone: TZ,
-    })
-    .split("/");
-  return `${weekday} ${month}·${day}`;
-}
-
-function formatTime(iso: string): string {
-  const d = new Date(iso);
-  return d
-    .toLocaleTimeString("en-US", {
-      hour: "numeric",
-      minute: "2-digit",
-      timeZone: TZ,
-    })
-    .replace(":00", "")
-    .replace(" ", "")
-    .toLowerCase();
-}
-
-function eventWhere(event: MeetupEvent): string {
-  const venue = event.venue?.name ?? "location TBA";
-  return `${venue} · ${formatTime(event.dateTime)}`;
-}
 
 const nextEvents = getUpcomingEvents().slice(0, 3);
 
@@ -123,11 +89,7 @@ const stats = [
 
   <main class="wrap">
     <section class="pb-1.5 pt-7">
-      <SectionHead
-        title="NEXT UP"
-        href="/groups"
-        linkText="all groups + events →"
-      />
+      <SectionHead title="NEXT UP" href="/events" linkText="full calendar →" />
       {
         nextEvents.length > 0 ? (
           nextEvents.map((event) => (
@@ -140,8 +102,8 @@ const stats = [
           ))
         ) : (
           <Row
-            href="/groups"
-            what="Nothing on the calendar yet — check the groups"
+            href="/events"
+            what="Nothing on the calendar yet — see past events"
           />
         )
       }
