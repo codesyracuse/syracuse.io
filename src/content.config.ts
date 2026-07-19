@@ -18,16 +18,22 @@ const groups = defineCollection({
 
 const companies = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/companies" }),
-  schema: z.object({
-    name: z.string(),
-    tagline: z.string(),
-    url: z.string().url(),
-    tags: z.array(z.string()),
-    size: z.enum(["1-10", "11-50", "51-200", "200+"]),
-    added: z.coerce.date(),
-    sponsor: z.boolean().default(false),
-    blurb: z.string().optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      tagline: z.string(),
+      url: z.string().url(),
+      tags: z.array(z.string()),
+      size: z.enum(["1-10", "11-50", "51-200", "200+"]),
+      added: z.coerce.date(),
+      sponsor: z.boolean().default(false),
+      blurb: z.string().optional(),
+      logo: image().optional(),
+      founded: z.number().int().optional(),
+      location: z.string().optional(),
+      hiring: z.boolean().default(false),
+      careersUrl: z.string().url().optional(),
+    }),
 });
 
 const venues = defineCollection({

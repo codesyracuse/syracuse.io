@@ -1,11 +1,13 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Chip from "../../components/Chip.astro";
+import CompanyCard from "../../components/CompanyCard.astro";
 import SectionHead from "../../components/SectionHead.astro";
-import { ADD_COMPANY_URL } from "../../lib/site";
+import { getOpenJobs } from "../../lib/jobs";
+import { ADD_COMPANY_URL, CONTACT_EMAIL } from "../../lib/site";
 
 const all = await getCollection("companies");
+const openJobs = await getOpenJobs();
 
 const activeTag = Astro.url.searchParams.get("tag");
 const activeSize = Astro.url.searchParams.get("size");
@@ -23,6 +25,29 @@ const filtered = all
     (a, b) =>
       Number(b.data.sponsor) - Number(a.data.sponsor) ||
       b.data.added.getTime() - a.data.added.getTime()
+  );
+
+// A company is "hiring" if one of our job listings matches its name, or it
+// says so itself (hiring: true, ideally with a careersUrl).
+function hiringHref(company: (typeof all)[number]): string | null {
+  const job = openJobs.find(
+    (j) => j.data.company.toLowerCase() === company.data.name.toLowerCase()
+  );
+  if (job) return `/jobs#${job.id}`;
+  if (company.data.hiring) return company.data.careersUrl ?? "/jobs";
+  return null;
+}
+
+const hiringCount = filtered.filter((c) => hiringHref(c)).length;
+const sponsorCount = filtered.filter((c) => c.data.sponsor).length;
+
+const headBits = [
+  `${filtered.length} ${filtered.length === 1 ? "COMPANY" : "COMPANIES"}`,
+];
+if (hiringCount) headBits.push(`${hiringCount} HIRING`);
+if (sponsorCount)
+  headBits.push(
+    `${sponsorCount} ${sponsorCount === 1 ? "SPONSOR" : "SPONSORS"}`
   );
 
 function filterHref(tag: string | null, size: string | null): string {
@@ -100,50 +125,30 @@ Astro.response.headers.set("Cache-Control", "public, max-age=3600");
       }
     </div>
 
-    <SectionHead
-      title={`${filtered.length} ${filtered.length === 1 ? "COMPANY" : "COMPANIES"}`}
-    />
+    <SectionHead title={headBits.join(" · ")} />
 
     <div class="flex flex-wrap gap-2 pb-2 pt-4">
       {
-        filtered.map((company) =>
-          company.data.sponsor ? (
-            <a
-              href={company.data.url}
-              class="card card-link flex w-full flex-col gap-1.5 p-4 sm:w-[calc(50%-4px)]"
-            >
-              <span class="flex items-baseline gap-2">
-                <span class="text-[15px] font-extrabold">
-                  {company.data.name}
-                </span>
-                <span class="rounded-sm bg-brick px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-salt">
-                  sponsor
-                </span>
-              </span>
-              <span class="font-mono text-[11px] opacity-70">
-                {company.data.tagline} · {company.data.size}
-              </span>
-              {company.data.blurb && (
-                <span class="text-[13px] leading-snug">
-                  {company.data.blurb}
-                </span>
-              )}
-            </a>
-          ) : (
-            <Chip
-              href={company.data.url}
-              name={company.data.name}
-              meta={company.data.tagline}
-            />
-          )
-        )
+        filtered.map((company) => (
+          <CompanyCard company={company} hiringHref={hiringHref(company)} />
+        ))
       }
-      <Chip href={ADD_COMPANY_URL} name="+ add your company" add />
+      <a
+        href={ADD_COMPANY_URL}
+        class="flex w-full items-center justify-center rounded border-2 border-dashed border-ink p-3.5 font-mono text-xs text-brick hover:bg-mist sm:w-[calc(50%-4px)]"
+      >
+        + add your company
+      </a>
     </div>
 
     <p class="pb-4 pt-6 font-mono text-xs opacity-60">
-      Adding your company is a five-minute pull request — one markdown file.
-      Sponsors get an enhanced card and keep the meetups fed.
+      Adding your company is a five-minute pull request — one markdown file — or
+      just email
+      <a
+        href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Add my company to syracuse.io")}`}
+        class="text-brick hover:underline">{CONTACT_EMAIL}</a
+      > and we'll do it for you. Sponsors get an enhanced card and keep the meetups
+      fed.
     </p>
   </div>
 </BaseLayout>

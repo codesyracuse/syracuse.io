@@ -1,13 +1,16 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Companies directory", () => {
-  test("should list the seeded companies", async ({ page }) => {
+  test("should list the seeded companies as cards", async ({ page }) => {
     await page.goto("/companies");
 
     await expect(page.locator("h1")).toContainText("Who's building");
-    // 16 seeds + the "+ add your company" chip
-    const chips = page.locator('a[class*="border-2"]');
-    expect(await chips.count()).toBeGreaterThanOrEqual(15);
+    const cards = page.locator("div.card");
+    expect(await cards.count()).toBeGreaterThanOrEqual(15);
+    // Every card carries a monogram tile (or logo) and a meta line.
+    await expect(
+      page.locator("div.card").first().locator("span.font-mono").first()
+    ).toBeVisible();
   });
 
   test("should filter by tag via query params (no JS required)", async ({
