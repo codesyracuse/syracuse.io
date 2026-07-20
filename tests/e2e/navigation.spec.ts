@@ -11,7 +11,7 @@ test.describe("Navigation", () => {
   test("should have the masthead links", async ({ page }) => {
     await page.goto("/");
 
-    const nav = page.locator("header nav");
+    const nav = page.getByRole("navigation", { name: "primary" });
     for (const label of [
       "start here",
       "events",
@@ -28,7 +28,7 @@ test.describe("Navigation", () => {
     await page.goto("/");
 
     await page
-      .locator("header nav")
+      .getByRole("navigation", { name: "primary" })
       .getByRole("link", { name: "events" })
       .click();
     await expect(page).toHaveURL(/\/events/);
@@ -80,9 +80,15 @@ test.describe("Responsive Design", () => {
     const mainContent = page.locator("main, article, .container").first();
     await expect(mainContent).toBeVisible();
 
-    // Masthead wraps instead of hiding links behind a menu
-    const nav = page.locator("header nav");
-    await expect(nav.getByRole("link", { name: "events" })).toBeVisible();
+    // Links collapse behind a no-JS <details> menu on small screens
+    await expect(
+      page.getByRole("navigation", { name: "primary" })
+    ).toBeHidden();
+
+    await page.locator("header summary").click();
+    const menu = page.getByRole("navigation", { name: "menu" });
+    await menu.getByRole("link", { name: "events" }).click();
+    await expect(page).toHaveURL(/\/events/);
   });
 
   test("should be tablet responsive", async ({ page }) => {

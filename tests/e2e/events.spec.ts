@@ -8,13 +8,23 @@ test.describe("Events calendar", () => {
     await expect(
       page.getByRole("heading", { name: /PAST EVENTS/ })
     ).toBeVisible();
-    expect(await page.locator("details").count()).toBeGreaterThan(0);
+    // Month groups only — the masthead's mobile menu is a <details> too,
+    // so filter to summaries that carry a year.
+    expect(
+      await page
+        .locator("details")
+        .filter({ hasText: /20\d\d/ })
+        .count()
+    ).toBeGreaterThan(0);
   });
 
   test("past months expand to show event rows with hosts", async ({ page }) => {
     await page.goto("/events");
 
-    const firstMonth = page.locator("details").first();
+    const firstMonth = page
+      .locator("details")
+      .filter({ hasText: /20\d\d/ })
+      .first();
     await firstMonth.locator("summary").click();
     const row = firstMonth.locator("a").first();
     await expect(row).toBeVisible();
