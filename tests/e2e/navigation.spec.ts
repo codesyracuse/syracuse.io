@@ -4,68 +4,99 @@ test.describe("Navigation", () => {
   test("should display navigation on homepage", async ({ page }) => {
     await page.goto("/");
 
-    // Check that navigation exists
     const nav = page.locator("nav").first();
     await expect(nav).toBeVisible();
   });
 
-  test("should have navigation links to main sections", async ({ page }) => {
+  test("should have the masthead links", async ({ page }) => {
     await page.goto("/");
 
-    // Look for common navigation patterns
-    const navLinks = page.locator("nav a, header a");
-
-    // Should have multiple navigation links
-    const count = await navLinks.count();
-    expect(count).toBeGreaterThan(0);
+    const nav = page.getByRole("navigation", { name: "primary" });
+    for (const label of [
+      "start here",
+      "events",
+      "where to work",
+      "companies",
+      "jobs",
+      "codes",
+    ]) {
+      await expect(nav.getByRole("link", { name: label })).toBeVisible();
+    }
   });
 
-  test("should navigate to groups page from navigation", async ({ page }) => {
+  test("should navigate to events page from navigation", async ({ page }) => {
     await page.goto("/");
 
-    // Find and click a link to groups
-    await page.click('a[href*="groups"]');
-
-    // Should navigate to groups page
-    await expect(page).toHaveURL(/\/groups/);
+    await page
+      .getByRole("navigation", { name: "primary" })
+      .getByRole("link", { name: "events" })
+      .click();
+    await expect(page).toHaveURL(/\/events/);
   });
 });
 
 test.describe("Footer", () => {
   test("should display footer on all pages", async ({ page }) => {
-    const pages = ["/", "/groups", "/community"];
+    const pages = ["/", "/events", "/start"];
 
     for (const pagePath of pages) {
       await page.goto(pagePath);
 
-      // Check that footer exists
       const footer = page.locator("footer").first();
       await expect(footer).toBeVisible();
     }
   });
 });
 
+test.describe("Statusbar", () => {
+  test("should pin the statusbar without covering content", async ({
+    page,
+  }) => {
+    await page.goto("/");
+
+    const statusbar = page.locator(".statusbar");
+    await expect(statusbar).toBeVisible();
+    await expect(statusbar).toContainText("on slack");
+
+    const position = await statusbar.evaluate(
+      (el) => getComputedStyle(el).position
+    );
+    expect(position).toBe("fixed");
+
+    const bodyPadding = await page.evaluate(() =>
+      parseInt(getComputedStyle(document.body).paddingBottom, 10)
+    );
+    expect(bodyPadding).toBeGreaterThanOrEqual(40);
+  });
+});
+
 test.describe("Responsive Design", () => {
   test("should be mobile responsive", async ({ page }) => {
-    // Set mobile viewport
     await page.setViewportSize({ width: 375, height: 667 });
     await page.goto("/");
 
-    // Page should still load and display content
     await expect(page.locator("body")).toBeVisible();
 
-    // Main content should be visible
     const mainContent = page.locator("main, article, .container").first();
     await expect(mainContent).toBeVisible();
+
+    // Links collapse behind a no-JS <details> menu on small screens
+    await expect(
+      page.getByRole("navigation", { name: "primary" })
+    ).toBeHidden();
+
+    await page.locator("header summary").click();
+    const menu = page.getByRole("navigation", { name: "menu" });
+    await menu.getByRole("link", { name: "events" }).click();
+    await expect(page).toHaveURL(/\/events/);
   });
 
   test("should be tablet responsive", async ({ page }) => {
-    // Set tablet viewport
     await page.setViewportSize({ width: 768, height: 1024 });
-    await page.goto("/groups");
+    await page.goto("/events");
 
-    // Group cards should be visible
-    const groupCards = page.locator("article");
-    await expect(groupCards.first()).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: /PAST EVENTS/ })
+    ).toBeVisible();
   });
 });

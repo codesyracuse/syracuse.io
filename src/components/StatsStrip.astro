@@ -1,0 +1,45 @@
+---
+interface Props {
+  stats: { value: string | number; label: string }[];
+}
+
+const { stats } = Astro.props;
+---
+
+<div class="bg-steel text-salt">
+  <div class="wrap grid grid-cols-2" style={`--stat-cols: ${stats.length}`}>
+    {
+      stats.map((stat) => (
+        <div class="stat px-2 py-3">
+          <b class="block font-mono text-[clamp(16px,3.4vw,24px)]">
+            {stat.value}
+          </b>
+          <span class="font-mono text-[10px] uppercase tracking-[0.12em] opacity-80">
+            {stat.label}
+          </span>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .stat {
+    border-top: 1px solid rgba(241, 242, 238, 0.25);
+  }
+  .stat:nth-child(-n + 2) {
+    border-top: none;
+  }
+  @media (min-width: 560px) {
+    .grid {
+      grid-template-columns: repeat(var(--stat-cols), 1fr);
+    }
+    .stat {
+      border-top: none;
+      border-left: 1px solid rgba(241, 242, 238, 0.25);
+    }
+    .stat:first-child {
+      border-left: none;
+    }
+  }
+</style>

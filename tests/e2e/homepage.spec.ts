@@ -3,51 +3,57 @@ import { test, expect } from "@playwright/test";
 test.describe("Homepage", () => {
   test("should load successfully", async ({ page }) => {
     await page.goto("/");
-    await expect(page).toHaveTitle(/Syracuse.io/);
+    await expect(page).toHaveTitle(/Syracuse.io/i);
   });
 
-  test("should display main heading and subtitle", async ({ page }) => {
+  test("should display the hero", async ({ page }) => {
     await page.goto("/");
 
-    // Check for main heading
-    const heading = page.getByRole("heading", { name: /syracuse\.io/i });
-    await expect(heading).toBeVisible();
-
-    // Check for subtitle
     await expect(
-      page.getByText(/your local developer community/i)
+      page.getByRole("heading", { name: /Syracuse builds software/i })
     ).toBeVisible();
+    await expect(page.getByText(/Salt City · Central New York/i)).toBeVisible();
   });
 
-  test("should have working navigation links", async ({ page }) => {
+  test("should have primary CTAs", async ({ page }) => {
     await page.goto("/");
 
-    // Check for key navigation links
-    await expect(
-      page.getByRole("link", { name: /local meet ups/i })
-    ).toBeVisible();
-    await expect(
-      page.getByRole("link", { name: /local data resources/i })
-    ).toBeVisible();
-    await expect(
-      page.getByRole("link", { name: /community/i }).first()
-    ).toBeVisible();
+    const startCta = page.getByRole("link", { name: /Start here/i }).first();
+    await expect(startCta).toBeVisible();
+    await expect(startCta).toHaveAttribute("href", "/start");
+
+    const slackCta = page.getByRole("link", { name: /join the Slack/i });
+    await expect(slackCta).toBeVisible();
+    await expect(slackCta).toHaveAttribute("href", /slack\.com/);
   });
 
-  test("should display welcome message", async ({ page }) => {
+  test("should show the stats strip", async ({ page }) => {
     await page.goto("/");
 
-    await expect(page.getByText(/Welcome to/i)).toBeVisible();
-    await expect(
-      page.getByText(/This is your one stop for information/i)
-    ).toBeVisible();
+    await expect(page.getByText(/events this month/i)).toBeVisible();
+    await expect(page.getByText(/members on Slack/i)).toBeVisible();
+    await expect(page.getByText(/open roles/i)).toBeVisible();
   });
 
-  test("should have Slack invite link", async ({ page }) => {
+  test("should show live data sections", async ({ page }) => {
     await page.goto("/");
 
-    const slackLink = page.getByRole("link", { name: /local slack group/i });
-    await expect(slackLink).toBeVisible();
-    await expect(slackLink).toHaveAttribute("href", /slack\.com/);
+    for (const section of [
+      "NEXT UP",
+      "WHO'S HIRING",
+      "WHO'S BUILDING",
+      "WHERE TO WORK",
+    ]) {
+      await expect(
+        page.getByRole("heading", { name: new RegExp(section) })
+      ).toBeVisible();
+    }
+  });
+
+  test("should show the startcard", async ({ page }) => {
+    await page.goto("/");
+
+    await expect(page.getByText(/A human runs this/i)).toBeVisible();
+    await expect(page.getByText("mike@syracuse.io").first()).toBeVisible();
   });
 });

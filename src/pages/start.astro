@@ -1,0 +1,145 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHead from "../components/SectionHead.astro";
+import Startcard from "../components/Startcard.astro";
+import { SLACK_INVITE_URL } from "../lib/site";
+
+export const prerender = true;
+
+const pointers = [
+  {
+    href: "/work",
+    title: "Where to work",
+    blurb: "Coworking spaces, laptop-friendly cafés, and free bookable rooms.",
+  },
+  {
+    href: "/companies",
+    title: "Who's building",
+    blurb: "The companies writing software in Central New York.",
+  },
+  {
+    href: "/jobs",
+    title: "Who's hiring",
+    blurb: "Local tech jobs, curated by the community.",
+  },
+];
+---
+
+<BaseLayout
+  content={{
+    title: "Start here — Syracuse.io",
+    description:
+      "New to Syracuse or new to tech? Here's how to find your people in the Salt City.",
+  }}
+  editPath="src/pages/start.astro"
+>
+  <div class="wrap max-w-[720px]">
+    <div class="pt-10">
+      <p class="eyebrow">New here? We were all new here once.</p>
+      <h1
+        class="mt-2 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl"
+      >
+        Find your people.
+      </h1>
+      <p class="mt-3 max-w-[52ch] text-[15px]">
+        Whether you just moved here, just graduated, just switched careers, or
+        just work remotely and miss other humans — this page is the whole
+        onboarding. It takes about two minutes.
+      </p>
+    </div>
+
+    <section class="pt-10">
+      <SectionHead title="WHAT THIS IS" />
+      <div class="space-y-3 pt-4 text-[15px]">
+        <p>
+          A free, volunteer-run community of people who build software in and
+          around Syracuse, NY. All skill levels — students, career-switchers,
+          hobbyists, and people who've been shipping code since before the dome
+          had air conditioning.
+        </p>
+        <p>
+          What it isn't: a recruiting funnel, a sales channel, or a club you
+          have to qualify for. Nobody checks credentials. The only rule is our
+          <a href="/code-of-conduct" class="text-brick hover:underline"
+            >code of conduct</a
+          > — short version: be good to each other.
+        </p>
+      </div>
+    </section>
+
+    <section class="pt-10">
+      <SectionHead title="JOIN THE SLACK" />
+      <div class="space-y-3 pt-4 text-[15px]">
+        <p>
+          Most of the day-to-day conversation happens in a free Slack workspace.
+          Jobs get posted, meetups get planned, and questions get answered —
+          usually fast.
+        </p>
+        <p>
+          <a href={SLACK_INVITE_URL} class="btn btn-primary"
+            >Get your Slack invite →</a
+          >
+        </p>
+        <p>
+          Once you're in, there's one tradition: post your first message in
+          <span class="font-mono">#intros</span> — who you are, where you're from,
+          and what you're working on (or want to be working on). House rule: a proper
+          hello contains a minimum of five emojis. Yes, five. 🎉🧀🍕❄️🚀
+        </p>
+      </div>
+    </section>
+
+    <section class="pt-10">
+      <SectionHead title="YOUR FIRST MEETUP" />
+      <div class="space-y-3 pt-4 text-[15px]">
+        <p>
+          Showing up to a room of strangers is the hard part; the rest is easy.
+          Meetups are free, nobody takes attendance, and nobody will quiz you.
+          Come for the talk, stay for the pizza, leave whenever you want.
+        </p>
+        <p>
+          The most beginner-friendly place to start is <strong>Open Hack</strong
+          >
+          — an unstructured evening where people bring whatever they're working on
+          (or nothing at all) and hang out. No laptop required unless an event says
+          otherwise.
+        </p>
+        <p>
+          <a href="/events" class="font-mono text-sm text-brick hover:underline"
+            >see the full calendar →</a
+          >
+        </p>
+      </div>
+    </section>
+
+    <section class="pt-10">
+      <SectionHead title="WHO RUNS THIS" />
+      <div class="pt-2">
+        <Startcard />
+      </div>
+    </section>
+
+    <section class="pb-4 pt-6">
+      <SectionHead title="POINTERS" />
+      <div class="grid gap-3 pt-4 sm:grid-cols-3">
+        {
+          pointers.map((p) => (
+            <a href={p.href} class="card card-link flex flex-col gap-1.5 p-3.5">
+              <span class="text-[15px] font-extrabold">{p.title}</span>
+              <span class="text-[13px] leading-snug">{p.blurb}</span>
+            </a>
+          ))
+        }
+      </div>
+      <p class="pt-6 text-sm opacity-75">
+        More local goodness:
+        <a href="https://careersincode.org/" class="text-brick hover:underline"
+          >Careers in Code</a
+        > (a bootcamp for women and minorities in CNY) and
+        <a href="http://data.syrgov.net" class="text-brick hover:underline"
+          >Datacuse</a
+        > (the city's open data portal).
+      </p>
+    </section>
+  </div>
+</BaseLayout>

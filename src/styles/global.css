@@ -1,3 +1,60 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --salt: #f1f2ee;
+  --ink: #1b211f;
+  --brick: #a03c2a;
+  --steel: #33566b;
+  --plow: #edb230;
+  --card: #fbfbf9;
+  --line: #d4d6d0;
+  --mist: #e9ebe5; /* hover fill for rows and filter chips */
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto max-w-[920px] px-4;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[11px] uppercase tracking-[0.14em] opacity-75;
+  }
+
+  .sign {
+    @apply font-extrabold uppercase tracking-[0.02em];
+  }
+
+  .btn {
+    @apply inline-block rounded-[3px] px-[18px] py-[11px] font-mono text-[13px];
+  }
+
+  .btn-primary {
+    @apply bg-brick font-bold text-salt;
+  }
+
+  .btn-primary:hover {
+    background: #b8452f;
+  }
+
+  .btn-ghost {
+    border: 1px solid #5a625d;
+    color: #c9cdc8;
+  }
+
+  .btn-ghost:hover {
+    @apply border-plow text-plow;
+  }
+
+  /* Interaction language:
+     rows fill (--mist), chips invert to ink, cards that are links lift
+     with the steel backshadow, static cards don't move. */
+  .card {
+    @apply rounded border-2 border-ink bg-card;
+  }
+
+  .card-link:hover {
+    box-shadow: 4px 4px 0 var(--steel);
+  }
+}

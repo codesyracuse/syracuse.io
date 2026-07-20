@@ -1,0 +1,20 @@
+---
+interface Props {
+  href: string;
+  name: string;
+  meta?: string;
+  add?: boolean;
+}
+
+const { href, name, meta, add = false } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={[
+    "rounded-[3px] border-2 border-ink bg-card px-3 py-1.5 font-mono text-xs",
+    add ? "border-dashed text-brick" : "hover:bg-ink hover:text-salt",
+  ]}
+>
+  {name}{meta && <small class="ml-1.5 opacity-60">{meta}</small>}
+</a>

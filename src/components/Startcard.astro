@@ -1,0 +1,26 @@
+---
+import { CONTACT_EMAIL } from "../lib/site";
+---
+
+<div
+  class="my-8 flex flex-wrap items-start gap-4 rounded border-2 border-brick bg-card p-5"
+>
+  <div
+    class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-steel font-mono font-bold text-salt"
+  >
+    MV
+  </div>
+  <div class="min-w-0 flex-1">
+    <h3 class="sign text-[17px]">A human runs this</h3>
+    <p class="mt-1.5 max-w-[56ch] text-sm">
+      Hi — I'm Mike. I help keep the meetups fed and this site running through
+      <a href="/codes" class="border-b-2 border-plow text-brick">CODES</a>, the
+      little nonprofit behind it all. If you're new, nervous, or just have a
+      question that feels too small for a public Slack channel, email me
+      directly:
+      <a href={`mailto:${CONTACT_EMAIL}`} class="font-mono text-brick"
+        >{CONTACT_EMAIL}</a
+      >. I answer.
+    </p>
+  </div>
+</div>

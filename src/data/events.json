@@ -1,6 +1,156 @@
 [
   {
     "name": "OpenHack: Code together, on anything",
+    "description": "The OpenHack elevator pitch:",
+    "dateTime": "2026-12-08T18:00:00-05:00",
+    "url": "https://www.meetup.com/syracuse-software-development-meetup/events/vtpvwtyjcqblb/?eventOrigin=group_events_list",
+    "images": [
+      {
+        "baseUrl": "https://secure.meetupstatic.com/photos/event/e/9/a/a/highres_506879818.jpeg",
+        "source": "https://secure.meetupstatic.com/photos/event/e/9/a/a/highres_506879818.jpeg"
+      }
+    ],
+    "venue": {
+      "name": "Commonspace Work",
+      "address": "351 S Warren St Suite 200, Syracuse, NY",
+      "city": "Syracuse",
+      "state": "NY",
+      "postalCode": "",
+      "venueType": "physical"
+    },
+    "host": {
+      "name": "Syracuse Software Development Meetup",
+      "memberPhoto": {
+        "source": ""
+      }
+    },
+    "hostPhoto": {
+      "source": ""
+    },
+    "groupId": "open-hack"
+  },
+  {
+    "name": "OpenHack: Code together, on anything",
+    "description": "The OpenHack elevator pitch:",
+    "dateTime": "2026-11-10T18:00:00-05:00",
+    "url": "https://www.meetup.com/syracuse-software-development-meetup/events/vtpvwtyjcpbnb/?eventOrigin=group_events_list",
+    "images": [
+      {
+        "baseUrl": "https://secure.meetupstatic.com/photos/event/e/9/a/a/highres_506879818.jpeg",
+        "source": "https://secure.meetupstatic.com/photos/event/e/9/a/a/highres_506879818.jpeg"
+      }
+    ],
+    "venue": {
+      "name": "Commonspace Work",
+      "address": "351 S Warren St Suite 200, Syracuse, NY",
+      "city": "Syracuse",
+      "state": "NY",
+      "postalCode": "",
+      "venueType": "physical"
+    },
+    "host": {
+      "name": "Syracuse Software Development Meetup",
+      "memberPhoto": {
+        "source": ""
+      }
+    },
+    "hostPhoto": {
+      "source": ""
+    },
+    "groupId": "open-hack"
+  },
+  {
+    "name": "OpenHack: Code together, on anything",
+    "description": "The OpenHack elevator pitch:",
+    "dateTime": "2026-10-13T18:00:00-04:00",
+    "url": "https://www.meetup.com/syracuse-software-development-meetup/events/vtpvwtyjcnbrb/?eventOrigin=group_events_list",
+    "images": [
+      {
+        "baseUrl": "https://secure.meetupstatic.com/photos/event/e/9/a/a/highres_506879818.jpeg",
+        "source": "https://secure.meetupstatic.com/photos/event/e/9/a/a/highres_506879818.jpeg"
+      }
+    ],
+    "venue": {
+      "name": "Commonspace Work",
+      "address": "351 S Warren St Suite 200, Syracuse, NY",
+      "city": "Syracuse",
+      "state": "NY",
+      "postalCode": "",
+      "venueType": "physical"
+    },
+    "host": {
+      "name": "Syracuse Software Development Meetup",
+      "memberPhoto": {
+        "source": ""
+      }
+    },
+    "hostPhoto": {
+      "source": ""
+    },
+    "groupId": "open-hack"
+  },
+  {
+    "name": "OpenHack: Code together, on anything",
+    "description": "The OpenHack elevator pitch:",
+    "dateTime": "2026-09-08T18:00:00-04:00",
+    "url": "https://www.meetup.com/syracuse-software-development-meetup/events/vtpvwtyjcmblb/?eventOrigin=group_events_list",
+    "images": [
+      {
+        "baseUrl": "https://secure.meetupstatic.com/photos/event/e/9/a/a/highres_506879818.jpeg",
+        "source": "https://secure.meetupstatic.com/photos/event/e/9/a/a/highres_506879818.jpeg"
+      }
+    ],
+    "venue": {
+      "name": "Commonspace Work",
+      "address": "351 S Warren St Suite 200, Syracuse, NY",
+      "city": "Syracuse",
+      "state": "NY",
+      "postalCode": "",
+      "venueType": "physical"
+    },
+    "host": {
+      "name": "Syracuse Software Development Meetup",
+      "memberPhoto": {
+        "source": ""
+      }
+    },
+    "hostPhoto": {
+      "source": ""
+    },
+    "groupId": "open-hack"
+  },
+  {
+    "name": "OpenHack: Code together, on anything",
+    "description": "The OpenHack elevator pitch:",
+    "dateTime": "2026-08-11T18:00:00-04:00",
+    "url": "https://www.meetup.com/syracuse-software-development-meetup/events/vtpvwtyjclbpb/?eventOrigin=group_events_list",
+    "images": [
+      {
+        "baseUrl": "https://secure.meetupstatic.com/photos/event/e/9/a/a/highres_506879818.jpeg",
+        "source": "https://secure.meetupstatic.com/photos/event/e/9/a/a/highres_506879818.jpeg"
+      }
+    ],
+    "venue": {
+      "name": "Commonspace Work",
+      "address": "351 S Warren St Suite 200, Syracuse, NY",
+      "city": "Syracuse",
+      "state": "NY",
+      "postalCode": "",
+      "venueType": "physical"
+    },
+    "host": {
+      "name": "Syracuse Software Development Meetup",
+      "memberPhoto": {
+        "source": ""
+      }
+    },
+    "hostPhoto": {
+      "source": ""
+    },
+    "groupId": "open-hack"
+  },
+  {
+    "name": "OpenHack: Code together, on anything",
     "description": "JOIN US at our new meetup venue, INSPYRE Innovation Hub (*Formerly The Tech Garden*), for our new home in 2026.\n\nOpen Hack started as a friendly tech meetup at the Tech Garden in 2014, and we've held events (nearly) every month since. We're so happy to be back where it all started. Join us, won't you?\n\n\\-\\-\\-\n\nThe OpenHack elevator pitch:\n\n* OpenHack is a casual social coding meetup with a simple purpose: Code together, on anything.\n\nHow OpenHack works:\n\n* You can hack on anything! Any language, framework, public/open-source, personal projects, client work… anything!\n* You don’t have to have an idea to hack on, you can come join someone else\n* We’ll kick things off with a quick round of introductions, to say who you are, what you’re working on, and if you’d like help with your idea\n* Food and drinks will be provided\n* Feel free to join us - bring a laptop, a project, and a friend!\n\nWe welcome local developers and designers of all skill levels, interests, ages genders, you-name-it's to get together to write code or push pixels. We’ll provide good food, good people, and creative energy.\n\nSee more at https://syracuse.io/groups/open-hack/\n\nWhat to bring\n\n* A laptop if you're bringing a project, but totally not required\n\nImportant to know\n\n* Please review our Code of Conduct before attending: https://syracuse.io/code-of-conduct/",
     "dateTime": "2026-06-02T18:00:00-04:00",
     "endTime": "2026-06-02T20:00:00-04:00",

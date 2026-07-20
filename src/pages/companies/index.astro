@@ -1,0 +1,154 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CompanyCard from "../../components/CompanyCard.astro";
+import SectionHead from "../../components/SectionHead.astro";
+import { getOpenJobs } from "../../lib/jobs";
+import { ADD_COMPANY_URL, CONTACT_EMAIL } from "../../lib/site";
+
+const all = await getCollection("companies");
+const openJobs = await getOpenJobs();
+
+const activeTag = Astro.url.searchParams.get("tag");
+const activeSize = Astro.url.searchParams.get("size");
+
+const tags = [...new Set(all.flatMap((c) => c.data.tags))].sort();
+const sizes = ["1-10", "11-50", "51-200", "200+"];
+
+const filtered = all
+  .filter(
+    (c) =>
+      (!activeTag || c.data.tags.includes(activeTag)) &&
+      (!activeSize || c.data.size === activeSize)
+  )
+  .sort(
+    (a, b) =>
+      Number(b.data.sponsor) - Number(a.data.sponsor) ||
+      b.data.added.getTime() - a.data.added.getTime()
+  );
+
+// A company is "hiring" if one of our job listings matches its name, or it
+// says so itself (hiring: true, ideally with a careersUrl).
+function hiringHref(company: (typeof all)[number]): string | null {
+  const job = openJobs.find(
+    (j) => j.data.company.toLowerCase() === company.data.name.toLowerCase()
+  );
+  if (job) return `/jobs#${job.id}`;
+  if (company.data.hiring) return company.data.careersUrl ?? "/jobs";
+  return null;
+}
+
+const hiringCount = filtered.filter((c) => hiringHref(c)).length;
+const sponsorCount = filtered.filter((c) => c.data.sponsor).length;
+
+const headBits = [
+  `${filtered.length} ${filtered.length === 1 ? "COMPANY" : "COMPANIES"}`,
+];
+if (hiringCount) headBits.push(`${hiringCount} HIRING`);
+if (sponsorCount)
+  headBits.push(
+    `${sponsorCount} ${sponsorCount === 1 ? "SPONSOR" : "SPONSORS"}`
+  );
+
+function filterHref(tag: string | null, size: string | null): string {
+  const params = new URLSearchParams();
+  if (tag) params.set("tag", tag);
+  if (size) params.set("size", size);
+  const qs = params.toString();
+  return qs ? `/companies?${qs}` : "/companies";
+}
+
+// Filtering happens via query params (no client JS); cache so Cloudflare
+// doesn't invoke the worker on every hit.
+Astro.response.headers.set("Cache-Control", "public, max-age=3600");
+---
+
+<BaseLayout
+  content={{
+    title: "Who's building — Syracuse.io",
+    description:
+      "The companies writing software in Syracuse and Central New York.",
+  }}
+  editPath="src/content/companies"
+>
+  <div class="wrap">
+    <div class="pb-6 pt-10">
+      <h1
+        class="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl"
+      >
+        Who's building
+      </h1>
+      <p class="mt-3 max-w-[52ch] text-[15px]">
+        The companies writing software in Central New York — from two-person
+        shops to the ones building fabs. Listed by the community; your company
+        belongs here too.
+      </p>
+    </div>
+
+    <div class="flex flex-wrap items-baseline gap-2 pb-2 font-mono text-xs">
+      <span class="opacity-60">tag:</span>
+      {
+        tags.map((tag) => (
+          <a
+            href={filterHref(activeTag === tag ? null : tag, activeSize)}
+            class:list={[
+              "rounded-[3px] border border-ink px-2 py-1",
+              activeTag === tag ? "bg-ink text-salt" : "hover:bg-mist",
+            ]}
+          >
+            {tag}
+          </a>
+        ))
+      }
+    </div>
+    <div class="flex flex-wrap items-baseline gap-2 pb-4 font-mono text-xs">
+      <span class="opacity-60">size:</span>
+      {
+        sizes.map((size) => (
+          <a
+            href={filterHref(activeTag, activeSize === size ? null : size)}
+            class:list={[
+              "rounded-[3px] border border-ink px-2 py-1",
+              activeSize === size ? "bg-ink text-salt" : "hover:bg-mist",
+            ]}
+          >
+            {size}
+          </a>
+        ))
+      }
+      {
+        (activeTag || activeSize) && (
+          <a href="/companies" class="px-2 py-1 text-brick hover:underline">
+            × clear filters
+          </a>
+        )
+      }
+    </div>
+
+    <SectionHead title={headBits.join(" · ")} />
+
+    <div class="flex flex-wrap gap-2 pb-2 pt-4">
+      {
+        filtered.map((company) => (
+          <CompanyCard company={company} hiringHref={hiringHref(company)} />
+        ))
+      }
+      <a
+        href={ADD_COMPANY_URL}
+        class="flex w-full items-center justify-center rounded border-2 border-dashed border-ink p-3.5 font-mono text-xs text-brick hover:bg-mist sm:w-[calc(50%-4px)]"
+      >
+        + add your company
+      </a>
+    </div>
+
+    <p class="pb-4 pt-6 font-mono text-xs opacity-60">
+      Adding your company is a five-minute pull request — one markdown file — or
+      just email
+      <a
+        href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Add my company to syracuse.io")}`}
+        class="text-brick hover:underline">{CONTACT_EMAIL}</a
+      > and we'll do it for you. Sponsors get an enhanced card and keep the meetups
+      fed.
+    </p>
+  </div>
+</BaseLayout>

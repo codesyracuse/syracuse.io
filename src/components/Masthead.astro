@@ -1,0 +1,65 @@
+---
+const navLinks = [
+  { href: "/start", label: "start here" },
+  { href: "/events", label: "events" },
+  { href: "/work", label: "where to work" },
+  { href: "/companies", label: "companies" },
+  { href: "/jobs", label: "jobs" },
+  { href: "/codes", label: "codes" },
+];
+---
+
+<header class="bg-ink text-salt">
+  <div class="wrap flex items-baseline justify-between gap-x-4 py-3.5">
+    <a href="/" class="font-mono text-lg font-bold"
+      >syracuse<span class="text-plow">.io</span></a
+    >
+
+    <nav
+      aria-label="primary"
+      class="hidden gap-x-3.5 font-mono text-xs sm:flex"
+    >
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="border-b-2 border-transparent pb-0.5 hover:border-plow focus-visible:border-plow focus-visible:outline-none"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    {/* Small screens: no-JS dropdown — a full page load closes it again. */}
+    <details class="relative sm:hidden">
+      <summary
+        class="border-salt/40 cursor-pointer list-none rounded-[3px] border px-2.5 py-1 font-mono text-xs [&::-webkit-details-marker]:hidden"
+      >
+        menu <span class="chevron inline-block">⌄</span>
+      </summary>
+      <nav
+        aria-label="menu"
+        class="border-salt/25 absolute right-0 top-full z-50 mt-2 flex w-48 flex-col border-2 bg-ink font-mono text-xs shadow-[4px_4px_0_var(--steel)]"
+      >
+        {
+          navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="border-salt/10 border-b px-3.5 py-2.5 last:border-b-0 hover:bg-salt hover:text-ink"
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </nav>
+    </details>
+  </div>
+  <slot />
+</header>
+
+<style>
+  details[open] .chevron {
+    transform: rotate(180deg) translateY(-2px);
+  }
+</style>

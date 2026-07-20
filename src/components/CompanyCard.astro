@@ -1,0 +1,82 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+
+interface Props {
+  company: CollectionEntry<"companies">;
+  hiringHref?: string | null;
+}
+
+const { company, hiringHref = null } = Astro.props;
+const { name, tagline, url, size, sponsor, blurb, logo, founded, location } =
+  company.data;
+
+// No logo committed yet? Deterministic monogram tile so cards never look broken.
+const palette = ["bg-steel", "bg-brick", "bg-ink", "bg-[#3e6b45]"];
+const tone =
+  palette[
+    [...name].reduce((sum, ch) => sum + ch.charCodeAt(0), 0) % palette.length
+  ];
+
+const meta = [tagline, size, founded && `est. ${founded}`, location]
+  .filter(Boolean)
+  .join(" · ");
+---
+
+<div
+  class:list={[
+    "card card-link relative flex w-full gap-3 p-3.5",
+    sponsor ? "border-brick" : "sm:w-[calc(50%-4px)]",
+  ]}
+>
+  {
+    logo ? (
+      <Image
+        src={logo}
+        alt=""
+        width={80}
+        height={80}
+        class="h-10 w-10 shrink-0 rounded-sm border border-line bg-salt object-contain p-0.5"
+      />
+    ) : (
+      <span
+        class:list={[
+          "flex h-10 w-10 shrink-0 items-center justify-center rounded-sm font-mono text-lg font-bold text-salt",
+          tone,
+        ]}
+        aria-hidden="true"
+      >
+        {name[0]}
+      </span>
+    )
+  }
+  <div class="flex min-w-0 flex-col gap-1">
+    <span class="flex flex-wrap items-baseline gap-2">
+      <span class="text-[15px] font-extrabold">
+        {
+          /* Stretched link: the whole card is the click target for the company. */
+        }
+        <a href={url} class="before:absolute before:inset-0">{name}</a>
+      </span>
+      {
+        sponsor && (
+          <span class="rounded-sm bg-brick px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-salt">
+            sponsor
+          </span>
+        )
+      }
+      {
+        hiringHref && (
+          <a
+            href={hiringHref}
+            class="relative z-10 rounded-sm bg-[#3e6b45] px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-salt hover:underline"
+          >
+            hiring →
+          </a>
+        )
+      }
+    </span>
+    <span class="font-mono text-[11px] opacity-70">{meta}</span>
+    {blurb && <span class="text-[13px] leading-snug">{blurb}</span>}
+  </div>
+</div>

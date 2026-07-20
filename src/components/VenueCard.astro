@@ -1,0 +1,60 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  venue: CollectionEntry<"venues">;
+}
+
+const { venue } = Astro.props;
+const {
+  name,
+  type,
+  neighborhood,
+  url,
+  pricingUrl,
+  hours,
+  vibe,
+  meetingRooms,
+  notes,
+} = venue.data;
+
+const tagColor = {
+  cowork: "bg-steel",
+  cafe: "bg-brick",
+  free: "bg-[#3e6b45]",
+}[type];
+
+const tagLabel = { cowork: "cowork", cafe: "café", free: "free" }[type];
+---
+
+<div class="card card-link relative flex flex-col gap-2 p-3.5">
+  <div class="flex items-baseline justify-between gap-2">
+    <h3 class="text-[15px] font-extrabold">
+      {/* Stretched link: the whole card is the click target for the venue. */}
+      <a href={url} class="before:absolute before:inset-0">{name}</a>
+    </h3>
+    <span
+      class:list={[
+        "whitespace-nowrap rounded-sm px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.08em] text-salt",
+        tagColor,
+      ]}
+    >
+      {tagLabel}
+    </span>
+  </div>
+  <p class="font-mono text-[11px] opacity-70">{neighborhood}</p>
+  <p class="text-[13px] leading-snug">{vibe}</p>
+  {notes && <p class="text-[11px] italic opacity-60">{notes}</p>}
+  <div
+    class="mt-auto flex justify-between border-t border-dotted border-line pt-2 font-mono text-[11px]"
+  >
+    <span>{hours}{meetingRooms && " · rooms"}</span>
+    {
+      pricingUrl && (
+        <a href={pricingUrl} class="relative z-10 text-brick hover:underline">
+          rates →
+        </a>
+      )
+    }
+  </div>
+</div>
