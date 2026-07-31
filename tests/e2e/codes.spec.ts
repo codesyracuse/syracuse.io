@@ -26,7 +26,7 @@ test.describe("CODES page", () => {
     await expect(page.getByText("$1,500")).toBeVisible();
     const cta = page.getByRole("link", { name: /sponsor or donate/i });
     await expect(cta).toBeVisible();
-    await expect(cta).toHaveAttribute("href", /hi@codesyracuse\.org/);
+    await expect(cta).toHaveAttribute("href", /codes@syracuse\.io/);
   });
 });
 

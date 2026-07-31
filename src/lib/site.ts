@@ -12,4 +12,4 @@ export const ADD_VENUE_URL = `${GITHUB_REPO_URL}/new/main/src/content/venues`;
 export const BUTTONDOWN_SUBSCRIBE_URL =
   "https://buttondown.com/api/emails/embed-subscribe/syracuseio";
 
-export const CODES_EMAIL = "hi@codesyracuse.org";
+export const CODES_EMAIL = "codes@syracuse.io";
