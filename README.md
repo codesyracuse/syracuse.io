@@ -1,101 +1,27 @@
-# Syracuse.io 3.0
+# syracuse.io
 
-This is the source code for the next generation of https://syracuse.io - a consolidated directory and calendar of technology user groups and meetups in the Syracuse area.
+The front door to the Syracuse, NY tech scene: meetups, companies, jobs, and
+places to work, plus the community Slack and newsletter. Maintained in the
+open by [CODES](https://syracuse.io/codes), a 501(c)(3) nonprofit.
 
-## Prerequisites
+Want to add your company, a job, or a place to work? See
+[CONTRIBUTING.md](CONTRIBUTING.md) — it takes about five minutes.
 
-- Node.js (v18 or later)
-- npm (v9 or later)
-- Git
+## Development
 
-## Local Development Setup
-
-1. Clone the repository:
-
-   ```sh
-   git clone https://github.com/codesyracuse/syracuse.io.git
-   cd syracuse.io
-   ```
-
-2. Install dependencies:
-
-   ```sh
-   npm install
-   ```
-
-3. Start the development server:
-
-   ```sh
-   npm run dev
-   ```
-
-4. Open your browser and visit `http://localhost:4321`
-
-## Available Commands
-
-| Command             | Purpose                                      |
-| :------------------ | :------------------------------------------- |
-| `npm run dev`       | Start development server at `localhost:4321` |
-| `npm run build`     | Build production site to `./dist/`           |
-| `npm run preview`   | Preview production build locally             |
-| `npm run astro ...` | Run Astro CLI commands                       |
-
-## Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── content/
-│   │   └── groups/           # Community group content files
-│   │       └── *.md         # Individual group markdown files
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```sh
+npm install
+npm run build && npm run preview   # http://localhost:4321
 ```
 
-The `src/content/groups` directory contains markdown files for each community group. Each file should follow this format:
+| Command                | Purpose                                         |
+| :--------------------- | :---------------------------------------------- |
+| `npm run dev`          | Dev server at `localhost:4321`                  |
+| `npm run build`        | Production build to `./dist/`                   |
+| `npm run preview`      | Serve the production build locally              |
+| `npm run lint`         | ESLint and Prettier check                       |
+| `npm test`             | Playwright end-to-end tests                     |
+| `npm run fetch-events` | Scrape Meetup and update `src/data/events.json` |
 
-```markdown
----
-title: "Group Name"
-subtitle: "A brief description of the group"
-summary: "A longer description of the group"
-img: "/src/assets/groups/group-logo.png"
-imgAlt: "Group Logo"
-groupType: "meetup"
-groupId: "group-name"
-organizers:
-  - "Organizer Name"
-  - "Organizer Name"
----
-
-Additional group details and information can go here in markdown format.
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## Contributing
-
-1. Fork the repository
-2. Create a new branch: `git checkout -b feature/your-feature-name`
-3. Make your changes
-4. Run tests (if applicable)
-5. Commit your changes: `git commit -m 'Add some feature'`
-6. Push to the branch: `git push origin feature/your-feature-name`
-7. Submit a pull request
-
-## Need Help?
-
-- Check out [Astro's documentation](https://docs.astro.build)
-- Join our [Discord community](TODO: Add Syracuse.io Discord link)
-- Create an issue in this repository
-
-## License
-
-[Add license information]
+Content lives in `src/content/{companies,venues,jobs}` as Markdown files;
+events live in `src/data/events.json` and sync daily from Meetup.
