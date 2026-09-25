@@ -32,6 +32,36 @@
   {
     "name": "OpenHack: Code together, on anything",
     "description": "The OpenHack elevator pitch:",
+    "dateTime": "2026-12-08T18:00:00-05:00",
+    "url": "https://www.meetup.com/syracuse-software-development-meetup/events/316355383/?eventOrigin=group_events_list",
+    "images": [
+      {
+        "baseUrl": "https://secure.meetupstatic.com/photos/event/e/9/a/a/highres_506879818.jpeg",
+        "source": "https://secure.meetupstatic.com/photos/event/e/9/a/a/highres_506879818.jpeg"
+      }
+    ],
+    "venue": {
+      "name": "Commonspace Work",
+      "address": "351 S Warren St Suite 200, Syracuse, NY",
+      "city": "Syracuse",
+      "state": "NY",
+      "postalCode": "",
+      "venueType": "physical"
+    },
+    "host": {
+      "name": "Syracuse Software Development Meetup",
+      "memberPhoto": {
+        "source": ""
+      }
+    },
+    "hostPhoto": {
+      "source": ""
+    },
+    "groupId": "open-hack"
+  },
+  {
+    "name": "OpenHack: Code together, on anything",
+    "description": "The OpenHack elevator pitch:",
     "dateTime": "2026-11-10T18:00:00-05:00",
     "url": "https://www.meetup.com/syracuse-software-development-meetup/events/vtpvwtyjcpbnb/?eventOrigin=group_events_list",
     "images": [
@@ -62,8 +92,68 @@
   {
     "name": "OpenHack: Code together, on anything",
     "description": "The OpenHack elevator pitch:",
+    "dateTime": "2026-11-10T18:00:00-05:00",
+    "url": "https://www.meetup.com/syracuse-software-development-meetup/events/316355381/?eventOrigin=group_events_list",
+    "images": [
+      {
+        "baseUrl": "https://secure.meetupstatic.com/photos/event/e/9/a/a/highres_506879818.jpeg",
+        "source": "https://secure.meetupstatic.com/photos/event/e/9/a/a/highres_506879818.jpeg"
+      }
+    ],
+    "venue": {
+      "name": "Commonspace Work",
+      "address": "351 S Warren St Suite 200, Syracuse, NY",
+      "city": "Syracuse",
+      "state": "NY",
+      "postalCode": "",
+      "venueType": "physical"
+    },
+    "host": {
+      "name": "Syracuse Software Development Meetup",
+      "memberPhoto": {
+        "source": ""
+      }
+    },
+    "hostPhoto": {
+      "source": ""
+    },
+    "groupId": "open-hack"
+  },
+  {
+    "name": "OpenHack: Code together, on anything",
+    "description": "The OpenHack elevator pitch:",
     "dateTime": "2026-10-13T18:00:00-04:00",
     "url": "https://www.meetup.com/syracuse-software-development-meetup/events/vtpvwtyjcnbrb/?eventOrigin=group_events_list",
+    "images": [
+      {
+        "baseUrl": "https://secure.meetupstatic.com/photos/event/e/9/a/a/highres_506879818.jpeg",
+        "source": "https://secure.meetupstatic.com/photos/event/e/9/a/a/highres_506879818.jpeg"
+      }
+    ],
+    "venue": {
+      "name": "Commonspace Work",
+      "address": "351 S Warren St Suite 200, Syracuse, NY",
+      "city": "Syracuse",
+      "state": "NY",
+      "postalCode": "",
+      "venueType": "physical"
+    },
+    "host": {
+      "name": "Syracuse Software Development Meetup",
+      "memberPhoto": {
+        "source": ""
+      }
+    },
+    "hostPhoto": {
+      "source": ""
+    },
+    "groupId": "open-hack"
+  },
+  {
+    "name": "OpenHack: Code together, on anything",
+    "description": "The OpenHack elevator pitch:",
+    "dateTime": "2026-10-13T18:00:00-04:00",
+    "url": "https://www.meetup.com/syracuse-software-development-meetup/events/315977415/?eventOrigin=group_events_list",
     "images": [
       {
         "baseUrl": "https://secure.meetupstatic.com/photos/event/e/9/a/a/highres_506879818.jpeg",
