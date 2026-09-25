@@ -4,14 +4,9 @@ subtitle: TL;DR Be kind to one another
 layout: ../layouts/Page.astro
 ---
 
-### What is expected of me as a member of the Syracuse development community?
-
-Basically just be nice. treat others how you would like to be treated,
-and don't be a bad human being.
-
 ### Code of Conduct
 
-[Syracuse.io](http://syracuse.io) community a harassment free space. We do not tolerate
+[Syracuse.io](http://syracuse.io) is a harassment free space. We do not tolerate
 harassment of any kind.
 
 Harassment includes:
@@ -36,7 +31,7 @@ Harassment includes:
 ### Reporting
 
 If you are being harassed by a member, notice that someone else is
-being harassed, or have any other concerns, please contact `@mike` or another admin directly via DM. If the person who is harassing you is on the admin team, they will recuse themselves from handling your
+being harassed, or have any other concerns, please contact `@mike` or another admin directly via DM in the community [Slack](/start). If the person who is harassing you is on the admin team, they will recuse themselves from handling your
 incident. We will respond as promptly as we can.
 
 In order to protect volunteers from abuse and burnout, we reserve

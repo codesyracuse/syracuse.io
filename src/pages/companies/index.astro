@@ -10,17 +10,11 @@ const all = await getCollection("companies");
 const openJobs = await getOpenJobs();
 
 const activeTag = Astro.url.searchParams.get("tag");
-const activeSize = Astro.url.searchParams.get("size");
 
 const tags = [...new Set(all.flatMap((c) => c.data.tags))].sort();
-const sizes = ["1-10", "11-50", "51-200", "200+"];
 
 const filtered = all
-  .filter(
-    (c) =>
-      (!activeTag || c.data.tags.includes(activeTag)) &&
-      (!activeSize || c.data.size === activeSize)
-  )
+  .filter((c) => !activeTag || c.data.tags.includes(activeTag))
   .sort(
     (a, b) =>
       Number(b.data.sponsor) - Number(a.data.sponsor) ||
@@ -50,10 +44,9 @@ if (sponsorCount)
     `${sponsorCount} ${sponsorCount === 1 ? "SPONSOR" : "SPONSORS"}`
   );
 
-function filterHref(tag: string | null, size: string | null): string {
+function filterHref(tag: string | null): string {
   const params = new URLSearchParams();
   if (tag) params.set("tag", tag);
-  if (size) params.set("size", size);
   const qs = params.toString();
   return qs ? `/companies?${qs}` : "/companies";
 }
@@ -90,7 +83,7 @@ Astro.response.headers.set("Cache-Control", "public, max-age=3600");
       {
         tags.map((tag) => (
           <a
-            href={filterHref(activeTag === tag ? null : tag, activeSize)}
+            href={filterHref(activeTag === tag ? null : tag)}
             class:list={[
               "rounded-[3px] border border-ink px-2 py-1",
               activeTag === tag ? "bg-ink text-salt" : "hover:bg-mist",
@@ -100,24 +93,8 @@ Astro.response.headers.set("Cache-Control", "public, max-age=3600");
           </a>
         ))
       }
-    </div>
-    <div class="flex flex-wrap items-baseline gap-2 pb-4 font-mono text-xs">
-      <span class="opacity-60">size:</span>
       {
-        sizes.map((size) => (
-          <a
-            href={filterHref(activeTag, activeSize === size ? null : size)}
-            class:list={[
-              "rounded-[3px] border border-ink px-2 py-1",
-              activeSize === size ? "bg-ink text-salt" : "hover:bg-mist",
-            ]}
-          >
-            {size}
-          </a>
-        ))
-      }
-      {
-        (activeTag || activeSize) && (
+        activeTag && (
           <a href="/companies" class="px-2 py-1 text-brick hover:underline">
             × clear filters
           </a>
@@ -147,8 +124,7 @@ Astro.response.headers.set("Cache-Control", "public, max-age=3600");
       <a
         href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Add my company to syracuse.io")}`}
         class="text-brick hover:underline">{CONTACT_EMAIL}</a
-      > and we'll do it for you. Sponsors get an enhanced card and keep the meetups
-      fed.
+      > and we'll do it for you.
     </p>
   </div>
 </BaseLayout>

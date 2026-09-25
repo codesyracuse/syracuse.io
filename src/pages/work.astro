@@ -17,7 +17,6 @@ const sections = [
   {
     title: "COWORK",
     venues: byType("cowork"),
-    note: "Day passes, dedicated desks, and conference rooms. Rates change — always check the venue's own pricing page.",
   },
   {
     title: "CAFÉS",
@@ -57,7 +56,9 @@ const sections = [
       sections.map((section) => (
         <section class="pb-2 pt-6">
           <SectionHead title={section.title} />
-          <p class="pt-3 font-mono text-xs opacity-70">{section.note}</p>
+          {section.note && (
+            <p class="pt-3 font-mono text-xs opacity-70">{section.note}</p>
+          )}
           <div class="grid gap-3 pb-2 pt-4 sm:grid-cols-2 md:grid-cols-3">
             {section.venues.map((venue) => (
               <VenueCard venue={venue} />

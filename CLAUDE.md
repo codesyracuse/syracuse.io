@@ -41,16 +41,14 @@ The site uses Astro's SSR output mode with the Cloudflare adapter. Individual pa
 
 **Events** — `src/data/events.json` is the source of truth for Meetup events. It's a static JSON file committed to the repo and updated by running `npm run fetch-events`. That script (`scripts/fetch-meetup-events.mjs`) uses Playwright to scrape Meetup.com (no API key required). Scraped events are merged with existing data so historical events are preserved. The `src/lib/meetup.ts` module reads this file and exposes filtering/sorting helpers used by pages and components.
 
-**Groups** — defined as Markdown files in `src/content/groups/*.md` using Astro content collections (schema in `src/content.config.ts`). Each group has a `groupId` field that links it to events in `events.json`. The `classifyEvent()` function in the fetch script maps event titles to `groupId` values — keep these in sync when adding groups.
+**Groups** — there is no groups content collection. Events in `events.json` each carry a `groupId` assigned by `classifyEvent()` in `scripts/fetch-meetup-events.mjs`. The `/groups/*` routes (`src/pages/groups/[...slug].astro`) just 301-redirect to `/events`.
 
 **Jobs** — fetched at runtime from `https://jobs.syracuse.io/jobs.json` via `src/lib/jobkit.ts`. No local cache; Cloudflare handles edge caching.
 
 ### Key relationships
 
-- `src/content/groups/{name}.md` → defines a group with `groupId`
-- `src/data/events.json` → each event has a `groupId` matching a group file
-- `src/pages/groups/[groupId].astro` → dynamic group detail page, uses `getStaticPaths()` from the content collection
-- `src/components/GroupCards.astro` → grid on `/groups`, sorts by most recent event date using `getMostRecentEventDate(groupId)`
+- `src/data/events.json` → each event has a `groupId` assigned by `classifyEvent()`
+- `src/pages/groups/[...slug].astro` → redirects `/groups/*` to `/events`
 
 ### Layouts
 
@@ -63,6 +61,4 @@ Tailwind CSS with the Typography plugin (`prose` classes for Markdown-rendered c
 
 ## Adding a New Group
 
-1. Create `src/content/groups/{slug}.md` with frontmatter: `title`, `group`, `imagePath`, `summary`, `imgAlt`, `groupType`, `groupId`
-2. Add the group image to `src/assets/groups/`
-3. Add a classification rule in `classifyEvent()` in `scripts/fetch-meetup-events.mjs` so future scraped events get the correct `groupId`
+Add a classification rule in `classifyEvent()` in `scripts/fetch-meetup-events.mjs` so future scraped events get the correct `groupId`.

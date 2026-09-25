@@ -62,8 +62,6 @@ Astro.response.headers.set("Cache-Control", "public, max-age=3600");
         </h1>
         <p class="mt-3 max-w-[52ch] text-[15px]">
           Tech jobs in Syracuse and Central New York, curated by the community.
-          Listings link to the company's own posting — no middlemen, and expired
-          roles drop off automatically.
         </p>
         <p class="mt-3 font-mono text-xs opacity-70">
           {
@@ -76,7 +74,7 @@ Astro.response.headers.set("Cache-Control", "public, max-age=3600");
     </div>
 
     {
-      jobs.length > 0 && (
+      jobs.length >= 5 && (
         <div class="flex flex-wrap items-baseline gap-2 pb-4 font-mono text-xs">
           <span class="opacity-60">work:</span>
           {workFilters.map(([work, count]) => (
@@ -152,8 +150,7 @@ Astro.response.headers.set("Cache-Control", "public, max-age=3600");
     <p class="pb-4 pt-6 font-mono text-xs opacity-60">
       Listings curated by <a href="/codes" class="text-brick hover:underline"
         >CODES</a
-      > — posting is free for community companies; featured slots keep the meetups
-      fed.
+      > — posting is free for community companies.
     </p>
   </div>
 </BaseLayout>

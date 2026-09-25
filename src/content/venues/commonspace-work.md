@@ -8,6 +8,5 @@ pricingUrl: https://www.commonspace.work
 hours: check website
 vibe: Day passes and conference rooms in the heart of downtown.
 meetingRooms: true
-notes: Details unverified — confirm before relying on this.
 added: 2026-07-01
 ---

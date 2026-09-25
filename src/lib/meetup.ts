@@ -61,11 +61,3 @@ export function getEventsByGroup(groupId: string): MeetupEvent[] {
       (a, b) => new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime()
     );
 }
-
-export function getMostRecentEventDate(groupId: string): Date | null {
-  const events = allEvents.filter((event) => event.groupId === groupId);
-  if (events.length === 0) return null;
-  return new Date(
-    Math.max(...events.map((e) => new Date(e.dateTime).getTime()))
-  );
-}

@@ -8,6 +8,5 @@ pricingUrl: https://www.onlib.org
 hours: check website
 vibe: Free bookable rooms, quiet floors, and nobody expects you to buy anything.
 meetingRooms: true
-notes: Details unverified — confirm before relying on this.
 added: 2026-07-01
 ---

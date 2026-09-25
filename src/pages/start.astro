@@ -5,24 +5,6 @@ import Startcard from "../components/Startcard.astro";
 import { SLACK_INVITE_URL } from "../lib/site";
 
 export const prerender = true;
-
-const pointers = [
-  {
-    href: "/work",
-    title: "Where to work",
-    blurb: "Coworking spaces, laptop-friendly cafés, and free bookable rooms.",
-  },
-  {
-    href: "/companies",
-    title: "Who's building",
-    blurb: "The companies writing software in Central New York.",
-  },
-  {
-    href: "/jobs",
-    title: "Who's hiring",
-    blurb: "Local tech jobs, curated by the community.",
-  },
-];
 ---
 
 <BaseLayout
@@ -43,8 +25,7 @@ const pointers = [
       </h1>
       <p class="mt-3 max-w-[52ch] text-[15px]">
         Whether you just moved here, just graduated, just switched careers, or
-        just work remotely and miss other humans — this page is the whole
-        onboarding. It takes about two minutes.
+        just work remotely and miss other humans — you're in the right place.
       </p>
     </div>
 
@@ -55,13 +36,10 @@ const pointers = [
           A free, volunteer-run community of people who build software in and
           around Syracuse, NY. All skill levels — students, career-switchers,
           hobbyists, and people who've been shipping code since before the dome
-          had air conditioning.
-        </p>
-        <p>
-          What it isn't: a recruiting funnel, a sales channel, or a club you
-          have to qualify for. Nobody checks credentials. The only rule is our <a href="/code-of-conduct" class="text-brick hover:underline"
-            >code of conduct</a
-          > — short version: be good to each other.
+          had air conditioning. Nobody checks credentials. The only rule is our <a
+            href="/code-of-conduct"
+            class="text-brick hover:underline">code of conduct</a
+          >.
         </p>
       </div>
     </section>
@@ -82,7 +60,7 @@ const pointers = [
         <p>
           Once you're in, there's one tradition: post your first message in
           <span class="font-mono">#intros</span> — who you are, where you're from,
-          and what you're working on (or want to be working on). 
+          and what you're working on (or want to be working on).
         </p>
       </div>
     </section>
@@ -90,11 +68,6 @@ const pointers = [
     <section class="pt-10">
       <SectionHead title="YOUR FIRST MEETUP" />
       <div class="space-y-3 pt-4 text-[15px]">
-        <p>
-          Showing up to a room of strangers is the hard part; the rest is easy.
-          Meetups are free, nobody takes attendance, and nobody will quiz you.
-          Come for the talk, stay for the pizza, leave whenever you want.
-        </p>
         <p>
           The most beginner-friendly place to start is <strong>Open Hack</strong
           >
@@ -114,20 +87,6 @@ const pointers = [
       <SectionHead title="WHO RUNS THIS" />
       <div class="pt-2">
         <Startcard />
-      </div>
-    </section>
-
-    <section class="pb-4 pt-6">
-      <SectionHead title="POINTERS" />
-      <div class="grid gap-3 pt-4 sm:grid-cols-3">
-        {
-          pointers.map((p) => (
-            <a href={p.href} class="card card-link flex flex-col gap-1.5 p-3.5">
-              <span class="text-[15px] font-extrabold">{p.title}</span>
-              <span class="text-[13px] leading-snug">{p.blurb}</span>
-            </a>
-          ))
-        }
       </div>
     </section>
   </div>

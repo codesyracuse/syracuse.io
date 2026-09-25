@@ -6,17 +6,8 @@ interface Props {
 }
 
 const { venue } = Astro.props;
-const {
-  name,
-  type,
-  neighborhood,
-  url,
-  pricingUrl,
-  hours,
-  vibe,
-  meetingRooms,
-  notes,
-} = venue.data;
+const { name, type, neighborhood, url, pricingUrl, hours, vibe, meetingRooms } =
+  venue.data;
 
 const tagColor = {
   cowork: "bg-steel",
@@ -44,7 +35,6 @@ const tagLabel = { cowork: "cowork", cafe: "café", free: "free" }[type];
   </div>
   <p class="font-mono text-[11px] opacity-70">{neighborhood}</p>
   <p class="text-[13px] leading-snug">{vibe}</p>
-  {notes && <p class="text-[11px] italic opacity-60">{notes}</p>}
   <div
     class="mt-auto flex justify-between border-t border-dotted border-line pt-2 font-mono text-[11px]"
   >

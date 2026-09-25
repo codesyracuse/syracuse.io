@@ -1,8 +1,7 @@
 import { getAllEvents } from "./meetup";
 
-// Updated by hand occasionally; a build-time fetch may replace it if the
-// Slack API becomes available.
-export const SLACK_MEMBER_COUNT = 712;
+// Hardcoded so it ages gracefully; a Slack API hookup may replace it later.
+export const SLACK_MEMBER_COUNT = "750+";
 
 /** Events whose dateTime falls in the current calendar month (past + upcoming — activity proof, not just what's left). */
 export function getEventsThisMonth(): number {

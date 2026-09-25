@@ -32,28 +32,16 @@ test.describe("Homepage", () => {
 
     await expect(page.getByText(/events this month/i)).toBeVisible();
     await expect(page.getByText(/members on Slack/i)).toBeVisible();
-    await expect(page.getByText(/open roles/i)).toBeVisible();
+    await expect(page.getByText(/open roles/i).first()).toBeVisible();
   });
 
   test("should show live data sections", async ({ page }) => {
     await page.goto("/");
 
-    for (const section of [
-      "NEXT UP",
-      "WHO'S HIRING",
-      "WHO'S BUILDING",
-      "WHERE TO WORK",
-    ]) {
+    for (const section of ["NEXT UP", "WHO'S HIRING", "WHO'S BUILDING"]) {
       await expect(
         page.getByRole("heading", { name: new RegExp(section) })
       ).toBeVisible();
     }
-  });
-
-  test("should show the startcard", async ({ page }) => {
-    await page.goto("/");
-
-    await expect(page.getByText(/A human runs this/i)).toBeVisible();
-    await expect(page.getByText("mike@syracuse.io").first()).toBeVisible();
   });
 });

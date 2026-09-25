@@ -5,7 +5,7 @@ test.describe("Jobs board", () => {
     await page.goto("/jobs");
 
     await expect(page.locator("h1")).toContainText("Who's hiring");
-    await expect(page.getByText(/open role/)).toBeVisible();
+    await expect(page.getByText(/open role/).first()).toBeVisible();
   });
 
   test("post-a-job opens the email modal", async ({ page }) => {

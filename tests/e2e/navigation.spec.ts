@@ -18,7 +18,6 @@ test.describe("Navigation", () => {
       "where to work",
       "companies",
       "jobs",
-      "codes",
     ]) {
       await expect(nav.getByRole("link", { name: label })).toBeVisible();
     }

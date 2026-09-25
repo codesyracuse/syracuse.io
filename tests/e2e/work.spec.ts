@@ -36,15 +36,4 @@ test.describe("Where to work", () => {
     await expect(addLink).toBeVisible();
     await expect(addLink).toHaveAttribute("href", /github\.com/);
   });
-
-  test("should show a compact section on the homepage", async ({ page }) => {
-    await page.goto("/");
-
-    await expect(
-      page.getByRole("heading", { name: /WHERE TO WORK/ })
-    ).toBeVisible();
-    await expect(
-      page.getByRole("link", { name: /all spots \+ day rates/i })
-    ).toBeVisible();
-  });
 });

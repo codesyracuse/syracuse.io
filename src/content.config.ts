@@ -1,21 +1,6 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
-const groups = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/groups" }),
-  schema: z.object({
-    title: z.string(),
-    group: z.string().optional(),
-    imagePath: z.string(),
-    summary: z.string(),
-    imgAlt: z.string(),
-    groupType: z.string(),
-    groupId: z.string(),
-    subtitle: z.string().optional(),
-    organizers: z.array(z.string()).optional(),
-  }),
-});
-
 const companies = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/companies" }),
   schema: ({ image }) =>
@@ -48,7 +33,6 @@ const venues = defineCollection({
     hours: z.string(),
     vibe: z.string(),
     meetingRooms: z.boolean(),
-    notes: z.string().optional(),
     added: z.coerce.date(),
   }),
 });
@@ -73,4 +57,4 @@ const jobs = defineCollection({
   }),
 });
 
-export const collections = { groups, companies, venues, jobs };
+export const collections = { companies, venues, jobs };
