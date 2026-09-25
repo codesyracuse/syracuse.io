@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>syracuse.io — v2 blend</title>
+    <style>
+      :root {
+        --salt: #f1f2ee;
+        --ink: #1b211f;
+        --brick: #a03c2a;
+        --steel: #33566b;
+        --plow: #edb230;
+        --card: #fbfbf9;
+        --line: #d4d6d0;
+        --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: var(--salt);
+        color: var(--ink);
+        font-family: var(--sans);
+        line-height: 1.5;
+        padding-bottom: 64px;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .wrap {
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+      .eyebrow {
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        opacity: 0.75;
+      }
+      .sign {
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      header {
+        background: var(--ink);
+        color: var(--salt);
+      }
+      .mast {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        padding: 14px 0;
+      }
+      .mast .name {
+        font-family: var(--mono);
+        font-weight: 700;
+        font-size: 18px;
+      }
+      .mast .name span {
+        color: var(--plow);
+      }
+      nav {
+        display: flex;
+        gap: 14px;
+        font-family: var(--mono);
+        font-size: 12px;
+      }
+      nav a {
+        border-bottom: 2px solid transparent;
+        padding-bottom: 2px;
+      }
+      nav a:hover,
+      nav a:focus-visible {
+        border-color: var(--plow);
+        outline: none;
+      }
+      nav a.hot {
+        color: var(--plow);
+      }
+
+      .hero {
+        background: var(--ink);
+        color: var(--salt);
+        padding: 28px 0 32px;
+      }
+      .hero .promptline {
+        font-family: var(--mono);
+        font-size: 13px;
+        margin-bottom: 16px;
+        color: #8a9089;
+      }
+      .hero .promptline b {
+        color: #9cbf8a;
+        font-weight: 400;
+      }
+      .hero h1 {
+        font-size: clamp(28px, 6vw, 52px);
+        line-height: 1.05;
+        font-weight: 800;
+        max-width: 18ch;
+      }
+      .hero h1 em {
+        font-style: normal;
+        color: var(--plow);
+      }
+      .hero p {
+        margin-top: 12px;
+        max-width: 52ch;
+        color: #c9cdc8;
+        font-size: 15px;
+      }
+      .ctas {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+      .btn {
+        font-family: var(--mono);
+        font-size: 13px;
+        padding: 11px 18px;
+        border-radius: 3px;
+        display: inline-block;
+      }
+      .btn.primary {
+        background: var(--brick);
+        color: var(--salt);
+        font-weight: 700;
+      }
+      .btn.primary:hover {
+        background: #b8452f;
+      }
+      .btn.ghost {
+        border: 1px solid #5a625d;
+        color: #c9cdc8;
+      }
+      .btn.ghost:hover {
+        border-color: var(--plow);
+        color: var(--plow);
+      }
+
+      .stats {
+        background: var(--steel);
+        color: var(--salt);
+      }
+      .stats .wrap {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .stat {
+        padding: 12px 8px;
+        border-left: 1px solid rgba(241, 242, 238, 0.25);
+      }
+      .stat:first-child {
+        border-left: none;
+      }
+      .stat b {
+        display: block;
+        font-family: var(--mono);
+        font-size: clamp(16px, 3.4vw, 24px);
+      }
+      .stat span {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        opacity: 0.8;
+      }
+
+      section {
+        padding: 30px 0 6px;
+      }
+      .sechead {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        border-bottom: 3px solid var(--ink);
+        padding-bottom: 6px;
+        margin-bottom: 4px;
+      }
+      .sechead h2 {
+        font-size: 15px;
+        font-family: var(--mono);
+        font-weight: 700;
+      }
+      .sechead h2 i {
+        font-style: normal;
+        color: var(--brick);
+      }
+      .sechead a {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--brick);
+      }
+      .sechead .sub {
+        font-size: 13px;
+        font-style: italic;
+        opacity: 0.75;
+      }
+
+      .row {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        padding: 13px 2px;
+        border-bottom: 1px solid var(--line);
+      }
+      .row .when {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--steel);
+        white-space: nowrap;
+        min-width: 76px;
+      }
+      .row .what {
+        font-weight: 650;
+        font-size: 15px;
+      }
+      .row .leader {
+        flex: 1;
+        border-bottom: 2px dotted #b9bcb4;
+        transform: translateY(-4px);
+        min-width: 20px;
+      }
+      .row .where {
+        font-family: var(--mono);
+        font-size: 12px;
+        opacity: 0.75;
+        white-space: nowrap;
+      }
+      .row:hover {
+        background: #e9ebe5;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 14px 0 8px;
+      }
+      .chip {
+        border: 2px solid var(--ink);
+        border-radius: 3px;
+        padding: 7px 12px;
+        font-family: var(--mono);
+        font-size: 12px;
+        background: var(--card);
+      }
+      .chip small {
+        opacity: 0.6;
+        margin-left: 6px;
+      }
+      .chip:hover {
+        background: var(--ink);
+        color: var(--salt);
+      }
+      .chip.add {
+        border-style: dashed;
+        color: var(--brick);
+      }
+
+      /* where to work cards */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        padding: 16px 0 8px;
+      }
+      .venue {
+        background: var(--card);
+        border: 2px solid var(--ink);
+        border-radius: 4px;
+        padding: 14px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .venue:hover {
+        box-shadow: 4px 4px 0 var(--steel);
+      }
+      .venue .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 8px;
+      }
+      .venue h3 {
+        font-size: 15px;
+        font-weight: 800;
+      }
+      .vtag {
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 2px 7px;
+        border-radius: 2px;
+        color: var(--salt);
+        white-space: nowrap;
+      }
+      .vtag.cowork {
+        background: var(--steel);
+      }
+      .vtag.cafe {
+        background: var(--brick);
+      }
+      .vtag.free {
+        background: #3e6b45;
+      }
+      .venue .hood {
+        font-family: var(--mono);
+        font-size: 11px;
+        opacity: 0.7;
+      }
+      .venue p {
+        font-size: 13px;
+        line-height: 1.45;
+      }
+      .venue .meta {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        font-family: var(--mono);
+        font-size: 11px;
+        padding-top: 8px;
+        border-top: 1px dotted var(--line);
+      }
+      .venue .meta a {
+        color: var(--brick);
+      }
+
+      .startcard {
+        background: var(--card);
+        border: 2px solid var(--brick);
+        border-radius: 4px;
+        padding: 20px;
+        margin: 34px 0;
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+      .startcard .face {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: var(--steel);
+        color: var(--salt);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--mono);
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+      .startcard h3 {
+        font-size: 17px;
+        font-weight: 800;
+      }
+      .startcard p {
+        font-size: 14px;
+        margin-top: 6px;
+        max-width: 56ch;
+      }
+      .startcard a {
+        color: var(--brick);
+        border-bottom: 2px solid var(--plow);
+      }
+      .startcard .mono {
+        font-family: var(--mono);
+      }
+
+      .statusbar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--ink);
+        color: var(--salt);
+        border-top: 3px solid var(--plow);
+        font-family: var(--mono);
+        font-size: 12px;
+        padding: 9px 0;
+      }
+      .statusbar .wrap {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .seg {
+        color: #9aa09a;
+      }
+      .seg b {
+        color: var(--salt);
+        font-weight: 700;
+      }
+      .seg.snow b {
+        color: var(--plow);
+      }
+
+      footer {
+        margin-top: 30px;
+        padding: 24px 0;
+        border-top: 3px solid var(--ink);
+      }
+      .foot {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+        font-size: 13px;
+      }
+      .news {
+        display: flex;
+        gap: 8px;
+      }
+      .news input {
+        background: transparent;
+        border: 2px solid var(--ink);
+        border-radius: 3px;
+        font-family: var(--mono);
+        font-size: 12px;
+        padding: 8px 10px;
+        width: 200px;
+        color: var(--ink);
+      }
+      .news button {
+        background: var(--ink);
+        color: var(--salt);
+        border: none;
+        border-radius: 3px;
+        font-family: var(--mono);
+        font-size: 12px;
+        font-weight: 700;
+        padding: 9px 12px;
+        cursor: pointer;
+      }
+      .news button:hover {
+        background: var(--brick);
+      }
+      .fine {
+        font-family: var(--mono);
+        font-size: 11px;
+        opacity: 0.6;
+        margin-top: 16px;
+      }
+
+      @media (max-width: 700px) {
+        .grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 560px) {
+        nav a:not(.hot) {
+          display: none;
+        }
+        .row .where {
+          display: none;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .stats .wrap {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .stat {
+          border-left: none;
+          border-top: 1px solid rgba(241, 242, 238, 0.25);
+        }
+        .seg.hide-m {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap mast">
+        <a class="name" href="#">syracuse<span>.io</span></a>
+        <nav>
+          <a class="hot" href="#">start here</a><a href="#">events</a
+          ><a href="#">where to work</a><a href="#">companies</a
+          ><a href="#">jobs</a><a href="#">codes</a>
+        </nav>
+      </div>
+      <div class="wrap hero">
+        <p class="eyebrow" style="margin-bottom: 14px">
+          Salt City · Central New York
+        </p>
+        <h1>Syracuse builds software. <em>Come build with us.</em></h1>
+        <p>
+          Every meetup, every hiring company, every good place to open a laptop
+          in the Salt City — maintained in the open by the people in it. New
+          here? We were all new here once.
+        </p>
+        <div class="ctas">
+          <a class="btn primary" href="#">Start here →</a>
+          <a class="btn ghost" href="#">join the Slack</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="stats">
+      <div class="wrap">
+        <div class="stat"><b>7</b><span>events this month</span></div>
+        <div class="stat"><b>712</b><span>members on Slack</span></div>
+        <div class="stat"><b>43</b><span>companies listed</span></div>
+        <div class="stat"><b>12</b><span>open roles</span></div>
+      </div>
+    </div>
+
+    <main class="wrap">
+      <section>
+        <div class="sechead">
+          <h2><i>┤</i> NEXT UP <i>├</i></h2>
+          <a href="#">full calendar · subscribe ↓ics</a>
+        </div>
+        <a class="row" href="#">
+          <span class="when">THU 07·16</span><span class="what">Open Hack</span>
+          <span class="leader"></span
+          ><span class="where">Middle Ages Brewing · 6pm</span>
+        </a>
+        <a class="row" href="#">
+          <span class="when">TUE 07·21</span
+          ><span class="what">SyracuseJS — Signals in 2026</span>
+          <span class="leader"></span
+          ><span class="where">Salt City Market · 6pm</span>
+        </a>
+        <a class="row" href="#">
+          <span class="when">WED 07·29</span
+          ><span class="what">Women in Coding — Intro to Rust</span>
+          <span class="leader"></span
+          ><span class="where">Central Library · 5:30pm</span>
+        </a>
+      </section>
+
+      <section>
+        <div class="sechead">
+          <h2><i>┤</i> WHO'S HIRING <i>├</i></h2>
+          <a href="#">all 12 roles →</a>
+        </div>
+        <a class="row" href="#">
+          <span class="what">Senior Backend Engineer</span
+          ><span class="leader"></span
+          ><span class="where">TCGplayer · hybrid</span>
+        </a>
+        <a class="row" href="#">
+          <span class="what">Frontend Developer</span
+          ><span class="leader"></span
+          ><span class="where">SIDEARM Sports · on-site</span>
+        </a>
+        <a class="row" href="#">
+          <span class="what">Platform Engineer</span><span class="leader"></span
+          ><span class="where">Terakeet · remote</span>
+        </a>
+      </section>
+
+      <section>
+        <div class="sechead">
+          <h2><i>┤</i> WHO'S BUILDING <i>├</i></h2>
+          <a href="#">all 43 companies →</a>
+        </div>
+        <div class="chips">
+          <a class="chip" href="#">TCGplayer<small>marketplace</small></a>
+          <a class="chip" href="#">Density<small>sensors</small></a>
+          <a class="chip" href="#">JMA Wireless<small>5G</small></a>
+          <a class="chip" href="#">Terakeet<small>marketing tech</small></a>
+          <a class="chip" href="#">SIDEARM Sports<small>sports web</small></a>
+          <a class="chip add" href="#">+ add your company</a>
+        </div>
+      </section>
+
+      <section>
+        <div class="sechead">
+          <h2><i>┤</i> WHERE TO WORK <i>├</i></h2>
+          <a href="#">all spots + day rates →</a>
+        </div>
+        <a class="row" href="#">
+          <span class="when">COWORK</span
+          ><span class="what">Commonspace Work</span>
+          <span class="leader"></span
+          ><span class="where">Downtown · day passes, conf rooms</span>
+        </a>
+        <a class="row" href="#">
+          <span class="when">CAFÉ</span
+          ><span class="what">Salt City Coffee</span>
+          <span class="leader"></span
+          ><span class="where">Downtown · open late, couches</span>
+        </a>
+        <a class="row" href="#">
+          <span class="when">FREE</span
+          ><span class="what">Central Library</span> <span class="leader"></span
+          ><span class="where">Downtown · bookable rooms, $0</span>
+        </a>
+      </section>
+
+      <div class="startcard">
+        <div class="face">MV</div>
+        <div>
+          <h3 class="sign">A human runs this</h3>
+          <p>
+            Hi — I'm Mike. I help keep the meetups fed and this site running
+            through <a href="#">CODES</a>, the little nonprofit behind it all.
+            If you're new, nervous, or just have a question that feels too small
+            for a public Slack channel, email me directly:
+            <span class="mono">mike@syracuse.io</span>. I answer.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="foot">
+          <div>
+            <p class="eyebrow">
+              One email a month · events, jobs, and who's new
+            </p>
+            <div class="news" style="margin-top: 8px">
+              <input
+                type="email"
+                placeholder="you@example.com"
+                aria-label="Email address"
+              />
+              <button>Subscribe</button>
+            </div>
+          </div>
+          <div
+            style="
+              font-family: var(--mono);
+              font-size: 12px;
+              line-height: 2;
+              text-align: right;
+            "
+          >
+            <a href="#">github.com/codesyracuse</a><br /><a href="#"
+              >edit this page</a
+            >
+            · <a href="#">sponsor a meetup</a>
+          </div>
+        </div>
+        <p class="fine">
+          syracuse.io is maintained in the open by CODES, a 501(c)(3) nonprofit.
+          Sponsorship buys the pizza — nothing more, nothing less.
+        </p>
+      </div>
+    </footer>
+
+    <div class="statusbar">
+      <div class="wrap">
+        <span class="seg">[<b>712</b> on slack]</span>
+        <span class="seg hide-m">[<b>43</b> companies]</span>
+        <span class="seg snow">[❄ <b>127.4″</b> SYR leads the snowball]</span>
+        <span class="seg hide-m">[<b>?</b> start here]</span>
+      </div>
+    </div>
+  </body>
+</html>
