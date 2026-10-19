@@ -1,0 +1,21 @@
+---
+/**
+ * A fact only Mike can supply. Renders `value` as plain text once it's real;
+ * while it still contains "TBD(mike)" (or is missing) it renders a visible
+ * placeholder. The tbd-guard integration fails strict builds if one survives.
+ */
+interface Props {
+  value?: string;
+  label?: string;
+}
+const { value, label } = Astro.props;
+const isTbd = !value || value.includes("TBD(mike)");
+---
+
+{
+  isTbd ? (
+    <mark class="tbd">{label ? `TBD(mike): ${label}` : "TBD(mike)"}</mark>
+  ) : (
+    value
+  )
+}

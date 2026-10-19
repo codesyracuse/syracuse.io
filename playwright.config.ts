@@ -4,7 +4,7 @@ import { defineConfig, devices } from "@playwright/test";
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: "./tests/e2e",
+  testDir: "./tests",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -26,14 +26,20 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: "unit",
+      testMatch: "unit/**/*.spec.ts",
+    },
+    {
       name: "chromium",
+      testMatch: "e2e/**/*.spec.ts",
       use: { ...devices["Desktop Chrome"] },
     },
   ],
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: process.env.CI ? "npm run preview" : "npm run dev",
+    // Test the built site; `npm run dev` isn't reliable with the Cloudflare adapter.
+    command: "npm run build && npm run preview",
     url: "http://localhost:4321",
     reuseExistingServer: !process.env.CI,
     timeout: 120000,

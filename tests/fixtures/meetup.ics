@@ -1,0 +1,120 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Meetup//Meetup Calendar 1.0//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+NAME:Syracuse Software Development Meetup
+X-WR-CALNAME:Syracuse Software Development Meetup
+BEGIN:VTIMEZONE
+TZID:America/New_York
+TZURL:http://tzurl.org/zoneinfo-outlook/America/New_York
+X-LIC-LOCATION:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:event_315977415@meetup.com
+SEQUENCE:1
+DTSTAMP:20261019T140838Z
+DTSTART;TZID=America/New_York:20261020T180000
+DTEND;TZID=America/New_York:20261020T200000
+SUMMARY:OpenHack: Code together\, on anything
+DESCRIPTION:Syracuse Software Development Meetup\nThe OpenHack elevator pi
+ tch:\n\n* OpenHack is a casual social coding meetup with a simple purpose:
+  Code together\, on anything.\n\nHow OpenHack works:\n\n* You can hack on 
+ anything! Any language\, framework\, public/open-source\, personal project
+ s\, client work… anything!\n* You don’t have to have an idea to hack o
+ n\, you can come join someone else\n* We’ll kick things off with a quick
+  round of introductions\, to say who you are\, what you’re working on\, 
+ and if you’d like help with your idea\n* Food and drinks will be provide
+ d\n* Feel free to join us - bring a laptop\, a project\, and a friend!\n\n
+ We welcome local developers and designers of all skill levels\, interests\
+ , ages genders\, you-name-it's to get together to write code or push pixel
+ s. We’ll provide good food\, good people\, and creative energy.\n\nSee m
+ ore at https://syracuse.io/groups/open-hack/\n\nWhat to bring\n\n* A lapto
+ p if you're bringing a project\, but totally not required\n\nImportant to 
+ know\n\n* Please review our Code of Conduct before attending: https://syra
+ cuse.io/code-of-conduct/
+URL;VALUE=URI:https://www.meetup.com/syracuse-software-development-meetup/
+ events/315977415/
+STATUS:CONFIRMED
+CREATED:20260804T182213Z
+LAST-MODIFIED:20260804T182213Z
+CLASS:PUBLIC
+END:VEVENT
+BEGIN:VEVENT
+UID:event_316355381@meetup.com
+SEQUENCE:1
+DTSTAMP:20261019T140838Z
+DTSTART;TZID=America/New_York:20261110T180000
+DTEND;TZID=America/New_York:20261110T200000
+SUMMARY:OpenHack: Code together\, on anything
+DESCRIPTION:Syracuse Software Development Meetup\nThe OpenHack elevator pi
+ tch:\n\n* OpenHack is a casual social coding meetup with a simple purpose:
+  Code together\, on anything.\n\nHow OpenHack works:\n\n* You can hack on 
+ anything! Any language\, framework\, public/open-source\, personal project
+ s\, client work… anything!\n* You don’t have to have an idea to hack o
+ n\, you can come join someone else\n* We’ll kick things off with a quick
+  round of introductions\, to say who you are\, what you’re working on\, 
+ and if you’d like help with your idea\n* Food and drinks will be provide
+ d\n* Feel free to join us - bring a laptop\, a project\, and a friend!\n\n
+ We welcome local developers and designers of all skill levels\, interests\
+ , ages genders\, you-name-it's to get together to write code or push pixel
+ s. We’ll provide good food\, good people\, and creative energy.\n\nSee m
+ ore at https://syracuse.io/groups/open-hack/\n\nWhat to bring\n\n* A lapto
+ p if you're bringing a project\, but totally not required\n\nImportant to 
+ know\n\n* Please review our Code of Conduct before attending: https://syra
+ cuse.io/code-of-conduct/
+URL;VALUE=URI:https://www.meetup.com/syracuse-software-development-meetup/
+ events/316355381/
+STATUS:CONFIRMED
+CREATED:20260831T154635Z
+LAST-MODIFIED:20260831T154635Z
+CLASS:PUBLIC
+END:VEVENT
+BEGIN:VEVENT
+UID:event_316355383@meetup.com
+SEQUENCE:1
+DTSTAMP:20261019T140838Z
+DTSTART;TZID=America/New_York:20261208T180000
+DTEND;TZID=America/New_York:20261208T200000
+SUMMARY:OpenHack: Code together\, on anything
+DESCRIPTION:Syracuse Software Development Meetup\nThe OpenHack elevator pi
+ tch:\n\n* OpenHack is a casual social coding meetup with a simple purpose:
+  Code together\, on anything.\n\nHow OpenHack works:\n\n* You can hack on 
+ anything! Any language\, framework\, public/open-source\, personal project
+ s\, client work… anything!\n* You don’t have to have an idea to hack o
+ n\, you can come join someone else\n* We’ll kick things off with a quick
+  round of introductions\, to say who you are\, what you’re working on\, 
+ and if you’d like help with your idea\n* Food and drinks will be provide
+ d\n* Feel free to join us - bring a laptop\, a project\, and a friend!\n\n
+ We welcome local developers and designers of all skill levels\, interests\
+ , ages genders\, you-name-it's to get together to write code or push pixel
+ s. We’ll provide good food\, good people\, and creative energy.\n\nSee m
+ ore at https://syracuse.io/groups/open-hack/\n\nWhat to bring\n\n* A lapto
+ p if you're bringing a project\, but totally not required\n\nImportant to 
+ know\n\n* Please review our Code of Conduct before attending: https://syra
+ cuse.io/code-of-conduct/
+URL;VALUE=URI:https://www.meetup.com/syracuse-software-development-meetup/
+ events/316355383/
+STATUS:CONFIRMED
+CREATED:20260831T154638Z
+LAST-MODIFIED:20260831T154638Z
+CLASS:PUBLIC
+END:VEVENT
+X-ORIGINAL-URL:https://www.meetup.com/syracuse-software-development-meetup
+ /events/ical/
+X-WR-CALNAME:Syracuse Software Development Meetup
+END:VCALENDAR

@@ -1,7 +1,8 @@
 ---
 title: Code of Conduct
 subtitle: TL;DR Be kind to one another
-layout: ../layouts/Page.astro
+description: Be kind. How we expect people to treat each other at syracuse.io meetups and in the Slack, and how to report a problem.
+layout: ../layouts/ProseLayout.astro
 ---
 
 ### What is expected of me as a member of the Syracuse development community?

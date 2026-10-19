@@ -1,3 +1,112 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --salt: #f1f2ee; /* page background (cool, never warm cream) */
+  --ink: #1b211f; /* text; header, hero and footer; card borders */
+  --brick: #a03c2a; /* primary CTA, links that act */
+  --steel: #33566b; /* "three ways in" band, card backshadow, secondary labels */
+  --plow: #edb230; /* scarce: ".io" in the wordmark, the day name in the hero date */
+  --card: #fbfbf9; /* card backgrounds */
+  --line: #d4d6d0; /* hairline row separators */
+  --muted: #5a625d; /* secondary text on salt */
+  --muted-on-ink: #c9cdc8;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-salt font-sans text-[17px] leading-[1.55] text-ink;
+  }
+
+  a {
+    @apply text-brick;
+  }
+
+  a:hover {
+    @apply text-ink;
+  }
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto max-w-site px-6;
+  }
+
+  /* Mono, 12px, uppercase, wide tracking. */
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.14em];
+  }
+
+  /* Section heading sitting on a 2px ink rule. */
+  .section-title {
+    @apply text-[22px] font-extrabold uppercase tracking-[0.02em];
+  }
+
+  .btn {
+    @apply inline-flex min-h-[44px] items-center justify-center rounded-[3px] px-[18px] py-[11px] font-mono text-sm no-underline;
+  }
+
+  .btn-primary {
+    @apply bg-brick font-bold text-salt;
+  }
+
+  .btn-primary:hover {
+    background: #b8452f;
+    @apply text-salt;
+  }
+
+  /* Ghost on dark bands. */
+  .btn-ghost {
+    border: 1px solid #5a625d;
+    @apply text-muted-on-ink;
+  }
+
+  .btn-ghost:hover {
+    @apply border-plow text-plow;
+  }
+
+  /* Solid light and outline buttons for the steel band. */
+  .btn-light {
+    @apply bg-salt font-bold text-ink;
+  }
+
+  .btn-light:hover {
+    @apply bg-white text-ink;
+  }
+
+  .btn-outline-light {
+    border: 1px solid #c9d6de;
+    @apply text-salt;
+  }
+
+  .btn-outline-light:hover {
+    @apply bg-salt/10 text-salt;
+  }
+
+  .card {
+    @apply rounded border-2 border-ink bg-card;
+  }
+
+  /* Cards that are links carry the steel backshadow; static cards don't. */
+  a.card {
+    box-shadow: 4px 4px 0 var(--steel);
+    @apply block text-ink no-underline;
+  }
+
+  /* Visible placeholder for a fact only Mike can supply. */
+  .tbd {
+    @apply rounded-[2px] bg-white px-1 font-mono text-[0.9em] font-bold text-brick;
+    outline: 1px dashed var(--brick);
+  }
+}
