@@ -1,6 +1,7 @@
 ---
 import { getActiveSeries } from "../lib/series";
 import { getActiveJobs } from "../lib/jobs";
+import { cleanPath } from "../lib/site";
 
 interface Props {
   rsvpHref: string;
@@ -11,7 +12,7 @@ const [series, jobs] = await Promise.all([getActiveSeries(), getActiveJobs()]);
 // One series: go straight to its page. More than one: the list on home.
 const meetupsHref = series.length === 1 ? `/${series[0].id}` : "/#series";
 
-const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const path = cleanPath(Astro.url.pathname);
 const links = [
   { href: meetupsHref, label: "meetups", show: true },
   { href: "/jobs", label: "jobs", show: jobs.length > 0 },

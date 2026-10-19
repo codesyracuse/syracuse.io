@@ -21,3 +21,8 @@ export const CONTACT_EMAIL = "TBD(mike)";
 export const EMAIL_FORM_ACTION = "TBD(mike)";
 
 export const TIME_ZONE = "America/New_York";
+
+/** "/open-hack.html" or "/open-hack/" -> "/open-hack"; "/index.html" -> "/". */
+export function cleanPath(pathname: string): string {
+  return pathname.replace(/(\/index)?\.html$/, "").replace(/\/+$/, "") || "/";
+}

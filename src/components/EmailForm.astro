@@ -23,6 +23,8 @@ const providerUnset = EMAIL_FORM_ACTION.includes("TBD(mike)");
   <p class="mb-3 text-base text-[#dce4e8]">
     Upcoming meetups and local jobs. Once a month.
   </p>
+  {/* jsx-a11y only recognizes htmlFor; Astro uses the standard `for`. */}
+  {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
   <label for="email-address" class="mb-1.5 block text-[13px] font-bold"
     >Email address</label
   >

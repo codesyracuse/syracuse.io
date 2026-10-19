@@ -13,6 +13,9 @@ export default defineConfig({
   adapter: cloudflare({ prerenderEnvironment: "node" }),
   // Every page is prerendered; a daily rebuild keeps events, jobs and sponsors current.
   output: "static",
+  // /open-hack, not /open-hack/, to match the links and canonical URLs.
+  trailingSlash: "never",
+  build: { format: "file" },
   // The site has no sessions; an explicit driver stops the adapter from
   // adding a KV namespace binding to the Worker.
   session: { driver: sessionDrivers.memory() },

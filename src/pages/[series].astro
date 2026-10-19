@@ -1,0 +1,238 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import EventRow from "../components/EventRow.astro";
+import SectionHead from "../components/SectionHead.astro";
+import Tbd from "../components/Tbd.astro";
+import { getUpcomingForSeries, rsvpUrl } from "../lib/events";
+import {
+  dateParts,
+  localDateKey,
+  monthDay,
+  sinceLabel,
+  timeFull,
+} from "../lib/events/format";
+import { getActiveSeries } from "../lib/series";
+import { getEventSponsor, getSeriesHosts } from "../lib/sponsors";
+import { eventJsonLd } from "../lib/seo";
+import { GROUP_SINCE, SITE_URL } from "../lib/site";
+
+export async function getStaticPaths() {
+  // Only active series get a page, so a series can be drafted with active: false.
+  return (await getActiveSeries()).map((entry) => ({
+    params: { series: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+
+const [venues, hosts, upcoming] = await Promise.all([
+  getCollection("venues"),
+  getSeriesHosts(entry.id),
+  getUpcomingForSeries(entry.id),
+]);
+const venue = venues.find((v) => v.id === data.venue.id)?.data;
+const next = upcoming[0];
+const comingUp = upcoming.slice(0, 3);
+const foodBy = await Promise.all(
+  comingUp.map(
+    async (e) =>
+      (await getEventSponsor(localDateKey(e.start), entry.id))?.data.name
+  )
+);
+const when = next && dateParts(next.start);
+const hostNames = hosts.map((h) => h.data.name).join(" and ");
+
+// "second tuesday · every month · 6pm"
+const rhythmLine = [
+  ...data.rhythm.toLowerCase().split(", "),
+  data.time.replace(":00", "").replace(" ", ""),
+].join(" · ");
+const since = sinceLabel(data.since ?? GROUP_SINCE);
+const pageUrl = `${SITE_URL}/${entry.id}`;
+const { first_time: first } = data;
+---
+
+<BaseLayout
+  title={data.seo_title}
+  description={data.seo_description}
+  jsonLd={comingUp.map((e) => eventJsonLd(e, pageUrl))}
+>
+  <section slot="hero" id="rsvp" class="wrap pb-14 pt-11">
+    <h1>
+      <span class="eyebrow block text-muted-on-ink"
+        >A monthly developer meetup in Syracuse, NY</span
+      >
+      <span
+        class="mb-1.5 mt-2.5 block text-[clamp(48px,7vw,84px)] font-extrabold leading-[0.95] tracking-[-0.03em]"
+        >{data.name}</span
+      >
+    </h1>
+    <div class="font-mono text-[15px] text-muted-on-ink">{rhythmLine}</div>
+    <div
+      class="mt-9 flex flex-wrap items-center justify-between gap-x-10 gap-y-5 border-t border-[#3a423e] pt-6"
+    >
+      {
+        next && when ? (
+          <>
+            <div>
+              <div class="eyebrow text-muted-on-ink">Next one</div>
+              <div class="mt-1.5 text-[clamp(36px,5vw,56px)] font-extrabold uppercase leading-none tracking-[-0.02em]">
+                <span class="text-plow">{when.weekday}</span> {when.month}{" "}
+                {when.day}
+              </div>
+              <div class="mt-2 font-mono text-sm text-muted-on-ink">
+                {[
+                  timeFull(next.start),
+                  next.venueName ?? next.location,
+                  next.neighborhood,
+                ]
+                  .filter(Boolean)
+                  .join(" · ")}
+              </div>
+            </div>
+            <a
+              href={rsvpUrl(next)}
+              data-track="rsvp"
+              data-series={entry.id}
+              data-provider={next.provider}
+              class="btn btn-primary min-h-[48px] px-6 py-3.5 text-[15px]"
+            >
+              RSVP for {monthDay(next.start)} →
+            </a>
+          </>
+        ) : (
+          <>
+            <div class="max-w-[32ch] text-lg">
+              The next date isn't posted yet. Get the monthly email and we'll
+              tell you when it is.
+            </div>
+            <a
+              href="/#email"
+              class="btn btn-primary min-h-[48px] px-6 py-3.5 text-[15px]"
+            >
+              get the monthly email →
+            </a>
+          </>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="wrap pb-12 pt-14">
+    <div class="flex flex-wrap gap-x-14 gap-y-10">
+      <div class="max-w-[40rem] flex-[999_1_420px]">
+        <h2 class="section-title mb-2.5">What happens</h2>
+        <div
+          class="text-[18px] [&_a]:underline [&_p:last-child]:mb-0 [&_p]:mb-3.5"
+        >
+          <Content />
+        </div>
+
+        <h2 class="section-title mb-2.5 mt-11">Your first time</h2>
+        <dl class="border-t-2 border-ink">
+          {
+            (
+              [
+                ["arrive", first.arrive],
+                ["find us", first.find_us],
+                ["crowd", first.crowd],
+                ["food", first.food],
+                ["bring", first.bring],
+              ] as const
+            ).map(([label, value]) => (
+              <div class="flex flex-wrap gap-x-5 gap-y-1 border-b border-line py-3">
+                <dt class="w-[90px] font-mono text-[13px] text-steel">
+                  {label}
+                </dt>
+                <dd class="m-0 flex-[1_1_260px]">
+                  <Tbd value={value} label={label} />
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+
+      <div class="flex flex-[1_1_280px] flex-col gap-6">
+        <div class="card p-[22px]">
+          <h2 class="mb-2.5 text-lg font-extrabold uppercase tracking-[0.02em]">
+            Who it's for
+          </h2>
+          <ul class="m-0 flex list-disc flex-col gap-1 pl-5 text-base">
+            {data.who_for.map((who) => <li>{who}</li>)}
+          </ul>
+        </div>
+        {
+          venue && (
+            <div class="card p-[22px]">
+              <h2 class="mb-2.5 text-lg font-extrabold uppercase tracking-[0.02em]">
+                Where
+              </h2>
+              <div class="font-bold">{venue.name}</div>
+              <div class="mt-0.5 font-mono text-sm">
+                <Tbd value={venue.address} label="street address" />, Syracuse,
+                NY
+              </div>
+              {venue.notes && (
+                <div class="mt-1.5 text-[15px] text-muted">
+                  <Tbd value={venue.notes} label="parking / entry note" />
+                </div>
+              )}
+              {venue.maps_url && (
+                <a
+                  href={venue.maps_url}
+                  class="mt-2.5 inline-block font-mono text-sm font-bold"
+                >
+                  open in maps →
+                </a>
+              )}
+              {hostNames && (
+                <div class="mt-3.5 border-t border-line pt-3 text-sm text-muted">
+                  Hosted by {hostNames}. Thank you.
+                </div>
+              )}
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  {
+    comingUp.length > 0 && (
+      <section class="wrap pb-14 pt-2">
+        <SectionHead
+          title="Coming up"
+          aside={`meeting monthly since ${since}`}
+          asideClass="text-steel"
+        />
+        {comingUp.map((event, i) => (
+          <EventRow event={event} showSeries={false} foodBy={foodBy[i]} />
+        ))}
+      </section>
+    )
+  }
+
+  <section class="bg-steel text-salt">
+    <div class="wrap flex flex-wrap items-center justify-between gap-5 py-11">
+      <div class="flex-[1_1_320px]">
+        <h2 class="mb-1 text-[22px] font-extrabold">
+          Can't make it this month?
+        </h2>
+        <p class="text-base text-[#dce4e8]">
+          Join the local Slack, or get one email a month with what's coming up.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-2.5">
+        <a href="/slack" data-track="slack" class="btn btn-light"
+          >join the slack</a
+        >
+        <a href="/#email" class="btn btn-outline-light">get the email</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
