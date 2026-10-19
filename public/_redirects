@@ -1,0 +1,4 @@
+# Wildcard rules from earlier versions of the site. Exact-path redirects live
+# in astro.config.mjs; the Cloudflare adapter appends them to this file.
+/groups/*  /      301
+/jobs/*    /jobs  301

@@ -4,12 +4,7 @@ export const SITE_URL = "https://syracuse.io";
 /** Meetups have run every month since this (YYYY-MM). */
 export const GROUP_SINCE = "2014-04";
 
-/**
- * Where /slack redirects. Carried over from the old site; confirm it doesn't
- * expire (shared invites often do) before launch.
- */
-export const SLACK_INVITE_URL =
-  "https://join.slack.com/t/syracuseio/shared_invite/zt-aw7rkg3q-2cgCecN524oOVarFJWMOPw";
+export { SLACK_INVITE_URL } from "../config/links.mjs";
 
 /** Mike's address, as written in the approved home page copy. */
 export const MIKE_EMAIL = "mike@syracuse.io";

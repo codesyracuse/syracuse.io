@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Page not found · syracuse.io"
+  description="That page doesn't exist. Head back to the next meetup."
+>
+  <section slot="hero" class="wrap pb-12 pt-8">
+    <h1
+      class="text-[clamp(40px,6vw,64px)] font-extrabold leading-[0.95] tracking-[-0.03em]"
+    >
+      Page not found
+    </h1>
+  </section>
+  <section class="wrap py-14">
+    <p class="max-w-[40rem] text-xl leading-normal">
+      That page isn't here. The next meetup is, though.
+    </p>
+    <p class="mt-6">
+      <a href="/" class="btn btn-primary">see the next meetup →</a>
+    </p>
+  </section>
+</BaseLayout>
