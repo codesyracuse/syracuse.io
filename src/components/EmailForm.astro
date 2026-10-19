@@ -1,0 +1,50 @@
+---
+import Tbd from "./Tbd.astro";
+import { EMAIL_FORM_ACTION } from "../lib/site";
+
+interface Props {
+  id?: string;
+}
+const { id = "email" } = Astro.props;
+const providerUnset = EMAIL_FORM_ACTION.includes("TBD(mike)");
+---
+
+<form
+  id={id}
+  method="post"
+  action={EMAIL_FORM_ACTION}
+  data-email-signup
+  class="block"
+>
+  <div class="font-mono text-xs tracking-[0.14em] text-[#c9d6de]">03</div>
+  <h3 class="mb-1.5 mt-1.5 text-[21px] font-extrabold">
+    Get the monthly email
+  </h3>
+  <p class="mb-3 text-base text-[#dce4e8]">
+    Upcoming meetups and local jobs. Once a month.
+  </p>
+  <label for="email-address" class="mb-1.5 block text-[13px] font-bold"
+    >Email address</label
+  >
+  <div class="flex flex-wrap gap-2">
+    <input
+      id="email-address"
+      name="email"
+      type="email"
+      required
+      autocomplete="email"
+      placeholder="you@example.com"
+      class="min-h-[44px] flex-[1_1_170px] rounded-[3px] border-0 bg-salt px-3 py-2.5 text-[15px] text-ink"
+    />
+    <button type="submit" class="btn btn-outline-light cursor-pointer font-bold"
+      >sign up</button
+    >
+  </div>
+  {
+    providerUnset && (
+      <p class="mt-2 text-sm">
+        <Tbd label="email list provider (form action)" />
+      </p>
+    )
+  }
+</form>

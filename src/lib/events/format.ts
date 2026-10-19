@@ -77,3 +77,11 @@ export function sinceLabel(since: string): string {
   const [y, m] = since.split("-");
   return `${MONTHS[Number(m) - 1]} ${y}`;
 }
+
+/**
+ * "2026-10-13" for a date-only YAML value (`event_date: 2026-10-13`). Those
+ * parse as UTC midnight, so reading them in Syracuse time would give Oct 12.
+ */
+export function calendarDay(date: Date): string {
+  return date.toISOString().slice(0, 10);
+}

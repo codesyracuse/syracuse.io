@@ -18,13 +18,15 @@ const { rsvpHref } = Astro.props;
       <a href="/#email" class="text-salt">monthly email</a>
     </div>
     <div>
-      run by CODES, a 501(c)(3) nonprofit ·
-      <a href="/codes" class="text-salt">about</a> ·
-      <a href="/code-of-conduct" class="text-salt">code of conduct</a> ·
+      run by CODES, a 501(c)(3) nonprofit ·{" "}
+      <a href="/codes" class="text-salt">about</a>{" "}·{" "}
+      <a href="/code-of-conduct" class="text-salt">code of conduct</a>{" "}·{
+        " "
+      }
       <a href="/privacy" class="text-salt">privacy</a>
     </div>
     <div class="basis-full">
-      contact:
+      contact:{" "}
       {
         CONTACT_EMAIL.includes("TBD(mike)") ? (
           <Tbd label="general contact email" />

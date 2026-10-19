@@ -1,0 +1,43 @@
+---
+import { rowDate, timeShort } from "../lib/events/format";
+import { rsvpUrl, type SiteEvent } from "../lib/events";
+
+interface Props {
+  event: SiteEvent;
+  /** Show the series name (home). Series pages already say which series. */
+  showSeries?: boolean;
+  /** Sponsor covering food that night, if any. */
+  foodBy?: string;
+}
+const { event, showSeries = true, foodBy } = Astro.props;
+
+const meta = [
+  event.venueName ?? event.location,
+  timeShort(event.start),
+  foodBy && `food by ${foodBy}`,
+]
+  .filter(Boolean)
+  .join(" · ");
+---
+
+<a
+  href={rsvpUrl(event)}
+  data-track="rsvp"
+  data-series={event.series ?? "community"}
+  data-provider={event.provider}
+  class="flex flex-wrap items-center gap-x-7 gap-y-2 border-b border-line py-[18px] text-ink no-underline hover:bg-black/[0.03] hover:text-ink"
+>
+  <span class="w-[120px] font-mono text-[15px] font-bold tabular-nums"
+    >{rowDate(event.start)}</span
+  >
+  <span
+    class:list={[
+      "flex-[1_1_240px]",
+      showSeries ? "text-lg font-bold" : "font-mono text-[13px] text-muted",
+    ]}
+  >
+    {showSeries ? (event.seriesName ?? "Community event") : meta}
+  </span>
+  {showSeries && <span class="font-mono text-[13px] text-muted">{meta}</span>}
+  <span class="font-mono text-[13px] font-bold text-brick">RSVP →</span>
+</a>

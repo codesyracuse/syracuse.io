@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+import type { Sponsor } from "../lib/sponsors";
+
+interface Props {
+  sponsor: Sponsor;
+  class?: string;
+}
+const { sponsor, class: className } = Astro.props;
+const { name, logo, url } = sponsor.data;
+const Tag = url ? "a" : "span";
+---
+
+<Tag
+  href={url}
+  class:list={[
+    "text-[22px] font-extrabold text-muted no-underline",
+    url && "hover:text-ink",
+    className,
+  ]}
+>
+  {
+    logo ? (
+      <Image src={logo} alt={name} height={36} class="h-9 w-auto opacity-70" />
+    ) : (
+      name
+    )
+  }
+</Tag>
