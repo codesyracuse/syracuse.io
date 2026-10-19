@@ -4,9 +4,9 @@ import { getActiveJobs } from "../lib/jobs";
 import { cleanPath } from "../lib/site";
 
 interface Props {
-  rsvpHref: string;
+  rsvp: { href: string; series: string; provider?: string };
 }
-const { rsvpHref } = Astro.props;
+const { rsvp } = Astro.props;
 
 const [series, jobs] = await Promise.all([getActiveSeries(), getActiveJobs()]);
 // One series: go straight to its page. More than one: the list on home.
@@ -43,6 +43,12 @@ const links = [
         </a>
       ))
     }
-    <a href={rsvpHref} class="btn btn-primary" data-track="rsvp">RSVP</a>
+    <a
+      href={rsvp.href}
+      class="btn btn-primary"
+      data-track="rsvp"
+      data-series={rsvp.series}
+      data-provider={rsvp.provider}>RSVP</a
+    >
   </nav>
 </header>

@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Analytics from "../components/Analytics.astro";
 import { getNextEvent, rsvpUrl } from "../lib/events";
 import { cleanPath } from "../lib/site";
 import "../styles/global.css";
@@ -18,7 +19,11 @@ const { title, description, canonical, jsonLd = [] } = Astro.props;
 // The nav RSVP button goes to the next event, or to the email signup when
 // nothing is scheduled.
 const next = await getNextEvent();
-const rsvpHref = next ? rsvpUrl(next) : "/#email";
+const rsvp = {
+  href: next ? rsvpUrl(next) : "/#email",
+  series: next?.series ?? "community",
+  provider: next?.provider,
+};
 const canonicalUrl = new URL(
   canonical ?? cleanPath(Astro.url.pathname),
   Astro.site
@@ -50,12 +55,13 @@ const canonicalUrl = new URL(
   </head>
   <body>
     <div class="bg-ink text-salt">
-      <Header rsvpHref={rsvpHref} />
+      <Header rsvp={rsvp} />
       <slot name="hero" />
     </div>
     <main>
       <slot />
     </main>
-    <Footer rsvpHref={rsvpHref} />
+    <Footer rsvp={rsvp} />
+    <Analytics />
   </body>
 </html>

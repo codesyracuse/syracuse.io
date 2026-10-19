@@ -9,9 +9,7 @@ import { SLACK_INVITE_URL } from "./src/config/links.mjs";
 export default defineConfig({
   site: "https://syracuse.io",
   integrations: [buildGuard()],
-  // Prerender in Node: build-time code (the iCal parser) needs Node APIs that
-  // workerd lacks, and the pages are static by the time they reach the Worker.
-  adapter: cloudflare({ prerenderEnvironment: "node" }),
+  adapter: cloudflare({ imageService: "compile" }),
   // Every page is prerendered; a daily rebuild keeps events, jobs and sponsors current.
   output: "static",
   // /open-hack, not /open-hack/, to match the links and canonical URLs.

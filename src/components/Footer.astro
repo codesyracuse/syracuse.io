@@ -3,9 +3,9 @@ import Tbd from "./Tbd.astro";
 import { CONTACT_EMAIL } from "../lib/site";
 
 interface Props {
-  rsvpHref: string;
+  rsvp: { href: string; series: string; provider?: string };
 }
-const { rsvpHref } = Astro.props;
+const { rsvp } = Astro.props;
 ---
 
 <footer class="bg-ink text-muted-on-ink">
@@ -13,17 +13,27 @@ const { rsvpHref } = Astro.props;
     class="wrap flex flex-wrap justify-between gap-x-8 gap-y-3.5 pb-10 pt-7 font-mono text-[13px]"
   >
     <div class="flex flex-wrap gap-[18px]">
-      <a href={rsvpHref} class="text-salt" data-track="rsvp">rsvp</a>
+      <a
+        href={rsvp.href}
+        class="text-salt"
+        data-track="rsvp"
+        data-series={rsvp.series}
+        data-provider={rsvp.provider}>rsvp</a
+      >
       <a href="/slack" class="text-salt" data-track="slack">slack</a>
       <a href="/#email" class="text-salt">monthly email</a>
     </div>
     <div>
       run by CODES, a 501(c)(3) nonprofit ·{" "}
-      <a href="/codes" class="text-salt">about</a>{" "}·{" "}
-      <a href="/code-of-conduct" class="text-salt">code of conduct</a>{" "}·{
+      <a href="/codes" class="text-salt underline underline-offset-2">about</a>{
         " "
-      }
-      <a href="/privacy" class="text-salt">privacy</a>
+      }·{" "}
+      <a href="/code-of-conduct" class="text-salt underline underline-offset-2"
+        >code of conduct</a
+      >{" "}·{" "}
+      <a href="/privacy" class="text-salt underline underline-offset-2"
+        >privacy</a
+      >
     </div>
     <div class="basis-full">
       contact:{" "}

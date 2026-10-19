@@ -4,65 +4,75 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Syracuse.io is an Astro-based website (SSR, Cloudflare adapter) that serves as a consolidated directory and calendar for tech user groups and meetups in the Syracuse, NY area. It also surfaces a job board via an external API.
+syracuse.io is the front door to Syracuse's tech community: monthly meetups, a local Slack, and a monthly email. It's run by CODES, a 501(c)(3). The site is static Astro on Cloudflare Workers. The specs live in `docs/rebuild/` (`01-brief.md` first); where a spec and `docs/rebuild/reference/*.html` disagree, the spec wins.
 
 ## Commands
 
 ```bash
-npm run dev          # Start dev server at http://localhost:4321
-npm run build        # Build for production (outputs to ./dist/)
-npm run preview      # Preview production build locally
-npm run lint         # Run ESLint and Prettier check
-npm run format       # Auto-fix formatting with Prettier
-npm test             # Run Playwright E2E tests (auto-starts dev server)
-npm run test:ui      # Playwright in interactive UI mode
-npm run fetch-events # Scrape Meetup.com and update src/data/events.json
+npm run build        # Build to ./dist/ (client output is dist/client)
+npm run preview      # Serve the build locally at http://localhost:4321
+npm run lint         # ESLint and Prettier check
+npm run format       # Prettier --write
+npm test             # Playwright: builds, previews, then runs unit + e2e
+npx playwright test tests/e2e/home.spec.ts   # one file
+npx playwright test --project=unit           # logic tests only, no browser
 ```
 
-To run a single Playwright test file:
+`npm run dev` works (it runs in workerd, like the build). Tests always build and preview rather than use the dev server; run them with `CI=true npm test` so Playwright starts its own server instead of reusing one on :4321. If dev shows `process is not defined`, that's Astro's logger hiding a real error inside workerd: run `astro dev logs` or build + preview to find it.
 
-```bash
-npx playwright test tests/e2e/groups.spec.ts
-```
-
-Playwright requires Chromium to be installed before first test run:
-
-```bash
-npx playwright install chromium
-```
+Playwright needs Chromium once: `npx playwright install chromium`.
 
 ## Architecture
 
-### Rendering model
+### Rendering
 
-The site uses Astro's SSR output mode with the Cloudflare adapter. Individual pages can opt into static prerendering with `export const prerender = true` — most pages do this since the data doesn't change at request time.
+`output: "static"`, prerendered in workerd (the adapter default) with the `nodejs_compat` flag in `wrangler.jsonc`, which the iCal parser needs. Images are optimized at build time (`imageService: "compile"`). Don't switch to `prerenderEnvironment: "node"`: it splits dev across two runtimes and breaks the `/_image` endpoint (`Could not import cloudflare:workers`). A daily CI run rebuilds and deploys so the next event, expiring jobs and expiring sponsors stay current without commits. URLs have no trailing slash or extension (`build.format: "file"`); use `cleanPath()` from `src/lib/site.ts` on `Astro.url.pathname`, which includes `.html` at build time.
 
-### Data flow
+### Events
 
-**Events** — `src/data/events.json` is the source of truth for Meetup events. It's a static JSON file committed to the repo and updated by running `npm run fetch-events`. That script (`scripts/fetch-meetup-events.mjs`) uses Playwright to scrape Meetup.com (no API key required). Scraped events are merged with existing data so historical events are preserved. The `src/lib/meetup.ts` module reads this file and exposes filtering/sorting helpers used by pages and components.
+Events come from iCal feeds listed in `src/config/events.ts`; adding Luma later means adding a line there. `src/lib/events/` is the pipeline: `parse.ts` (iCal to events), `dedupe.ts` (same Syracuse calendar day + normalized title, prefer the concrete numeric event id, manual entries win), `series-match.ts` (each series' `match` field), `index.ts` (fetch, merge, enrich, and the helpers pages use), `format.ts` (all date formatting, always `America/New_York`). A dead feed or non-calendar response throws and fails the build, so the previous deploy keeps serving. Pages never hardcode "Meetup"; the label comes from `PROVIDER_LABELS` by provider. RSVP links go through `rsvpUrl()`, which adds the UTM params.
 
-**Groups** — defined as Markdown files in `src/content/groups/*.md` using Astro content collections (schema in `src/content.config.ts`). Each group has a `groupId` field that links it to events in `events.json`. The `classifyEvent()` function in the fetch script maps event titles to `groupId` values — keep these in sync when adding groups.
+Meetup's feed has no `LOCATION`; the venue comes from the event's series.
 
-**Jobs** — fetched at runtime from `https://jobs.syracuse.io/jobs.json` via `src/lib/jobkit.ts`. No local cache; Cloudflare handles edge caching.
+### Content (markdown, `src/content/`, schemas in `src/content.config.ts`)
 
-### Key relationships
+| Collection | One file is                             | Notes                                                              |
+| ---------- | --------------------------------------- | ------------------------------------------------------------------ |
+| `series`   | a meetup series                         | Builds `/{slug}` only when `active: true`. Body is the page prose. |
+| `venues`   | a place we meet                         | Not a directory.                                                   |
+| `sponsors` | a host, event sponsor or annual partner | `start`/`end` windows; expired ones disappear at build.            |
+| `jobs`     | a job                                   | Expires (default posted + 30 days); featured first.                |
+| `photos`   | a photo                                 | Home shows the 4 newest; section hidden when empty.                |
+| `events`   | a manual event                          | Overrides the feed for the same day and title.                     |
 
-- `src/content/groups/{name}.md` → defines a group with `groupId`
-- `src/data/events.json` → each event has a `groupId` matching a group file
-- `src/pages/groups/[groupId].astro` → dynamic group detail page, uses `getStaticPaths()` from the content collection
-- `src/components/GroupCards.astro` → grid on `/groups`, sorts by most recent event date using `getMostRecentEventDate(groupId)`
+Date-only YAML values (`event_date: 2026-10-13`) parse as UTC midnight. Compare them with `calendarDay()` / `localDateKey()` from `lib/events/format.ts`, never as instants.
 
-### Layouts
+Anything with nothing to show renders nothing (no "0 jobs", no empty sections). Jobs is hidden from the nav when no job is active.
 
-- `BaseLayout.astro` — HTML shell with nav, footer, fonts
-- `Page.astro` — content wrapper supporting hero images, breadcrumbs, title, and a `wide` prop for wider content areas. Most pages use this.
+### Placeholders (`TBD(mike)`)
+
+Facts only Mike can supply render as a visible placeholder via `<Tbd value label />` (or the literal string `TBD(mike)` in content and `src/lib/site.ts`). `src/integrations/build-guard.mjs` runs after every build: it always fails on an incomplete HTML page, and with `STRICT_TBD=1` it fails if any `TBD(mike)` remains. CI sets `STRICT_TBD=1` only for the production deploy, so previews can carry placeholders but production cannot.
+
+### Analytics
+
+`src/scripts/analytics.ts` loads GA4 and the Google Ads tag only when `PUBLIC_GA_MEASUREMENT_ID` / `PUBLIC_ADS_ID` are set at build time, after page load, and never when Do Not Track or Global Privacy Control is on. Conversions are `rsvp_click`, `slack_click`, `email_signup`, `sponsor_contact`, fired from `data-track` attributes (and any link to `/slack`). Ads labels come from `PUBLIC_ADS_CONVERSIONS`, JSON like `{"rsvp_click":"AW-123/abc"}`. `src/scripts/email-form.ts` enhances the signup form and dispatches `syracuse:track`. Keep `/privacy` in sync with whatever is loaded.
+
+### Redirects and deploy
+
+Exact redirects are in `astro.config.mjs` (`/slack` points at `SLACK_INVITE_URL` in `src/config/links.mjs`). Wildcards are in `public/_redirects`; the adapter appends its own rules to that file. `wrangler.jsonc` sets `not_found_handling: "404-page"`. CI (`.github/workflows/ci.yml`) lints, builds, tests, and deploys `dist/client/wrangler.json` on pushes to `main` and on a daily schedule.
 
 ### Styling
 
-Tailwind CSS with the Typography plugin (`prose` classes for Markdown-rendered content). Dark mode is supported via `dark:` variants.
+Tailwind 3 with color tokens as CSS variables in `src/styles/global.css` (`salt`, `ink`, `brick`, `steel`, `plow`, `card`, `line`, `muted`). `plow` is reserved for the `.io` in the wordmark and the day name in the hero date; don't use it elsewhere. No webfonts: system sans for prose, system monospace for data (dates, times, venues, nav, buttons, eyebrows). Light mode only.
 
-## Adding a New Group
+## Gotchas
 
-1. Create `src/content/groups/{slug}.md` with frontmatter: `title`, `group`, `imagePath`, `summary`, `imgAlt`, `groupType`, `groupId`
-2. Add the group image to `src/assets/groups/`
-3. Add a classification rule in `classifyEvent()` in `scripts/fetch-meetup-events.mjs` so future scraped events get the correct `groupId`
+- If you delete the **last** file in a content folder, also delete `node_modules/.astro/data-store.json`; otherwise the old entry lingers locally (CI is unaffected).
+- Astro trims whitespace at line breaks next to inline elements; use `{" "}` where Prettier splits a sentence around a link or component.
+- Tailwind 3 can't apply opacity modifiers to the CSS-variable colors (`bg-salt/10` fails); write the `rgb()` in CSS.
+
+## Adding things
+
+- **A series:** add `src/content/series/{slug}.md` (copy `open-hack.md`) and, if it meets somewhere new, a `venues` file. Set `match` so feed events are assigned to it. It gets its own page at `/{slug}` and a card on home.
+- **A host or sponsor:** add `src/content/sponsors/{slug}.md`; set `kind`, and `event_date` for an event sponsor.
+- **A job:** add `src/content/jobs/{slug}.md` with `title`, `company`, `location`, `url`, `posted`, `featured`.

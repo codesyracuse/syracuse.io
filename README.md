@@ -1,101 +1,42 @@
-# Syracuse.io 3.0
+# syracuse.io
 
-This is the source code for the next generation of https://syracuse.io - a consolidated directory and calendar of technology user groups and meetups in the Syracuse area.
+The front door to Syracuse's tech community: monthly meetups, a local Slack, and a monthly email. Run by CODES, a 501(c)(3) nonprofit.
 
-## Prerequisites
+Static [Astro](https://astro.build) site on Cloudflare Workers. The design and content specs are in [`docs/rebuild/`](docs/rebuild/00-START-HERE.md).
 
-- Node.js (v18 or later)
-- npm (v9 or later)
-- Git
+## Develop
 
-## Local Development Setup
+Requires Node 22+ (see `.nvmrc`).
 
-1. Clone the repository:
-
-   ```sh
-   git clone https://github.com/codesyracuse/syracuse.io.git
-   cd syracuse.io
-   ```
-
-2. Install dependencies:
-
-   ```sh
-   npm install
-   ```
-
-3. Start the development server:
-
-   ```sh
-   npm run dev
-   ```
-
-4. Open your browser and visit `http://localhost:4321`
-
-## Available Commands
-
-| Command             | Purpose                                      |
-| :------------------ | :------------------------------------------- |
-| `npm run dev`       | Start development server at `localhost:4321` |
-| `npm run build`     | Build production site to `./dist/`           |
-| `npm run preview`   | Preview production build locally             |
-| `npm run astro ...` | Run Astro CLI commands                       |
-
-## Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── content/
-│   │   └── groups/           # Community group content files
-│   │       └── *.md         # Individual group markdown files
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```sh
+npm install
+npm run build && npm run preview   # http://localhost:4321
 ```
 
-The `src/content/groups` directory contains markdown files for each community group. Each file should follow this format:
+| Command           | Purpose                                      |
+| :---------------- | :------------------------------------------- |
+| `npm run build`   | Build to `dist/`                             |
+| `npm run preview` | Serve the build locally                      |
+| `npm run lint`    | ESLint and Prettier check                    |
+| `npm run format`  | Format with Prettier                         |
+| `npm test`        | Build, preview, and run the Playwright tests |
 
-```markdown
----
-title: "Group Name"
-subtitle: "A brief description of the group"
-summary: "A longer description of the group"
-img: "/src/assets/groups/group-logo.png"
-imgAlt: "Group Logo"
-groupType: "meetup"
-groupId: "group-name"
-organizers:
-  - "Organizer Name"
-  - "Organizer Name"
----
+Install the test browser once with `npx playwright install chromium`.
 
-Additional group details and information can go here in markdown format.
-```
+## Updating content
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Everything except events is a short markdown file in `src/content/`:
+
+- `series/`: one file per meetup series (gets its own page)
+- `sponsors/`: hosts, event sponsors and annual partners
+- `jobs/`: local roles (expire automatically)
+- `photos/`: event photos for the home page
+- `venues/`, `events/`: places we meet, and manual events
+
+Events themselves come from the iCal feeds in `src/config/events.ts` and refresh on every build. The site rebuilds and deploys daily.
+
+Anything still marked `TBD(mike)` shows as a visible placeholder, and the production deploy fails until every one is filled in.
 
 ## Contributing
 
-1. Fork the repository
-2. Create a new branch: `git checkout -b feature/your-feature-name`
-3. Make your changes
-4. Run tests (if applicable)
-5. Commit your changes: `git commit -m 'Add some feature'`
-6. Push to the branch: `git push origin feature/your-feature-name`
-7. Submit a pull request
-
-## Need Help?
-
-- Check out [Astro's documentation](https://docs.astro.build)
-- Join our [Discord community](TODO: Add Syracuse.io Discord link)
-- Create an issue in this repository
-
-## License
-
-[Add license information]
+Open a pull request. CI lints, builds and tests every PR.

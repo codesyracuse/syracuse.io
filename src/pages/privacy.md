@@ -11,7 +11,7 @@ syracuse.io is run by CODES (the Coalition of Digital Engagement in Syracuse), a
 501(c)(3) nonprofit. This policy covers syracuse.io and the services we use to
 run it.
 
-### What we collect
+## What we collect
 
 - **Basic visit data.** Our host records the usual request details (IP address,
   browser, page requested) for security and reliability.
@@ -29,25 +29,25 @@ run it.
 We do not collect anything just for browsing. There are no accounts on this
 site.
 
-### Do Not Track
+## Do Not Track
 
 If your browser sends a Do Not Track or Global Privacy Control signal, we do not
 load Google Analytics or Google Ads at all. You can also block them with your
 browser's settings or an extension.
 
-### How we use it
+## How we use it
 
 To send the monthly email you asked for, to understand how people find and use
 the site, to report on our Google Ads grant, and to keep the site online.
 Nothing else.
 
-### What we don't do
+## What we don't do
 
 We do not sell, rent, or trade your information. We share it only with the
 service providers listed below, and only so they can do the job we hired them
 for.
 
-### Service providers
+## Service providers
 
 - [Google Analytics and Google Ads](https://policies.google.com/privacy): visit
   analytics and ad conversion tracking
@@ -56,28 +56,28 @@ for.
 - [GitHub](https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement):
   the source of this site is public
 
-### Other sites
+## Other sites
 
 RSVP links take you to our event platform (today, [Meetup](https://www.meetup.com/privacy/)),
 and the Slack invite takes you to [Slack](https://slack.com/trust/privacy/privacy-policy).
 Their privacy policies apply once you leave syracuse.io.
 
-### Your choices
+## Your choices
 
 Every monthly email has a one-click unsubscribe link. You can also email us at
 TBD(mike) at any time to ask what we have about you, correct it, or have it
 deleted.
 
-### Children
+## Children
 
 syracuse.io is not directed at children under 13, and we do not knowingly
 collect information from them.
 
-### Changes
+## Changes
 
 If this policy changes, we will update the date at the top. The full history is
 in [our public repository](https://github.com/codesyracuse/syracuse.io).
 
-### Contact
+## Contact
 
 Questions? Email TBD(mike).

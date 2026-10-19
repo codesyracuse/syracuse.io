@@ -1,0 +1,9 @@
+---
+// Loads only when the IDs are set at build time (PUBLIC_GA_MEASUREMENT_ID,
+// PUBLIC_ADS_ID), so local and preview builds never send anything.
+const enabled = Boolean(
+  import.meta.env.PUBLIC_GA_MEASUREMENT_ID || import.meta.env.PUBLIC_ADS_ID
+);
+---
+
+{enabled && <script>import "../scripts/analytics";</script>}

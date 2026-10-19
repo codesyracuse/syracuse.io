@@ -42,6 +42,18 @@ export default defineConfig({
     command: "npm run build && npm run preview",
     url: "http://localhost:4321",
     reuseExistingServer: !process.env.CI,
+    // Dummy IDs switch the tracker on so its events can be tested; tests block
+    // the request to Google.
+    env: {
+      PUBLIC_GA_MEASUREMENT_ID: "G-TEST000000",
+      PUBLIC_ADS_ID: "AW-000000000",
+      PUBLIC_ADS_CONVERSIONS: JSON.stringify({
+        rsvp_click: "AW-000000000/rsvp",
+        slack_click: "AW-000000000/slack",
+        email_signup: "AW-000000000/email",
+        sponsor_contact: "AW-000000000/sponsor",
+      }),
+    },
     timeout: 120000,
   },
 });
