@@ -1,17 +1,16 @@
 import { getCollection, type CollectionEntry } from "astro:content";
-import { calendarDay } from "./events/format";
+import { calendarDay, localDateKey } from "./events/format";
 
 export type Sponsor = CollectionEntry<"sponsors">;
-
-const DAY_MS = 86_400_000;
 
 /** Sponsors whose start/end window includes now. Expired ones drop out at build. */
 export async function getActiveSponsors(now = new Date()): Promise<Sponsor[]> {
   const all = await getCollection("sponsors");
+  // start and end are date-only; a sponsor is active through its whole end day.
+  const today = localDateKey(now);
   return all.filter(({ data }) => {
-    if (data.start && data.start > now) return false;
-    // `end` is date-only; the sponsor stays through that whole day.
-    if (data.end && data.end.getTime() + DAY_MS <= now.getTime()) return false;
+    if (data.start && calendarDay(data.start) > today) return false;
+    if (data.end && calendarDay(data.end) < today) return false;
     return true;
   });
 }

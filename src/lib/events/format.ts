@@ -85,3 +85,12 @@ export function sinceLabel(since: string): string {
 export function calendarDay(date: Date): string {
   return date.toISOString().slice(0, 10);
 }
+
+/** "Oct 1" for a date-only YAML value (see calendarDay). */
+export function dateOnlyLabel(date: Date): string {
+  return new Intl.DateTimeFormat("en-US", {
+    timeZone: "UTC",
+    month: "short",
+    day: "numeric",
+  }).format(date);
+}
