@@ -57,13 +57,13 @@ test.describe("Layout", () => {
     await expect(footer).toContainText("run by CODES, a 501(c)(3) nonprofit");
   });
 
-  test("unset facts render as a visible TBD(mike) placeholder", async ({
-    page,
-  }) => {
+  test("footer has the general contact address", async ({ page }) => {
     await page.goto("/");
     await expect(
-      page.getByRole("contentinfo").locator("mark.tbd")
-    ).toContainText("TBD(mike)");
+      page
+        .getByRole("contentinfo")
+        .getByRole("link", { name: "hi@syracuse.io" })
+    ).toHaveAttribute("href", "mailto:hi@syracuse.io");
   });
 
   test("design tokens are applied", async ({ page }) => {

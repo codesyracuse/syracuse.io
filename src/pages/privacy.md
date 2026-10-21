@@ -65,7 +65,7 @@ Their privacy policies apply once you leave syracuse.io.
 ## Your choices
 
 Every monthly email has a one-click unsubscribe link. You can also email us at
-TBD(mike) at any time to ask what we have about you, correct it, or have it
+[hi@syracuse.io](mailto:hi@syracuse.io) at any time to ask what we have about you, correct it, or have it
 deleted.
 
 ## Children
@@ -80,4 +80,4 @@ in [our public repository](https://github.com/codesyracuse/syracuse.io).
 
 ## Contact
 
-Questions? Email TBD(mike).
+Questions? Email [hi@syracuse.io](mailto:hi@syracuse.io).

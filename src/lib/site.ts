@@ -10,7 +10,7 @@ export { SLACK_INVITE_URL } from "../config/links.mjs";
 export const MIKE_EMAIL = "mike@syracuse.io";
 
 /** Canonical general contact address for the footer. */
-export const CONTACT_EMAIL = "TBD(mike)";
+export const CONTACT_EMAIL = "hi@syracuse.io";
 
 /** Buttondown's embed endpoint for the monthly email list. */
 export const EMAIL_FORM_ACTION =

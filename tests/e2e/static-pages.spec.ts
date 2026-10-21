@@ -54,8 +54,8 @@ test.describe("Privacy", () => {
     expect(text).toMatch(/conversion/i);
     expect(text).toMatch(/Do Not Track/);
     expect(text).toMatch(/Buttondown/);
-    // The general contact address is still Mike's to fill in.
-    expect(text).toMatch(/TBD\(mike\)/);
+    expect(text).toMatch(/hi@syracuse\.io/);
+    expect(text).not.toMatch(/TBD\(mike\)/);
   });
 
   test("no longer claims there is no tracking", async ({ page }) => {
