@@ -72,8 +72,7 @@ test.describe("Home", () => {
     const form = page.locator("form#email");
     await expect(form.getByLabel("Email address")).toBeVisible();
     await expect(form.getByRole("button", { name: "sign up" })).toBeVisible();
-    // Provider is still undecided, so the form shows a visible placeholder.
-    await expect(form.locator("mark.tbd")).toBeVisible();
+    await expect(form.locator("mark.tbd")).toHaveCount(0);
   });
 
   test("photos section is hidden until there are photos", async ({ page }) => {

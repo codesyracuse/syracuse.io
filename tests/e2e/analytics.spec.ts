@@ -125,14 +125,11 @@ test.describe("Analytics", () => {
   test("email_signup fires only after a successful submit", async ({
     page,
   }) => {
-    await page.route("https://signup.example.test/**", (route) =>
+    // Never subscribe anyone for real.
+    await page.route("https://buttondown.com/**", (route) =>
       route.fulfill({ status: 200, body: "ok" })
     );
     await page.goto("/");
-    // The real provider isn't chosen yet, so point the form at a stand-in.
-    await page.locator("form#email").evaluate((f: HTMLFormElement) => {
-      f.action = "https://signup.example.test/subscribe";
-    });
     // Nothing is reported for an invalid submit.
     await page.getByRole("button", { name: "sign up" }).click();
     expect((await events(page)).map((e) => e.name)).not.toContain(
@@ -158,6 +155,10 @@ test.describe("Email form", () => {
     await page.goto("/");
     const form = page.locator("form#email");
     await expect(form).toHaveAttribute("method", "post");
-    await expect(form).toHaveAttribute("action", /TBD\(mike\)/);
+    await expect(form).toHaveAttribute(
+      "action",
+      "https://buttondown.com/api/emails/embed-subscribe/syracuseio"
+    );
+    await expect(form.locator('input[name="email"]')).toBeVisible();
   });
 });

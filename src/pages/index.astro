@@ -136,7 +136,7 @@ const jsonLd = upcoming
     series.length > 0 && (
       <section id="series" class="wrap pb-16 pt-2">
         <h2 class="section-title mb-[18px]">The series</h2>
-        <div class="grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(300px,1fr))]">
+        <div class="grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))]">
           {series.map((s) => (
             <SeriesCard
               series={s}
@@ -154,7 +154,7 @@ const jsonLd = upcoming
     <div class="wrap pb-16 pt-14">
       <h2 class="section-title mb-8">Three ways in</h2>
       <div
-        class="grid gap-9 [grid-template-columns:repeat(auto-fit,minmax(260px,1fr))]"
+        class="grid gap-9 [grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))]"
       >
         <div>
           <div class="font-mono text-xs tracking-[0.14em] text-[#c9d6de]">
@@ -206,7 +206,7 @@ const jsonLd = upcoming
   {
     photos.length > 0 && (
       <section class="wrap py-16">
-        <div class="grid gap-3 [grid-template-columns:repeat(auto-fit,minmax(220px,1fr))]">
+        <div class="grid gap-3 [grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr))]">
           {photos.map((p) => (
             <figure class="m-0">
               <Image

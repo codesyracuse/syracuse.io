@@ -55,11 +55,11 @@ Facts only Mike can supply render as a visible placeholder via `<Tbd value label
 
 ### Analytics
 
-`src/scripts/analytics.ts` loads GA4 and the Google Ads tag only when `PUBLIC_GA_MEASUREMENT_ID` / `PUBLIC_ADS_ID` are set at build time, after page load, and never when Do Not Track or Global Privacy Control is on. Conversions are `rsvp_click`, `slack_click`, `email_signup`, `sponsor_contact`, fired from `data-track` attributes (and any link to `/slack`). Ads labels come from `PUBLIC_ADS_CONVERSIONS`, JSON like `{"rsvp_click":"AW-123/abc"}`. `src/scripts/email-form.ts` enhances the signup form and dispatches `syracuse:track`. Keep `/privacy` in sync with whatever is loaded.
+`src/scripts/analytics.ts` loads GA4 and the Google Ads tag only when `PUBLIC_GA_MEASUREMENT_ID` / `PUBLIC_ADS_ID` are set at build time, after page load, and never when Do Not Track or Global Privacy Control is on. Conversions are `rsvp_click`, `slack_click`, `email_signup`, `sponsor_contact`, fired from `data-track` attributes (and any link to `/slack`). Ads labels come from `PUBLIC_ADS_CONVERSIONS`, JSON like `{"rsvp_click":"AW-123/abc"}`. In CI all three are GitHub repository variables, passed only to the production build. `src/scripts/email-form.ts` enhances the signup form (Buttondown, `EMAIL_FORM_ACTION` in `src/lib/site.ts`) and dispatches `syracuse:track`; tests must route `buttondown.com` so they never subscribe anyone. Keep `/privacy` in sync with whatever is loaded.
 
 ### Redirects and deploy
 
-Exact redirects are in `astro.config.mjs` (`/slack` points at `SLACK_INVITE_URL` in `src/config/links.mjs`). Wildcards are in `public/_redirects`; the adapter appends its own rules to that file. `wrangler.jsonc` sets `not_found_handling: "404-page"`. CI (`.github/workflows/ci.yml`) lints, builds, tests, and deploys `dist/client/wrangler.json` on pushes to `main` and on a daily schedule.
+Exact redirects are in `astro.config.mjs` (`/slack` points at `SLACK_INVITE_URL` in `src/config/links.mjs`). Wildcards are in `public/_redirects`; the adapter appends its own rules to that file. `wrangler.jsonc` sets `not_found_handling: "404-page"`. CI (`.github/workflows/ci.yml`) lints, builds, tests, and deploys `dist/client/wrangler.json` on pushes to `main` and on a daily schedule. Same-repo pull requests upload a non-strict preview version (`--preview-alias pr-{number}`; the URL is in the job log). A `keepalive` job re-enables the workflow on each scheduled run, because GitHub disables schedules in public repos after 60 idle days.
 
 ### Styling
 

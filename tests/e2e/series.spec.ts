@@ -10,8 +10,9 @@ test.describe("Series page /open-hack", () => {
     );
     const h1 = page.getByRole("heading", { level: 1 });
     await expect(h1).toContainText("Open Hack");
-    await expect(h1).toContainText(
-      "A monthly developer meetup in Syracuse, NY"
+    // The words must not run together for search engines and screen readers.
+    await expect(h1).toHaveText(
+      "A monthly developer meetup in Syracuse, NY Open Hack"
     );
     await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
   });

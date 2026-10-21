@@ -53,8 +53,8 @@ test.describe("Privacy", () => {
     expect(text).toMatch(/Google Ads/);
     expect(text).toMatch(/conversion/i);
     expect(text).toMatch(/Do Not Track/);
-    expect(text).toMatch(/Email provider/);
-    // The provider and contact address are still Mike's to fill in.
+    expect(text).toMatch(/Buttondown/);
+    // The general contact address is still Mike's to fill in.
     expect(text).toMatch(/TBD\(mike\)/);
   });
 

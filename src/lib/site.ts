@@ -12,8 +12,9 @@ export const MIKE_EMAIL = "mike@syracuse.io";
 /** Canonical general contact address for the footer. */
 export const CONTACT_EMAIL = "TBD(mike)";
 
-/** Email list provider's form endpoint. Provider is undecided. */
-export const EMAIL_FORM_ACTION = "TBD(mike)";
+/** Buttondown's embed endpoint for the monthly email list. */
+export const EMAIL_FORM_ACTION =
+  "https://buttondown.com/api/emails/embed-subscribe/syracuseio";
 
 export const TIME_ZONE = "America/New_York";
 

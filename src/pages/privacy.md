@@ -26,8 +26,8 @@ run it.
   address and nothing else. Signing up uses double opt-in: you confirm by email
   before you are added.
 
-We do not collect anything just for browsing. There are no accounts on this
-site.
+There are no accounts on this site, and nothing you do here is tied to your
+name.
 
 ## Do Not Track
 
@@ -51,7 +51,7 @@ for.
 
 - [Google Analytics and Google Ads](https://policies.google.com/privacy): visit
   analytics and ad conversion tracking
-- Email provider: TBD(mike), for the monthly email
+- [Buttondown](https://buttondown.com/legal/privacy): the monthly email
 - [Cloudflare](https://www.cloudflare.com/privacypolicy/): hosting and CDN
 - [GitHub](https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement):
   the source of this site is public

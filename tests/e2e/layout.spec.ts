@@ -88,3 +88,40 @@ test.describe("Layout", () => {
     await expect(page).toHaveTitle(/Code of Conduct/);
   });
 });
+
+test.describe("Small phones", () => {
+  test.use({ viewport: { width: 320, height: 568 } });
+
+  for (const path of [
+    "/",
+    "/open-hack",
+    "/codes",
+    "/jobs",
+    "/privacy",
+    "/code-of-conduct",
+  ]) {
+    test(`${path} doesn't scroll sideways at 320px`, async ({ page }) => {
+      await page.goto(path);
+      const width = await page.evaluate(
+        () => document.documentElement.scrollWidth
+      );
+      expect(width).toBeLessThanOrEqual(320);
+    });
+  }
+
+  test("head links the favicon, touch icon and share image", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    for (const href of [
+      "/favicon.svg",
+      "/favicon.png",
+      "/apple-touch-icon.png",
+    ]) {
+      expect((await page.request.get(href)).ok()).toBe(true);
+    }
+    const og = page.locator('meta[property="og:image"]');
+    await expect(og).toHaveAttribute("content", "https://syracuse.io/og.png");
+    expect((await page.request.get("/og.png")).ok()).toBe(true);
+  });
+});

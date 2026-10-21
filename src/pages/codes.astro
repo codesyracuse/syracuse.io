@@ -64,7 +64,7 @@ const jsonLd = [
       <span
         class="block text-[clamp(48px,7vw,84px)] font-extrabold leading-[0.95] tracking-[-0.03em]"
         >CODES</span
-      >
+      >{" "}
       <span class="mt-2.5 block font-mono text-[15px] text-muted-on-ink"
         >Coalition of Digital Engagement in Syracuse</span
       >
@@ -94,7 +94,7 @@ const jsonLd = [
   <section class="wrap py-10">
     <SectionHead title="Ways to support" />
     <div
-      class="mt-5 grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(400px,1fr))]"
+      class="mt-5 grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(min(400px,100%),1fr))]"
     >
       {
         ways.map((way) => (

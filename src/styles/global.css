@@ -73,7 +73,7 @@
   }
 
   .btn-ghost:hover {
-    @apply border-plow text-plow;
+    @apply border-salt text-salt;
   }
 
   /* Solid light and outline buttons for the steel band. */
