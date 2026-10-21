@@ -22,6 +22,8 @@ npx playwright test --project=unit           # logic tests only, no browser
 
 Playwright needs Chromium once: `npx playwright install chromium`.
 
+Astro 7.4+ backgrounds `astro dev` and `astro preview` on its own when it detects an AI agent (`AI_AGENT`, `CLAUDECODE`). Agents should pass `--ignore-lock` to keep them in the foreground, and stop leftovers with `astro dev stop` / `astro preview stop`. The Playwright `webServer` command already does this.
+
 ## Architecture
 
 ### Rendering

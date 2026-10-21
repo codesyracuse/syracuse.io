@@ -39,7 +39,10 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: {
     // Test the built site; `npm run dev` isn't reliable with the Cloudflare adapter.
-    command: "npm run build && npm run preview",
+    // --ignore-lock keeps preview in the foreground; without it, Astro 7.4+
+    // backgrounds itself when it detects an AI agent and Playwright sees the
+    // command exit early.
+    command: "npm run build && npm run preview -- --ignore-lock",
     url: "http://localhost:4321",
     reuseExistingServer: !process.env.CI,
     // Dummy IDs switch the tracker on so its events can be tested; tests block
