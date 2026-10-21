@@ -1,9 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Tbd from "../components/Tbd.astro";
 import { getActiveJobs } from "../lib/jobs";
 import { dateOnlyLabel } from "../lib/events/format";
-import { MIKE_EMAIL } from "../lib/site";
+import { MIKE_EMAIL, PRICES } from "../lib/site";
 
 const jobs = await getActiveJobs();
 const employerMail = `mailto:${MIKE_EMAIL}?subject=${encodeURIComponent("Featured job - syracuse.io")}`;
@@ -92,9 +91,7 @@ const included = [
       <div
         class="flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4"
       >
-        <span class="font-mono text-sm font-bold"
-          ><Tbd label="featured job price" /></span
-        >
+        <span class="font-mono text-sm font-bold">{PRICES.featuredJob}</span>
         <a
           href={employerMail}
           data-track="sponsor_contact"

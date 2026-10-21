@@ -175,7 +175,7 @@ const { first_time: first } = data;
               <div class="font-bold">{venue.name}</div>
               <div class="mt-0.5 font-mono text-sm">
                 <Tbd value={venue.address} label="street address" />, Syracuse,
-                NY
+                NY{venue.postal_code && ` ${venue.postal_code}`}
               </div>
               {venue.notes && (
                 <div class="mt-1.5 text-[15px] text-muted">

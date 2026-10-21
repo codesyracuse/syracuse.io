@@ -39,7 +39,9 @@ const venues = defineCollection({
   loader: md("venues"),
   schema: z.object({
     name: z.string(),
+    // Street line only; pages add "Syracuse, NY" and the ZIP.
     address: z.string(),
+    postal_code: z.string().optional(),
     neighborhood: z.string(),
     maps_url: z.string().url().optional(),
     notes: z.string().optional(),

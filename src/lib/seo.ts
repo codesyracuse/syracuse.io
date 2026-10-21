@@ -22,6 +22,12 @@ export function eventJsonLd(event: SiteEvent, pageUrl: string) {
       name: event.venueName ?? event.location ?? "Syracuse, NY",
       address: {
         "@type": "PostalAddress",
+        // Placeholders never go into structured data.
+        ...(event.venueAddress &&
+          !event.venueAddress.includes("TBD(mike)") && {
+            streetAddress: event.venueAddress,
+          }),
+        ...(event.venuePostalCode && { postalCode: event.venuePostalCode }),
         addressLocality: "Syracuse",
         addressRegion: "NY",
         addressCountry: "US",

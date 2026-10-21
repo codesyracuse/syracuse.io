@@ -11,6 +11,9 @@ export type { FeedEvent } from "./types";
 export interface SiteEvent extends FeedEvent {
   seriesName?: string;
   venueName?: string;
+  /** Street line, e.g. "351 S Warren St, Suite 200". */
+  venueAddress?: string;
+  venuePostalCode?: string;
   neighborhood?: string;
   /** "Meetup", for "via Meetup". Undefined for manual events. */
   providerLabel?: string;
@@ -68,6 +71,8 @@ async function loadEvents(): Promise<SiteEvent[]> {
         series: slug,
         seriesName: s?.data.name,
         venueName: venue?.data.name,
+        venueAddress: venue?.data.address,
+        venuePostalCode: venue?.data.postal_code,
         neighborhood: venue?.data.neighborhood,
         providerLabel: PROVIDER_LABELS[event.provider],
         location: event.location ?? venue?.data.name,

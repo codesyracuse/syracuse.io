@@ -11,9 +11,9 @@ seo_title: "Open Hack — a monthly developer meetup in Syracuse, NY"
 seo_description: "Open Hack is a free, monthly developer meetup in Syracuse, NY. Bring a project, homework, or nothing at all, and work next to other people who write code."
 first_time:
   arrive: "Any time after 6. Nobody minds if you're late or leave early."
-  find_us: "TBD(mike)"
-  crowd: "Usually around TBD(mike) people, regulars and first-timers."
-  food: "TBD(mike)"
+  find_us: "We send a door code the day of. Take the elevator or stairs to the second floor."
+  crowd: "Usually around 15–20 people, regulars and first-timers."
+  food: "Usually pizza, plus drinks: non-alcoholic and some beer."
   bring: "A laptop helps but isn't required."
 who_for:
   - First-timers and the curious

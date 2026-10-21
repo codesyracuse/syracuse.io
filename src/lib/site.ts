@@ -16,6 +16,13 @@ export const CONTACT_EMAIL = "hi@syracuse.io";
 export const EMAIL_FORM_ACTION =
   "https://buttondown.com/api/emails/embed-subscribe/syracuseio";
 
+/** Prices shown on /codes and /jobs. */
+export const PRICES = {
+  featuredJob: "$99 for 30 days",
+  eventSponsor: "$200 a meetup",
+  annualPartner: "$1,500 a year",
+};
+
 export const TIME_ZONE = "America/New_York";
 
 /** "/open-hack.html" or "/open-hack/" -> "/open-hack"; "/index.html" -> "/". */

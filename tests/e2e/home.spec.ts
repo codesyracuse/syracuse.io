@@ -129,7 +129,11 @@ test.describe("Home", () => {
       .map((b) => JSON.parse(b))
       .filter((d) => d["@type"] === "Event");
     expect(events.length).toBeGreaterThan(0);
-    expect(events[0].location.address.addressLocality).toBe("Syracuse");
+    expect(events[0].location.address).toMatchObject({
+      streetAddress: "351 S Warren St, Suite 200",
+      postalCode: "13202",
+      addressLocality: "Syracuse",
+    });
   });
 
   test("works with JavaScript disabled", async ({ browser }) => {

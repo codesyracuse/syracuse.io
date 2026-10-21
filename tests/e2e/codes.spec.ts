@@ -44,9 +44,14 @@ test.describe("/codes", () => {
     }
     await expect(page.getByText("you give")).toHaveCount(4);
     await expect(page.getByText("you get")).toHaveCount(4);
-    // Hosting is in-kind; the other three prices are Mike's to set.
-    await expect(page.getByText("In-kind")).toBeVisible();
-    await expect(page.locator("mark.tbd", { hasText: "price" })).toHaveCount(3);
+    for (const price of [
+      "In-kind",
+      "$200 a meetup",
+      "$99 for 30 days",
+      "$1,500 a year",
+    ]) {
+      await expect(page.getByText(price, { exact: true })).toBeVisible();
+    }
   });
 
   test("every contact link is tracked as sponsor_contact", async ({ page }) => {
@@ -62,21 +67,24 @@ test.describe("/codes", () => {
     }
   });
 
-  test("facts only Mike can supply are visible placeholders", async ({
+  test("mission, costs, board, legal and history are filled in", async ({
     page,
   }) => {
     await page.goto("/codes");
-    const labels = await page.locator("main mark.tbd").allTextContents();
-    for (const expected of [
-      "approve the mission wording",
-      "per-event cost",
-      "what the money pays for",
-      "board names and roles",
-      "confirm tax-deductibility wording",
-      "EIN",
-      "founding year",
+    const main = page.locator("main");
+    await expect(main.locator("mark.tbd")).toHaveCount(0);
+    for (const fact of [
+      "through education, mentoring, and creating economic opportunity",
+      "costs about $100–200 to put on",
+      "Mike Vormwald",
+      "Annalena Davis",
+      "Ed Forth",
+      "Coalition of Digital Engagement in Syracuse, Inc.",
+      "Donations are tax-deductible to the extent allowed by law.",
+      "85-2136324",
+      "CODES was founded in 2020.",
     ]) {
-      expect(labels.some((l) => l.includes(expected))).toBe(true);
+      await expect(main).toContainText(fact);
     }
   });
 

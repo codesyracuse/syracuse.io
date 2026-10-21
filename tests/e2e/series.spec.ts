@@ -49,9 +49,7 @@ test.describe("Series page /open-hack", () => {
     expect(words.length).toBeGreaterThanOrEqual(280);
   });
 
-  test("first-time rows show approved copy and visible placeholders", async ({
-    page,
-  }) => {
+  test("first-time rows show the first-timer details", async ({ page }) => {
     await page.goto("/open-hack");
     await expect(
       page.getByText(
@@ -61,11 +59,11 @@ test.describe("Series page /open-hack", () => {
     await expect(
       page.getByText("A laptop helps but isn't required.")
     ).toBeVisible();
-    // find us, crowd and food are Mike's to fill in.
     const dl = page.locator("dl");
-    await expect(dl.locator("mark.tbd")).toHaveCount(3);
-    await expect(dl).toContainText("Usually around");
-    await expect(dl).toContainText("people, regulars and first-timers.");
+    await expect(dl.locator("mark.tbd")).toHaveCount(0);
+    await expect(dl).toContainText("We send a door code the day of.");
+    await expect(dl).toContainText("Usually around 15–20 people");
+    await expect(dl).toContainText("Usually pizza");
   });
 
   test("sidebar: who it's for and where", async ({ page }) => {
@@ -78,7 +76,14 @@ test.describe("Series page /open-hack", () => {
     ).toBeVisible();
     const where = page.locator(".card", { hasText: "Where" });
     await expect(where).toContainText("Commonspace");
-    await expect(where.locator("mark.tbd")).toHaveCount(2);
+    await expect(where.locator("mark.tbd")).toHaveCount(0);
+    await expect(where).toContainText(
+      "351 S Warren St, Suite 200, Syracuse, NY 13202"
+    );
+    await expect(where).toContainText("Warren and Jefferson");
+    await expect(
+      where.getByRole("link", { name: /open in maps/ })
+    ).toHaveAttribute("href", "https://maps.app.goo.gl/rLmxVbQrYnQi1Mda7");
     await expect(where).toContainText("Hosted by Commonspace. Thank you.");
   });
 
