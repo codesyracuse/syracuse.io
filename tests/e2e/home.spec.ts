@@ -104,6 +104,17 @@ test.describe("Home", () => {
     await expect(page.locator("#codes-pop")).toBeHidden();
   });
 
+  test("Mike's photo is a built image that loads", async ({ page }) => {
+    await page.goto("/");
+    const photo = page.getByRole("img", { name: /^Mike/ });
+    // A build-time file, never the /_image endpoint, which a static deploy lacks.
+    await expect(photo).toHaveAttribute("src", /^\/_astro\/.+\.webp$/);
+    await photo.scrollIntoViewIfNeeded();
+    await expect
+      .poll(() => photo.evaluate((img: HTMLImageElement) => img.naturalWidth))
+      .toBeGreaterThan(0);
+  });
+
   test("Mike's card has a working email link", async ({ page }) => {
     await page.goto("/");
     await expect(
