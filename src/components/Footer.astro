@@ -15,23 +15,30 @@ const { rsvp } = Astro.props;
     <div class="flex flex-wrap gap-[18px]">
       <a
         href={rsvp.href}
-        class="text-salt"
+        class="text-salt hover:text-salt"
         data-track="rsvp"
         data-series={rsvp.series}
         data-provider={rsvp.provider}>rsvp</a
       >
-      <a href="/slack" class="text-salt" data-track="slack">slack</a>
-      <a href="/#email" class="text-salt">monthly email</a>
+      <a href="/slack" class="text-salt hover:text-salt" data-track="slack"
+        >slack</a
+      >
+      <a href="/#email" class="text-salt hover:text-salt">monthly email</a>
     </div>
     <div>
       run by CODES, a 501(c)(3) nonprofit ·{" "}
-      <a href="/codes" class="text-salt underline underline-offset-2">about</a>{
-        " "
-      }·{" "}
-      <a href="/code-of-conduct" class="text-salt underline underline-offset-2"
+      <a
+        href="/codes"
+        class="text-salt underline underline-offset-2 hover:text-salt">about</a
+      >{" "}·{" "}
+      <a
+        href="/code-of-conduct"
+        class="text-salt underline underline-offset-2 hover:text-salt"
         >code of conduct</a
       >{" "}·{" "}
-      <a href="/privacy" class="text-salt underline underline-offset-2"
+      <a
+        href="/privacy"
+        class="text-salt underline underline-offset-2 hover:text-salt"
         >privacy</a
       >
     </div>
@@ -41,7 +48,7 @@ const { rsvp } = Astro.props;
         CONTACT_EMAIL.includes("TBD(mike)") ? (
           <Tbd label="general contact email" />
         ) : (
-          <a href={`mailto:${CONTACT_EMAIL}`} class="text-salt">
+          <a href={`mailto:${CONTACT_EMAIL}`} class="text-salt hover:text-salt">
             {CONTACT_EMAIL}
           </a>
         )

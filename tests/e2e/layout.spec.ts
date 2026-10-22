@@ -80,6 +80,24 @@ test.describe("Layout", () => {
     expect(plow).toBe("rgb(237, 178, 48)"); // --plow
   });
 
+  for (const path of ["/", "/open-hack", "/codes", "/privacy"]) {
+    test(`${path}: links on dark bands stay light on hover`, async ({
+      page,
+    }) => {
+      await page.goto(path);
+      const links = page.locator(
+        ".bg-ink a:not(.btn), .bg-steel a:not(.btn), footer a"
+      );
+      expect(await links.count()).toBeGreaterThan(0);
+      for (const link of await links.all()) {
+        if (!(await link.isVisible())) continue;
+        await link.hover();
+        const color = await link.evaluate((el) => getComputedStyle(el).color);
+        expect(color, await link.innerText()).not.toBe("rgb(27, 33, 31)"); // --ink
+      }
+    });
+  }
+
   test("code of conduct renders in the prose layout", async ({ page }) => {
     await page.goto("/code-of-conduct");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
