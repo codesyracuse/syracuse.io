@@ -22,8 +22,7 @@ export default defineConfig({
     // The invite link is temporary, so it's a 302; the rest are permanent.
     "/slack": { status: 302, destination: SLACK_INVITE_URL },
     "/email": { status: 301, destination: "/#email" },
-    "/support": { status: 301, destination: "/codes" },
-    "/sponsor": { status: 301, destination: "/codes" },
+    "/support": { status: 301, destination: "/sponsor" },
     "/about": { status: 301, destination: "/codes" },
     // Pages from earlier versions of the site.
     "/groups": { status: 301, destination: "/" },

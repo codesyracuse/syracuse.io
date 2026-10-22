@@ -15,6 +15,10 @@ test.describe("Layout", () => {
       "href",
       "/codes"
     );
+    await expect(nav.getByRole("link", { name: "sponsor" })).toHaveAttribute(
+      "href",
+      "/sponsor"
+    );
     await expect(nav.getByRole("link", { name: "RSVP" })).toBeVisible();
   });
 
@@ -54,6 +58,10 @@ test.describe("Layout", () => {
       footer.getByRole("link", { name: "code of conduct" })
     ).toBeVisible();
     await expect(footer.getByRole("link", { name: "privacy" })).toBeVisible();
+    await expect(footer.getByRole("link", { name: "sponsor" })).toHaveAttribute(
+      "href",
+      "/sponsor"
+    );
     await expect(footer).toContainText("run by CODES, a 501(c)(3) nonprofit");
   });
 
@@ -80,7 +88,7 @@ test.describe("Layout", () => {
     expect(plow).toBe("rgb(237, 178, 48)"); // --plow
   });
 
-  for (const path of ["/", "/open-hack", "/codes", "/privacy"]) {
+  for (const path of ["/", "/open-hack", "/codes", "/sponsor", "/privacy"]) {
     test(`${path}: links on dark bands stay light on hover`, async ({
       page,
     }) => {
@@ -114,6 +122,7 @@ test.describe("Small phones", () => {
     "/",
     "/open-hack",
     "/codes",
+    "/sponsor",
     "/jobs",
     "/privacy",
     "/code-of-conduct",

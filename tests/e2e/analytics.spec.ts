@@ -110,10 +110,10 @@ test.describe("Analytics", () => {
     expect((await events(page)).map((e) => e.name)).toContain("slack_click");
   });
 
-  test("sponsor_contact fires from /codes with the way they asked about", async ({
+  test("sponsor_contact fires from /sponsor with the way they asked about", async ({
     page,
   }) => {
-    await page.goto("/codes");
+    await page.goto("/sponsor");
     await stayOnPage(page);
     await page.getByRole("link", { name: "ask about this →" }).first().click();
     expect(await events(page)).toContainEqual({
