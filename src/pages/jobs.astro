@@ -1,0 +1,104 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getActiveJobs } from "../lib/jobs";
+import { dateOnlyLabel } from "../lib/events/format";
+import { MIKE_EMAIL, PRICES } from "../lib/site";
+
+const jobs = await getActiveJobs();
+const employerMail = `mailto:${MIKE_EMAIL}?subject=${encodeURIComponent("Featured job - syracuse.io")}`;
+const included = [
+  "A listing on this site",
+  "A place in the monthly email",
+  "Pinned in #jobs on the Slack",
+  "A mention at the next meetup",
+];
+---
+
+<BaseLayout
+  title="Syracuse tech jobs · syracuse.io"
+  description="Software and tech roles at Syracuse-area employers, from the syracuse.io community. Employers can feature a role on the site, in the monthly email, and at our next meetup."
+>
+  <section slot="hero" class="wrap pb-12 pt-8">
+    <h1
+      class="text-[clamp(48px,7vw,84px)] font-extrabold leading-[0.95] tracking-[-0.03em]"
+    >
+      Jobs
+    </h1>
+    <p class="mt-3 font-mono text-[15px] text-muted-on-ink">
+      software and tech roles in Syracuse
+    </p>
+  </section>
+
+  <section class="wrap pb-6 pt-14">
+    <p class="max-w-[40rem] text-xl leading-normal">
+      Software and tech roles at Syracuse-area employers. Locals post for free
+      in our Slack's #jobs channel; employers can feature a role here, in the
+      monthly email, and at our next meetup.
+    </p>
+    <p class="mt-4">
+      <a href="/slack" data-track="slack" class="font-mono text-sm font-bold"
+        >join the Slack for #jobs →</a
+      >
+    </p>
+  </section>
+
+  {
+    jobs.length > 0 && (
+      <section class="wrap pb-10 pt-6">
+        <h2 class="section-title border-b-2 border-ink pb-2.5">Open roles</h2>
+        <ul class="m-0 list-none p-0">
+          {jobs.map(({ data }) => (
+            <li class="border-b border-line">
+              <a
+                href={data.url}
+                rel={data.featured ? "sponsored noopener" : "noopener"}
+                class="flex flex-wrap items-center gap-x-7 gap-y-2 py-[18px] text-ink no-underline hover:bg-black/[0.03] hover:text-ink"
+              >
+                <span class="flex-[1_1_300px]">
+                  <span class="block text-lg font-bold">{data.title}</span>
+                  <span class="block font-mono text-[13px] text-muted">
+                    {data.company} · {data.location}
+                  </span>
+                </span>
+                {data.featured && (
+                  <span class="rounded-[3px] border border-steel px-2 py-0.5 font-mono text-[11px] uppercase tracking-[0.14em] text-steel">
+                    Featured
+                  </span>
+                )}
+                <span class="font-mono text-[13px] text-muted">
+                  posted {dateOnlyLabel(data.posted)}
+                </span>
+                <span class="font-mono text-[13px] font-bold text-brick">
+                  view →
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  <section class="wrap pb-16 pt-8">
+    <div class="card max-w-[44rem] p-7">
+      <h2 class="mb-3 text-[22px] font-extrabold">
+        Hiring in Syracuse? Feature a role.
+      </h2>
+      <p class="mb-2 text-base">A featured role includes:</p>
+      <ul class="m-0 mb-4 flex list-disc flex-col gap-1 pl-5 text-base">
+        {included.map((item) => <li>{item}</li>)}
+      </ul>
+      <div
+        class="flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4"
+      >
+        <span class="font-mono text-sm font-bold">{PRICES.featuredJob}</span>
+        <a
+          href={employerMail}
+          data-track="sponsor_contact"
+          data-way="featured job"
+          class="btn btn-primary">feature a role</a
+        >
+      </div>
+    </div>
+  </section>
+</BaseLayout>

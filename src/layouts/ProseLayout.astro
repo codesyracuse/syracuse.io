@@ -1,0 +1,28 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  frontmatter: { title: string; subtitle?: string; description: string };
+}
+const { title, subtitle, description } = Astro.props.frontmatter;
+---
+
+<BaseLayout title={`${title} · syracuse.io`} description={description}>
+  <section slot="hero" class="wrap pb-12 pt-8">
+    <h1
+      class="text-[clamp(40px,6vw,64px)] font-extrabold leading-[0.95] tracking-[-0.03em]"
+    >
+      {title}
+    </h1>
+    {
+      subtitle && (
+        <p class="mt-3 font-mono text-[15px] text-muted-on-ink">{subtitle}</p>
+      )
+    }
+  </section>
+  <article
+    class="wrap prose max-w-3xl py-12 prose-h2:text-xl prose-h2:font-extrabold"
+  >
+    <slot />
+  </article>
+</BaseLayout>

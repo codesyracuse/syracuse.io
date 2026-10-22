@@ -1,0 +1,218 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHead from "../components/SectionHead.astro";
+import SponsorName from "../components/SponsorName.astro";
+import { getThanksTo } from "../lib/sponsors";
+import { sinceLabel } from "../lib/events/format";
+import { GROUP_SINCE, MIKE_EMAIL, PRICES, SITE_URL } from "../lib/site";
+
+const partners = await getThanksTo();
+
+const supportMail = (subject: string) =>
+  `mailto:${MIKE_EMAIL}?subject=${encodeURIComponent(subject)}`;
+
+// Prices are Mike's to set. Hosting is in-kind.
+const board = [
+  { name: "Mike Vormwald", role: "President" },
+  { name: "Annalena Davis", role: "Treasurer" },
+  { name: "Ed Forth", role: "Secretary" },
+];
+
+const ways = [
+  {
+    name: "Host",
+    give: "Free space for a meetup",
+    get: "A “Hosted at” credit on the series page and event listings, thanks at the event, and your logo on the site",
+    price: "In-kind",
+  },
+  {
+    name: "Event sponsor",
+    give: "Covers one night's food, drinks and venue costs",
+    get: "Named on that event's listing, thanked from the front of the room, and in that month's email",
+    price: PRICES.eventSponsor,
+  },
+  {
+    name: "Featured job",
+    give: "A paid posting",
+    get: "Your role on the site, in the monthly email, pinned in #jobs, and mentioned at the next meetup",
+    price: PRICES.featuredJob,
+  },
+  {
+    name: "Annual partner",
+    give: "One yearly payment",
+    get: "Your logo on every page, every email and every event, plus first call for hosting or speaking",
+    price: PRICES.annualPartner,
+  },
+];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "NonprofitOrganization",
+    name: "Coalition of Digital Engagement in Syracuse",
+    legalName: "Coalition of Digital Engagement in Syracuse, Inc.",
+    alternateName: "CODES",
+    taxID: "85-2136324",
+    foundingDate: "2020-07-01",
+    url: `${SITE_URL}/codes`,
+    description:
+      "CODES serves and grows the technology community in Syracuse, New York, through education, mentoring, and creating economic opportunity. It runs free, recurring meetups and connects people with each other and with local opportunities.",
+    nonprofitStatus: "https://schema.org/Nonprofit501c3",
+    areaServed: { "@type": "City", name: "Syracuse, NY" },
+    email: MIKE_EMAIL,
+    sameAs: [SITE_URL],
+  },
+];
+---
+
+<BaseLayout
+  title="CODES, the nonprofit behind syracuse.io"
+  description="CODES is the Syracuse nonprofit that runs free, recurring tech meetups. See where the money goes and how to host, sponsor or partner."
+  jsonLd={jsonLd}
+>
+  <section slot="hero" class="wrap pb-14 pt-8">
+    <h1>
+      <span
+        class="block text-[clamp(48px,7vw,84px)] font-extrabold leading-[0.95] tracking-[-0.03em]"
+        >CODES</span
+      >{" "}
+      <span class="mt-2.5 block font-mono text-[15px] text-muted-on-ink"
+        >Coalition of Digital Engagement in Syracuse</span
+      >
+    </h1>
+  </section>
+
+  <section class="wrap pb-6 pt-14">
+    <SectionHead title="Mission" />
+    <p class="mt-5 max-w-[40rem] text-xl leading-normal">
+      CODES exists to serve and grow the technology community in Syracuse, New
+      York, through education, mentoring, and creating economic opportunity. In
+      practice, that means free, recurring meetups that connect people with each
+      other and with local opportunities. We aim to break even, not to grow an
+      organization.
+    </p>
+  </section>
+
+  <section class="wrap py-10">
+    <SectionHead title="What it costs" />
+    <p class="mt-5 max-w-[40rem] text-lg">
+      Our meetups are free to attend, and they aren't free to run. Each one
+      costs about $100–200 to put on, and the money goes to food, drinks and the
+      venue.
+    </p>
+  </section>
+
+  <section class="wrap py-10">
+    <SectionHead title="Ways to support" />
+    <div
+      class="mt-5 grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(min(400px,100%),1fr))]"
+    >
+      {
+        ways.map((way) => (
+          <div class="card flex flex-col p-6">
+            <h3 class="text-2xl font-extrabold tracking-[-0.01em]">
+              {way.name}
+            </h3>
+            <dl class="mt-3 flex-1 text-base">
+              <dt class="font-mono text-[13px] text-steel">you give</dt>
+              <dd class="m-0 mb-3">{way.give}</dd>
+              <dt class="font-mono text-[13px] text-steel">you get</dt>
+              <dd class="m-0">{way.get}</dd>
+            </dl>
+            <div class="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-3">
+              <span class="font-mono text-sm font-bold">{way.price}</span>
+              <a
+                href={supportMail(`${way.name} - syracuse.io`)}
+                data-track="sponsor_contact"
+                data-way={way.name.toLowerCase()}
+                class="font-mono text-[13px] font-bold"
+              >
+                ask about this →
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  {
+    partners.length > 0 && (
+      <section class="wrap py-10">
+        <SectionHead title="Current hosts and partners" />
+        <div class="mt-5 flex flex-wrap items-center gap-x-12 gap-y-4">
+          {partners.map((s) => (
+            <SponsorName sponsor={s} />
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  <section class="wrap py-10">
+    <SectionHead title="Board" />
+    <dl class="mt-2 max-w-[40rem]">
+      {
+        board.map((member) => (
+          <div class="flex flex-wrap gap-x-5 gap-y-1 border-b border-line py-3">
+            <dt class="w-[120px] font-mono text-[13px] text-steel">
+              {member.role.toLowerCase()}
+            </dt>
+            <dd class="m-0 flex-[1_1_260px]">{member.name}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  <section class="wrap py-10">
+    <SectionHead title="Legal" />
+    <dl class="mt-2 max-w-[40rem]">
+      <div class="flex flex-wrap gap-x-5 gap-y-1 border-b border-line py-3">
+        <dt class="w-[120px] font-mono text-[13px] text-steel">name</dt>
+        <dd class="m-0 flex-[1_1_260px]">
+          Coalition of Digital Engagement in Syracuse, Inc. (CODES), a 501(c)(3)
+          nonprofit
+        </dd>
+      </div>
+      <div class="flex flex-wrap gap-x-5 gap-y-1 border-b border-line py-3">
+        <dt class="w-[120px] font-mono text-[13px] text-steel">donations</dt>
+        <dd class="m-0 flex-[1_1_260px]">
+          Donations are tax-deductible to the extent allowed by law.
+        </dd>
+      </div>
+      <div class="flex flex-wrap gap-x-5 gap-y-1 border-b border-line py-3">
+        <dt class="w-[120px] font-mono text-[13px] text-steel">EIN</dt>
+        <dd class="m-0 flex-[1_1_260px] font-mono">85-2136324</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="bg-steel text-salt">
+    <div class="wrap flex flex-wrap items-center justify-between gap-5 py-11">
+      <div class="flex-[1_1_320px]">
+        <h2 class="mb-1 text-[22px] font-extrabold">
+          Want to host, sponsor or partner?
+        </h2>
+        <p class="text-base text-[#dce4e8]">Email Mike and ask.</p>
+      </div>
+      <a
+        href={supportMail("Supporting syracuse.io")}
+        data-track="sponsor_contact"
+        data-way="general"
+        class="btn btn-light"
+      >
+        {MIKE_EMAIL}
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap pb-16 pt-12">
+    <SectionHead title="History" />
+    <p class="mt-5 max-w-[40rem] text-lg">
+      Syracuse's developer meetups have run every month since {
+        sinceLabel(GROUP_SINCE)
+      }. CODES was founded in 2020.
+    </p>
+  </section>
+</BaseLayout>

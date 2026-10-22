@@ -4,7 +4,7 @@ import { defineConfig, devices } from "@playwright/test";
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: "./tests/e2e",
+  testDir: "./tests",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -26,16 +26,37 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: "unit",
+      testMatch: "unit/**/*.spec.ts",
+    },
+    {
       name: "chromium",
+      testMatch: "e2e/**/*.spec.ts",
       use: { ...devices["Desktop Chrome"] },
     },
   ],
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: process.env.CI ? "npm run preview" : "npm run dev",
+    // Test the built site; `npm run dev` isn't reliable with the Cloudflare adapter.
+    // --ignore-lock keeps preview in the foreground; without it, Astro 7.4+
+    // backgrounds itself when it detects an AI agent and Playwright sees the
+    // command exit early.
+    command: "npm run build && npm run preview -- --ignore-lock",
     url: "http://localhost:4321",
     reuseExistingServer: !process.env.CI,
+    // Dummy IDs switch the tracker on so its events can be tested; tests block
+    // the request to Google.
+    env: {
+      PUBLIC_GA_MEASUREMENT_ID: "G-TEST000000",
+      PUBLIC_ADS_ID: "AW-000000000",
+      PUBLIC_ADS_CONVERSIONS: JSON.stringify({
+        rsvp_click: "AW-000000000/rsvp",
+        slack_click: "AW-000000000/slack",
+        email_signup: "AW-000000000/email",
+        sponsor_contact: "AW-000000000/sponsor",
+      }),
+    },
     timeout: 120000,
   },
 });

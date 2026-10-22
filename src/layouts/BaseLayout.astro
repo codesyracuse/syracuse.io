@@ -1,46 +1,77 @@
 ---
-const { content } = Astro.props;
-import Navigation from "../components/Navigation.astro";
+import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Analytics from "../components/Analytics.astro";
+import { getNextEvent, rsvpUrl } from "../lib/events";
+import { cleanPath } from "../lib/site";
 import "../styles/global.css";
-import "../styles/fonts.css";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Path-only canonical, defaults to the current path. */
+  canonical?: string;
+  /** schema.org objects emitted as JSON-LD. */
+  jsonLd?: object[];
+}
+const { title, description, canonical, jsonLd = [] } = Astro.props;
+
+// The nav RSVP button goes to the next event, or to the email signup when
+// nothing is scheduled.
+const next = await getNextEvent();
+const rsvp = {
+  href: next ? rsvpUrl(next) : "/#email",
+  series: next?.series ?? "community",
+  provider: next?.provider,
+};
+const canonicalUrl = new URL(
+  canonical ?? cleanPath(Astro.url.pathname),
+  Astro.site
+);
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{content?.title || "Syracuse.io"}</title>
-
-    <link
-      rel="preload"
-      href="https://cdn.jsdelivr.net/gh/githubnext/monaspace@latest/fonts/webfonts/MonaspaceNeon-Regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="syracuse.io" />
+    <meta property="og:image" content={new URL("/og.png", Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="syracuse.io: Syracuse's developer community. Every month since April 2014."
     />
-    <link
-      rel="preload"
-      href="https://cdn.jsdelivr.net/gh/githubnext/monaspace@latest/fonts/webfonts/MonaspaceNeon-Bold.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="https://cdn.jsdelivr.net/gh/githubnext/monaspace@latest/fonts/webfonts/MonaspaceNeon-ExtraBold.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
+    <meta name="twitter:card" content="summary_large_image" />
+    {
+      jsonLd.map((data) => (
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify(data).replace(/</g, "\\u003c")}
+        />
+      ))
+    }
   </head>
-  <body class="bg-neutral-50 dark:bg-neutral-900">
-    <Navigation />
-    <div class="min-h-screen">
-      <slot />
+  <body>
+    <div class="bg-ink text-salt">
+      <Header rsvp={rsvp} />
+      <slot name="hero" />
     </div>
-    <Footer />
+    <main>
+      <slot />
+    </main>
+    <Footer rsvp={rsvp} />
+    <Analytics />
   </body>
 </html>

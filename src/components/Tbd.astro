@@ -1,0 +1,25 @@
+---
+/**
+ * A fact only Mike can supply. A real `value` renders as plain text. A value
+ * containing "TBD(mike)" keeps its surrounding words and shows the marker as
+ * a visible placeholder; a missing value shows the placeholder alone. The
+ * build-guard integration fails strict builds if one survives.
+ */
+interface Props {
+  value?: string;
+  label?: string;
+}
+const { value, label } = Astro.props;
+const MARKER = "TBD(mike)";
+const text = label ? `${MARKER}: ${label}` : MARKER;
+const pieces = value ? value.split(MARKER) : ["", ""];
+---
+
+{
+  pieces.map((piece, i) => (
+    <>
+      {i > 0 && <mark class="tbd">{text}</mark>}
+      {piece}
+    </>
+  ))
+}

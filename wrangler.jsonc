@@ -1,0 +1,10 @@
+{
+  // The Astro Cloudflare adapter builds on this file; only what it can't infer goes here.
+  "name": "syracuse-io",
+  // Build-time code (the iCal parser) uses Node APIs.
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    // Serve 404.html for unknown URLs instead of an empty response.
+    "not_found_handling": "404-page",
+  },
+}

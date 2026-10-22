@@ -1,0 +1,16 @@
+---
+interface Props {
+  title: string;
+  /** Small mono text on the right, e.g. "via Meetup". */
+  aside?: string;
+  asideClass?: string;
+}
+const { title, aside, asideClass = "text-muted" } = Astro.props;
+---
+
+<div
+  class="flex items-baseline justify-between gap-4 border-b-2 border-ink pb-2.5"
+>
+  <h2 class="section-title">{title}</h2>
+  {aside && <span class={`font-mono text-xs ${asideClass}`}>{aside}</span>}
+</div>

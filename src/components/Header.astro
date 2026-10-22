@@ -1,0 +1,54 @@
+---
+import { getActiveSeries } from "../lib/series";
+import { getActiveJobs } from "../lib/jobs";
+import { cleanPath } from "../lib/site";
+
+interface Props {
+  rsvp: { href: string; series: string; provider?: string };
+}
+const { rsvp } = Astro.props;
+
+const [series, jobs] = await Promise.all([getActiveSeries(), getActiveJobs()]);
+// One series: go straight to its page. More than one: the list on home.
+const meetupsHref = series.length === 1 ? `/${series[0].id}` : "/#series";
+
+const path = cleanPath(Astro.url.pathname);
+const links = [
+  { href: meetupsHref, label: "meetups", show: true },
+  { href: "/jobs", label: "jobs", show: jobs.length > 0 },
+  { href: "/codes", label: "codes", show: true },
+].filter((l) => l.show);
+---
+
+<header
+  class="wrap flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-4"
+>
+  <a
+    href="/"
+    class="font-mono text-[19px] font-bold text-salt no-underline hover:text-salt"
+    >syracuse<span class="text-plow">.io</span></a
+  >
+  <nav
+    aria-label="Main"
+    class="flex flex-wrap items-center gap-x-[22px] gap-y-2 font-mono text-[13px]"
+  >
+    {
+      links.map((l) => (
+        <a
+          href={l.href}
+          aria-current={path === l.href ? "page" : undefined}
+          class="py-2 text-salt no-underline hover:text-salt hover:underline aria-[current=page]:underline"
+        >
+          {l.label}
+        </a>
+      ))
+    }
+    <a
+      href={rsvp.href}
+      class="btn btn-primary"
+      data-track="rsvp"
+      data-series={rsvp.series}
+      data-provider={rsvp.provider}>RSVP</a
+    >
+  </nav>
+</header>
