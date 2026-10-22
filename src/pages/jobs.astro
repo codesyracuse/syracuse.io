@@ -2,10 +2,10 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getActiveJobs } from "../lib/jobs";
 import { dateOnlyLabel } from "../lib/events/format";
-import { MIKE_EMAIL, PRICES } from "../lib/site";
+import { CONTACT_EMAIL, PRICES } from "../lib/site";
 
 const jobs = await getActiveJobs();
-const employerMail = `mailto:${MIKE_EMAIL}?subject=${encodeURIComponent("Featured job - syracuse.io")}`;
+const employerMail = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Featured job - syracuse.io")}`;
 const included = [
   "A listing on this site",
   "A place in the monthly email",

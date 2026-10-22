@@ -52,6 +52,8 @@ for.
 - [Google Analytics and Google Ads](https://policies.google.com/privacy): visit
   analytics and ad conversion tracking
 - [Buttondown](https://buttondown.com/legal/privacy): the monthly email
+- [Givebutter](https://givebutter.com/privacy): donations, if you give through
+  our Givebutter page
 - [Cloudflare](https://www.cloudflare.com/privacypolicy/): hosting and CDN
 - [GitHub](https://docs.github.com/site-policy/privacy-policies/github-general-privacy-statement):
   the source of this site is public

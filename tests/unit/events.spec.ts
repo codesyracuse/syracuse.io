@@ -7,6 +7,7 @@ import {
   dateParts,
   localDateKey,
   monthDay,
+  monthsSinceLabel,
   rowDate,
   sinceLabel,
   timeFull,
@@ -175,5 +176,13 @@ test.describe("format", () => {
 
   test("sinceLabel", () => {
     expect(sinceLabel("2014-04")).toBe("April 2014");
+  });
+
+  test("monthsSinceLabel counts both ends and rounds down to tens", () => {
+    // April 2014 through October 2026 is 151 months.
+    const oct = new Date("2026-10-21T16:00:00Z");
+    expect(monthsSinceLabel("2014-04", oct)).toBe("150+");
+    const jan = new Date("2026-01-15T16:00:00Z");
+    expect(monthsSinceLabel("2014-04", jan)).toBe("140+");
   });
 });

@@ -111,3 +111,39 @@
     outline: 1px dashed var(--brick);
   }
 }
+
+/* Print: /sponsor doubles as the sponsorship packet. Light, no navigation. */
+@media print {
+  header nav,
+  footer {
+    display: none !important;
+  }
+
+  body,
+  .bg-ink,
+  .bg-steel {
+    background: #fff !important;
+    color: var(--ink) !important;
+  }
+
+  .bg-ink *,
+  .bg-steel * {
+    color: var(--ink) !important;
+  }
+
+  .btn {
+    min-height: 0;
+    padding: 0;
+    background: none !important;
+    color: var(--ink) !important;
+  }
+
+  .tier {
+    break-inside: avoid;
+  }
+
+  a[data-print-url]::after {
+    content: " (" attr(data-print-url) ")";
+    font-weight: normal;
+  }
+}

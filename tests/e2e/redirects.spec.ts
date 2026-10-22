@@ -21,13 +21,17 @@ test.describe("Redirects", () => {
     expect(location).toMatch(/\/#email$/);
   });
 
-  for (const from of ["/support", "/sponsor", "/about"]) {
-    test(`${from} goes to /codes`, async ({ request }) => {
-      const { status, location } = await redirect(request, from);
-      expect(status).toBe(301);
-      expect(location).toMatch(/\/codes$/);
-    });
-  }
+  test("/about goes to /codes", async ({ request }) => {
+    const { status, location } = await redirect(request, "/about");
+    expect(status).toBe(301);
+    expect(location).toMatch(/\/codes$/);
+  });
+
+  test("/support goes to /sponsor", async ({ request }) => {
+    const { status, location } = await redirect(request, "/support");
+    expect(status).toBe(301);
+    expect(location).toMatch(/\/sponsor$/);
+  });
 
   for (const from of [
     "/groups",
