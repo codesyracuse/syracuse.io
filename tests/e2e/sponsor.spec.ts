@@ -17,7 +17,7 @@ test.describe("/sponsor", () => {
       "What it costs to run",
       "Ways to support",
       "Current hosts and partners",
-      "Straight donations",
+      "Chip in",
       "Want to host, sponsor or partner?",
     ]);
   });
@@ -59,17 +59,14 @@ test.describe("/sponsor", () => {
     }
   });
 
-  test("the tax line appears only under straight donations", async ({
-    page,
-  }) => {
+  test("the tax line appears only under chip in", async ({ page }) => {
     await page.goto("/sponsor");
     await expect(page.getByText("tax-deductible")).toHaveCount(1);
-    const donations = page.locator("section", {
-      has: page.getByRole("heading", { name: "Straight donations" }),
-    });
-    await expect(donations).toContainText("tax-deductible");
+    const chipIn = page.locator("#chip-in");
+    await expect(chipIn.getByRole("heading")).toHaveText("Chip in");
+    await expect(chipIn).toContainText("tax-deductible");
     await expect(
-      donations.getByRole("link", { name: "donate on Givebutter" })
+      chipIn.getByRole("link", { name: "chip in on Givebutter" })
     ).toHaveAttribute("href", "https://givebutter.com/codesyracuse");
   });
 

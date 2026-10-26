@@ -45,7 +45,7 @@ The copy below is the approved draft, matching `reference/index.html` and `refer
 
    Use the native HTML `popover` attribute with `popovertarget`, as in the reference, so it needs no JS. It must be keyboard-accessible and close on Escape and outside click (native behavior).
 
-8. **Made possible by.** Hosts and annual partners as single-color logos, plus a "support syracuse.io →" link to `/codes`. Hidden if there are no sponsors.
+8. **Made possible by.** Hosts and annual partners as single-color logos, plus "sponsor →" (to `/sponsor`) and "chip in →" (to `/sponsor#chip-in`) links. Hidden if there are no sponsors.
 
 ---
 
