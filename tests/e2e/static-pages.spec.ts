@@ -4,6 +4,7 @@ const PAGES = [
   "/",
   "/open-hack",
   "/codes",
+  "/sponsor",
   "/jobs",
   "/code-of-conduct",
   "/privacy",

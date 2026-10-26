@@ -78,6 +78,14 @@ export function sinceLabel(since: string): string {
   return `${MONTHS[Number(m) - 1]} ${y}`;
 }
 
+/** Months met since "2014-04", counting both ends, rounded down to tens: "150+". */
+export function monthsSinceLabel(since: string, now = new Date()): string {
+  const [y, m] = since.split("-").map(Number);
+  const [ny, nm] = localDateKey(now).split("-").map(Number);
+  const months = (ny - y) * 12 + (nm - m) + 1;
+  return `${Math.floor(months / 10) * 10}+`;
+}
+
 /**
  * "2026-10-13" for a date-only YAML value (`event_date: 2026-10-13`). Those
  * parse as UTC midnight, so reading them in Syracuse time would give Oct 12.

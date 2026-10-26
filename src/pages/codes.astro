@@ -1,48 +1,54 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHead from "../components/SectionHead.astro";
-import SponsorName from "../components/SponsorName.astro";
-import { getThanksTo } from "../lib/sponsors";
-import { sinceLabel } from "../lib/events/format";
-import { GROUP_SINCE, MIKE_EMAIL, PRICES, SITE_URL } from "../lib/site";
+import { monthsSinceLabel, sinceLabel } from "../lib/events/format";
+import {
+  COMMUNITY_STATS,
+  CONTACT_EMAIL,
+  GROUP_SINCE,
+  MEETUP_MEMBERS_URL,
+  SITE_URL,
+} from "../lib/site";
 
-const partners = await getThanksTo();
+const stats = [
+  { label: "meeting every month since", value: sinceLabel(GROUP_SINCE) },
+  { label: "months in a row", value: monthsSinceLabel(GROUP_SINCE) },
+  {
+    label: "Meetup members",
+    value: COMMUNITY_STATS.meetupMembers,
+    href: MEETUP_MEMBERS_URL,
+  },
+  { label: "Meetup rating", value: COMMUNITY_STATS.meetupRating },
+  {
+    label: "Slack members",
+    value: COMMUNITY_STATS.slackMembers,
+    href: "/slack",
+  },
+];
 
-const supportMail = (subject: string) =>
-  `mailto:${MIKE_EMAIL}?subject=${encodeURIComponent(subject)}`;
+const helpWays = [
+  {
+    lead: "Give a talk or lead a night.",
+    rest: "Tell us what you want to cover. Beginners and first-time speakers are welcome.",
+  },
+  {
+    lead: "Start a series.",
+    rest: "Got an idea for a recurring meetup, like a language group, a book club or a study group? We can list it on our Meetup group and promote it in Slack and the monthly email. We can help with food when we have a sponsor for it.",
+  },
+  {
+    lead: "Bring your organization in.",
+    rest: "Libraries, schools, community centers and companies can partner with us on events, workshops or space.",
+  },
+  {
+    lead: "Just show up and say hi to new people.",
+    rest: "Honestly the most useful thing.",
+  },
+];
 
-// Prices are Mike's to set. Hosting is in-kind.
 const board = [
   { name: "Mike Vormwald", role: "President" },
   { name: "Annalena Davis", role: "Treasurer" },
   { name: "Ed Forth", role: "Secretary" },
-];
-
-const ways = [
-  {
-    name: "Host",
-    give: "Free space for a meetup",
-    get: "A “Hosted at” credit on the series page and event listings, thanks at the event, and your logo on the site",
-    price: "In-kind",
-  },
-  {
-    name: "Event sponsor",
-    give: "Covers one night's food, drinks and venue costs",
-    get: "Named on that event's listing, thanked from the front of the room, and in that month's email",
-    price: PRICES.eventSponsor,
-  },
-  {
-    name: "Featured job",
-    give: "A paid posting",
-    get: "Your role on the site, in the monthly email, pinned in #jobs, and mentioned at the next meetup",
-    price: PRICES.featuredJob,
-  },
-  {
-    name: "Annual partner",
-    give: "One yearly payment",
-    get: "Your logo on every page, every email and every event, plus first call for hosting or speaking",
-    price: PRICES.annualPartner,
-  },
 ];
 
 const jsonLd = [
@@ -59,7 +65,7 @@ const jsonLd = [
       "CODES serves and grows the technology community in Syracuse, New York, through education, mentoring, and creating economic opportunity. It runs free, recurring meetups and connects people with each other and with local opportunities.",
     nonprofitStatus: "https://schema.org/Nonprofit501c3",
     areaServed: { "@type": "City", name: "Syracuse, NY" },
-    email: MIKE_EMAIL,
+    email: CONTACT_EMAIL,
     sameAs: [SITE_URL],
   },
 ];
@@ -67,7 +73,7 @@ const jsonLd = [
 
 <BaseLayout
   title="CODES, the nonprofit behind syracuse.io"
-  description="CODES is the Syracuse nonprofit that runs free, recurring tech meetups. See where the money goes and how to host, sponsor or partner."
+  description="How Syracuse's monthly developer meetups started, what CODES runs, and how to get involved."
   jsonLd={jsonLd}
 >
   <section slot="hero" class="wrap pb-14 pt-8">
@@ -80,74 +86,142 @@ const jsonLd = [
         >Coalition of Digital Engagement in Syracuse</span
       >
     </h1>
+    <p class="mt-5 max-w-[38rem] text-xl text-salt">
+      The nonprofit that serves and grows Syracuse's tech community through
+      education, mentoring and economic opportunity, starting with the monthly
+      meetups that keep it connected.
+    </p>
   </section>
 
   <section class="wrap pb-6 pt-14">
-    <SectionHead title="Mission" />
-    <p class="mt-5 max-w-[40rem] text-xl leading-normal">
-      CODES exists to serve and grow the technology community in Syracuse, New
-      York, through education, mentoring, and creating economic opportunity. In
-      practice, that means free, recurring meetups that connect people with each
-      other and with local opportunities. We aim to break even, not to grow an
-      organization.
-    </p>
-  </section>
-
-  <section class="wrap py-10">
-    <SectionHead title="What it costs" />
-    <p class="mt-5 max-w-[40rem] text-lg">
-      Our meetups are free to attend, and they aren't free to run. Each one
-      costs about $100–200 to put on, and the money goes to food, drinks and the
-      venue.
-    </p>
-  </section>
-
-  <section class="wrap py-10">
-    <SectionHead title="Ways to support" />
-    <div
-      class="mt-5 grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(min(400px,100%),1fr))]"
-    >
-      {
-        ways.map((way) => (
-          <div class="card flex flex-col p-6">
-            <h3 class="text-2xl font-extrabold tracking-[-0.01em]">
-              {way.name}
-            </h3>
-            <dl class="mt-3 flex-1 text-base">
-              <dt class="font-mono text-[13px] text-steel">you give</dt>
-              <dd class="m-0 mb-3">{way.give}</dd>
-              <dt class="font-mono text-[13px] text-steel">you get</dt>
-              <dd class="m-0">{way.get}</dd>
-            </dl>
-            <div class="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-3">
-              <span class="font-mono text-sm font-bold">{way.price}</span>
-              <a
-                href={supportMail(`${way.name} - syracuse.io`)}
-                data-track="sponsor_contact"
-                data-way={way.name.toLowerCase()}
-                class="font-mono text-[13px] font-bold"
-              >
-                ask about this →
-              </a>
-            </div>
-          </div>
-        ))
-      }
+    <SectionHead title="How this started" />
+    <div class="mt-5 flex max-w-[40rem] flex-col gap-4 text-lg">
+      <p>
+        Syracuse developers have met every month since {
+          sinceLabel(GROUP_SINCE)
+        }. For the first six years, it ran the way most local meetups run: a few
+        people kept showing up, and the organizers paid for the pizza out of
+        their own pockets.
+      </p>
+      <p>
+        In 2020 a group of us who'd been running and attending those meetups
+        formed CODES, the Coalition of Digital Engagement in Syracuse. We wanted
+        to put the community on steadier footing: take sponsorships, cover costs
+        properly, and try bigger things.
+      </p>
+      <p>
+        We tried bigger things too: a mentorship program, recorded talks during
+        the pandemic, and more. Some of it worked for a while. What kept
+        working, every single month, was the simplest part: a night where
+        developers in Central New York can find each other.
+      </p>
+      <p>
+        So that's what CODES is now. It's small on purpose, it aims to break
+        even, and it's consistent above all else.
+      </p>
     </div>
   </section>
 
-  {
-    partners.length > 0 && (
-      <section class="wrap py-10">
-        <SectionHead title="Current hosts and partners" />
-        <div class="mt-5 flex flex-wrap items-center gap-x-12 gap-y-4">
-          {partners.map((s) => (
-            <SponsorName sponsor={s} />
-          ))}
-        </div>
-      </section>
-    )
-  }
+  <section class="wrap py-10">
+    <SectionHead title="Connections since 2014" />
+    <div class="mt-5 flex max-w-[40rem] flex-col gap-4 text-lg">
+      <p>
+        Over twelve years, the meetups have done what meetups do best: connect
+        people who'd otherwise never meet.
+      </p>
+      <p>
+        Back in 2016–18, the CTO of Density, a Syracuse-born startup, hired
+        three people he met at Open Hack. He told us his entire recruiting
+        strategy was showing up to Open Hack and meeting people.
+      </p>
+      <p>
+        That's the kind of thing that happens when the same people keep showing
+        up month after month. Newcomers find their people. Someone who came to
+        learn ends up teaching. A lot of the Syracuse tech community knows each
+        other because, at some point, they sat at the same table on a meetup
+        night.
+      </p>
+      <p>None of that shows up in a spreadsheet, and it's the whole point.</p>
+    </div>
+  </section>
+
+  <section class="wrap py-10">
+    <SectionHead title="Why it matters" />
+    <p class="mt-5 max-w-[40rem] text-lg">
+      Syracuse doesn't have a big tech company that everyone passes through.
+      People find jobs, cofounders, collaborators and friends through the
+      meetups and the Slack instead. If you've been here a while, there's a
+      decent chance you know someone who got hired because of a conversation at
+      Open Hack.
+    </p>
+  </section>
+
+  <section class="wrap py-10">
+    <SectionHead
+      title="By the numbers"
+      aside={`as of ${COMMUNITY_STATS.asOf}`}
+    />
+    <dl class="mt-2 max-w-[40rem]">
+      {
+        stats.map((stat) => (
+          <div class="flex flex-wrap gap-x-5 gap-y-1 border-b border-line py-3">
+            <dt class="w-[200px] font-mono text-[13px] text-steel">
+              {stat.label}
+            </dt>
+            <dd class="m-0 flex-[1_1_200px] font-mono font-bold">
+              {stat.href ? <a href={stat.href}>{stat.value}</a> : stat.value}
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </section>
+
+  <section class="wrap py-10">
+    <SectionHead title="Run something with us" />
+    <p class="mt-5 max-w-[40rem] text-lg">
+      You don't need to be on the board to help.
+    </p>
+    <ul class="mt-4 flex max-w-[40rem] list-disc flex-col gap-3 pl-5 text-lg">
+      {
+        helpWays.map((way) => (
+          <li>
+            <strong>{way.lead}</strong> {way.rest}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="mt-6 bg-steel text-salt">
+    <div class="wrap flex flex-wrap items-center justify-between gap-5 py-11">
+      <div class="flex-[1_1_320px]">
+        <h2 class="mb-1 text-[22px] font-extrabold">Have an idea?</h2>
+        <p class="text-base text-[#dce4e8]">Tell us what you have in mind.</p>
+      </div>
+      <a
+        href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("An idea for syracuse.io")}`}
+        class="btn btn-light"
+      >
+        {CONTACT_EMAIL}
+      </a>
+    </div>
+  </section>
+
+  <section class="wrap pb-6 pt-14">
+    <SectionHead title="Paying for it" />
+    <p class="mt-5 max-w-[40rem] text-lg">
+      Meetups are free to attend and cost about $100–200 each to run. Companies
+      cover most of that by hosting, sponsoring nights or posting jobs, and
+      people who come chip in what they can.
+    </p>
+    <div
+      class="mt-4 flex flex-wrap gap-x-6 gap-y-2 font-mono text-sm font-bold"
+    >
+      <a href="/sponsor">See sponsorship options →</a>
+      <a href="/sponsor#chip-in">Chip in →</a>
+    </div>
+  </section>
 
   <section class="wrap py-10">
     <SectionHead title="Board" />
@@ -158,14 +232,16 @@ const jsonLd = [
             <dt class="w-[120px] font-mono text-[13px] text-steel">
               {member.role.toLowerCase()}
             </dt>
-            <dd class="m-0 flex-[1_1_260px]">{member.name}</dd>
+            <dd class="m-0 flex-[1_1_260px]">
+              <span class="font-bold">{member.name}</span>
+            </dd>
           </div>
         ))
       }
     </dl>
   </section>
 
-  <section class="wrap py-10">
+  <section class="wrap pb-16 pt-10">
     <SectionHead title="Legal" />
     <dl class="mt-2 max-w-[40rem]">
       <div class="flex flex-wrap gap-x-5 gap-y-1 border-b border-line py-3">
@@ -176,43 +252,9 @@ const jsonLd = [
         </dd>
       </div>
       <div class="flex flex-wrap gap-x-5 gap-y-1 border-b border-line py-3">
-        <dt class="w-[120px] font-mono text-[13px] text-steel">donations</dt>
-        <dd class="m-0 flex-[1_1_260px]">
-          Donations are tax-deductible to the extent allowed by law.
-        </dd>
-      </div>
-      <div class="flex flex-wrap gap-x-5 gap-y-1 border-b border-line py-3">
         <dt class="w-[120px] font-mono text-[13px] text-steel">EIN</dt>
         <dd class="m-0 flex-[1_1_260px] font-mono">85-2136324</dd>
       </div>
     </dl>
-  </section>
-
-  <section class="bg-steel text-salt">
-    <div class="wrap flex flex-wrap items-center justify-between gap-5 py-11">
-      <div class="flex-[1_1_320px]">
-        <h2 class="mb-1 text-[22px] font-extrabold">
-          Want to host, sponsor or partner?
-        </h2>
-        <p class="text-base text-[#dce4e8]">Email Mike and ask.</p>
-      </div>
-      <a
-        href={supportMail("Supporting syracuse.io")}
-        data-track="sponsor_contact"
-        data-way="general"
-        class="btn btn-light"
-      >
-        {MIKE_EMAIL}
-      </a>
-    </div>
-  </section>
-
-  <section class="wrap pb-16 pt-12">
-    <SectionHead title="History" />
-    <p class="mt-5 max-w-[40rem] text-lg">
-      Syracuse's developer meetups have run every month since {
-        sinceLabel(GROUP_SINCE)
-      }. CODES was founded in 2020.
-    </p>
   </section>
 </BaseLayout>

@@ -26,7 +26,7 @@ test.describe("/jobs", () => {
     ]) {
       await expect(page.getByText(item)).toBeVisible();
     }
-    // Same price as the featured-job card on /codes.
+    // Same price as the featured-job card on /sponsor.
     await expect(page.getByText("$99 for 30 days")).toBeVisible();
     await expect(
       page.getByRole("link", { name: "feature a role" })

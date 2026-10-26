@@ -122,13 +122,18 @@ test.describe("Home", () => {
     ).toHaveAttribute("href", "mailto:mike@syracuse.io");
   });
 
-  test("made possible by lists hosts and links to /codes", async ({ page }) => {
+  test("made possible by lists hosts and links to sponsor and chip in", async ({
+    page,
+  }) => {
     await page.goto("/");
     const section = page.locator("#support");
     await expect(section).toContainText("Commonspace");
     await expect(
-      section.getByRole("link", { name: "support syracuse.io →" })
-    ).toHaveAttribute("href", "/codes");
+      section.getByRole("link", { name: "sponsor →" })
+    ).toHaveAttribute("href", "/sponsor");
+    await expect(
+      section.getByRole("link", { name: "chip in →" })
+    ).toHaveAttribute("href", "/sponsor#chip-in");
   });
 
   test("emits Event JSON-LD for upcoming events", async ({ page }) => {

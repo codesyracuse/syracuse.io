@@ -1,0 +1,212 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHead from "../components/SectionHead.astro";
+import SponsorName from "../components/SponsorName.astro";
+import { getThanksTo } from "../lib/sponsors";
+import { sinceLabel } from "../lib/events/format";
+import {
+  COMMUNITY_STATS,
+  CONTACT_EMAIL,
+  DONATE_URL,
+  GROUP_SINCE,
+  PRICES,
+} from "../lib/site";
+
+const partners = await getThanksTo();
+// Fewer than this many and the row gets a "your company here" slot.
+const OPEN_SLOT_BELOW = 3;
+
+const sponsorMail = (topic: string) =>
+  `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(`Sponsoring syracuse.io: ${topic}`)}`;
+
+const ways = [
+  {
+    id: "host",
+    name: "Host",
+    give: "Free space for a meetup",
+    get: "A “Hosted at” credit on the series page and event listings, thanks at the event, and your logo on the site",
+    price: "In-kind",
+  },
+  {
+    id: "event-sponsor",
+    name: "Event sponsor",
+    give: "Covers one night's food, drinks and venue costs",
+    get: "Named on that event's listing, thanked from the front of the room, and in that month's email",
+    price: PRICES.eventSponsor,
+  },
+  {
+    id: "featured-job",
+    name: "Featured job",
+    give: "A paid posting",
+    get: "Your role on the site, in the monthly email, pinned in #jobs, and mentioned at the next meetup",
+    price: PRICES.featuredJob,
+  },
+  {
+    id: "annual-partner",
+    name: "Annual partner",
+    give: "One yearly payment",
+    get: "Your logo on every page, every email and every event, plus first call for hosting or speaking",
+    price: PRICES.annualPartner,
+  },
+];
+---
+
+<BaseLayout
+  title="Sponsor syracuse.io"
+  description="Host, sponsor or partner with Syracuse's monthly developer meetups. Costs, tiers and where the money goes."
+>
+  <section slot="hero" class="wrap pb-14 pt-8">
+    <h1
+      class="text-[clamp(48px,7vw,84px)] font-extrabold leading-[0.95] tracking-[-0.03em]"
+    >
+      Sponsor syracuse.io
+    </h1>
+    <p class="mt-4 max-w-[36rem] text-xl text-muted-on-ink">
+      Put your company in front of Syracuse's developers, every month.
+    </p>
+  </section>
+
+  <section class="wrap pb-6 pt-14">
+    <SectionHead title="Who you reach" />
+    <div class="mt-5 flex max-w-[40rem] flex-col gap-4 text-lg">
+      <p>
+        The people who show up are working developers, people breaking into the
+        field, students, and founders around Central New York. Syracuse has no
+        big tech employer that everyone passes through, so the meetups and the
+        Slack are where the local developer community actually finds each other,
+        and where people hear about jobs.
+      </p>
+      <p>
+        That's {COMMUNITY_STATS.meetupMembers} members on Meetup, a {
+          COMMUNITY_STATS.meetupRating
+        } group rating, and {COMMUNITY_STATS.slackMembers} people in the Slack, meeting
+        every month since {sinceLabel(GROUP_SINCE)}.
+      </p>
+      <p>
+        It works for hiring, and has for years. Back in 2016–18, Density's CTO
+        hired three engineers he met at Open Hack. Sponsoring puts your company
+        in the room where that happens.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap py-10">
+    <SectionHead title="What it costs to run" />
+    <div class="mt-5 flex max-w-[40rem] flex-col gap-4 text-lg">
+      <p>
+        Meetups are free to attend. Each one costs about $100–200 to put on:
+        food, drinks and, when we don't have a host, the venue. We aim to break
+        even, not to grow an organization. Sponsor money goes to the nights
+        themselves, plus small fixed costs like insurance, the domain and Meetup
+        fees.
+      </p>
+      <p>
+        For scale: a year of monthly meetups runs roughly $1,200–2,400. One
+        annual partner covers most of it.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap py-10">
+    <SectionHead title="Ways to support" />
+    <div
+      class="mt-5 grid gap-5 [grid-template-columns:repeat(auto-fit,minmax(min(400px,100%),1fr))]"
+    >
+      {
+        ways.map((way) => (
+          <div id={way.id} class="card tier flex scroll-mt-6 flex-col p-6">
+            <h3 class="text-2xl font-extrabold tracking-[-0.01em]">
+              {way.name}
+            </h3>
+            <dl class="mt-3 flex-1 text-base">
+              <dt class="font-mono text-[13px] text-steel">you give</dt>
+              <dd class="m-0 mb-3">{way.give}</dd>
+              <dt class="font-mono text-[13px] text-steel">you get</dt>
+              <dd class="m-0">{way.get}</dd>
+            </dl>
+            <div class="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-3">
+              <span class="font-mono text-sm font-bold">{way.price}</span>
+              <a
+                href={sponsorMail(way.name)}
+                data-track="sponsor_contact"
+                data-way={way.name.toLowerCase()}
+                data-print-url={CONTACT_EMAIL}
+                class="font-mono text-[13px] font-bold"
+              >
+                ask about this →
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    <p class="mt-6 max-w-[40rem] text-base text-muted">
+      Want something that isn't listed, like sponsoring a workshop or a series?
+      Ask. We're flexible.
+    </p>
+  </section>
+
+  <section class="wrap py-10">
+    <SectionHead title="Current hosts and partners" />
+    <div class="mt-5 flex flex-wrap items-center gap-x-12 gap-y-4">
+      {partners.map((s) => <SponsorName sponsor={s} />)}
+      {
+        partners.length < OPEN_SLOT_BELOW && (
+          <a
+            href="#annual-partner"
+            class="rounded border-2 border-dashed border-line px-5 py-2 font-mono text-sm font-bold text-muted no-underline hover:border-ink hover:text-ink"
+          >
+            your company here →
+          </a>
+        )
+      }
+    </div>
+  </section>
+
+  <section id="chip-in" class="wrap scroll-mt-6 py-10">
+    <SectionHead title="Chip in" />
+    <div class="mt-5 flex max-w-[40rem] flex-col gap-4 text-lg">
+      <p>
+        Not a company? You can still help. Give whatever feels right, once or
+        monthly. It goes to the same place sponsor money does: food, drinks and
+        the venue. A meetup costs about $100–200, so ten people giving $20
+        covers a night.
+      </p>
+      <p>
+        CODES is a 501(c)(3), so donations are tax-deductible to the extent
+        allowed by law.
+      </p>
+    </div>
+    <a
+      href={DONATE_URL}
+      data-print-url={DONATE_URL}
+      class="btn btn-primary mt-5">chip in on Givebutter</a
+    >
+  </section>
+
+  <section class="mt-6 bg-steel text-salt">
+    <div class="wrap flex flex-wrap items-center justify-between gap-5 py-11">
+      <div class="flex-[1_1_320px]">
+        <h2 class="mb-1 text-[22px] font-extrabold">
+          Want to host, sponsor or partner?
+        </h2>
+        <p class="text-base text-[#dce4e8]">
+          Email us. Replies usually come within a few days.
+        </p>
+      </div>
+      <a
+        href={sponsorMail("general")}
+        data-track="sponsor_contact"
+        data-way="general"
+        class="btn btn-light"
+      >
+        {CONTACT_EMAIL}
+      </a>
+    </div>
+  </section>
+
+  <p class="wrap py-8 font-mono text-[13px] text-muted">
+    CODES, Coalition of Digital Engagement in Syracuse, Inc. · 501(c)(3) · EIN
+    85-2136324
+  </p>
+</BaseLayout>

@@ -61,16 +61,19 @@ Facts only Mike can supply render as a visible placeholder via `<Tbd value label
 
 ### Redirects and deploy
 
-Exact redirects are in `astro.config.mjs` (`/slack` points at `SLACK_INVITE_URL` in `src/config/links.mjs`). Wildcards are in `public/_redirects`; the adapter appends its own rules to that file. `wrangler.jsonc` sets `not_found_handling: "404-page"`. CI (`.github/workflows/ci.yml`) lints, builds, tests, and deploys `dist/client/wrangler.json` on pushes to `main` and on a daily schedule. Same-repo pull requests upload a non-strict preview version (`--preview-alias pr-{number}`; the URL is in the job log). A `keepalive` job re-enables the workflow on each scheduled run, because GitHub disables schedules in public repos after 60 idle days.
+Exact redirects are in `astro.config.mjs` (`/slack` points at `SLACK_INVITE_URL` in `src/config/links.mjs`). Wildcards are in `public/_redirects`; the adapter appends its own rules to that file. `wrangler.jsonc` sets `not_found_handling: "404-page"`. CI (`.github/workflows/ci.yml`) lints, builds, tests, and deploys `dist/client/wrangler.json` on pushes to `main` and on a daily schedule. Same-repo pull requests upload a non-strict preview version (`--preview-alias pr-{number}`) and comment the preview URL on the PR. A `keepalive` job re-enables the workflow on each scheduled run, because GitHub disables schedules in public repos after 60 idle days.
 
 ### Styling
 
 Tailwind 3 with color tokens as CSS variables in `src/styles/global.css` (`salt`, `ink`, `brick`, `steel`, `plow`, `card`, `line`, `muted`). `plow` is reserved for the `.io` in the wordmark and the day name in the hero date; don't use it elsewhere. No webfonts: system sans for prose, system monospace for data (dates, times, venues, nav, buttons, eyebrows). Light mode only.
 
+`/sponsor` doubles as the printable sponsorship packet. The `@media print` block in `global.css` hides navigation, turns the dark bands light and keeps `.tier` cards whole; a link with `data-print-url` prints that URL after itself. The community numbers on `/codes` and `/sponsor` are `COMMUNITY_STATS` in `src/lib/site.ts`, rounded down with an "as of" month; bump them by hand.
+
 ## Gotchas
 
 - If you delete the **last** file in a content folder, also delete `node_modules/.astro/data-store.json`; otherwise the old entry lingers locally (CI is unaffected).
 - Astro trims whitespace at line breaks next to inline elements; use `{" "}` where Prettier splits a sentence around a link or component.
+- Keep `@astrojs/cloudflare` current with Astro's minor version. Adapter 14.1 under Astro 7.4 silently stopped emitting build-time images, so `<Image>` pointed at `/_image`, which 404s on this static deploy. A home test checks that the photo is a built `/_astro/*.webp` file that loads.
 - Tailwind 3 can't apply opacity modifiers to the CSS-variable colors (`bg-salt/10` fails); write the `rgb()` in CSS.
 
 ## Adding things
