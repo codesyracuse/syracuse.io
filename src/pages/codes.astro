@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHead from "../components/SectionHead.astro";
-import Tbd from "../components/Tbd.astro";
 import { monthsSinceLabel, sinceLabel } from "../lib/events/format";
 import {
   COMMUNITY_STATS,
@@ -47,9 +46,9 @@ const helpWays = [
 ];
 
 const board = [
-  { name: "Mike Vormwald", role: "President", why: "TBD(mike)" },
-  { name: "Annalena Davis", role: "Treasurer", why: "TBD(mike)" },
-  { name: "Ed Forth", role: "Secretary", why: "TBD(mike)" },
+  { name: "Mike Vormwald", role: "President" },
+  { name: "Annalena Davis", role: "Treasurer" },
+  { name: "Ed Forth", role: "Secretary" },
 ];
 
 const jsonLd = [
@@ -231,12 +230,6 @@ const jsonLd = [
             </dt>
             <dd class="m-0 flex-[1_1_260px]">
               <span class="font-bold">{member.name}</span>
-              <span class="block text-base text-muted">
-                <Tbd
-                  value={member.why}
-                  label={`why ${member.name.split(" ")[0]} does this`}
-                />
-              </span>
             </dd>
           </div>
         ))

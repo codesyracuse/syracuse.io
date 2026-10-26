@@ -61,7 +61,7 @@ Facts only Mike can supply render as a visible placeholder via `<Tbd value label
 
 ### Redirects and deploy
 
-Exact redirects are in `astro.config.mjs` (`/slack` points at `SLACK_INVITE_URL` in `src/config/links.mjs`). Wildcards are in `public/_redirects`; the adapter appends its own rules to that file. `wrangler.jsonc` sets `not_found_handling: "404-page"`. CI (`.github/workflows/ci.yml`) lints, builds, tests, and deploys `dist/client/wrangler.json` on pushes to `main` and on a daily schedule. Same-repo pull requests upload a non-strict preview version (`--preview-alias pr-{number}`; the URL is in the job log). A `keepalive` job re-enables the workflow on each scheduled run, because GitHub disables schedules in public repos after 60 idle days.
+Exact redirects are in `astro.config.mjs` (`/slack` points at `SLACK_INVITE_URL` in `src/config/links.mjs`). Wildcards are in `public/_redirects`; the adapter appends its own rules to that file. `wrangler.jsonc` sets `not_found_handling: "404-page"`. CI (`.github/workflows/ci.yml`) lints, builds, tests, and deploys `dist/client/wrangler.json` on pushes to `main` and on a daily schedule. Same-repo pull requests upload a non-strict preview version (`--preview-alias pr-{number}`) and comment the preview URL on the PR. A `keepalive` job re-enables the workflow on each scheduled run, because GitHub disables schedules in public repos after 60 idle days.
 
 ### Styling
 
